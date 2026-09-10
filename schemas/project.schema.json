@@ -1,0 +1,196 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "slug",
+    "name",
+    "language",
+    "storage_prefix",
+    "publication_status",
+    "content_scope_date",
+    "content_checked_at",
+    "site_built_at",
+    "deployment",
+    "pages"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        1
+      ]
+    },
+    "slug": {
+      "enum": [
+        "apple-event-explainers"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "language": {
+      "enum": [
+        "zh-TW"
+      ]
+    },
+    "storage_prefix": {
+      "enum": [
+        "apple-event-explainers:"
+      ]
+    },
+    "publication_status": {
+      "enum": [
+        "draft",
+        "release-ready"
+      ]
+    },
+    "content_scope_date": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "content_checked_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "site_built_at": {
+      "enum": [
+        null
+      ]
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_firebase_project",
+        "allow_remote_write",
+        "allow_deploy"
+      ],
+      "properties": {
+        "target_firebase_project": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "allow_remote_write": {
+          "enum": [
+            false
+          ]
+        },
+        "allow_deploy": {
+          "enum": [
+            false
+          ]
+        },
+        "target_firebase_site": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "github_repository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "role",
+          "title"
+        ],
+        "properties": {
+          "file": {
+            "enum": [
+              "index.html",
+              "event.html",
+              "sources.html",
+              "dev.html",
+              "ai-user.html",
+              "general.html"
+            ]
+          },
+          "role": {
+            "enum": [
+              "home",
+              "reader",
+              "evidence"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "draft": {
+            "enum": [
+              "content/drafts/event.md",
+              "content/drafts/dev.md",
+              "content/drafts/ai-user.md",
+              "content/drafts/general.md"
+            ]
+          },
+          "audience": {
+            "enum": [
+              "dev",
+              "ai-user",
+              "general"
+            ]
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "public_base_url"
+      ],
+      "properties": {
+        "profile": {
+          "enum": [
+            "preview",
+            "production"
+          ]
+        },
+        "public_base_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

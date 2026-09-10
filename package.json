@@ -1,0 +1,38 @@
+{
+  "name": "apple-event-explainers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "preview": "node build/preview.mjs",
+    "check": "node build/check-sources.mjs",
+    "build:web": "node build/build.mjs",
+    "check:links": "node build/check-links.mjs",
+    "debug:web": "node build/debug-web.mjs",
+    "test": "node --test tests/unit.test.mjs tests/publication.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "verify:scaffold": "node build/verify.mjs scaffold",
+    "verify:release": "node build/verify.mjs release",
+    "deploy": "node build/deploy.mjs",
+    "review:digest": "node build/check-sources.mjs --digest",
+    "test:release-fixture": "node tests/release-smoke.mjs",
+    "check:public-tree": "node build/public-tree.mjs",
+    "verify:public-tree": "node build/public-tree.mjs --rebuild",
+    "deploy:plan": "node build/deploy.mjs --plan",
+    "build:production": "node build/build.mjs --profile production",
+    "verify:production": "node build/verify.mjs production",
+    "check:environment": "node build/environment.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.18.0",
+    "markdown-it": "14.3.1",
+    "parse5": "7.3.0"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  }
+}

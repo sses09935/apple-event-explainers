@@ -1,0 +1,735 @@
+{
+  "schema_version": 3,
+  "source_id": "S01",
+  "canonical_url": "https://www.youtube.com/watch?v=39BalPDuTo0",
+  "title": "Apple Event — September 9",
+  "publisher_verification": {
+    "status": "verified",
+    "publisher": "Apple",
+    "canonical_url": "https://www.youtube.com/watch?v=39BalPDuTo0",
+    "verified_at": "2026-09-09T18:40:30.126Z",
+    "reviewer": "Codex",
+    "method": "在同一 YouTube 影片頁檢視 Apple 頻道連結與驗證標記；下載 metadata 的 channel_id=UCE_M8A5yxnLfW0KghEeajjw、uploader=Apple 與 video_id=39BalPDuTo0 相符。",
+    "evidence_url": "https://www.youtube.com/watch?v=39BalPDuTo0"
+  },
+  "artifact_revision": "sha256:b4975ab0f6ce60b323382d7a305202cc420eb042b255da0088f0e38495628ddc",
+  "duration_seconds": 4860.06,
+  "timeline_basis": {
+    "kind": "canonical-video-start",
+    "offset_seconds": 0,
+    "notes": "以下載的 YouTube 640×360 H.264 視訊檔為準，媒體 start=0，ffmpeg 容器長度 01:21:00.06；包含開場等待段。所有正式秒數依該檔 PTS/timebase=1/30000。與先前 Apple TV 版本未對齊，不混用其秒數。"
+  },
+  "acquired_at": "2026-09-09T18:40:30.126Z",
+  "subtitle_type": "provider-unspecified",
+  "available_modalities": {
+    "subtitles": true,
+    "audio": true,
+    "visual": true
+  },
+  "player_adapter": {
+    "kind": "youtube-link",
+    "verification": {
+      "canonical_url": "https://www.youtube.com/watch?v=39BalPDuTo0",
+      "artifact_revision": "sha256:b4975ab0f6ce60b323382d7a305202cc420eb042b255da0088f0e38495628ddc",
+      "verified_at": "2026-09-09T18:57:51.886Z",
+      "reviewer": "Codex",
+      "notes": "於 Codex 內建瀏覽器的窄視窗檢查官方 t= 整秒網址：1014、2190、4636 秒實際顯示與已保存畫格相同的 CPU、AirPods 5 價格及 iPhone Duo 價格卡。0 與 4859 秒邊界的播放器控制顯示對應時間。沒有測試 iframe、精確子秒 seek 或區段末尾停止。播放器標示 1:21:00；頁面標題已變更，保留取得快照標題，不以新標題替換固定媒體版本。",
+      "tested_start_seconds": 0,
+      "tested_end_seconds": 4859,
+      "seek_works": true
+    }
+  },
+  "access_record": {
+    "checked_at": "2026-09-09T21:47:45Z",
+    "reviewer": "Codex",
+    "status": "accessible",
+    "notes": "已固定同版本完整影音。以 macOS SpeechTranscriber 在本機產生 3353 段帶時間 ASR 並通讀作全場功能定位；ASR 不是原音核對。已檢視全場每分鐘抽樣及重要功能的有序畫格，正式 coverage 只登錄可追溯的單一畫格區間，沒有連續全片覆蓋。此工具介面不能直接聽取音訊，audio_checked 保持 false。既有字幕30秒維持原狀，ASR 不算字幕覆蓋。",
+    "attempts": [
+      {
+        "method": "YouTube 官方 Apple 頻道影片頁與顯示轉錄稿",
+        "result": "發布者已驗證；轉錄稿文字可讀，已用於選定段落定位。"
+      },
+      {
+        "method": "直接字幕軌、轉錄稿匯出與頁面轉錄 API",
+        "result": "字幕軌 HTTP 200 但 0 bytes；匯出工具未提供字幕；轉錄 API HTTP 400。未繞過限制。"
+      },
+      {
+        "method": "yt-dlp 公開存取，使用系統 CA 保留 TLS 驗證",
+        "result": "成功取得影片中繼資料及格式 134、139 全檔。字幕兩軌下載逾時。"
+      },
+      {
+        "method": "本機 ffmpeg 解碼與畫格檢視",
+        "result": "實際解碼抽樣畫格，僅將逐項檢視的單一 frame interval 列為 visual_viewed；全片音訊與連續畫面未完成核對。"
+      },
+      {
+        "method": "本機 SpeechTranscriber 與固定影片畫格核對",
+        "result": "一般沙盒無法取得語系；使用本機系統語音服務後完成3353段ASR。全文通讀建立結構，畫格逐項核對介面與示例；未直接聽取原音，未把ASR升為verified。"
+      },
+      {
+        "method": "續輪核對耳機與系統設定片段",
+        "result": "再查閱既有 ASR 的2050–2170秒作定位並檢視耳機示例畫格；問答與翻譯結果依賴原音，無可直接聽取原音的工具入口，未升格為verified。另直接檢視1806秒原尺寸排程／分類額度介面，新增單一畫格證據。"
+      }
+    ]
+  },
+  "supplemental_sources": [
+    {
+      "source_id": "S02",
+      "canonical_url": "https://www.apple.com/tw/iphone-18-pro/specs/",
+      "title": "iPhone 18 Pro 與 18 Pro Max - 技術規格 - Apple (台灣)",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "sha256": "d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "acquired_at": "2026-09-09T18:29:18Z",
+      "publisher": "Apple",
+      "notes": "採用既有本機官方 HTML 快照，本輪重新計算 SHA-256 與登錄相符，逐列閱讀 techspecs-row、型號欄位與所列註腳。正式 KB 收錄與功能及限制相關的選定項目；未選入細項有排除理由，不代表所有外部連結或每項功能皆已驗證。",
+      "source_type": "product_specs",
+      "language": "zh-TW",
+      "scope": "台灣技術規格快照；主要規格列與相關註腳已選擇性覆核，正式證據依 page_reviews locators，不作影片佐證或完整實測",
+      "content_resource_url": null,
+      "related_claim_ids": []
+    },
+    {
+      "source_id": "S03",
+      "canonical_url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "title": "iPhone Duo - 技術規格 - Apple (台灣)",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "sha256": "fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "acquired_at": "2026-09-09T18:29:18Z",
+      "publisher": "Apple",
+      "notes": "採用既有本機官方 HTML 快照，本輪重新計算 SHA-256 與登錄相符，逐列閱讀 techspecs-row、型號欄位與所列註腳。正式 KB 收錄與功能及限制相關的選定項目；未選入細項有排除理由，不代表所有外部連結或每項功能皆已驗證。",
+      "source_type": "product_specs",
+      "language": "zh-TW",
+      "scope": "台灣技術規格快照；主要規格列與相關註腳已選擇性覆核，正式證據依 page_reviews locators，不作影片佐證或完整實測",
+      "content_resource_url": null,
+      "related_claim_ids": []
+    },
+    {
+      "source_id": "S04",
+      "canonical_url": "https://www.apple.com/tw/apple-watch-series-12/specs/",
+      "title": "Apple Watch Series 12 - 技術規格 - Apple (台灣)",
+      "artifact_revision": "sha256:c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "sha256": "c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "acquired_at": "2026-09-09T18:29:18Z",
+      "publisher": "Apple",
+      "notes": "採用既有本機官方 HTML 快照，本輪重新計算 SHA-256 與登錄相符，逐列閱讀 techspecs-row、型號欄位與所列註腳。正式 KB 收錄與功能及限制相關的選定項目；未選入細項有排除理由，不代表所有外部連結或每項功能皆已驗證。",
+      "source_type": "product_specs",
+      "language": "zh-TW",
+      "scope": "台灣技術規格快照；主要規格列與相關註腳已選擇性覆核，正式證據依 page_reviews locators，不作影片佐證或完整實測",
+      "content_resource_url": null,
+      "related_claim_ids": []
+    },
+    {
+      "source_id": "S05",
+      "canonical_url": "https://www.apple.com/tw/apple-watch-ultra-4/specs/",
+      "title": "Apple Watch Ultra 4 - 技術規格 - Apple (台灣)",
+      "artifact_revision": "sha256:2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "sha256": "2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "acquired_at": "2026-09-09T18:29:18Z",
+      "publisher": "Apple",
+      "notes": "採用既有本機官方 HTML 快照，本輪重新計算 SHA-256 與登錄相符，逐列閱讀 techspecs-row、型號欄位與所列註腳。正式 KB 收錄與功能及限制相關的選定項目；未選入細項有排除理由，不代表所有外部連結或每項功能皆已驗證。",
+      "source_type": "product_specs",
+      "language": "zh-TW",
+      "scope": "台灣技術規格快照；主要規格列與相關註腳已選擇性覆核，正式證據依 page_reviews locators，不作影片佐證或完整實測",
+      "content_resource_url": null,
+      "related_claim_ids": []
+    },
+    {
+      "source_id": "S06",
+      "canonical_url": "https://www.apple.com/tw/airpods-5/specs/",
+      "title": "AirPods 5 - 技術規格 - Apple (台灣)",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "sha256": "64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "acquired_at": "2026-09-09T18:29:18Z",
+      "publisher": "Apple",
+      "notes": "採用既有本機官方 HTML 快照，本輪重新計算 SHA-256 與登錄相符，逐列閱讀 techspecs-row、型號欄位與所列註腳。正式 KB 收錄與功能及限制相關的選定項目；未選入細項有排除理由，不代表所有外部連結或每項功能皆已驗證。",
+      "source_type": "product_specs",
+      "language": "zh-TW",
+      "scope": "台灣技術規格快照；主要規格列與相關註腳已選擇性覆核，正式證據依 page_reviews locators，不作影片佐證或完整實測",
+      "content_resource_url": null,
+      "related_claim_ids": []
+    },
+    {
+      "source_id": "S07",
+      "canonical_url": "https://developer.apple.com/documentation/localauthentication",
+      "title": "Local Authentication",
+      "artifact_revision": "sha256:4855b760fdfa629831b96f40f1d933a3ca709799b0afc1e2817f0da5bb99ccd2",
+      "sha256": "4855b760fdfa629831b96f40f1d933a3ca709799b0afc1e2817f0da5bb99ccd2",
+      "acquired_at": "2026-09-09T18:47:31.014Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Local Authentication 既有公開文件；不聲稱本次新 API 或特定新品相容",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/localauthentication.json",
+      "related_claim_ids": [
+        "KB-033"
+      ],
+      "notes": "實際頁面與同源 DocC JSON 均 HTTP 200、無重新導向；JSON identifier/title 與頁面一致。版本雜湊指向保存的同源 JSON，取得時間不是發布日期。只讀已列章節與 API availability；未執行 SDK 編譯或真機測試。",
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:45:36Z",
+        "notes": "沿用已取得並核對可讀頁的同源 DocC 快照；本輪重新核對快照雜湊、identifier 與 metadata.title，與既有取得紀錄一致。doc://com.apple.localauthentication/documentation/LocalAuthentication"
+      }
+    },
+    {
+      "source_id": "S08",
+      "canonical_url": "https://developer.apple.com/documentation/localauthentication/lacontext/canevaluatepolicy(_:error:)",
+      "title": "canEvaluatePolicy(_:error:)",
+      "artifact_revision": "sha256:a391adadaf19372d348cf867c4875ab8780973818b657d381bf65bde6c28fefe",
+      "sha256": "a391adadaf19372d348cf867c4875ab8780973818b657d381bf65bde6c28fefe",
+      "acquired_at": "2026-09-09T18:47:31.338Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Local Authentication 既有公開文件；不聲稱本次新 API 或特定新品相容",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/localauthentication/lacontext/canevaluatepolicy(_:error:).json",
+      "related_claim_ids": [
+        "KB-033"
+      ],
+      "notes": "實際頁面與同源 DocC JSON 均 HTTP 200、無重新導向；JSON identifier/title 與頁面一致。版本雜湊指向保存的同源 JSON，取得時間不是發布日期。只讀已列章節與 API availability；未執行 SDK 編譯或真機測試。",
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:45:36Z",
+        "notes": "沿用已取得並核對可讀頁的同源 DocC 快照；本輪重新核對快照雜湊、identifier 與 metadata.title，與既有取得紀錄一致。doc://com.apple.localauthentication/documentation/LocalAuthentication/LAContext/canEvaluatePolicy(_:error:)"
+      }
+    },
+    {
+      "source_id": "S09",
+      "canonical_url": "https://developer.apple.com/documentation/localauthentication/lacontext/biometrytype",
+      "title": "biometryType",
+      "artifact_revision": "sha256:5088b680c32da0c0248384e1afd54fcb39748ef83e05b3cc2a8e638325ba9438",
+      "sha256": "5088b680c32da0c0248384e1afd54fcb39748ef83e05b3cc2a8e638325ba9438",
+      "acquired_at": "2026-09-09T18:47:32.349Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Local Authentication 既有公開文件；不聲稱本次新 API 或特定新品相容",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/localauthentication/lacontext/biometrytype.json",
+      "related_claim_ids": [
+        "KB-033"
+      ],
+      "notes": "實際頁面與同源 DocC JSON 均 HTTP 200、無重新導向；JSON identifier/title 與頁面一致。版本雜湊指向保存的同源 JSON，取得時間不是發布日期。只讀已列章節與 API availability；未執行 SDK 編譯或真機測試。",
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:45:36Z",
+        "notes": "沿用已取得並核對可讀頁的同源 DocC 快照；本輪重新核對快照雜湊、identifier 與 metadata.title，與既有取得紀錄一致。doc://com.apple.localauthentication/documentation/LocalAuthentication/LAContext/biometryType"
+      }
+    },
+    {
+      "source_id": "S10",
+      "canonical_url": "https://developer.apple.com/documentation/avfoundation/capture-setup",
+      "title": "Capture setup",
+      "artifact_revision": "sha256:078c8289c67c6a8c500ab107c5d04376d805abc40d1356660b31372a0513ba70",
+      "sha256": "078c8289c67c6a8c500ab107c5d04376d805abc40d1356660b31372a0513ba70",
+      "acquired_at": "2026-09-09T19:37:16.631Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "AVFoundation 拍攝架構；不確認可變光圈第三方控制",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/capture-setup.json",
+      "related_claim_ids": [
+        "KB-023"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.avfoundation/documentation/AVFoundation/capture-setup，metadata.title=Capture setup 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S11",
+      "canonical_url": "https://developer.apple.com/documentation/swiftui/viewthatfits",
+      "title": "ViewThatFits",
+      "artifact_revision": "sha256:e30c105f8337bdad1dd53ab96cd8ca3bd86889de528c9235c94136babf702048",
+      "sha256": "e30c105f8337bdad1dd53ab96cd8ca3bd86889de528c9235c94136babf702048",
+      "acquired_at": "2026-09-09T19:37:18.279Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "SwiftUI 可用空間的版面選擇；不確認 iPhone Duo 摺疊事件或雙螢幕 API",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/swiftui/viewthatfits.json",
+      "related_claim_ids": [
+        "KB-031",
+        "KB-032"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.SwiftUI/documentation/SwiftUI/ViewThatFits，metadata.title=ViewThatFits 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S12",
+      "canonical_url": "https://developer.apple.com/documentation/healthkit/authorizing-access-to-health-data",
+      "title": "Authorizing access to health data",
+      "artifact_revision": "sha256:9fef3b2ede52ac415ee77e27c8ea5664cc8cac10de3952e2d28c1d3b45eef953",
+      "sha256": "9fef3b2ede52ac415ee77e27c8ea5664cc8cac10de3952e2d28c1d3b45eef953",
+      "acquired_at": "2026-09-09T19:37:19.612Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "健康資料逐類型授權與 runtime 前提；尚未確認新品各健康指標能否讀取",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/healthkit/authorizing-access-to-health-data.json",
+      "related_claim_ids": [
+        "KB-130",
+        "KB-140"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.healthkit/documentation/HealthKit/authorizing-access-to-health-data，metadata.title=Authorizing access to health data 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S13",
+      "canonical_url": "https://developer.apple.com/documentation/healthkit/hkworkoutsession",
+      "title": "HKWorkoutSession",
+      "artifact_revision": "sha256:cbe1e95c3d58e2da90ff0be9da2e96f29a5097b40d0f42c16d4516aa3fda5177",
+      "sha256": "cbe1e95c3d58e2da90ff0be9da2e96f29a5097b40d0f42c16d4516aa3fda5177",
+      "acquired_at": "2026-09-09T19:37:21.112Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Apple Watch workout session 行為與限制；尚未確認特定型號額外感測值",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/healthkit/hkworkoutsession.json",
+      "related_claim_ids": [
+        "KB-131",
+        "KB-141"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.healthkit/documentation/HealthKit/HKWorkoutSession，metadata.title=HKWorkoutSession 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S14",
+      "canonical_url": "https://developer.apple.com/documentation/avfaudio/avaudiosession/currentroute",
+      "title": "currentRoute",
+      "artifact_revision": "sha256:779d06c9dc76b7887e99321704edbdf263ea38c7fcc52b904e4f9677ce2d539f",
+      "sha256": "779d06c9dc76b7887e99321704edbdf263ea38c7fcc52b904e4f9677ce2d539f",
+      "acquired_at": "2026-09-09T19:37:22.074Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "目前音訊輸入/輸出路由；尚未確認 AirPods 5 私有控制",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfaudio/avaudiosession/currentroute.json",
+      "related_claim_ids": [
+        "KB-110",
+        "KB-115"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.avfaudio/documentation/AVFAudio/AVAudioSession/currentRoute，metadata.title=currentRoute 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S15",
+      "canonical_url": "https://developer.apple.com/documentation/avfoundation/requesting-authorization-to-capture-and-save-media",
+      "title": "Requesting authorization to capture and save media",
+      "artifact_revision": "sha256:aaf7f86bdf4c3e3ee828db70df8724a30b8138aa1563c207314fb12e03233e50",
+      "sha256": "aaf7f86bdf4c3e3ee828db70df8724a30b8138aa1563c207314fb12e03233e50",
+      "acquired_at": "2026-09-09T19:38:04.201Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "相機與麥克風權限流程；不扩大到未核對的相簿寫入實作",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/requesting-authorization-to-capture-and-save-media.json",
+      "related_claim_ids": [
+        "KB-023"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.avfoundation/documentation/AVFoundation/requesting-authorization-to-capture-and-save-media，metadata.title=Requesting authorization to capture and save media 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S16",
+      "canonical_url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/formats",
+      "title": "formats",
+      "artifact_revision": "sha256:cb88996d698110de378343704a05fd931f3c0fcde90ea87afd7d8ae22e73d736",
+      "sha256": "cb88996d698110de378343704a05fd931f3c0fcde90ea87afd7d8ae22e73d736",
+      "acquired_at": "2026-09-09T19:38:05.969Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "拍攝裝置支援格式與 activeFormat；尚未確認特定光圈控制",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/avcapturedevice/formats.json",
+      "related_claim_ids": [
+        "KB-023"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.avfoundation/documentation/AVFoundation/AVCaptureDevice/formats，metadata.title=formats 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S17",
+      "canonical_url": "https://developer.apple.com/documentation/avfaudio/responding-to-audio-route-changes",
+      "title": "Responding to audio route changes",
+      "artifact_revision": "sha256:80ea3340f42b6db446b025c9eabaab09f4278d50f280a13a6fed323140c946cc",
+      "sha256": "80ea3340f42b6db446b025c9eabaab09f4278d50f280a13a6fed323140c946cc",
+      "acquired_at": "2026-09-09T19:38:07.279Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "耳機連線/中斷路由變更；尚未確認 AirPods 5 ANC 或翻譯第三方控制",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfaudio/responding-to-audio-route-changes.json",
+      "related_claim_ids": [
+        "KB-110",
+        "KB-115"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.avfaudio/documentation/AVFAudio/responding-to-audio-route-changes，metadata.title=Responding to audio route changes 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S18",
+      "canonical_url": "https://developer.apple.com/documentation/nearbyinteraction/nisession/devicecapabilities",
+      "title": "deviceCapabilities",
+      "artifact_revision": "sha256:3834acce554a4688d26934214c6e4bcb57bb4d4c9667b5c4d5b6723e941dd9e8",
+      "sha256": "3834acce554a4688d26934214c6e4bcb57bb4d4c9667b5c4d5b6723e941dd9e8",
+      "acquired_at": "2026-09-09T19:41:08.680Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "NISession 裝置能力查詢；尚未確認第2代 UWB 裝置具備全部能力",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/nearbyinteraction/nisession/devicecapabilities.json",
+      "related_claim_ids": [
+        "KB-125"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.nearbyinteraction/documentation/NearbyInteraction/NISession/deviceCapabilities，metadata.title=deviceCapabilities 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S19",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel",
+      "title": "SystemLanguageModel",
+      "artifact_revision": "sha256:1f0ea4d8552e47a2e713273637b0e4d29db9cb06dd1a1cb33786fd425bb0d23d",
+      "sha256": "1f0ea4d8552e47a2e713273637b0e4d29db9cb06dd1a1cb33786fd425bb0d23d",
+      "acquired_at": "2026-09-09T19:41:09.422Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "SystemLanguageModel 裝置端文字生成與可用性前提；不等同 Siri 全部能力",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/systemlanguagemodel.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/SystemLanguageModel，metadata.title=SystemLanguageModel 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S20",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel/availability-swift.property",
+      "title": "availability",
+      "artifact_revision": "sha256:38806cc5171a4665517e32254a35bf0cf447cabd362e6b006be71d0855073e53",
+      "sha256": "38806cc5171a4665517e32254a35bf0cf447cabd362e6b006be71d0855073e53",
+      "acquired_at": "2026-09-09T19:41:39.294Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "SystemLanguageModel.availability 精確 property 與 SDK metadata",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/systemlanguagemodel/availability-swift.property.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/SystemLanguageModel/availability-swift.property，metadata.title=availability 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S21",
+      "canonical_url": "https://developer.apple.com/documentation/nearbyinteraction/nidevicecapability",
+      "title": "NIDeviceCapability",
+      "artifact_revision": "sha256:fe5149ff1aa5fc9d750ed5f4a7681d6e78296c7d427e32034c29861ea946260d",
+      "sha256": "fe5149ff1aa5fc9d750ed5f4a7681d6e78296c7d427e32034c29861ea946260d",
+      "acquired_at": "2026-09-09T19:41:40.482Z",
+      "publisher": "Apple",
+      "notes": "已實際取得官方頁面與同源 DocC 原文；只將實際核對章節作 context-only 技術研究，未編譯或實機測試。",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "NIDeviceCapability runtime 功能分流；不依 UWB 世代推定能力",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/nearbyinteraction/nidevicecapability.json",
+      "related_claim_ids": [
+        "KB-125"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已核對 HTML title、canonical 與 og:url；DocC identifier=doc://com.apple.nearbyinteraction/documentation/NearbyInteraction/NIDeviceCapability，metadata.title=NIDeviceCapability 與同內容頁相符。實際 JSON HTTP 200，完整快照以 SHA-256 固定；HTML 與 JSON 均未重新導向。"
+      }
+    },
+    {
+      "source_id": "S22",
+      "canonical_url": "https://developer.apple.com/documentation/appintents",
+      "title": "App Intents",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-09T20:47:52.655Z",
+      "artifact_revision": "sha256:8799685e266ce516fd2835303d08c388f3ea633a76490e548d4dce592153aee0",
+      "sha256": "8799685e266ce516fd2835303d08c388f3ea633a76490e548d4dce592153aee0",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "以已核對產品功能為前提的公開 App 開發對照，不證明特定產品相容或發表會新增 API。",
+      "notes": "實際取得官方 HTML 與同內容 DocC JSON，閱讀原文章節、範例與限制；快照時間不等於發表會公告時間。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/appintents.json",
+      "related_claim_ids": [
+        "KB-222",
+        "KB-224"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "HTML 標題與 DocC metadata.title 相符，identifier 與官方 documentation 路徑相符；JSON 有非空原文與章節，已實際閱讀。"
+      }
+    },
+    {
+      "source_id": "S23",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/generating-content-and-performing-tasks-with-foundation-models",
+      "title": "Generating content and performing tasks with Foundation Models",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-09T20:47:53.244Z",
+      "artifact_revision": "sha256:6478c7a1f3b361ff7b4f2ed73059b56cec79dba2bd8d7eef79320fa1c5dca92f",
+      "sha256": "6478c7a1f3b361ff7b4f2ed73059b56cec79dba2bd8d7eef79320fa1c5dca92f",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "以已核對產品功能為前提的公開 App 開發對照，不證明特定產品相容或發表會新增 API。",
+      "notes": "實際取得官方 HTML 與同內容 DocC JSON，閱讀原文章節、範例與限制；快照時間不等於發表會公告時間。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/generating-content-and-performing-tasks-with-foundation-models.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "HTML 標題與 DocC metadata.title 相符，identifier 與官方 documentation 路徑相符；JSON 有非空原文與章節，已實際閱讀。"
+      }
+    },
+    {
+      "source_id": "S24",
+      "canonical_url": "https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro",
+      "title": "選購 iPhone 18 Pro 與 iPhone 18 Pro Max - Apple (台灣)",
+      "source_type": "apple_tw_storefront",
+      "artifact_revision": "sha256:a4eace619dc0e22124a2087c7a31d4f84ed2103e4da4a9be65a198eb7c4f1bc0",
+      "acquired_at": "2026-09-10T00:07:17Z",
+      "sha256": "a4eace619dc0e22124a2087c7a31d4f84ed2103e4da4a9be65a198eb7c4f1bc0",
+      "publisher": "Apple",
+      "language": "zh-TW",
+      "scope": "本次產品的台灣價格、價格對應配置、含稅與運送條件，以及所列預訂／發售公告；不含其他功能或商店 FAQ 的正式准入。",
+      "notes": "依使用者提供的台灣首頁與實際「查看價格」連結取得。原始 HTML 保存在本機私有研究，公開只含已核對的短轉述與定位；未下單、未使用換購或月付推算總價。",
+      "content_resource_url": null,
+      "related_claim_ids": [],
+      "identity_review": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    },
+    {
+      "source_id": "S25",
+      "canonical_url": "https://www.apple.com/tw/shop/buy-iphone/iphone-duo",
+      "title": "購買 iPhone Duo - Apple (台灣)",
+      "source_type": "apple_tw_storefront",
+      "artifact_revision": "sha256:1ee7e9f1c9b549d0a51a7176fe64a6d0fbf5f4617a361f2d178f936f8a7ff86a",
+      "acquired_at": "2026-09-10T00:07:17Z",
+      "sha256": "1ee7e9f1c9b549d0a51a7176fe64a6d0fbf5f4617a361f2d178f936f8a7ff86a",
+      "publisher": "Apple",
+      "language": "zh-TW",
+      "scope": "本次產品的台灣價格、價格對應配置、含稅與運送條件，以及所列預訂／發售公告；不含其他功能或商店 FAQ 的正式准入。",
+      "notes": "依使用者提供的台灣首頁與實際「查看價格」連結取得。原始 HTML 保存在本機私有研究，公開只含已核對的短轉述與定位；未下單、未使用換購或月付推算總價。",
+      "content_resource_url": null,
+      "related_claim_ids": [],
+      "identity_review": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    },
+    {
+      "source_id": "S26",
+      "canonical_url": "https://www.apple.com/tw/shop/buy-watch/apple-watch",
+      "title": "購買 Apple Watch Series 12 - Apple (台灣)",
+      "source_type": "apple_tw_storefront",
+      "artifact_revision": "sha256:525592b1a50bc6449e359ed37f960148dfd1ed5d6b122e8bbef5f98270c29d1e",
+      "acquired_at": "2026-09-10T00:07:17Z",
+      "sha256": "525592b1a50bc6449e359ed37f960148dfd1ed5d6b122e8bbef5f98270c29d1e",
+      "publisher": "Apple",
+      "language": "zh-TW",
+      "scope": "本次產品的台灣價格、價格對應配置、含稅與運送條件，以及所列預訂／發售公告；不含其他功能或商店 FAQ 的正式准入。",
+      "notes": "依使用者提供的台灣首頁與實際「查看價格」連結取得。原始 HTML 保存在本機私有研究，公開只含已核對的短轉述與定位；未下單、未使用換購或月付推算總價。",
+      "content_resource_url": null,
+      "related_claim_ids": [],
+      "identity_review": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    },
+    {
+      "source_id": "S27",
+      "canonical_url": "https://www.apple.com/tw/shop/buy-watch/apple-watch-ultra",
+      "title": "購買 Apple Watch Ultra 4 - Apple (台灣)",
+      "source_type": "apple_tw_storefront",
+      "artifact_revision": "sha256:2f536b102c22d1aeaa6192d5825a776cb8a0e916d569f19ae5ee079f211c8918",
+      "acquired_at": "2026-09-10T00:07:17Z",
+      "sha256": "2f536b102c22d1aeaa6192d5825a776cb8a0e916d569f19ae5ee079f211c8918",
+      "publisher": "Apple",
+      "language": "zh-TW",
+      "scope": "本次產品的台灣價格、價格對應配置、含稅與運送條件，以及所列預訂／發售公告；不含其他功能或商店 FAQ 的正式准入。",
+      "notes": "依使用者提供的台灣首頁與實際「查看價格」連結取得。原始 HTML 保存在本機私有研究，公開只含已核對的短轉述與定位；未下單、未使用換購或月付推算總價。",
+      "content_resource_url": null,
+      "related_claim_ids": [],
+      "identity_review": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    },
+    {
+      "source_id": "S28",
+      "canonical_url": "https://www.apple.com/tw/shop/buy-airpods/airpods-5",
+      "title": "購買 AirPods 5 - Apple (台灣)",
+      "source_type": "apple_tw_storefront",
+      "artifact_revision": "sha256:56091ddc81a603473910f1d1809ce4e39e282a6cc69c09f5e05220f1916c8c87",
+      "acquired_at": "2026-09-10T00:07:17Z",
+      "sha256": "56091ddc81a603473910f1d1809ce4e39e282a6cc69c09f5e05220f1916c8c87",
+      "publisher": "Apple",
+      "language": "zh-TW",
+      "scope": "本次產品的台灣價格、價格對應配置、含稅與運送條件，以及所列預訂／發售公告；不含其他功能或商店 FAQ 的正式准入。",
+      "notes": "依使用者提供的台灣首頁與實際「查看價格」連結取得。原始 HTML 保存在本機私有研究，公開只含已核對的短轉述與定位；未下單、未使用換購或月付推算總價。",
+      "content_resource_url": null,
+      "related_claim_ids": [],
+      "identity_review": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    },
+    {
+      "source_id": "S29",
+      "canonical_url": "https://www.apple.com/tw/",
+      "title": "Apple (台灣)",
+      "source_type": "apple_tw_storefront",
+      "artifact_revision": "sha256:94041eb7004f021cb3cad6f8c85816d33be875d86aa2f8b19cf8cc7b8247e433",
+      "acquired_at": "2026-09-10T00:07:17Z",
+      "sha256": "94041eb7004f021cb3cad6f8c85816d33be875d86aa2f8b19cf8cc7b8247e433",
+      "publisher": "Apple",
+      "language": "zh-TW",
+      "scope": "本次產品的台灣價格、價格對應配置、含稅與運送條件，以及所列預訂／發售公告；不含其他功能或商店 FAQ 的正式准入。",
+      "notes": "依使用者提供的台灣首頁與實際「查看價格」連結取得。原始 HTML 保存在本機私有研究，公開只含已核對的短轉述與定位；未下單、未使用換購或月付推算總價。",
+      "content_resource_url": null,
+      "related_claim_ids": [],
+      "identity_review": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    }
+  ],
+  "source_type": "event_video",
+  "language": "en",
+  "entities": [
+    {
+      "entity_id": "iphone-18-pro",
+      "canonical_name": "iPhone 18 Pro",
+      "aliases": [
+        "iPhone Pro",
+        "Pro"
+      ],
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locator": "頁首產品型號與配置名稱"
+    },
+    {
+      "entity_id": "iphone-18-pro-max",
+      "canonical_name": "iPhone 18 Pro Max",
+      "aliases": [
+        "Pro Max"
+      ],
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locator": "頁首產品型號與配置名稱"
+    },
+    {
+      "entity_id": "iphone-duo",
+      "canonical_name": "iPhone Duo",
+      "aliases": [
+        "Duo"
+      ],
+      "source_id": "S03",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "locator": "頁首產品型號與配置名稱"
+    },
+    {
+      "entity_id": "watch-series-12",
+      "canonical_name": "Apple Watch Series 12",
+      "aliases": [
+        "Series",
+        "Series 12"
+      ],
+      "source_id": "S04",
+      "artifact_revision": "sha256:c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "locator": "頁首產品型號與配置名稱"
+    },
+    {
+      "entity_id": "watch-ultra-4",
+      "canonical_name": "Apple Watch Ultra 4",
+      "aliases": [
+        "Ultra",
+        "Ultra 4"
+      ],
+      "source_id": "S05",
+      "artifact_revision": "sha256:2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "locator": "頁首產品型號與配置名稱"
+    },
+    {
+      "entity_id": "airpods-5",
+      "canonical_name": "AirPods 5",
+      "aliases": [
+        "AirPods"
+      ],
+      "source_id": "S06",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "locator": "頁首產品型號與配置名稱"
+    },
+    {
+      "entity_id": "airpods-5-wireless",
+      "canonical_name": "AirPods 5 配備無線充電盒",
+      "aliases": [
+        "無線盒版"
+      ],
+      "source_id": "S06",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "locator": "頁首產品型號與配置名稱"
+    }
+  ],
+  "event_date_context": {
+    "advertised_text": "September 9 at 10 a.m. PT",
+    "event_calendar_date": null,
+    "original_timezone_label": "PT",
+    "taiwan_viewing_date": null,
+    "notes": "原文來自本次取得的指定影片 description；頁面 upload_date 與 release_date 均為 20260909。這是中繼資料觀察，尚未以影片原音／畫面核定活動年月日與時區基準，不換算台灣觀看日期。"
+  }
+}

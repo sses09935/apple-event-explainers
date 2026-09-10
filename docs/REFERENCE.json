@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/sses09935/apple-afm3-explainers",
+  "ref": "main",
+  "commit": "da932859edf5ffc9c00f3c1431db355432d1c3b9",
+  "original_status": "clean",
+  "remote_resolution": "git ls-remote, read-only",
+  "remote_write": false,
+  "deploy": false,
+  "observation_scope": "Historical read-only reference inspection; not a current repository status check."
+}

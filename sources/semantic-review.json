@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "input_digest": "82788ab3f714f4243368d5951f2f6d9e5dd8a80f730ef59b1cce08a37c516252",
+  "reviewer": "Codex（分工逐節重審後由整合者彙整；未宣稱人類或原音核准）",
+  "reviewed_at": "2026-09-10T02:54:52.116Z",
+  "decision": "pending",
+  "scope": [
+    "claims",
+    "drafts",
+    "coverage",
+    "gaps"
+  ],
+  "notes": "2026-09-10 本次重新逐節比較event 45節、dev 43節、ai-user 41節、general 32節與三份選材，對照唯一KB的主體、數字、配置、日期市場、必要條件、claim_ids、來源版本與locator及主張強度。167條KB仍164 verified／3 candidate，164條verified均有正文引用，candidate未進正文；27表133列仍由KB欄位生成。回看1211.0098秒固定原畫格，只修正KB-181 evidence.context的A19 Pro／A18 Pro晶片名稱誤展開與負載字形，原主張、數值、模態及精確定位不變；四稿與選材不需改文。再次確認Calendar中途3個最後9個候選未證實加入、捷徑只有既有卡與輸入欄未證實生成授權執行、Handoff只有單機既有提示、手持花枝及三張不同照片、合照變暗不能證明自動拍攝。台灣價格與影片卡市場分開，未知年份／時區、起價錶帶與個別稅額保留；Developer只作context-only與SDK可用性對照，無產品runtime實測。F11另直接目視15個不連續單幀共0.5005秒，視覺聯集約43.1058秒；原音0秒、字幕30秒。原始素材與各次審查紀錄保留私有；未重試已失敗音訊附件或資料URL，也未以ASR、字幕、代理一致意見或取樣補足原音。完整required_scope仍0–4860.06秒audio＋visual，GAP-001至003仍blocking、GAP-004非blocking，整場語意核准仍pending。工程或GitHub公開不改變此決定。"
+}

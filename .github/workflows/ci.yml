@@ -1,0 +1,31 @@
+name: Local build and publication QA
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:public-tree
+      - run: npm run verify:scaffold
+      - run: npm run test:release-fixture
+      - name: Enforce release gate when content declares readiness
+        run: |
+          if node --input-type=module -e "import fs from 'node:fs';process.exit(JSON.parse(fs.readFileSync('project.config.json')).publication_status==='release-ready'?0:1)"; then
+            npm run verify:release
+          fi
+      # Only generated public files; no research, credentials, or QA media.
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: verified-local-web
+          path: dist/web
+          retention-days: 7

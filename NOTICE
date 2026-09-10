@@ -1,0 +1,12 @@
+apple-event-explainers
+
+Copyright 2026 Nick Lian (github.com/sses09935). Apache License 2.0; see LICENSE.
+本專案改編 apple-afm3-explainers 的字體排版、設計 token 與閱讀元件模式。
+2026 年 9 月修改為繁體中文（台灣）靜態網站，包含三份獨立撰寫的受眾文章、
+發表會總覽，以及指定影片、五份台灣規格、逐一核對 Apple Developer 文件
+與台灣官網價格／上市資訊的共用證據。
+原始程式作者歸屬保留於 docs/THIRD_PARTY.md。
+這是獨立、非官方的教育專案，並非 Apple 出版品。
+Apple 商標屬其權利人，僅用於辨識。
+來源媒體與引文保留原有權利，不因本專案程式授權而改變。
+Noto Sans TC 依 SIL OFL 1.1 散布；全文見 assets/fonts/noto-sans-tc/OFL.txt。

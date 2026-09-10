@@ -1,0 +1,2576 @@
+{
+  "schema_version": 2,
+  "source_id": "S01",
+  "artifact_revision": "sha256:b4975ab0f6ce60b323382d7a305202cc420eb042b255da0088f0e38495628ddc",
+  "required_scope": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 4860.06,
+      "modalities": [
+        "audio",
+        "visual"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "FRAME-1014",
+      "start_seconds": 1014.013,
+      "end_seconds": 1014.046367,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:40:30.126Z",
+        "notes": "檢視下載影片的單一畫格；A20 PRO 圖旁顯示 6-core CPU。只覆蓋此畫格，不代表連續區段已看完。"
+      }
+    },
+    {
+      "id": "FRAME-1044",
+      "start_seconds": 1044.009633,
+      "end_seconds": 1044.043,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。A20 PRO 圖右方直接標示 7-core GPU。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-1395",
+      "start_seconds": 1395.026967,
+      "end_seconds": 1395.060333,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。原始畫面在主相機上方標示 48MP Fusion Main camera with variable aperture；字幕用於確認所在主題，正式轉述限畫面標示。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-1897",
+      "start_seconds": 1897.028467,
+      "end_seconds": 1897.061833,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。同一卡可讀 iPhone 18 Pro、From、$1199、256GB。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-1900",
+      "start_seconds": 1900.031467,
+      "end_seconds": 1900.064833,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。同一卡下半部可讀 iPhone 18 Pro Max、From、$1299、256GB；上半部為 iPhone 18 Pro，未混用。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-2190",
+      "start_seconds": 2190.021167,
+      "end_seconds": 2190.054533,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。AirPods 5 價格卡，只有 $129，未使用 From。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-3161",
+      "start_seconds": 3161.024533,
+      "end_seconds": 3161.0579,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。畫面顯示 Apple Watch SERIES 12、From、$399。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-3713",
+      "start_seconds": 3713.0093,
+      "end_seconds": 3713.042667,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。展開螢幕上的對角線與 7.6 吋標記。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-3735",
+      "start_seconds": 3735.0313,
+      "end_seconds": 3735.064667,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。闔起外螢幕上的 5.4 吋標記。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-4636",
+      "start_seconds": 4636.0314,
+      "end_seconds": 4636.064767,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。同一卡可讀 iPhone Duo、From、$1999、256GB。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-4647",
+      "start_seconds": 4647.009033,
+      "end_seconds": 4647.0424,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。iPhone Duo 章節的文字卡顯示 Pre-order October 16。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "FRAME-4650",
+      "start_seconds": 4650.012033,
+      "end_seconds": 4650.0454,
+      "acquired": [
+        "visual",
+        "audio"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "實際檢視原始下載影片的單一畫格。緊接預購卡的畫面顯示 Available October 23。 這不是連續片段或完整章節覆蓋。"
+      }
+    },
+    {
+      "id": "SUB-90",
+      "start_seconds": 941,
+      "end_seconds": 950,
+      "acquired": [
+        "subtitles",
+        "audio",
+        "visual"
+      ],
+      "subtitles_read": true,
+      "audio_checked": false,
+      "visual_viewed": false,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "已讀取瀏覽器轉錄稿中此時間行；只記錄所讀字幕，未核對原音或此區間的完整畫面。"
+      }
+    },
+    {
+      "id": "SUB-91",
+      "start_seconds": 1202,
+      "end_seconds": 1212,
+      "acquired": [
+        "subtitles",
+        "audio",
+        "visual"
+      ],
+      "subtitles_read": true,
+      "audio_checked": false,
+      "visual_viewed": false,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "已讀取瀏覽器轉錄稿中此時間行；只記錄所讀字幕，未核對原音或此區間的完整畫面。"
+      }
+    },
+    {
+      "id": "SUB-92",
+      "start_seconds": 1255,
+      "end_seconds": 1266,
+      "acquired": [
+        "subtitles",
+        "audio",
+        "visual"
+      ],
+      "subtitles_read": true,
+      "audio_checked": false,
+      "visual_viewed": false,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "已讀取瀏覽器轉錄稿中此時間行；只記錄所讀字幕，未核對原音或此區間的完整畫面。"
+      }
+    },
+    {
+      "id": "VISUAL-EXP-947",
+      "start_seconds": 947.0127333333334,
+      "end_seconds": 947.0461,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:58:01Z",
+        "notes": "整合者實際查看同版本精確 PTS 單一畫格，核對可讀文字與註腳；不是連續觀看，未聽取原音。"
+      }
+    },
+    {
+      "id": "VISUAL-EXP-1211",
+      "start_seconds": 1211.0098,
+      "end_seconds": 1211.0431666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:58:01Z",
+        "notes": "整合者實際查看同版本精確 PTS 單一畫格，核對可讀文字與註腳；不是連續觀看，未聽取原音。"
+      }
+    },
+    {
+      "id": "VISUAL-EXP-1263",
+      "start_seconds": 1263.0284333333334,
+      "end_seconds": 1263.0618,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:58:01Z",
+        "notes": "整合者實際查看同版本精確 PTS 單一畫格，核對可讀文字與註腳；不是連續觀看，未聽取原音。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-723",
+      "start_seconds": 723.0223,
+      "end_seconds": 723.0556666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-735",
+      "start_seconds": 735.0009333333334,
+      "end_seconds": 735.0343,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-738",
+      "start_seconds": 738.0039333333333,
+      "end_seconds": 738.0373,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-743",
+      "start_seconds": 743.0089333333333,
+      "end_seconds": 743.0423,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-746",
+      "start_seconds": 746.0119333333333,
+      "end_seconds": 746.0453,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-749",
+      "start_seconds": 749.0149333333334,
+      "end_seconds": 749.0483,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-805",
+      "start_seconds": 805.0042,
+      "end_seconds": 805.0375666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-808",
+      "start_seconds": 808.0072,
+      "end_seconds": 808.0405666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-866",
+      "start_seconds": 866.0318333333333,
+      "end_seconds": 866.0652,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-836",
+      "start_seconds": 836.0018333333334,
+      "end_seconds": 836.0352,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-906",
+      "start_seconds": 906.0051,
+      "end_seconds": 906.0384666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-908",
+      "start_seconds": 908.0071,
+      "end_seconds": 908.0404666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-910",
+      "start_seconds": 910.0091,
+      "end_seconds": 910.0424666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-912",
+      "start_seconds": 912.0111,
+      "end_seconds": 912.0444666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-916",
+      "start_seconds": 916.0151,
+      "end_seconds": 916.0484666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-918",
+      "start_seconds": 918.0171,
+      "end_seconds": 918.0504666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-921",
+      "start_seconds": 921.0201,
+      "end_seconds": 921.0534666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-925",
+      "start_seconds": 925.0241,
+      "end_seconds": 925.0574666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-1548",
+      "start_seconds": 1548.0131333333334,
+      "end_seconds": 1548.0465000000002,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-1560",
+      "start_seconds": 1560.0251333333333,
+      "end_seconds": 1560.0585,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-1518",
+      "start_seconds": 1518.0165,
+      "end_seconds": 1518.0498666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-1710",
+      "start_seconds": 1710.0083,
+      "end_seconds": 1710.0416666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2530",
+      "start_seconds": 2530.0275,
+      "end_seconds": 2530.0608666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2536",
+      "start_seconds": 2536.0001333333335,
+      "end_seconds": 2536.0335,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2546",
+      "start_seconds": 2546.010133333333,
+      "end_seconds": 2546.0434999999998,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2562",
+      "start_seconds": 2562.0261333333333,
+      "end_seconds": 2562.0595,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2565",
+      "start_seconds": 2565.0291333333334,
+      "end_seconds": 2565.0625,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2569",
+      "start_seconds": 2569.0331333333334,
+      "end_seconds": 2569.0665,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2600",
+      "start_seconds": 2600.0307666666668,
+      "end_seconds": 2600.0641333333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2606",
+      "start_seconds": 2606.0034,
+      "end_seconds": 2606.0367666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2720",
+      "start_seconds": 2720.0173,
+      "end_seconds": 2720.0506666666665,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2726",
+      "start_seconds": 2726.0233,
+      "end_seconds": 2726.0566666666664,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2734",
+      "start_seconds": 2734.0313,
+      "end_seconds": 2734.0646666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2740",
+      "start_seconds": 2740.0039333333334,
+      "end_seconds": 2740.0373,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2750",
+      "start_seconds": 2750.013933333333,
+      "end_seconds": 2750.0472999999997,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2854",
+      "start_seconds": 2854.0178333333333,
+      "end_seconds": 2854.0512,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2867",
+      "start_seconds": 2867.0308333333332,
+      "end_seconds": 2867.0642,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2869",
+      "start_seconds": 2869.032833333333,
+      "end_seconds": 2869.0661999999998,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2871",
+      "start_seconds": 2871.0014666666666,
+      "end_seconds": 2871.034833333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2904",
+      "start_seconds": 2904.0011,
+      "end_seconds": 2904.0344666666665,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2908",
+      "start_seconds": 2908.0051,
+      "end_seconds": 2908.0384666666664,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-2922",
+      "start_seconds": 2922.0191,
+      "end_seconds": 2922.0524666666665,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3888",
+      "start_seconds": 3888.0174666666667,
+      "end_seconds": 3888.0508333333332,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3892",
+      "start_seconds": 3892.0214666666666,
+      "end_seconds": 3892.054833333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3896",
+      "start_seconds": 3896.0254666666665,
+      "end_seconds": 3896.058833333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3904",
+      "start_seconds": 3904.0001,
+      "end_seconds": 3904.0334666666668,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3908",
+      "start_seconds": 3908.0041,
+      "end_seconds": 3908.0374666666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3912",
+      "start_seconds": 3912.0081,
+      "end_seconds": 3912.0414666666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3952",
+      "start_seconds": 3952.0147333333334,
+      "end_seconds": 3952.0481,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-3990",
+      "start_seconds": 3990.019366666667,
+      "end_seconds": 3990.0527333333334,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4000",
+      "start_seconds": 4000.0293666666666,
+      "end_seconds": 4000.062733333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4500",
+      "start_seconds": 4500.0288666666665,
+      "end_seconds": 4500.062233333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4508",
+      "start_seconds": 4508.0035,
+      "end_seconds": 4508.036866666666,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4514",
+      "start_seconds": 4514.0095,
+      "end_seconds": 4514.042866666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4522",
+      "start_seconds": 4522.0175,
+      "end_seconds": 4522.0508666666665,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4538",
+      "start_seconds": 4538.000133333333,
+      "end_seconds": 4538.0335,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4544",
+      "start_seconds": 4544.006133333333,
+      "end_seconds": 4544.0395,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4550",
+      "start_seconds": 4550.012133333334,
+      "end_seconds": 4550.0455,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4554",
+      "start_seconds": 4554.0161333333335,
+      "end_seconds": 4554.0495,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4560",
+      "start_seconds": 4560.022133333333,
+      "end_seconds": 4560.0554999999995,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4564",
+      "start_seconds": 4564.026133333334,
+      "end_seconds": 4564.0595,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4568",
+      "start_seconds": 4568.030133333334,
+      "end_seconds": 4568.0635,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FEATURE-4574",
+      "start_seconds": 4574.0027666666665,
+      "end_seconds": 4574.036133333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "實際檢視固定媒體抽取畫格；PTS 由解碼 showinfo 核對。只記這一畫格，畫格間沒有連續覆蓋。ASR 僅作定位，原音未直接聽取。"
+      }
+    },
+    {
+      "id": "VIS-FOLLOWUP-1806",
+      "start_seconds": 1806.0042,
+      "end_seconds": 1806.0375666666669,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T21:47:45Z",
+        "notes": "直接檢視固定媒體的原尺寸畫格，核對排程、分類額度及用量介面的可讀標籤；以 showinfo 的首畫格 PTS 記錄，沒有宣稱連續播放或原音核對。"
+      }
+    },
+    {
+      "id": "VIS-CONTINUOUS-CALENDAR-20260910",
+      "start_seconds": 807.807,
+      "end_seconds": 810.0092,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex（本輪直接視覺核對）",
+        "reviewed_at": "2026-09-09T23:46:41.314Z",
+        "notes": "以固定原片重新解碼並逐像素比對已保存的66個連續畫格；接觸表全數實際檢視，精確PTS時間基準1/30000。僅此區間視覺核對，未核對原音。"
+      }
+    },
+    {
+      "id": "VIS-CONTINUOUS-SHUTTER-20260910",
+      "start_seconds": 4568.730833333333,
+      "end_seconds": 4569.531633333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex（本輪直接視覺核對）",
+        "reviewed_at": "2026-09-09T23:46:41.314Z",
+        "notes": "以固定原片重新解碼並逐像素比對已保存的24個連續畫格；接觸表全數實際檢視，精確PTS時間基準1/30000。僅此區間視覺核對，未核對原音。"
+      }
+    },
+    {
+      "id": "VIS-CONT-SHORTCUTS-865-8713",
+      "start_seconds": 865,
+      "end_seconds": 871.3,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T23:55:26Z",
+        "notes": "實際看完 5 張原尺寸聯絡表中的全部 54 張不同 RGB 畫格；其餘 138 張僅按完全相同像素逐 byte 對照。共 192 張保存 PNG 均重新由固定影片解碼核對，像素與 PTS 一致；相鄰 PTS 差 1001、timebase 1/30000，沒有時間抽樣。本 coverage 僅 [865,871.3) 秒，不延伸為全片覆蓋；音訊與字幕未核對。"
+      }
+    },
+    {
+      "id": "VIS-CONT-HANDOFF-1828-1835",
+      "start_seconds": 1828,
+      "end_seconds": 1835,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T23:55:26Z",
+        "notes": "實際看完 8 張原尺寸聯絡表中的全部 86 張不同 RGB 畫格；其餘 127 張僅按完全相同像素逐 byte 對照。共 213 張保存 PNG 均重新由固定影片解碼核對，像素與 PTS 一致；相鄰 PTS 差 1001、timebase 1/30000，沒有時間抽樣。本 coverage 僅 [1828,1835) 秒，不延伸為全片覆蓋；音訊與字幕未核對。"
+      }
+    },
+    {
+      "id": "VIS-CONT-PHOTO-903-927",
+      "start_seconds": 903,
+      "end_seconds": 927,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T23:55:26Z",
+        "notes": "實際看完 75 張原尺寸聯絡表中的全部 600 張不同 RGB 畫格；其餘 121 張僅按完全相同像素逐 byte 對照。共 721 張保存 PNG 均重新由固定影片解碼核對，像素與 PTS 一致；相鄰 PTS 差 1001、timebase 1/30000，沒有時間抽樣。本 coverage 僅 [903,927) 秒，不延伸為全片覆蓋；音訊與字幕未核對。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2052",
+      "start_seconds": 2052.016633333333,
+      "end_seconds": 2052.05,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 61560499–61561500（timebase 1/30000，左閉右開）；PNG SHA-256 205b5c1f022d9eb3912e4ac1ccbb15cdde3174157aef092a3373c2221cb6abce。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2062",
+      "start_seconds": 2062.0266333333334,
+      "end_seconds": 2062.06,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 61860799–61861800（timebase 1/30000，左閉右開）；PNG SHA-256 a1773575009bcfc3c27ff39873ecadd8c2b4d193e372124d8be86407df442f93。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2082",
+      "start_seconds": 2082.013266666667,
+      "end_seconds": 2082.0466333333334,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 62460398–62461399（timebase 1/30000，左閉右開）；PNG SHA-256 84dec2a5f9f907adf1993c2bc16950f811615d62edae3433ad9bc8170c9d0c8c。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2088",
+      "start_seconds": 2088.0192666666667,
+      "end_seconds": 2088.0526333333332,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 62640578–62641579（timebase 1/30000，左閉右開）；PNG SHA-256 e31dabcba9140a00d071ace20adf18b67db2463c5f34d8ef48e56cee7d956b3e。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2093",
+      "start_seconds": 2093.024266666667,
+      "end_seconds": 2093.0576333333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 62790728–62791729（timebase 1/30000，左閉右開）；PNG SHA-256 ca0df934ede0970dd8eb94c26c41b2bec19e742c77e989b3bc2a34f93bb7300b。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2122",
+      "start_seconds": 2122.0199,
+      "end_seconds": 2122.053266666667,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 63660597–63661598（timebase 1/30000，左閉右開）；PNG SHA-256 b4f835aefdc00167fd99fa3478b56f48aadaeca405c4fdb6d7f903aa21b91082。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2136",
+      "start_seconds": 2136.0005333333334,
+      "end_seconds": 2136.0339,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64080016–64081017（timebase 1/30000，左閉右開）；PNG SHA-256 c26c622a9ff8a3c582702ffbd3576c33b34063ad0262cd171d87e3f767db4d5d。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2142",
+      "start_seconds": 2142.006533333333,
+      "end_seconds": 2142.0399,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64260196–64261197（timebase 1/30000，左閉右開）；PNG SHA-256 f1807d93a46026e7e39bbfcbac041b2c3ff8af39ed87c3ebdd3f13daba00f1de。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2146",
+      "start_seconds": 2146.010533333333,
+      "end_seconds": 2146.0439,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64380316–64381317（timebase 1/30000，左閉右開）；PNG SHA-256 5edc23ab45563b0e6d1d967a07e140b463bd24820aaa22e0feb1cb87036dfa97。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2150",
+      "start_seconds": 2150.0145333333335,
+      "end_seconds": 2150.0479,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64500436–64501437（timebase 1/30000，左閉右開）；PNG SHA-256 98029d986057cd28dd0d9b6c6f70fc96431d9cf27a2db3092db68eec0cfcbc91。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2154",
+      "start_seconds": 2154.0185333333334,
+      "end_seconds": 2154.0519,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64620556–64621557（timebase 1/30000，左閉右開）；PNG SHA-256 ef25d68fb4bf5963a8ea5cde077ba58ed30f4cbcec0808e856f75fe53367a3b7。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2158",
+      "start_seconds": 2158.0225333333333,
+      "end_seconds": 2158.0559,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64740676–64741677（timebase 1/30000，左閉右開）；PNG SHA-256 996b707a1a54fc1874dbc9299e77513681e5bb8b205169c0421b26e91aadd33a。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2162",
+      "start_seconds": 2162.026533333333,
+      "end_seconds": 2162.0599,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64860796–64861797（timebase 1/30000，左閉右開）；PNG SHA-256 5b5628da62edd2342f2f7b8f72077741b8f4d3f0a031b0e46bb0ea2805d95eab。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2166",
+      "start_seconds": 2166.0305333333336,
+      "end_seconds": 2166.0639,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 64980916–64981917（timebase 1/30000，左閉右開）；PNG SHA-256 87e0aa08636489e23d48995ef0077dd2220571e152983a4d7d559f2a22033f16。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    },
+    {
+      "id": "VISUAL-F11-20260910-2169",
+      "start_seconds": 2169.0001666666667,
+      "end_seconds": 2169.0335333333333,
+      "acquired": [
+        "visual"
+      ],
+      "subtitles_read": false,
+      "audio_checked": false,
+      "visual_viewed": true,
+      "review_record": {
+        "reviewer": "Codex evidence audit agent",
+        "reviewed_at": "2026-09-10T02:49:23.331367Z",
+        "notes": "單幀直接目視，固定 S01 解碼 PTS 65070005–65071006（timebase 1/30000，左閉右開）；PNG SHA-256 ae1d6165a435d07b1b497660edcd00fc61c31582ece1724f862473e87d599116。F11 單幀抽樣直接目視；只計此格，不計前後跨度、字幕或原音。這些畫面尚不足以核對實際對話、輸入、觸發、翻譯結果與條件；詳細工作觀察保存在私有研究，未新增產品主張。"
+      }
+    }
+  ],
+  "page_reviews": [
+    {
+      "id": "PAGE-S02",
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locators": [
+        "晶片 → A20 Pro 晶片",
+        "顯示器 → iPhone 18 Pro → 螢幕尺寸與圓角說明",
+        "顯示器 → iPhone 18 Pro Max → 螢幕尺寸與圓角說明",
+        "相機 → 4800 萬像素融合主相機",
+        "SIM 卡 → 雙 SIM 卡 (nano-SIM 與 eSIM) 與相關註記"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "直接讀取已取得的官方 HTML 對應欄位、型號排列及相關註記；與正文逐項比對，未使用其他頁面補充。"
+      }
+    },
+    {
+      "id": "PAGE-S03",
+      "source_id": "S03",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "locators": [
+        "外觀 → 鈦金屬可摺疊設計",
+        "顯示器 → 內螢幕與圓角說明",
+        "顯示器 → 外螢幕與圓角說明",
+        "Touch ID → 側邊按鈕內建指紋感測器",
+        "顯示器 → 支援 Apple Pencil (USB-C)；註記連結 #footnote-4"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "直接讀取已取得的官方 HTML 對應欄位、型號排列及相關註記；與正文逐項比對，未使用其他頁面補充。"
+      }
+    },
+    {
+      "id": "PAGE-S04",
+      "source_id": "S04",
+      "artifact_revision": "sha256:c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "locators": [
+        "晶片 → S11 晶片",
+        "材質與外觀 → 鋁金屬、鈦金屬、精密陶瓷",
+        "尺寸與重量 → 高度（精密陶瓷）",
+        "顯示器 → 藍寶石玻璃錶面"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "直接讀取已取得的官方 HTML 對應欄位、型號排列及相關註記；與正文逐項比對，未使用其他頁面補充。"
+      }
+    },
+    {
+      "id": "PAGE-S05",
+      "source_id": "S05",
+      "artifact_revision": "sha256:2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "locators": [
+        "材質與外觀 → 5 級鈦金屬錶殼",
+        "尺寸與重量 → 高度",
+        "晶片 → S11 晶片",
+        "顯示器 → 峰值亮度"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "直接讀取已取得的官方 HTML 對應欄位、型號排列及相關註記；與正文逐項比對，未使用其他頁面補充。"
+      }
+    },
+    {
+      "id": "PAGE-S06",
+      "source_id": "S06",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "locators": [
+        "晶片 → H2 耳機晶片",
+        "感測器／控制項目 → 滑動調整音量",
+        "充電盒 → AirPods 5 配備無線充電盒",
+        "電池 → AirPods 5；#footnote-12",
+        "電池 → AirPods 5 配備無線充電盒；#footnote-15"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:43:49.002Z",
+        "notes": "直接讀取已取得的官方 HTML 對應欄位、型號排列及相關註記；與正文逐項比對，未使用其他頁面補充。"
+      }
+    },
+    {
+      "id": "PAGE-S07",
+      "source_id": "S07",
+      "artifact_revision": "sha256:4855b760fdfa629831b96f40f1d933a3ca709799b0afc1e2817f0da5bb99ccd2",
+      "locators": [
+        "Local Authentication / Overview",
+        "Local Authentication / Overview / authentication data"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:51:10.238Z",
+        "notes": "檢視 DocC metadata.platforms 與所列 primaryContentSections。僅局部章節，不含全部關聯文件、SDK 或 runtime 驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S08",
+      "source_id": "S08",
+      "artifact_revision": "sha256:a391adadaf19372d348cf867c4875ab8780973818b657d381bf65bde6c28fefe",
+      "locators": [
+        "LAContext.canEvaluatePolicy(_:error:) / Discussion",
+        "LAContext.canEvaluatePolicy(_:error:) / Discussion / Important"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:51:10.238Z",
+        "notes": "檢視 DocC metadata.platforms 與所列 primaryContentSections。僅局部章節，不含全部關聯文件、SDK 或 runtime 驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S09",
+      "source_id": "S09",
+      "artifact_revision": "sha256:5088b680c32da0c0248384e1afd54fcb39748ef83e05b3cc2a8e638325ba9438",
+      "locators": [
+        "LAContext.biometryType / Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T18:51:10.238Z",
+        "notes": "檢視 DocC metadata.platforms 與所列 primaryContentSections。僅局部章節，不含全部關聯文件、SDK 或 runtime 驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S06-EXPANDED",
+      "source_id": "S06",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "locators": [
+        "#audio-headline；#footnote-1；#footnote-2",
+        "#live-translation-headline；#footnote-4",
+        "#siri-ai-headline；#footnote-5",
+        "#control-headline；#footnote-2；#footnote-6；#footnote-7",
+        "#water-headline；#footnote-9",
+        "#wireless-headline；#dimensions-headline-content；#footnote-10",
+        "#requirements-headline",
+        "#charging-headline；#footnote-11",
+        "#battery-headline；#footnote-13；#footnote-16",
+        "#audio-headline；#footnote-3",
+        "#accessibility-headline；#footnote-18"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:38:39Z",
+        "notes": "逐列檢視原始 techspecs-row、型號標籤及相關註腳；完整原文只保留於本機私有研究目錄，公開盤點記錄選材與排除理由。"
+      }
+    },
+    {
+      "id": "PAGE-S10",
+      "source_id": "S10",
+      "artifact_revision": "sha256:078c8289c67c6a8c500ab107c5d04376d805abc40d1356660b31372a0513ba70",
+      "locators": [
+        "Capture setup / Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S11",
+      "source_id": "S11",
+      "artifact_revision": "sha256:e30c105f8337bdad1dd53ab96cd8ca3bd86889de528c9235c94136babf702048",
+      "locators": [
+        "ViewThatFits / Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S12",
+      "source_id": "S12",
+      "artifact_revision": "sha256:9fef3b2ede52ac415ee77e27c8ea5664cc8cac10de3952e2d28c1d3b45eef953",
+      "locators": [
+        "Authorizing access to health data / Overview",
+        "Authorizing access to health data / Enable HealthKit",
+        "Authorizing access to health data / Respond to limited authorization"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S13",
+      "source_id": "S13",
+      "artifact_revision": "sha256:cbe1e95c3d58e2da90ff0be9da2e96f29a5097b40d0f42c16d4516aa3fda5177",
+      "locators": [
+        "HKWorkoutSession / Overview / activity and sensors",
+        "HKWorkoutSession / Overview / one workout session"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S14",
+      "source_id": "S14",
+      "artifact_revision": "sha256:779d06c9dc76b7887e99321704edbdf263ea38c7fcc52b904e4f9677ce2d539f",
+      "locators": [
+        "AVAudioSession.currentRoute / abstract and Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S15",
+      "source_id": "S15",
+      "artifact_revision": "sha256:aaf7f86bdf4c3e3ee828db70df8724a30b8138aa1563c207314fb12e03233e50",
+      "locators": [
+        "Requesting authorization to capture and save media / Verify and request authorization for capture",
+        "Requesting authorization to capture and save media / Configure access alerts"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S16",
+      "source_id": "S16",
+      "artifact_revision": "sha256:cb88996d698110de378343704a05fd931f3c0fcde90ea87afd7d8ae22e73d736",
+      "locators": [
+        "AVCaptureDevice.formats / Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S17",
+      "source_id": "S17",
+      "artifact_revision": "sha256:80ea3340f42b6db446b025c9eabaab09f4278d50f280a13a6fed323140c946cc",
+      "locators": [
+        "Responding to audio route changes / Observe route changes; Respond to route changes",
+        "Responding to audio route changes / Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S18",
+      "source_id": "S18",
+      "artifact_revision": "sha256:3834acce554a4688d26934214c6e4bcb57bb4d4c9667b5c4d5b6723e941dd9e8",
+      "locators": [
+        "NISession.deviceCapabilities / Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S19",
+      "source_id": "S19",
+      "artifact_revision": "sha256:1f0ea4d8552e47a2e713273637b0e4d29db9cb06dd1a1cb33786fd425bb0d23d",
+      "locators": [
+        "SystemLanguageModel / Overview",
+        "SystemLanguageModel / Overview / availability example"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S20",
+      "source_id": "S20",
+      "artifact_revision": "sha256:38806cc5171a4665517e32254a35bf0cf447cabd362e6b006be71d0855073e53",
+      "locators": [
+        "SystemLanguageModel.availability / declaration and abstract"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S21",
+      "source_id": "S21",
+      "artifact_revision": "sha256:fe5149ff1aa5fc9d750ed5f4a7681d6e78296c7d427e32034c29861ea946260d",
+      "locators": [
+        "NIDeviceCapability / Overview; Checking session features"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:42:39Z",
+        "notes": "已直接讀取完整 DocC primaryContentSections，逐一對照所列 locator；HTML/DocC identity 與 SHA-256 已核對。未執行文件內程式碼、未編譯或實機驗證。"
+      }
+    },
+    {
+      "id": "PAGE-S02-EXPANDED",
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locators": [
+        "外觀；容量；#footnote-2",
+        "尺寸與重量；#footnote-3",
+        "相機",
+        "錄影；#footnote-6；#footnote-7",
+        "行動網路與無線技術；定位功能；#footnote-12；#footnote-13；#footnote-14",
+        "作業系統；Apple Intelligence 與 Siri AI；#footnote-5",
+        "電源與電池；#footnote-8；#footnote-9",
+        "充電與擴充；#footnote-16",
+        "電源與電池；MagSafe 與無線充電；#footnote-10",
+        "Face ID；感測器；輔助使用",
+        "防潑、抗水與防塵；#footnote-4",
+        "顯示器",
+        "前置相機；#footnote-6",
+        "安全功能；#footnote-11",
+        "系統需求；包裝盒內容；#footnote-21"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:53:53Z",
+        "notes": "逐列檢視原始 techspecs-row、型號標籤及相關註腳；完整原文只保留於本機私有研究目錄，公開盤點記錄選材與排除理由。"
+      }
+    },
+    {
+      "id": "PAGE-S03-EXPANDED",
+      "source_id": "S03",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "locators": [
+        "容量；尺寸與重量；#footnote-2；#footnote-3",
+        "顯示器",
+        "晶片",
+        "相機",
+        "前置相機",
+        "錄影",
+        "電源與電池；#footnote-7；#footnote-8",
+        "電源與電池；#footnote-9",
+        "SIM 卡；#footnote-15",
+        "行動網路與無線技術；定位功能；充電與擴充；#footnote-11；#footnote-12；#footnote-13；#footnote-14",
+        "作業系統；Apple Intelligence 與 Siri AI；#footnote-6",
+        "防潑、抗水與防塵；輔助使用；#footnote-5",
+        "感測器；安全功能；#footnote-10",
+        "MagSafe 與無線充電；包裝盒內容；#footnote-9"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:53:53Z",
+        "notes": "逐列檢視原始 techspecs-row、型號標籤及相關註腳；完整原文只保留於本機私有研究目錄，公開盤點記錄選材與排除理由。"
+      }
+    },
+    {
+      "id": "PAGE-S04-EXPANDED",
+      "source_id": "S04",
+      "artifact_revision": "sha256:c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "locators": [
+        "感測器；健康與保健；#footnote-3；#footnote-4；#footnote-5；#footnote-6；#footnote-10",
+        "體能訓練與活動記錄；#footnote-15",
+        "相容性",
+        "操控；晶片；Apple Intelligence 與 Siri AI；#footnote-1；#footnote-2",
+        "健康與保健；#footnote-7；#footnote-8；#footnote-9",
+        "顯示器",
+        "電源與電池使用時間；#footnote-11；#footnote-12",
+        "經久耐用；#footnote-18；#footnote-19",
+        "連接能力；安全功能；#footnote-16；#footnote-20；#footnote-22；#footnote-23；#footnote-24",
+        "電源與電池使用時間；#footnote-13",
+        "輔助使用",
+        "晶片；操控"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:53:53Z",
+        "notes": "逐列檢視原始 techspecs-row、型號標籤及相關註腳；完整原文只保留於本機私有研究目錄，公開盤點記錄選材與排除理由。"
+      }
+    },
+    {
+      "id": "PAGE-S05-EXPANDED",
+      "source_id": "S05",
+      "artifact_revision": "sha256:2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "locators": [
+        "感測器；健康與保健；#footnote-3；#footnote-4；#footnote-5；#footnote-6；#footnote-10",
+        "體能訓練與活動記錄；#footnote-15",
+        "相容性",
+        "操控；晶片；Apple Intelligence 與 Siri AI；#footnote-1；#footnote-2",
+        "健康與保健；#footnote-7；#footnote-8；#footnote-9",
+        "連接能力；操控；音訊；#footnote-21；#footnote-23",
+        "電源與電池使用時間；#footnote-11；#footnote-12",
+        "體能訓練與活動記錄／潛水；經久耐用；#footnote-16；#footnote-19",
+        "尺寸與重量；環境需求",
+        "電源與電池使用時間；安全功能；#footnote-13；#footnote-17",
+        "輔助使用",
+        "晶片；操控"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T19:53:53Z",
+        "notes": "逐列檢視原始 techspecs-row、型號標籤及相關註腳；完整原文只保留於本機私有研究目錄，公開盤點記錄選材與排除理由。"
+      }
+    },
+    {
+      "id": "PAGE-FEATURE-240",
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locators": [
+        "相機／錄影：Pro 控制項目、智慧對焦追蹤、電影級模式效果、混音功能"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "重新核對已保存且 hash 相符的原始規格欄位與相關註腳；不以網址名稱或 ASR 建立能力。"
+      }
+    },
+    {
+      "id": "PAGE-FEATURE-241",
+      "source_id": "S03",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "locators": [
+        "相機：智慧拍攝、Duo 雙面預覽、攝影風格 3、智慧對焦追蹤"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "重新核對已保存且 hash 相符的原始規格欄位與相關註腳；不以網址名稱或 ASR 建立能力。"
+      }
+    },
+    {
+      "id": "PAGE-FEATURE-242",
+      "source_id": "S22",
+      "artifact_revision": "sha256:8799685e266ce516fd2835303d08c388f3ea633a76490e548d4dce592153aee0",
+      "locators": [
+        "Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "親讀原文章節與範例；不宣稱編譯、runtime 或產品相容已驗證。"
+      }
+    },
+    {
+      "id": "PAGE-FEATURE-243",
+      "source_id": "S23",
+      "artifact_revision": "sha256:6478c7a1f3b361ff7b4f2ed73059b56cec79dba2bd8d7eef79320fa1c5dca92f",
+      "locators": [
+        "Understand model capabilities"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "親讀原文章節與範例；不宣稱編譯、runtime 或產品相容已驗證。"
+      }
+    },
+    {
+      "id": "PAGE-FEATURE-244",
+      "source_id": "S23",
+      "artifact_revision": "sha256:6478c7a1f3b361ff7b4f2ed73059b56cec79dba2bd8d7eef79320fa1c5dca92f",
+      "locators": [
+        "Create a session / Generate a response"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "親讀原文章節與範例；不宣稱編譯、runtime 或產品相容已驗證。"
+      }
+    },
+    {
+      "id": "PAGE-FEATURE-245",
+      "source_id": "S23",
+      "artifact_revision": "sha256:6478c7a1f3b361ff7b4f2ed73059b56cec79dba2bd8d7eef79320fa1c5dca92f",
+      "locators": [
+        "Provide a prompt to the model / Provide instructions to the model / Generate a response"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T20:51:48Z",
+        "notes": "親讀原文章節與範例；不宣稱編譯、runtime 或產品相容已驗證。"
+      }
+    },
+    {
+      "id": "ENTITY-S02",
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locators": [
+        "頁首產品型號與配置名稱"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T21:04:54Z",
+        "notes": "核對固定原始 HTML 的頁首／型號欄；名稱中的不斷行空白正規化為一般空白。"
+      }
+    },
+    {
+      "id": "ENTITY-S03",
+      "source_id": "S03",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "locators": [
+        "頁首產品型號與配置名稱"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T21:04:54Z",
+        "notes": "核對固定原始 HTML 的頁首／型號欄；名稱中的不斷行空白正規化為一般空白。"
+      }
+    },
+    {
+      "id": "ENTITY-S04",
+      "source_id": "S04",
+      "artifact_revision": "sha256:c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "locators": [
+        "頁首產品型號與配置名稱"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T21:04:54Z",
+        "notes": "核對固定原始 HTML 的頁首／型號欄；名稱中的不斷行空白正規化為一般空白。"
+      }
+    },
+    {
+      "id": "ENTITY-S05",
+      "source_id": "S05",
+      "artifact_revision": "sha256:2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "locators": [
+        "頁首產品型號與配置名稱"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T21:04:54Z",
+        "notes": "核對固定原始 HTML 的頁首／型號欄；名稱中的不斷行空白正規化為一般空白。"
+      }
+    },
+    {
+      "id": "ENTITY-S06",
+      "source_id": "S06",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "locators": [
+        "頁首產品型號與配置名稱"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-09T21:04:54Z",
+        "notes": "核對固定原始 HTML 的頁首／型號欄；名稱中的不斷行空白正規化為一般空白。"
+      }
+    },
+    {
+      "id": "PAGE-S02-RESUME-CONDITIONS",
+      "source_id": "S02",
+      "artifact_revision": "sha256:d70637b47c806db53d4ead125fa32673de4b119a65a67f369e0ad6742c198da9",
+      "locators": [
+        "#footnote-1",
+        "#footnote-2",
+        "#footnote-3",
+        "#footnote-4",
+        "#footnote-5",
+        "#footnote-6",
+        "#footnote-7",
+        "#footnote-8",
+        "#footnote-9",
+        "#footnote-10",
+        "#footnote-11",
+        "#footnote-12",
+        "#footnote-13",
+        "#footnote-14",
+        "#footnote-15",
+        "#footnote-16",
+        "#footnote-17",
+        "#footnote-18",
+        "#footnote-19",
+        "#footnote-20",
+        "#footnote-21",
+        "#footnote-22",
+        "#footnote-23",
+        "#footnote-24",
+        "#footnote-25",
+        "#footnote-26",
+        "#footnote-27",
+        "#footnote-28",
+        "作業系統；Apple Intelligence 與 Siri AI；#footnote-5",
+        "Siri；#footnote-20",
+        "外觀；容量；#footnote-2",
+        "電源與電池；MagSafe 與無線充電；#footnote-10",
+        "電源與電池；#footnote-10",
+        "動作按鈕功能；#footnote-15"
+      ],
+      "review_record": {
+        "reviewer": "Codex conditions reviewer",
+        "reviewed_at": "2026-09-09T23:48:10Z",
+        "notes": "直接以純文字解析並逐項閱讀固定 HTML 的全部 28 個註腳；重新計算 SHA-256 與 manifest 相符，核對相關規格主列及真正 href。沒有執行原 HTML、開啟外連或把網頁審查當 S01 覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S03-RESUME-CONDITIONS",
+      "source_id": "S03",
+      "artifact_revision": "sha256:fd638f67e5465c7da0292df63da05b7e23656f178f509d3f05a667b98df9484a",
+      "locators": [
+        "#footnote-1",
+        "#footnote-2",
+        "#footnote-3",
+        "#footnote-4",
+        "#footnote-5",
+        "#footnote-6",
+        "#footnote-7",
+        "#footnote-8",
+        "#footnote-9",
+        "#footnote-10",
+        "#footnote-11",
+        "#footnote-12",
+        "#footnote-13",
+        "#footnote-14",
+        "#footnote-15",
+        "#footnote-16",
+        "#footnote-17",
+        "#footnote-18",
+        "#footnote-19",
+        "#footnote-20",
+        "#footnote-21",
+        "#footnote-22",
+        "#footnote-23",
+        "#footnote-24",
+        "#footnote-25",
+        "#footnote-26",
+        "作業系統；Apple Intelligence 與 Siri AI；#footnote-6",
+        "Siri；#footnote-18",
+        "系統需求；#footnote-19",
+        "容量；尺寸與重量；#footnote-2；#footnote-3",
+        "電源與電池；#footnote-9",
+        "視訊通話；音訊通話；#footnote-16"
+      ],
+      "review_record": {
+        "reviewer": "Codex conditions reviewer",
+        "reviewed_at": "2026-09-09T23:48:10Z",
+        "notes": "直接以純文字解析並逐項閱讀固定 HTML 的全部 26 個註腳；重新計算 SHA-256 與 manifest 相符，核對相關規格主列及真正 href。沒有執行原 HTML、開啟外連或把網頁審查當 S01 覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S04-RESUME-CONDITIONS",
+      "source_id": "S04",
+      "artifact_revision": "sha256:c1548983349a5f67ace1c5f52cd85a39b0d95984a77f1c6b3c490d6b6cd7e4e8",
+      "locators": [
+        "#footnote-1",
+        "#footnote-2",
+        "#footnote-3",
+        "#footnote-4",
+        "#footnote-5",
+        "#footnote-6",
+        "#footnote-7",
+        "#footnote-8",
+        "#footnote-9",
+        "#footnote-10",
+        "#footnote-11",
+        "#footnote-12",
+        "#footnote-13",
+        "#footnote-14",
+        "#footnote-15",
+        "#footnote-16",
+        "#footnote-17",
+        "#footnote-18",
+        "#footnote-19",
+        "#footnote-20",
+        "#footnote-21",
+        "#footnote-22",
+        "#footnote-23",
+        "#footnote-24",
+        "#footnote-25",
+        "#footnote-26",
+        "#footnote-27",
+        "#footnote-28",
+        "#footnote-29",
+        "#footnote-30",
+        "操控；晶片；Apple Intelligence 與 Siri AI；#footnote-1；#footnote-2",
+        "體能訓練與活動記錄；#footnote-15",
+        "相容性",
+        "連接能力；安全功能；#footnote-16；#footnote-20；#footnote-22；#footnote-23；#footnote-24",
+        "健康與保健；#footnote-7；#footnote-8；#footnote-9"
+      ],
+      "review_record": {
+        "reviewer": "Codex conditions reviewer",
+        "reviewed_at": "2026-09-09T23:48:10Z",
+        "notes": "直接以純文字解析並逐項閱讀固定 HTML 的全部 30 個註腳；重新計算 SHA-256 與 manifest 相符，核對相關規格主列及真正 href。沒有執行原 HTML、開啟外連或把網頁審查當 S01 覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S05-RESUME-CONDITIONS",
+      "source_id": "S05",
+      "artifact_revision": "sha256:2a6ad5d2b6e9cf8eb3f3a3e4f4815c959f3b3fa6b4f99edfbf095f02a5213467",
+      "locators": [
+        "#footnote-1",
+        "#footnote-2",
+        "#footnote-3",
+        "#footnote-4",
+        "#footnote-5",
+        "#footnote-6",
+        "#footnote-7",
+        "#footnote-8",
+        "#footnote-9",
+        "#footnote-10",
+        "#footnote-11",
+        "#footnote-12",
+        "#footnote-13",
+        "#footnote-14",
+        "#footnote-15",
+        "#footnote-16",
+        "#footnote-17",
+        "#footnote-18",
+        "#footnote-19",
+        "#footnote-20",
+        "#footnote-21",
+        "#footnote-22",
+        "#footnote-23",
+        "#footnote-24",
+        "#footnote-25",
+        "#footnote-26",
+        "#footnote-27",
+        "#footnote-28",
+        "#footnote-29",
+        "#footnote-30",
+        "#footnote-31",
+        "操控；晶片；Apple Intelligence 與 Siri AI；#footnote-1；#footnote-2",
+        "體能訓練與活動記錄；#footnote-15",
+        "相容性",
+        "連接能力；操控；音訊；#footnote-21；#footnote-23",
+        "連接能力；#footnote-23；#footnote-24；#footnote-25",
+        "電源與電池使用時間；安全功能；#footnote-13；#footnote-17",
+        "健康與保健；#footnote-7；#footnote-8；#footnote-9"
+      ],
+      "review_record": {
+        "reviewer": "Codex conditions reviewer",
+        "reviewed_at": "2026-09-09T23:48:10Z",
+        "notes": "直接以純文字解析並逐項閱讀固定 HTML 的全部 31 個註腳；重新計算 SHA-256 與 manifest 相符，核對相關規格主列及真正 href。沒有執行原 HTML、開啟外連或把網頁審查當 S01 覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S06-RESUME-CONDITIONS",
+      "source_id": "S06",
+      "artifact_revision": "sha256:64307578f52182b1b59804c196e734d6d2fb5f3d1ff5de1564c0f14084b4a466",
+      "locators": [
+        "#footnote-1",
+        "#footnote-2",
+        "#footnote-3",
+        "#footnote-4",
+        "#footnote-5",
+        "#footnote-6",
+        "#footnote-7",
+        "#footnote-8",
+        "#footnote-9",
+        "#footnote-10",
+        "#footnote-11",
+        "#footnote-12",
+        "#footnote-13",
+        "#footnote-14",
+        "#footnote-15",
+        "#footnote-16",
+        "#footnote-17",
+        "#footnote-18",
+        "#footnote-19",
+        "#footnote-20",
+        "#footnote-21",
+        "#footnote-22",
+        "#footnote-23",
+        "#footnote-24",
+        "#footnote-25",
+        "#live-translation-headline；#footnote-4",
+        "#siri-ai-headline；#footnote-5",
+        "#control-headline；#footnote-8"
+      ],
+      "review_record": {
+        "reviewer": "Codex conditions reviewer",
+        "reviewed_at": "2026-09-09T23:48:10Z",
+        "notes": "直接以純文字解析並逐項閱讀固定 HTML 的全部 25 個註腳；重新計算 SHA-256 與 manifest 相符，核對相關規格主列及真正 href。沒有執行原 HTML、開啟外連或把網頁審查當 S01 覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S24-TAIWAN-COMMERCE",
+      "source_id": "S24",
+      "artifact_revision": "sha256:a4eace619dc0e22124a2087c7a31d4f84ed2103e4da4a9be65a198eb7c4f1bc0",
+      "locators": [
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.3-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-256gb-%E9%BB%91%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[18] → displayValues.prices[\"mjrp4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        ".as-globalfooter-sosumi .pricing ul li",
+        "[data-footnote-id=\"c797ec623451481bcb7b6f5ad02aa26a\"]",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.3-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-512gb-%E5%8B%83%E6%A0%B9%E5%9C%B0%E7%B4%85%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[28] → displayValues.prices[\"mjrw4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.3-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-1tb-%E9%BB%91%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[16] → displayValues.prices[\"mjry4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.3-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-2tb-%E9%BB%91%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[19] → displayValues.prices[\"mjt34zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.9-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-256gb-%E9%8A%80%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[2] → displayValues.prices[\"mjxp4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.9-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-512gb-%E9%BB%91%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[5] → displayValues.prices[\"mjxt4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.9-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-1tb-%E5%8B%83%E6%A0%B9%E5%9C%B0%E7%B4%85%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[0] → displayValues.prices[\"mjy04zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-18-pro/6.9-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-2tb-%E5%86%B0%E5%B7%9D%E8%97%8D%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[4] → displayValues.prices[\"mjy54zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "#as-noscript-header"
+      ],
+      "review_record": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S25-TAIWAN-COMMERCE",
+      "source_id": "S25",
+      "artifact_revision": "sha256:1ee7e9f1c9b549d0a51a7176fe64a6d0fbf5f4617a361f2d178f936f8a7ff86a",
+      "locators": [
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-duo/7.6-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-256gb-%E6%98%9F%E5%85%89%E7%99%BD%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[4] → displayValues.prices[\"mk2d4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        ".as-globalfooter-sosumi .pricing ul li",
+        "[data-footnote-id=\"c797ec623451481bcb7b6f5ad02aa26a\"]",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-duo/7.6-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-512gb-%E6%98%9F%E5%85%89%E7%99%BD%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[2] → displayValues.prices[\"mk2f4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-duo/7.6-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-1tb-%E6%98%9F%E5%85%89%E7%99%BD%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[0] → displayValues.prices[\"mk2h4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "a[href=\"https://www.apple.com/tw/shop/buy-iphone/iphone-duo/7.6-%E5%90%8B%E9%A1%AF%E7%A4%BA%E5%99%A8-2tb-%E6%98%9F%E5%85%89%E7%99%BD%E8%89%B2\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[6] → displayValues.prices[\"mk2k4zp_a\"].currentPrice / priceCurrency / priceFeeDisclaimer",
+        "#as-noscript-header"
+      ],
+      "review_record": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S26-TAIWAN-COMMERCE",
+      "source_id": "S26",
+      "artifact_revision": "sha256:525592b1a50bc6449e359ed37f960148dfd1ed5d6b122e8bbef5f98270c29d1e",
+      "locators": [
+        "script[type=\"application/ld+json\"] Product name=Apple Watch Series 12",
+        ".as-globalfooter-sosumi .pricing ul li",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-aluminum-46mm-gpscell\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-aluminum-42mm-gpscell\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-ceramic-46mm-gpscell\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-aluminum-42mm-gps\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-titanium-42mm-gpscell\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-ceramic-42mm-gpscell\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-titanium-46mm-gpscell\"] → products[*].priceKey / dimensions",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-aluminum-46mm-gps\"] → products[*].priceKey / dimensions"
+      ],
+      "review_record": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S27-TAIWAN-COMMERCE",
+      "source_id": "S27",
+      "artifact_revision": "sha256:2f536b102c22d1aeaa6192d5825a776cb8a0e916d569f19ae5ee079f211c8918",
+      "locators": [
+        "script[type=\"application/ld+json\"] Product name=Apple Watch Ultra 4",
+        ".as-globalfooter-sosumi .pricing ul li",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.displayValues.prices[\"watch_cases-49mm\"] → products[*].priceKey / dimensions"
+      ],
+      "review_record": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S28-TAIWAN-COMMERCE",
+      "source_id": "S28",
+      "artifact_revision": "sha256:56091ddc81a603473910f1d1809ce4e39e282a6cc69c09f5e05220f1916c8c87",
+      "locators": [
+        "a[href=\"/tw/shop/buy-airpods/airpods-5/%E6%9C%AA%E9%85%8D%E5%82%99%E7%84%A1%E7%B7%9A%E5%85%85%E9%9B%BB%E7%9B%92\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[0] → displayValues.prices[\"4490_00\"].currentPrice / priceCurrency",
+        ".as-globalfooter-sosumi .pricing ul li",
+        ".rs-buyflow-witbfooter .show-for-MKFW4",
+        "a[href=\"/tw/shop/buy-airpods/airpods-5/%E9%85%8D%E5%82%99%E7%84%A1%E7%B7%9A%E5%85%85%E9%9B%BB%E7%9B%92\"] .current_price",
+        "window.PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products[1] → displayValues.prices[\"5190_00\"].currentPrice / priceCurrency",
+        ".rs-buyflow-witbfooter .show-for-MKFT4"
+      ],
+      "review_record": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
+      }
+    },
+    {
+      "id": "PAGE-S29-TAIWAN-COMMERCE",
+      "source_id": "S29",
+      "artifact_revision": "sha256:94041eb7004f021cb3cad6f8c85816d33be875d86aa2f8b19cf8cc7b8247e433",
+      "locators": [
+        "[data-tile-id=\"apple-watch-series-12\"] .tile-callout",
+        "[data-tile-id=\"apple-watch-ultra-4\"] .tile-callout",
+        "[data-tile-id=\"airpods-5\"] .tile-callout"
+      ],
+      "review_record": {
+        "reviewer": "Codex（直接原文與資料欄位核對後整合）",
+        "reviewed_at": "2026-09-10T00:16:11.067Z",
+        "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
+      }
+    }
+  ]
+}

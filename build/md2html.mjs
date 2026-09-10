@@ -1,0 +1,133 @@
+import {descriptions,profileOf} from './publication.mjs';
+// Adapted component vocabulary/heading strategy: Nick Lian, apple-afm3-explainers, Apache-2.0.
+// New event renderer: no old facts, status grammar, audience/PDF paths, or raw HTML execution.
+import MarkdownIt from 'markdown-it';
+import {allBlocks,pageBlocks,blockClaimIds,referenceId,interpolate} from './data.mjs';
+import {formatTime,playerLink} from './player.mjs';
+export const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const md=new MarkdownIt({html:false,linkify:false,typographer:false});
+md.disable(['image','link','autolink']);
+export function markdown(text) {
+ return md.render(text).replace(/<table>/g,'<div class="table-wrap" role="region" aria-label="資料表，可左右捲動" tabindex="0"><table>').replace(/<\/table>/g,'</table></div>').replace(/<blockquote>/g,'<blockquote class="callout callout-note">');
+}
+const labels={announcement:'發表內容',specification:'規格', 'performance-claim':'官方效能宣稱',availability:'推出資訊',limitation:'限制',unknown:'尚未核對',announced:'已宣布',preview:'預覽階段',available:'已可用','not-applicable':'不適用'};
+const modalityLabel={audio:'音訊',visual:'畫面',subtitles:'字幕'};
+const reviewDetails=r=>r?`<details class="audit-details"><summary>檢視紀錄</summary><p>${esc(r.reviewer)} · ${esc(r.reviewed_at)}</p><p>${esc(r.notes)}</p></details>`:'尚未檢視';
+const gapLabels={'explicit-not-disclosed':'影片明確表示尚未公開','reviewed-not-found':'在已檢視範圍內未找到','not-yet-reviewed':'尚未核對',conflict:'證據衝突，尚未解決'};
+const empty=text=>`<p class="empty-state">${text}</p>`;
+const sourceLabels={
+ product_specs:{category:'技術規格補充',page:'官方規格頁',supplement:'規格頁'},
+ developer_documentation:{category:'Developer 技術補充',page:'Developer 原文',supplement:'Developer 文件'},
+ apple_tw_storefront:{category:'台灣價格與上市資訊',page:'Apple 台灣商店／首頁',supplement:'台灣商店／首頁的價格與上市資訊'}
+};
+const category=(m,c)=>c.source==='[S01]'?'發表會影片':sourceLabels[m.supplemental_sources.find(s=>`[${s.source_id}]`===c.source)?.source_type].category;
+const technical=c=>c.technical_context?`<div class="callout callout-boundary"><p>既有 API 的相關說明；不構成特定產品相容性或本次新增 API 的結論。</p><p>${esc(c.technical_context.notes)}</p><p>研究前提：${c.technical_context.related_claim_ids.map(id=>`<a href="sources.html#claim-${id}">${id}</a>`).join('、')}（只作研究入口）</p><p>文件 SDK availability：${c.technical_context.sdk_availability.map(a=>`${esc(a.platform)} ${esc(a.introduced)} 起 · ${a.beta?'beta':'文件未標 beta'}`).join('；')||'尚未確認'}。未進行編譯或 runtime 測試。</p></div>`:'';
+const sourceLink=c=>{
+ let webpageShown=false;
+ const labels=c.evidence.flatMap(e=>{
+  if(e.modality!=='webpage')return [formatTime(Math.floor(e.start_seconds))];
+  if(webpageShown)return [];webpageShown=true;return ['網頁'];
+ });
+ return `<a class="source-ref" href="sources.html#claim-${c.id}" aria-label="查看 ${c.id} 的來源證據">${esc(c.source)} ${labels.join('、')}</a>`;
+};
+const heading=(id,title)=>`<h2 class="section-heading" tabindex="-1" id="${id}">${esc(title)}</h2>`;
+function limits(c) {
+ return `${c.claim_type==='performance-claim'?'<p class="callout callout-boundary">此處是所列官方來源的效能宣稱，並非獨立實測結果。</p>':''}${c.qualifiers.length?`<ul class="qualifiers">${c.qualifiers.map(q=>`<li>${esc(q)}</li>`).join('')}</ul>`:''}`;
+}
+// Only these exact common notices are replaced by one equivalent page-level notice.
+// Product-specific qualifiers are never removed or inferred from a broad pattern.
+const commonTechnicalQualifiers=new Set([
+ '本段是既有公開 API 的技術補充，不是本次發表會首次公布的 API。',
+ '既有公開文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或真機測試。'
+]);
+function values(c) {
+ if(!c.structured_values.length)return '';
+ return `<div class="table-wrap" role="region" aria-label="主張資料表，可左右捲動" tabindex="0"><table><thead><tr><th scope="col">項目</th><th scope="col">數值／內容</th><th scope="col">單位</th><th scope="col">證據</th></tr></thead><tbody>${c.structured_values.map(v=>`<tr><th scope="row">${esc(v.name)}</th><td>${v.state==='unknown'?'未知（尚未核對）':esc(v.value)}</td><td>${esc(v.unit??'—')}</td><td>${sourceLink(c)}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function publisherDetails(m){
+ const p=m.publisher_verification;
+ if(!p)return '';
+ return `<details class="audit-details"><summary>發布者身分核對紀錄</summary><dl class="metadata"><dt>記錄中的發布者</dt><dd>${esc(p.publisher)}</dd><dt>核對方法</dt><dd>${esc(p.method??'尚未核對')}</dd><dt>核對者與時間</dt><dd>${esc(p.reviewer??'尚未核對')} · ${esc(p.verified_at??'尚未核對')}</dd>${p.evidence_url?`<dt>身分核對出處</dt><dd><a href="${esc(p.evidence_url)}" rel="noreferrer">${esc(p.evidence_url)}</a></dd>`:''}</dl></details>`;
+}
+function modeControls() {return `<div class="reader-mode" role="group" aria-label="閱讀模式"><span class="tool-label">閱讀模式</span><div class="reader-mode-toggle"><button type="button" data-reader-mode-set="reading" aria-pressed="true">閱讀</button><button type="button" data-reader-mode-set="audit" aria-pressed="false">稽核</button></div></div>`;}
+function tools(toc){return `<aside class="reader-tools" aria-label="閱讀工具"><div class="reader-tools-inner"><div class="js-only">${modeControls()}<div class="font-step" role="group" aria-label="字級"><span class="tool-label">字級</span><div class="font-step-ctrl"><button type="button" class="fs-dec" aria-label="縮小字級">A−</button><output class="fs-val" aria-live="polite">100%</output><button type="button" class="fs-inc" aria-label="放大字級">A＋</button></div></div></div><details class="tools-fold" open><summary>搜尋與目錄</summary><div class="js-only"><label for="page-search">搜尋本頁</label><input id="page-search" type="search" placeholder="搜尋標題與內文" autocomplete="off"><p id="search-status" aria-live="polite"></p><div id="search-results"></div></div><nav class="toc side-toc" aria-label="本頁目錄"><span class="tool-label">本頁目錄</span><ol>${toc.map(t=>`<li><a href="#${t.id}">${esc(t.title)}</a></li>`).join('')}</ol></nav></details><a class="source-entry" href="sources.html">來源與資訊缺口</a></div></aside>`;}
+function evidenceUI(m,e){
+ if(e.modality==='webpage'){
+ const source=m.supplemental_sources.find(s=>s.source_id===e.source_id);
+  const labels=sourceLabels[source.source_type];
+  return `<div class="evidence-segment"><p><a href="${esc(source.canonical_url)}" rel="noreferrer">${esc(e.source_id)} · ${esc(labels.page)}</a></p><p>頁內定位：${esc(e.locator)}</p><p>${esc(e.context)}</p><p class="muted">此項為${esc(labels.supplement)}補充，不據此推論影片曾宣布。</p><details class="audit-details"><summary>網頁版本</summary><p>${esc(e.artifact_revision)}</p><p>快照取得：${esc(source.acquired_at)}</p></details></div>`;
+ }
+ const p=playerLink(m,e);return `<div class="evidence-segment"><p><span class="timecode">${esc(p.time)}</span> · ${esc({spoken:'音訊','on-screen':'畫面',both:'音訊與畫面',subtitles:'字幕（僅候選定位）'}[e.modality])}</p><p>${esc(e.context)}</p><div class="video-actions"><a href="${esc(p.official)}" rel="noreferrer">${m.publisher_verification?.status==='verified'?'官方影片':'指定影片（發布者待驗證）'}</a><button type="button" class="copy-time js-only" data-time="${esc(p.time)}">複製時間</button>${p.embed?`<button type="button" class="load-player js-only" data-embed="${esc(p.embed)}">播放此片段</button>`:(m.player_adapter.kind==='youtube-link'?'<span class="muted">官方連結採整秒定位；不自動停止於片段尾端。子秒畫格請依上方精確時間查核；嵌入播放器未驗證。</span>':'<span class="muted">片段定位尚未驗證</span>')}</div><div class="video-panel" aria-live="polite"></div><p class="copy-status" aria-live="polite"></p></div>`;}
+export function renderPage(page,d,meta){
+ const production=meta.profile==='production',suffix=production?'':'（草稿）';
+ const {config,manifest:m,claims,coverage,gaps}=d, map=new Map(claims.map(c=>[c.id,c]));
+ const blocks=pageBlocks(d,page.file), references=allBlocks(d);
+ const selected=claims.filter(c=>c.verification==='verified');
+ const currentSelected=[...new Set(blocks.flatMap(blockClaimIds))].map(id=>map.get(id));
+ const blocked=m.access_record?.status==='blocked';
+ const videoSelected=(page.role==='reader'?currentSelected:selected).filter(c=>c.source==='[S01]');
+ const partial=selected.length>0 && config.publication_status!=='release-ready';
+ const hasStorefront=m.supplemental_sources.some(s=>s.source_type==='apple_tw_storefront');
+ const sourceScope=m.supplemental_sources.length?`指定發表會影片、五個 Apple 台灣規格頁，以及逐一登錄且與已核對功能相關的 Apple Developer 公開文件${hasStorefront?'，另含逐一核准的 Apple 台灣商店／首頁價格與上市資訊':''}`:'一支指定影片';
+ const boundary=`本專案只採用${sourceScope}。各類來源分開標示；補充內容不代表曾在影片宣布。新聞、評測、未核准產品頁與模型記憶不作來源。`;
+ const accessNotice=partial&&!blocked?'<div class="callout callout-boundary"><p><strong>partial-evidence-ready · 已核對子集</strong></p><p>可閱讀已核對的來源內容；全片音訊與連續畫面尚未完成檢視。候選主張不列入摘要或規格表。</p><a href="sources.html#scope">查看實際覆蓋與未核對範圍</a></div>':blocked?'<div class="callout callout-boundary"><p><strong>blocked · 影片證據存取受阻</strong></p><p>指定影片已設定；目前無法取得必要影音證據，內容整理尚未完成。</p><a href="sources.html#access">查看實際存取結果與續接條件</a></div>':'';
+ const identity=m.title?`<p class="lead">指定影片：${esc(m.title)}</p><p class="muted">名稱來自指定影片頁面中繼資料。</p>`:'';
+ let content='',toc=[];
+ function section(id,title,body){toc.push({id,title});return `<section aria-labelledby="${id}">${heading(id,title)}${body}</section>`;}
+ if(page.role==='home'){
+  content=`<p class="eyebrow">非官方整理 · 繁體中文</p><h1 id="page-title" tabindex="-1">${esc(config.name)}</h1><p class="lead">綜合整理指定發表會、台灣產品規格與相關 Developer 文件${hasStorefront?'，並補充已核對的台灣價格與上市資訊':''}，保留各自來源及限制。</p>`;
+  const routes={dev:['開發者、App 與工作流程實作者','從功能示例理解 App 動作、模型請求、資料與影音流程'], 'ai-user':['AI 與日常數位工具使用者','功能如何融入使用情境，哪些設定與條件影響使用'], general:['想先了解公告全貌的讀者','主要產品、關鍵差異與日常使用限制']};
+  content+=section('browse','選擇你的閱讀路線',`<div class="route-grid">${config.pages.filter(p=>p.audience).map(p=>`<a class="reader-route-card route-${p.audience}" href="${p.file}"><strong>${esc(p.title)}</strong><span>${routes[p.audience][0]}</span><span>${routes[p.audience][1]}</span><span class="route-action">開始閱讀 →</span></a>`).join('')}</div><p><a href="event.html">發表會總覽與影片時間軸</a> · <a href="sources.html">共用來源與證據中心</a></p>`);
+  content+=`<p class="muted">發表會示例、台灣規格與 Developer 技術補充${hasStorefront?'，以及台灣價格與上市資訊':''}分別標示來源。詳細範圍與核對紀錄見<a href="sources.html#scope">證據中心</a>。</p>`;
+  content+=`<p class="muted" data-source-counts>已核對主張共 ${selected.length} 項：${['發表會影片',...Object.values(sourceLabels).map(x=>x.category)].map(label=>`${esc(label)} ${selected.filter(c=>category(m,c)===label).length} 項`).join('；')}。主張數不代表完整來源覆蓋。</p>`;
+ }else if(page.role==='reader'){
+  content=`<p class="eyebrow">${page.audience?'三種讀者 · 同一事實庫':'發表會影片 · 來源分流'}${production?'':' · 草稿'}</p><h1 id="page-title" tabindex="-1">${esc(page.title)}</h1>`;
+  content+=accessNotice;
+  if(!blocks.length)content+=`<p>${m.canonical_url?'影片已設定，內容尚在核對中。':'尚未填入發表會資料。'}</p>`;
+  if(page.file==='event.html'){
+   content+=`<p class="lead">以下保留指定影片已核對片段，以及既有引用位置。完整的產品解說請由三種受眾路線閱讀。</p><p>${config.pages.filter(p=>p.audience).map(p=>`<a href="${p.file}">${esc(p.title)}</a>`).join(' · ')}</p>`;
+   content+=section('summary','發表會摘要（僅 S01 已核對子集）',blocks.some(b=>b.kind==='summary')?'<p>編輯摘要見下方標示區塊。</p>':empty('已核對片段列於下方；未以每個主題的第一條主張自動充當摘要。'));
+   content+=section('timeline','時間軸與已核對片段',videoSelected.length?`<ol class="timeline">${videoSelected.toSorted((a,b)=>a.evidence[0].start_seconds-b.evidence[0].start_seconds).map(c=>`<li><time>${formatTime(Math.floor(c.evidence[0].start_seconds))}</time><a href="#${referenceId(blocks.find(b=>blockClaimIds(b).includes(c.id)),c.id)}">${esc(c.subject)} · ${esc(c.topic)}</a></li>`).join('')}</ol>`:empty(m.canonical_url?'尚無已核對的影片主張，時間軸尚未建立。規格頁主張沒有影片時間。':'影片尚未設定，時間軸尚未建立。'));
+  }
+  if(blocks.length){let last='',summaries=new Set(),technicalNoticeShown=false;const shownSDK=new Set();for(const b of blocks){
+    if(!(b.kind==='editorial'&&!b.topic_id&&b.section==='主題整理')&&`${b.topic_id||''}:${b.section}`!==last){const id=b.topic_id?`topic-${b.topic_id}`:`section-${b.index}`;content+=heading(id,b.section);toc.push({id,title:b.section});last=`${b.topic_id||''}:${b.section}`;
+      if(b.topic_id&&page.audience)content+=`<nav class="audience-switch" aria-label="同主題的其他版本">${config.pages.filter(p=>p.audience&&p.file!==page.file&&pageBlocks(d,p.file).some(x=>x.topic_id===b.topic_id)).map(p=>`<a href="${p.file}#topic-${b.topic_id}">${esc(p.title)} · 同主題</a>`).join('')}</nav>`;
+    }
+    const cs=blockClaimIds(b).map(id=>map.get(id));
+    const anchors=cs.map(c=>`<span class="reference-anchor" tabindex="-1" id="${referenceId(b,c.id)}"></span>`).join('');
+    const legacySummaries=page.file==='event.html'?cs.filter(c=>c.source==='[S01]'&&!summaries.has(c.id)).map(c=>{summaries.add(c.id);return `<span id="summary-${c.id}" tabindex="-1"></span>`;}).join(''):'';
+    let body='';
+    if(b.kind==='table'){
+      body=`<div class="table-wrap" role="region" aria-label="${esc(b.table.caption)}，可左右捲動" tabindex="0"><table><caption>${esc(b.table.caption)}</caption><thead><tr><th scope="col">比較項目</th><th scope="col">規格與條件</th><th scope="col">來源</th></tr></thead><tbody>${b.table.rows.map((r,i)=>{const c=map.get(r.claim_id),vs=r.value_names?r.value_names.map(n=>c.structured_values.find(v=>v.name===n)):c.structured_values;return `<tr data-row-claim="${c.id}" id="row-${b.node_id}-${i+1}"><th scope="row">${esc(r.label)}</th><td>${vs.length?vs.map(v=>`<div><span class="value-label">${esc(v.name)}：</span>${v.state==='unknown'?'未知（尚未核對）':esc(v.value)+(v.unit?' '+esc(v.unit):'')}</div>`).join(''):esc(c.statement_zh)}</td><td>${sourceLink(c)}</td></tr>`;}).join('')}</tbody></table></div><div class="table-conditions" aria-label="本表適用條件">${cs.filter(c=>c.qualifiers.length||c.claim_type==='performance-claim').map(c=>`<div data-condition-claim="${c.id}"><p><strong>${c.id}</strong> ${sourceLink(c)}</p>${limits(c)}</div>`).join('')}</div>`;
+    }else body=markdown(interpolate(b.text||cs[0]?.statement_zh||'',b,map));
+    const uniqueLimits=[...new Set(cs.flatMap(c=>c.qualifiers.filter(q=>!c.technical_context||!commonTechnicalQualifiers.has(q))))];
+    const nodeLimits=b.kind==='table'?'':`${cs.some(c=>c.claim_type==='performance-claim')?'<p class="callout callout-boundary">官方效能宣稱，非獨立實測；比較與測試條件如下。</p>':''}${uniqueLimits.length?`<details class="reading-conditions" open><summary>適用條件與限制</summary><ul class="qualifiers">${uniqueLimits.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></details>`:''}`;
+    const technicalClaims=cs.filter(c=>c.technical_context);
+    let technicalNotes='';
+    if(technicalClaims.length){
+      if(!technicalNoticeShown){technicalNotes='<p class="callout callout-boundary technical-common-notice">Developer 文件僅作相關技術脈絡，不構成特定產品相容性或本次新增 API 的結論。SDK availability 是文件所列 API 版本，與產品可用狀態分開；本次未進行編譯或 runtime 測試。</p>';technicalNoticeShown=true;}
+      const sdkClaims=technicalClaims.filter(c=>{const key=JSON.stringify([c.source,c.evidence.map(e=>e.artifact_revision),c.technical_context.sdk_availability]);if(shownSDK.has(key))return false;shownSDK.add(key);return true;});
+      if(sdkClaims.length)technicalNotes+=`<ul class="sdk-availability">${sdkClaims.map(c=>{const source=m.supplemental_sources.find(s=>`[${s.source_id}]`===c.source);return `<li data-sdk-source="${esc(c.source)}"><a href="sources.html#claim-${c.id}">${esc(source?.title||c.id)}</a>：${c.technical_context.sdk_availability.map(a=>esc(`${a.platform} ${a.introduced} 起${a.beta?'（beta）':''}`)).join('；')||'文件未提供 SDK availability'}。</li>`;}).join('')}</ul>`;
+    }
+
+    const categories=[...new Set(cs.map(c=>category(m,c)))];
+    const kindLabel={narrative:'編輯解說',summary:'閱讀重點',faq:'常見問題',note:'技術註記',table:'整合比較',editorial:'閱讀提示',claim:null}[b.kind];
+    content+=`<article class="${cs.length?'claim-block':'editorial-block'} node-${esc(b.kind)}" ${b.kind==='claim'?`id="${referenceId(b,cs[0].id)}"`:`id="node-${b.node_id}" data-node="${b.node_id}" data-search-title="${esc(b.section)} · ${esc(b.table?.caption||(b.text||cs[0]?.statement_zh||kindLabel).replace(/\{\{[^}]+\}\}/g,'').replace(/[*`#]/g,'').trim().slice(0,52))}"`} tabindex="-1" data-kb="${cs.map(c=>c.id).join(' ')}">${b.kind==='claim'?'':anchors}${legacySummaries}${b.kind==='claim'?`<h3>${esc(cs[0].subject)}</h3>`:`<h3 class="node-label">${kindLabel}</h3>`}${categories.length?`<p class="source-categories">${categories.map(x=>`<span class="status-pill" data-source-category>${esc(x)}</span>`).join(' ')}</p>`:''}${body}${nodeLimits}${technicalNotes}${cs.length?`<p class="node-citations">${cs.map(sourceLink).join(' ')}</p><details class="audit-details"><summary>對照事實與查核資訊 · ${cs.map(c=>c.id).join('、')}</summary>${cs.map(c=>`<div class="audit-claim"><h4>${esc(c.id)} · ${esc(c.subject)}</h4><p>${esc(c.statement_zh)}</p><p>${esc(labels[c.claim_type])} · ${esc(labels[c.availability_status])}</p>${technical(c)}${values(c)}<p>${esc(c.review_record.reviewer)} · ${esc(c.review_record.reviewed_at)}</p><p>${esc(c.review_record.notes)}</p></div>`).join('')}</details>`:''}</article>`;
+  }}else content+=section('event-topics','主題整理',empty('尚無已核對的主題。此頁不預設產品種類。'));
+  content+=section('reading-notes','閱讀與查核',`<p>來源入口連到共用證據卡；證據卡列出各版本的引用位置。閱讀模式保留相關限制，稽核模式展開 KB 原文、數值與查核紀錄。</p><p>「尚未核對」不能據此推論影片沒有公開資訊。</p><a href="sources.html#gaps">查看資訊缺口</a>`);
+ }else{
+  content='<p class="eyebrow">證據頁'+(production?'':' · 草稿')+'</p><h1 id="page-title" tabindex="-1">來源與證據</h1><p class="lead">每項主張可回到影片片段、規格頁、具體 Developer 文件或已核准台灣商店／首頁；各類內容分開標示。</p><div class="evidence-tools js-only">'+modeControls()+'</div>';
+  content+=section('source-S01','指定影片 S01',m.canonical_url?`<dl class="metadata"><dt>影片</dt><dd>${esc(m.title??'尚未填入標題')}</dd><dt>指定網址</dt><dd><a href="${esc(m.canonical_url)}" rel="noreferrer">${esc(m.canonical_url)}</a></dd><dt>發布者身分</dt><dd>${m.publisher_verification?.status==='verified'?'已核對為 Apple':'尚未核對'}</dd><dt>素材修訂</dt><dd>${esc(m.artifact_revision??'未知')}</dd><dt>影片長度</dt><dd>${m.duration_seconds===null?'未知':formatTime(m.duration_seconds)}</dd><dt>時間軸基準</dt><dd>${m.timeline_basis?`指定影片起點（偏移 ${m.timeline_basis.offset_seconds} 秒）；${esc(m.timeline_basis.notes)}`:'未知'}</dd><dt>取得時間</dt><dd>${esc(m.acquired_at??'未知')}</dd><dt>字幕類型</dt><dd>${esc(m.subtitle_type??'未知')}</dd><dt>可用模態</dt><dd>${Object.entries(m.available_modalities).map(([k,v])=>`${{audio:'音訊',visual:'畫面',subtitles:'字幕'}[k]}：${v===null?'未知':v?'可用':'不可用'}`).join('；')}</dd></dl>${m.event_date_context?`<details class="audit-details"><summary>活動日期與時區的核定範圍</summary><p>中繼資料原文：${esc(m.event_date_context.advertised_text)}</p><p>活動日期：${esc(m.event_date_context.event_calendar_date??'尚未核定')}；台灣觀看日期：${esc(m.event_date_context.taiwan_viewing_date??'尚未核定')}</p><p>${esc(m.event_date_context.notes)}</p></details>`:''}${publisherDetails(m)}`:empty('尚未填入發表會資料。影片網址、發布者、長度、取得時間與素材修訂均未知。'));
+  if(m.access_record)content+=section('access','來源存取紀錄',`<p class="status-pill">${blocked?'blocked · 證據存取受阻':'來源存取紀錄；不代表內容已核對'}</p><p>存取查核時間：${esc(m.access_record.checked_at)} · ${esc(m.access_record.reviewer)}</p><p>${esc(m.access_record.notes)}</p><details class="audit-details"><summary>實際嘗試與結果</summary><ol>${m.access_record.attempts.map(a=>`<li><strong>${esc(a.method)}</strong><p>${esc(a.result)}</p></li>`).join('')}</ol></details><p>${blocked?'續接條件：取得同一指定影片可合法存取的影音證據後，固定版本與時間軸，再開始核對。':'下一步：沿現有固定版本完成未覆蓋區段的音訊與連續畫面核對；不要以已下載全檔當成已看完。'}</p><p>${m.player_adapter.kind==='youtube-link'?'已在指定官方影片頁實測代表整秒定位；站內保留官方時間連結與精確可複製時間，嵌入及子秒定位未驗證。':'本站保留指定影片入口；尚未驗證播放與時間定位，不提供假播放按鈕。'}</p>`);
+  if(m.supplemental_sources.length)content+=section('supplemental-sources','官方補充來源登錄',`<p>${esc(boundary)}</p>${m.supplemental_sources.map(s=>`<article class="gap-card" id="source-${s.source_id}"><h3>${esc(s.source_id)} · ${esc(s.title)}</h3><p><a href="${esc(s.canonical_url)}" rel="noreferrer">開啟指定官方原文</a></p><p>來源類型：${esc(s.source_type)} · 語系：${esc(s.language)}</p><p>${esc(s.scope)}</p><p>${esc(s.notes)}</p><details class="audit-details"><summary>來源版本與取得時間</summary><p>${esc(s.artifact_revision)}</p><p>${esc(s.acquired_at)}</p></details></article>`).join('')}`);
+  content+=section('claims','主張證據',selected.length?selected.map(c=>`<article class="evidence-card" id="claim-${c.id}" tabindex="-1"><h3>${c.id} · ${esc(c.subject)}</h3><p>${esc(c.statement_zh)}</p><span class="status-pill">${esc(category(m,c))}</span>${limits(c)}${technical(c)}${c.evidence.map(e=>evidenceUI(m,e)).join('')}<details class="audit-details"><summary>詳細查核紀錄</summary><dl><dt>查核狀態</dt><dd>verified（與${esc(category(m,c))}對照）</dd><dt>素材修訂</dt><dd>${esc(c.evidence[0].artifact_revision)}</dd><dt>查核者與時間</dt><dd>${esc(c.review_record.reviewer)} · ${esc(c.review_record.reviewed_at)}</dd><dt>查核說明</dt><dd>${esc(c.review_record.notes)}</dd><dt>檢視紀錄</dt><dd>${c.review_record.coverage_ids.map(id=>`<a href="#coverage-${esc(id)}">${esc(id)}</a>`).join("、")}</dd></dl></details><nav class="backrefs" aria-label="${c.id} 的引用位置">${references.some(b=>blockClaimIds(b).includes(c.id))?'':'<span>尚未選入正文</span>'}${references.filter(b=>blockClaimIds(b).includes(c.id)).map(b=>`<a href="${b.page}#${referenceId(b,c.id)}">返回${esc(config.pages.find(p=>p.file===b.page).title)} · 引用 ${b.index}</a>`).join(' ')}${c.source==='[S01]'&&pageBlocks(d,'event.html').some(b=>blockClaimIds(b).includes(c.id))?` <a href="event.html#summary-${c.id}">返回舊摘要位置</a>`:''}</nav></article>`).join(''):empty('尚無正式主張，因此目前沒有證據卡。'));
+  content+=section('scope','檢視範圍',`<p>${esc(boundary)} 字幕、音訊與畫面的檢視分別記錄；取得素材不代表已完成查核。下方時間範圍只對應 S01；零散畫格不等於連續看完。</p>${coverage.required_scope.length?`<p>本次承諾檢視範圍：</p><ul>${coverage.required_scope.map(s=>`<li>${formatTime(s.start_seconds)}–${formatTime(s.end_seconds)} · ${s.modalities.map(v=>modalityLabel[v]).join("、")}</li>`).join("")}</ul>`:""}${coverage.segments.length?`<div class="table-wrap" role="region" aria-label="覆蓋紀錄，可左右捲動" tabindex="0"><table><thead><tr><th>紀錄</th><th>範圍</th><th>已取得</th><th>已讀字幕</th><th>已核對音訊</th><th>已查看畫面</th><th>查核紀錄</th></tr></thead><tbody>${coverage.segments.map(s=>`<tr id="coverage-${esc(s.id)}"><th>${esc(s.id)}</th><td>${formatTime(s.start_seconds)}–${formatTime(s.end_seconds)}</td><td>${esc(s.acquired.map(v=>({audio:'音訊',visual:'畫面',subtitles:'字幕'}[v])).join('、')||'尚未取得')}</td>${['subtitles_read','audio_checked','visual_viewed'].map(k=>`<td>${s[k]?'是':'尚未檢視'}</td>`).join('')}<td>${reviewDetails(s.review_record)}</td></tr>`).join('')}</tbody></table></div>`:empty(m.canonical_url?'尚未建立字幕、音訊或畫面檢視紀錄。':'尚未取得影片，未開始字幕、音訊或畫面檢視。')}`);
+  if(coverage.page_reviews.length)content+=section('page-coverage','官方補充網頁已檢視範圍',coverage.page_reviews.map(r=>`<article class="gap-card" id="coverage-${esc(r.id)}"><h3>${esc(r.source_id)} · ${esc(r.id)}</h3><p>僅核對以下欄位與相關註記，不宣稱全文完整覆核：</p><ul>${r.locators.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>${reviewDetails(r.review_record)}</article>`).join(''));
+  const pending=claims.filter(c=>c.verification!=='verified');
+  if(pending.length)content+=section('pending-claims','尚未發佈的候選與爭議',`<p>下列項目未通過正式來源核對，不屬於本文結論。</p>${pending.map(c=>`<details class="audit-details"><summary>${esc(c.id)} · ${c.verification==='disputed'?'爭議':'候選'} · ${esc(c.subject)}</summary><p>${esc(c.statement_zh)}</p>${limits(c)}${technical(c)}${c.evidence.map(e=>evidenceUI(m,e)).join('')}</details>`).join('')}`);
+  content+=section('gaps','資訊缺口',gaps.items.length?gaps.items.map(g=>`<article class="gap-card"><h3>${esc(g.question_zh)}</h3><p class="status-pill">${esc(gapLabels[g.kind])}</p>${g.evidence.map(e=>evidenceUI(m,e)).join('')}${g.coverage_ids.map(id=>`<a href="#coverage-${esc(id)}">檢視紀錄 ${esc(id)}</a>`).join(' ')}${g.reviewed_scope?`<p>已檢視範圍 ${formatTime(g.reviewed_scope.start_seconds)}–${formatTime(g.reviewed_scope.end_seconds)} · ${g.reviewed_scope.modalities.map(v=>modalityLabel[v]).join("、")}</p>`:''}${g.review_record?reviewDetails(g.review_record):""}</article>`).join(''):`<p>${coverage.segments.some(s=>s.subtitles_read||s.audio_checked||s.visual_viewed)?'目前未列出特定資訊缺口；是否完整仍以承諾範圍、覆蓋紀錄與語意審查為準。':'目前尚未開始內容查核，沒有可列出的特定資訊缺口。這不表示影片已完整公開所有資訊。'}</p>`);
+ }
+ const nav=config.pages.map(p=>`<a href="${p.file}"${p.file===page.file?' aria-current="page"':''}>${esc(p.title)}</a>`).join('');
+ const footer=`<footer class="doc-footer" data-footer-meta><p><strong>${production?'已核准內容 · 正式輸出':blocked?'blocked · 草稿預覽':partial?'partial-evidence-ready · 草稿預覽':'草稿預覽'}</strong> · v${esc(meta.version)} · <a href="sources.html">來源與限制</a></p><dl class="build-meta"><dt>來源快照日期（UTC）</dt><dd>${esc(config.content_scope_date??'尚未設定')}</dd><dt>內容查核時間</dt><dd>${esc(config.content_checked_at??'尚未查核')}</dd><dt>網站建置時間</dt><dd>${esc(meta.built_at)}</dd></dl><p>獨立、非官方整理，與 Apple 無隸屬或背書關係。${m.supplemental_sources.length?'發表會、產品規格、Developer 與台灣商店／首頁補充各自有來源；補充資料不一定在發表會出現。':'只反映指定影片，不包含活動後補充規格。'}「已核對」表示轉述符合所標示來源，不表示 Apple 認證或第三方產品驗證。商標與原素材權利屬各權利人。</p><p class="muted">介面衍生自 Nick Lian 的 AFM3 Explainers · <a href="NOTICE.txt">作者與授權</a> · <a href="LICENSE.txt">Apache-2.0</a></p></footer>`;
+ return `<!doctype html><html lang="zh-TW" data-reader-mode="reading" data-color-scheme="light" data-storage-prefix="${esc(config.storage_prefix)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${production?'':'<meta name="robots" content="noindex,nofollow">'}<meta name="color-scheme" content="light dark"><meta name="description" content="${esc(descriptions[page.file])}"><title>${esc(page.title)} — ${esc(config.name)}${suffix}</title><link rel="icon" href="favicon.svg" type="image/svg+xml">${production?`<link rel="canonical" href="${esc(meta.public_base_url+page.file)}"><meta property="og:type" content="article"><meta property="og:locale" content="zh_TW"><meta property="og:title" content="${esc(page.title)} — ${esc(config.name)}"><meta property="og:description" content="${esc(descriptions[page.file])}"><meta property="og:url" content="${esc(meta.public_base_url+page.file)}">`:``}<script src="assets/early.js"></script><link rel="stylesheet" href="fonts/noto-sans-tc/noto-sans-tc.css"><link rel="stylesheet" href="assets/base.css"><script src="assets/reader.js" defer></script></head><body data-page-role="${page.role}" data-audience="${page.audience||'overview'}"><a class="skip-link" href="#content">跳至正文</a><nav class="topnav" aria-label="主要導覽"><a class="brand" href="index.html">Event Explainers</a><div class="navlinks">${nav}</div><button type="button" class="scheme-toggle js-only" aria-label="切換深淺色" aria-pressed="false">深色</button></nav><div class="draft-strip">${production?'正式輸出 · 尚未代表已上線':'草稿預覽'} · ${production?'已核准內容':blocked?'影片已設定 · 證據存取受阻':partial?'已核對子集 · 全片未完成查核':selected.length?'尚未發布':m.canonical_url?'影片已設定 · 內容查核中':'尚未填入發表會資料'}</div><div class="${page.role==='reader'?'reader-layout':'page-layout'}">${page.role==='reader'?tools(toc):''}<div class="document-body"><main id="content" tabindex="-1">${content}</main>${footer}</div></div><a class="back-top" href="#page-title" aria-label="回到頂端">↑</a><noscript><p class="no-js">JavaScript 已停用；正文、目錄、證據卡與官方影片入口仍可使用。</p></noscript></body></html>`;
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "slug": "apple-event-explainers",
+  "name": "Apple Event Explainers",
+  "language": "zh-TW",
+  "storage_prefix": "apple-event-explainers:",
+  "publication_status": "draft",
+  "content_scope_date": "2026-09-10",
+  "content_checked_at": "2026-09-10T02:54:52.116Z",
+  "site_built_at": null,
+  "deployment": {
+    "target_firebase_project": "apple-event-explainers",
+    "allow_remote_write": false,
+    "allow_deploy": false,
+    "target_firebase_site": "apple-event-explainers",
+    "github_repository": "https://github.com/sses09935/apple-event-explainers"
+  },
+  "pages": [
+    {
+      "file": "index.html",
+      "role": "home",
+      "title": "專案首頁"
+    },
+    {
+      "file": "event.html",
+      "role": "reader",
+      "title": "發表會總覽",
+      "draft": "content/drafts/event.md"
+    },
+    {
+      "file": "sources.html",
+      "role": "evidence",
+      "title": "來源與證據"
+    },
+    {
+      "file": "dev.html",
+      "role": "reader",
+      "title": "開發者版",
+      "audience": "dev",
+      "draft": "content/drafts/dev.md"
+    },
+    {
+      "file": "ai-user.html",
+      "role": "reader",
+      "title": "AI 使用者版",
+      "audience": "ai-user",
+      "draft": "content/drafts/ai-user.md"
+    },
+    {
+      "file": "general.html",
+      "role": "reader",
+      "title": "普羅大眾版",
+      "audience": "general",
+      "draft": "content/drafts/general.md"
+    }
+  ],
+  "output": {
+    "profile": "preview",
+    "public_base_url": "https://apple-event-explainers.web.app"
+  }
+}
