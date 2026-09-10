@@ -2,7 +2,7 @@
 
 以繁體中文整理指定 Apple 發表會、五份台灣產品規格快照，以及直接相關的 Apple Developer 文件。這是獨立、非官方的教育專案；所有文章共用一份可追溯的事實庫。
 
-已提供[7天草稿預覽](https://apple-event-explainers--review-20260910-fa40aajd.web.app/)（到期紀錄：2026-09-17 09:30:56，Asia/Taipei）。草稿保留noindex，持有連結者可公開閱覽；noindex不是存取限制。GitHub公開進度與正式網站狀態見[發布清單](docs/RELEASE_CHECKLIST.md)。全片影音與部分功能條件仍有缺口，正式內容 gate 保持阻擋。請勿把工程測試通過理解為完整影片核對或產品實測。
+已提供[7天草稿預覽](https://apple-event-explainers--review-20260910-fa40aajd.web.app/)（到期紀錄：2026-09-17 09:30:56，Asia/Taipei）。草稿保留noindex，持有連結者可公開閱覽；noindex不是存取限制。[GitHub原始碼](https://github.com/sses09935/apple-event-explainers)已公開並確認匿名可讀；正式網站仍受內容gate阻擋，詳細狀態見[發布清單](docs/RELEASE_CHECKLIST.md)。全片影音與部分功能條件仍有缺口，正式內容 gate 保持阻擋。請勿把工程測試通過理解為完整影片核對或產品實測。
 
 | 閱讀入口 | 重點 |
 | --- | --- |

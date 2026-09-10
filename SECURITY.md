@@ -1,6 +1,6 @@
 # 安全問題回報
 
-目前未設定公開 repository 或已確認的私密通報地址，因此不提供推測的電子郵件、issue 連結或 GitHub private reporting 入口。請先透過原本取得專案的管道聯絡維護者，確認可用的私密通報方式。
+[GitHub repository](https://github.com/sses09935/apple-event-explainers)已公開，但尚未確認可用的私密通報地址或GitHub private reporting入口；不杜撰電子郵件或將公開Issues當成敏感問題通報管道。請先透過原本取得專案的管道聯絡維護者，確認可用的私密通報方式。
 
 一般問題可提供頁面、穩定章節／KB ID、版本、摘要與重現方式。若涉及真實憑證或私人資料，停止公開該資料，僅告知類型與檔案位置，不貼出值；由維護者處理撤銷／輪替。不要把完整媒體、cookie、服務帳號或私有研究附到公開討論。
 

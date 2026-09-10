@@ -8,6 +8,14 @@
 
 以下保留各階段歷史；「未push／未部署」及舊數字只代表該節當時狀態。
 
+### 本次已核實的公開與門檻結果
+
+[GitHub原始碼](https://github.com/sses09935/apple-event-explainers)已正常push並設為Public；首次提交為[e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5](https://github.com/sses09935/apple-event-explainers/commit/e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5)，匿名核對192個Git檔案物件一致。主工作區仍非Git，work/github沿用main與原origin；沒有force push、tag或GitHub Release。每個提交的遠端CI以相同e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5的[Actions紀錄](https://github.com/sses09935/apple-event-explainers/actions)判讀。
+
+本次內容版本已通過193項單元、27組完整Chromium E2E、3459個內部連結與12張代表圖目視；僅含公開清單的新副本依lockfile安裝、scaffold與合成release／production通過。文件收尾後的最終source-tree、產物、提交與CI對應由本機dist/delivery.json保存；完整範圍和限制見 [QA](QA.md)。
+
+真實release、production及新live計畫均拒絕；沒有可發布的production產物或本次live版本。阻礙仍是全片audio＋visual、GAP-001至003與semantic pending。舊草稿preview的來源、產物、計畫與已消耗receipt已比對保存資料全部相符；那是舊版本驗收，不能當作本次修正版的線上驗收。
+
 ## 先前內容整合與部署歷史
 
 2026-09-10（Asia/Taipei）。本輪完成可獨立進行的非音訊內容整合與台灣官網價格增補。工程與具體驗證見 [QA](QA.md)，交付狀態見 [發布清單](RELEASE_CHECKLIST.md)；[整合前交接](history/HANDOFF-before-non-audio-integration.md)保留歷史。

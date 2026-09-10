@@ -6,7 +6,7 @@
 
 遠端操作前先執行 `npm run check:environment -- --online`。部署仍使用既有wrapper、明確project／site／channel、版本／來源revision、摘要及新的一次性計畫確認；永久allow旗標保持false。禁止其他專案、force push、重寫歷史、tag／Release，以及Auth、資料庫、Functions、計費或無關服務變更。所有preview均須禁止Auth網域同步。
 
-舊 `review-20260910` 草稿預覽已成功並完成指定線上驗收，7天授權已消耗，到期紀錄為2026-09-17 09:30:56（Asia/Taipei）；舊授權檔、receipt、nonce與計畫不得重用。本次發布結果見 [HANDOFF](docs/HANDOFF.md) 與 [發布清單](docs/RELEASE_CHECKLIST.md)。完整影音、原blocking gaps與semantic pending仍依資料實況保留。
+舊 `review-20260910` 草稿預覽已成功並完成指定線上驗收，7天授權已消耗，到期紀錄為2026-09-17 09:30:56（Asia/Taipei）；舊授權檔、receipt、nonce與計畫不得重用。本次發布結果見 [HANDOFF](docs/HANDOFF.md) 與 [發布清單](docs/RELEASE_CHECKLIST.md)。 GitHub現已正常push、Public且匿名可讀；Firebase live仍被內容／production門檻拒絕，沒有本次正式部署。完整影音、原blocking gaps與semantic pending仍依資料實況保留。
 
 ## 持續適用規則與歷史階段紀錄
 

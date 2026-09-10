@@ -8,6 +8,20 @@
 
 以下數字與「未部署／未CI」為明列歷史階段，不作為本次驗收結果。
 
+### 本次已核實的公開與門檻結果
+
+[GitHub原始碼](https://github.com/sses09935/apple-event-explainers)已正常push並設為Public；首次開源提交為[e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5](https://github.com/sses09935/apple-event-explainers/commit/e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5)。匿名HTTPS核對192個Git檔案物件與本機提交一致，並直接比對README、LICENSE、semantic-review及CI設定。主工作區仍非Git；專用work/github保留正常main歷史，未force push或建立tag／Release。
+
+目前內容版本通過193項單元、27組完整Chromium E2E及3459個內部連結檢查；93張截圖中選12張六頁代表圖實際目視，包含390／1280px及三受眾120% Reading與深色Audit。僅含192檔公開清單的新副本，以空npm設定、獨立快取、公開registry及lockfile安裝，完整scaffold與合成release／production全部通過。公開文件收尾後仍須對最後source-tree重跑完整驗證，精確對應由本機dist/delivery.json記錄，不重新簽署舊報告。
+
+GitHub Actions已實際觸發，逐次結果以相同commit的[Actions紀錄](https://github.com/sses09935/apple-event-explainers/actions)為準；初次run為[34431800822](https://github.com/sses09935/apple-event-explainers/actions/runs/34431800822)。CI只做QA且artifact限dist/web，不部署、不含研究資料。固定Action SHA已核對官方版本；lockfile的npm audit當次17個相依套件、已知弱點總數0，沒有變更套件或lockfile。這不代表未知弱點不存在。
+
+本次真實verify:release、build:production、verify:production及明確project／site／live的wrapper計畫均exit 1：原音與完整畫面覆蓋不足、GAP-001至003仍blocking、semantic pending、內容尚非release-ready。正式origin已由Hosting回傳核對為`https://apple-event-explainers.web.app`，但未生成可發布production包、未執行live、沒有本次正式部署版本或線上正式驗收。deployment-prepared只表示部署工程、目標與本機mock已備妥，live計畫仍blocked。
+
+先前草稿預覽的123檔位元組、凍結來源digest、產物digest、計畫與已消耗receipt已重新比對保存資料，全數相符；舊source與private部署資料不改。其40項遠端檢查和12張截圖是先前草稿版本的歷史驗收，不能拿來驗證本次修正版。
+
+未測Safari／Firefox、真機、完整輔助科技、SDK runtime與正式站TLS／CDN／回復。台灣日期年份／時區、具體起價錶帶與部分個別稅額保持未知。下一個必要內容續接仍為F11／S01的2050–2170秒原音與完整對話流程，需真正可用的原音理解接口或可信且綁定固定來源版本的審查紀錄；之後完成其餘0–4860.06秒audio＋visual範圍，再重審與跑正式gate。
+
 ## 先前內容整合與部署驗證歷史
 
 2026-09-10（Asia/Taipei）。本輪接續非音訊研究，並依使用者追加的台灣官網入口核對價格。原始材料與整合前狀態保留；歷史數字見 [整合前 QA](history/QA-before-non-audio-integration.md)，目前狀態見 [發布清單](RELEASE_CHECKLIST.md)。本輪沒有環境重設、登入變更、push、公開 repository、Release 或 Hosting 部署。

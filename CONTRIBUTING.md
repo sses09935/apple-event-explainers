@@ -8,4 +8,4 @@
 
 作者中文採台灣繁體用語；特定產品寫完整核定名稱。官方功能名、API、ID、URL 與直接引用不做無差別替換。公開清單不含原媒體、逐字稿、完整來源快照與大量 QA 圖。
 
-專用 repository 已建立為私人空環境，尚無公開 issue 入口。請向提供此專案的維護者回報：頁面、章節或 KB ID、build-info 的版本／摘要，以及可重現步驟。不要附原素材、個資、私有路徑或憑證；敏感問題見 SECURITY.md。
+[GitHub repository](https://github.com/sses09935/apple-event-explainers)已公開，一般問題可至[Issues](https://github.com/sses09935/apple-event-explainers/issues)回報：頁面、章節或 KB ID、build-info 的版本／摘要，以及可重現步驟。不要附原素材、個資、私有路徑或憑證；敏感問題見 SECURITY.md。

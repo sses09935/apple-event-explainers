@@ -28,3 +28,5 @@
 - 補核F11的15個不連續單幀，仍不推定原音與翻譯完成；回看原圖修正KB-181證據說明中的晶片名稱誤植與繁中字形。
 - 所有preview禁止Auth網域同步，部署計畫明列version／source_revision並拒絕篡改；內容gate與一次性確認保留。
 - 重新驗證當前公開來源與乾淨重建，GitHub開源、CI及正式live的實際結果分別記於發布清單；未建立tag或GitHub Release。
+
+- 本次已正常push並將專用repository設為Public，匿名核對公開檔案與首次提交一致；首次及後續CI各按實際commit驗證。正式live因內容gate受阻而未執行，沒有tag或GitHub Release。

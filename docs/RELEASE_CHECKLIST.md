@@ -8,6 +8,21 @@ GitHub公開原始碼與Firebase live分別驗證。本次已具明確操作授�
 
 本次公開、CI與摘要對應的最終狀態追加於本節後方；本機完整精確紀錄為dist/delivery.json。下列舊狀態表保留其歷史，不能代替當前檔案與實際結果。
 
+| 本次狀態 | 真實範圍 |
+| --- | --- |
+| repository-ready | 是；公開清單、授權／隱私、乾淨重建與正常push完成，Public且匿名可讀。最後提交的CI須對應其SHA。 |
+| content-release-ready | 否；全片影音、GAP-001至003及semantic pending仍阻擋。 |
+| deployment-prepared | 本機工程是；專用目標、wrapper、一次性計畫與mock已驗證，真實live計畫仍被內容／production門檻拒絕。 |
+| live-verified | 否；沒有本次live部署版本或正式站驗收。歷史草稿preview成功另行保留。 |
+
+### 本次已核實的公開與門檻結果
+
+[GitHub原始碼](https://github.com/sses09935/apple-event-explainers)已正常push並設為Public；首次提交為[e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5](https://github.com/sses09935/apple-event-explainers/commit/e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5)，匿名核對192個Git檔案物件一致。主工作區仍非Git，work/github沿用main與原origin；沒有force push、tag或GitHub Release。每個提交的遠端CI以相同e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5的[Actions紀錄](https://github.com/sses09935/apple-event-explainers/actions)判讀。
+
+本次內容版本已通過193項單元、27組完整Chromium E2E、3459個內部連結與12張代表圖目視；僅含公開清單的新副本依lockfile安裝、scaffold與合成release／production通過。文件收尾後的最終source-tree、產物、提交與CI對應由本機dist/delivery.json保存；完整範圍和限制見 [QA](QA.md)。
+
+真實release、production及新live計畫均拒絕；沒有可發布的production產物或本次live版本。阻礙仍是全片audio＋visual、GAP-001至003與semantic pending。舊草稿preview的來源、產物、計畫與已消耗receipt已比對保存資料全部相符；那是舊版本驗收，不能當作本次修正版的線上驗收。
+
 ## 先前內容整合與部署歷史
 
 本輪完成本機內容續接與價格增補，沒有push、公開repository、Release或Firebase部署。前輪歷史見 [整合前清單](history/RELEASE_CHECKLIST-before-non-audio-integration.md)，詳細結果與未測環境見 [QA](QA.md)。

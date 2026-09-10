@@ -10,6 +10,12 @@
 
 以下保留既有命令介面與歷史階段，舊「沒有授權」只適用當時；資料、模態、隱私與正式內容門檻繼續適用。
 
+### 本次實際操作結果
+
+GitHub已正常push與Public，匿名核對192個檔案物件一致；首次提交與CI入口見[發布清單](RELEASE_CHECKLIST.md)。新live計畫由既有wrapper產生並拒絕，真實release／production亦拒絕；沒有執行Firebase live或建立新的preview。阻礙是完整影音／blocking gaps／pending語意及缺少production產物，不是欠缺目標或對話授權。
+
+後續內容門檻真正通過時，使用這次已明確授權的專用project／site／live範圍，重新產生當時版本與產物綁定的新計畫及確認；不能使用本輪已失效的計畫或review-20260910舊receipt。正式產物從已提交checkout建置並重新驗證，所有新preview只做Hosting、不同步Auth網域。這裡沒有預先建立可用部署授權檔或把blocked計畫標成ready。
+
 ## 先前環境建立與部署流程
 
 本輪已依追加授權建立私人空 GitHub repository 與 Firebase 專用空環境；沒有 push、公開 repository、release 或 Hosting 部署。正式內容仍被原音／全片覆蓋、條件缺口與 pending 語意審查阻擋。GitHub 與 Firebase 的以下操作由維護者在取得明確授權後執行。
