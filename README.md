@@ -60,11 +60,11 @@ npm run verify:release
 
 公開原始碼、`dist/web` 靜態網站與私有研究各自分開。`research/.private` 保存原影音、完整原文、ASR 和中間工作檔，永不進 Git、Hosting 或 CI artifact；大量 QA 圖片／log 也不在公開清單。公開匯出由 `build/public-tree.mjs` 的明確清單生成，結果記在本機 `dist/public-tree.json`。
 
-`output.profile` 區分 preview／production。正式包要求內容 gate、有效正式 HTTPS 站址及公開輸出驗證；單改 profile 不核准內容。Firebase project、Hosting site、GitHub repository 與正式 origin 已完成專用目標設定，仍不能使用帳號預設專案或參考站代替。
+`publication_status: published` 表示網站正式版；`output.profile` 則區分保留 noindex 的 preview 與完整內容認證的 production。兩者各自管理，網站正式版不會被寫成全片審查已完成。Firebase project、Hosting site、GitHub repository 與正式 origin 已完成專用目標設定，仍不能使用帳號預設專案或參考站代替。
 
 手機遠端連回同一台 Mac 後，可先執行 `npm run check:environment -- --online` 唯讀確認工具、登入與專用目標；不會自動公開或部署。
 
-`npm run deploy` 預設拒絕；`npm run deploy:plan -- --channel CHANNEL` 只做本機 preflight。日後執行需要目標一致、同一份檔案摘要、未過期計畫與一次性明確確認，詳見 [部署操作](docs/DEPLOYMENT.md)。先前草稿預覽已部署且完成指定線上驗收；正式live仍須通過完整內容門檻。`package.json` 的 `private: true` 保留，避免 npm 誤發布；它不決定 GitHub 可見性。
+`npm run deploy` 預設拒絕；`npm run deploy:plan -- --channel CHANNEL` 只做本機 preflight。日後執行需要目標一致、同一份檔案摘要、未過期計畫與一次性明確確認，詳見 [部署操作](docs/DEPLOYMENT.md)。published 的 live 部署使用完整工程驗證與已提交的乾淨 checkout；完整內容認證另外記錄。`package.json` 的 `private: true` 保留，避免 npm 誤發布；它不決定 GitHub 可見性。
 
 ## 授權與限制
 
