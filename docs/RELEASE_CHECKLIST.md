@@ -1,5 +1,13 @@
 # 發布檢查清單
 
+## 2026-09-12 新內容候選
+
+- 51 份來源、205 條 KB（202 verified／3 candidate）、186 節點。22 份新 Developer 來源逐一核對，38 條新主張已整合三版；候選主張不進正文。
+- 影片價格依使用者確認標示 USD，原價卡 evidence 與數字保留；台灣價格、市場及稅額條件分開。原始證據時間保留，閱讀時間與外連依已核對映射對應目前 Apple YouTube 版本，並提供官方章節。
+- 私有影片、原始來源、音訊模型／執行環境及審查素材不進公開清單、Git、站台或 CI artifacts。
+- semantic 已更新摘要並保留 pending；原音能力測試不自動提升正式 coverage。完整影音與 GAP-001 至 GAP-003 仍阻擋 release／production，沒有本輪 Firebase live 部署。
+- 工程、乾淨重建及正常公開提交的當次結果須匹配目前摘要；舊 preview 和舊 CI 僅作歷史。精確結果見本機 `dist/delivery.json`，狀態可用 `npm run check:status` 重算。
+
 ## 2026-09-12 目前狀態的判讀方式
 
 - 執行 `npm run check:status` 取得 `dist/status.json`：內容、公開來源清單、目前驗證及乾淨重建的摘要匹配分開列出。`current` 僅適用當次檔案；缺少、失效與未查詢遠端不視為通過。

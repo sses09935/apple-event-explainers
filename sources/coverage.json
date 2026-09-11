@@ -2571,6 +2571,411 @@
         "reviewed_at": "2026-09-10T00:16:11.067Z",
         "notes": "直接核對各定位的產品／配置、總價與來源明列的價格條件；手機約略稅額取自同內容資料並保留近似條件。只涵蓋本次價格與日期，不是完整商店或影片覆蓋。"
       }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-260",
+      "source_id": "S30",
+      "artifact_revision": "sha256:07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "locators": [
+        "Overview",
+        "Conform your data type to Generable"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-260 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-261",
+      "source_id": "S30",
+      "artifact_revision": "sha256:07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "locators": [
+        "Define a dynamic schema at runtime"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-261 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-262",
+      "source_id": "S31",
+      "artifact_revision": "sha256:0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "locators": [
+        "Overview",
+        "Handle errors thrown by a tool"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-262 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-263",
+      "source_id": "S31",
+      "artifact_revision": "sha256:0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "locators": [
+        "Configure the tool calling mode"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-263 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-264",
+      "source_id": "S32",
+      "artifact_revision": "sha256:3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "locators": [
+        "Instruct the model for added safety"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-264 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-265",
+      "source_id": "S32",
+      "artifact_revision": "sha256:3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "locators": [
+        "Handle guardrail errors",
+        "Handle model refusals"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-265 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-266",
+      "source_id": "S33",
+      "artifact_revision": "sha256:99a7bf06e90b8aac0fe8a2b36c54de1e39ee91ff547a0c2ce1587d037c95fcc6",
+      "locators": [
+        "Check a person’s language settings for your app"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-266 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-267",
+      "source_id": "S33",
+      "artifact_revision": "sha256:99a7bf06e90b8aac0fe8a2b36c54de1e39ee91ff547a0c2ce1587d037c95fcc6",
+      "locators": [
+        "Handle an unsupported language or locale errors"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-267 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-268",
+      "source_id": "S34",
+      "artifact_revision": "sha256:4c1bcb88a0ba02a93625cf733df350cf52770294e7167eadb8c07bcca51f6b65",
+      "locators": [
+        "Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-268 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-269",
+      "source_id": "S34",
+      "artifact_revision": "sha256:4c1bcb88a0ba02a93625cf733df350cf52770294e7167eadb8c07bcca51f6b65",
+      "locators": [
+        "Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-269 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-270",
+      "source_id": "S35",
+      "artifact_revision": "sha256:f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "locators": [
+        "Add parameters for any data you require",
+        "Write code for the action"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-270 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-271",
+      "source_id": "S35",
+      "artifact_revision": "sha256:f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "locators": [
+        "Return a result back to the caller"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-271 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-272",
+      "source_id": "S36",
+      "artifact_revision": "sha256:72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "locators": [
+        "Providing App Shortcuts",
+        "Configuring shortcut tiles"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-272 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-273",
+      "source_id": "S36",
+      "artifact_revision": "sha256:72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "locators": [
+        "Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-273 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-274",
+      "source_id": "S37",
+      "artifact_revision": "sha256:53a373290cc7ae7e10162bbfd793163bec3d92ca50ff56876ec452eb519cfac7",
+      "locators": [
+        "Overview",
+        "Resolve entities by identifier"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-274 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-276",
+      "source_id": "S38",
+      "artifact_revision": "sha256:ad9a8f69470770168971e466d2c1627a69d14553f2ab3f24753a9d6d7c9d776c",
+      "locators": [
+        "Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-276 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-278",
+      "source_id": "S39",
+      "artifact_revision": "sha256:8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "locators": [
+        "Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-278 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-DEVELOPER-AI-279",
+      "source_id": "S39",
+      "artifact_revision": "sha256:8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "locators": [
+        "Confirm that entities and App Shortcuts appear in Spotlight",
+        "Validate the end-to-end experience with Siri"
+      ],
+      "review_record": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "逐段閱讀固定 DocC JSON 與官方 Markdown 的相應章節，核對正文、必要條件與例外；只支持 KB-279 的短轉述，不把同頁連往其他 symbol 或 session 的連結視為已查核。"
+      }
+    },
+    {
+      "id": "PAGE-S40-DEVICE-20260912",
+      "source_id": "S40",
+      "artifact_revision": "sha256:7bcc7b8fc68abd105db12af6f1ff0689c84a9dd3345acb2a8ee4740c795ffcc1",
+      "locators": [
+        "AVCaptureDevice.DiscoverySession / Overview",
+        "AVCaptureDevice.DiscoverySession / Finding devices / supportedMultiCamDeviceSets"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S41-DEVICE-20260912",
+      "source_id": "S41",
+      "artifact_revision": "sha256:6cbb1bd58d0bed45108e449f8e27495d4368d131adc7d68cd4db68189ba4c3e5",
+      "locators": [
+        "AVCapturePhotoOutput / Overview",
+        "AVCapturePhotoOutput / Overview / AVCaptureResolvedPhotoSettings"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S42-DEVICE-20260912",
+      "source_id": "S42",
+      "artifact_revision": "sha256:00647f5a0f1a39b265f04355b728a71c417cfb37e79c3821d303e3607907fa65",
+      "locators": [
+        "setExposureModeCustom(duration:iso:completionHandler:) / Discussion",
+        "setExposureModeCustom(duration:iso:completionHandler:) / Discussion / photoQualityPrioritization"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S43-DEVICE-20260912",
+      "source_id": "S43",
+      "artifact_revision": "sha256:1b7646e5b21c56ab00ddb952d07c6fb0e446800a38a7c8360f0ab9e770ed8dd8",
+      "locators": [
+        "PhotosPicker / Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S44-DEVICE-20260912",
+      "source_id": "S44",
+      "artifact_revision": "sha256:9bb389459d93aacdf27bb6f4a0ff2b0a1564b6b51b8e3893703e6102e64a45cc",
+      "locators": [
+        "PHAccessLevel / Access Levels / addOnly; readWrite"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S45-DEVICE-20260912",
+      "source_id": "S45",
+      "artifact_revision": "sha256:f36509bb0383863fac1095eb77a858bc7c319e14039d23f7b872c44d7dd5ebe6",
+      "locators": [
+        "isHealthDataAvailable() / Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S46-DEVICE-20260912",
+      "source_id": "S46",
+      "artifact_revision": "sha256:23f7f2940a1bbb853cda7e74fe21ac2c6eaba57db1e1ac80c247fb250376ecc6",
+      "locators": [
+        "heartRate / Discussion / count-time and discrete samples",
+        "heartRate / Discussion / HKMetadataKeyHeartRateMotionContext"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S47-DEVICE-20260912",
+      "source_id": "S47",
+      "artifact_revision": "sha256:cba215343a0ea68b230a8b58fa4039ac0c443fab58da8827438563637998fd89",
+      "locators": [
+        "WorkoutScheduler / Accessing the scheduler; Scheduling workouts",
+        "WorkoutScheduler / Managing scheduled workouts"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S48-DEVICE-20260912",
+      "source_id": "S48",
+      "artifact_revision": "sha256:715576ae68a871435afd6b44800c82837f7283a67d354a44972f1c79be00dbbd",
+      "locators": [
+        "CMMotionManager / Overview",
+        "CMMotionManager / Overview / Important and stop methods",
+        "CMMotionManager / Determine hardware availability and state"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S49-DEVICE-20260912",
+      "source_id": "S49",
+      "artifact_revision": "sha256:59710ff38a78473b9e2a8c8c402316bc109963d1544a48011bef776e08922891",
+      "locators": [
+        "AnyLayout / Overview"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S50-DEVICE-20260912",
+      "source_id": "S50",
+      "artifact_revision": "sha256:f054c5dad1d8e6b5a35502e0e25647d67fc21c01561522c4018a0197fa148e94",
+      "locators": [
+        "horizontalSizeClass / Discussion"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "id": "PAGE-S51-DEVICE-20260912",
+      "source_id": "S51",
+      "artifact_revision": "sha256:88f9475594be69386ae8112350afb74e7c8c63a96ab43ca5b215be1215b1bbde",
+      "locators": [
+        "NSUserActivity / Overview / activity state and Handoff",
+        "NSUserActivity / Overview / activityType; becomeCurrent; NSUserActivityTypes"
+      ],
+      "review_record": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
     }
   ]
 }

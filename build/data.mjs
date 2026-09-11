@@ -250,7 +250,38 @@ export function validateData(d) {
     interval({start_seconds:v.tested_start_seconds,end_seconds:v.tested_end_seconds},m.duration_seconds);
     if(!youtubeId(m.canonical_url)) throw Error('Unsupported verified adapter');
   }
+  validatePlayerMapping(m);
   return d;
+}
+// Add decimal timestamp values without letting binary rounding move an exact second below floor().
+export function mapPlayerSeconds(source,offset) {
+  if(!Number.isFinite(source)||!Number.isFinite(offset))throw Error('Invalid player mapping timestamp');
+  const parts=value=>{const [mantissa,exponent='0']=String(value).split('e');return {value:BigInt(mantissa.replace('.','')),scale:(mantissa.split('.')[1]||'').length-Number(exponent)};};
+  const a=parts(source),b=parts(offset),scale=Math.max(a.scale,b.scale,0);
+  return Number(`${a.value*10n**BigInt(scale-a.scale)+b.value*10n**BigInt(scale-b.scale)}e-${scale}`);
+}
+export function playerMappingDigest(m) {
+  const t=m.player_adapter.timeline_mapping;
+  if(!t)throw Error('Player mapping required for digest');
+  return hash(JSON.stringify([1,m.canonical_url,m.artifact_revision,m.duration_seconds,m.player_adapter.kind,t.source_artifact_revision,t.target_artifact_revision,t.source_start_seconds,t.source_end_seconds,t.offset_seconds,t.target_duration_seconds,t.reviewer,t.reviewed_at,t.notes,t.chapters?.map(c=>[c.title,c.start_seconds])??null]));
+}
+export function validatePlayerMapping(m) {
+  const t=m.player_adapter.timeline_mapping,v=m.player_adapter.verification;
+  if(!t){if(v?.timeline_mapping_digest!==undefined)throw Error('Player mapping digest without mapping');return null;}
+  // Mapped external links and embedded players need different live QA. Only the former is supported here.
+  if(m.player_adapter.kind!=='youtube-link'||!youtubeId(m.canonical_url))throw Error('Player mapping supports verified YouTube external links only');
+  if(t.source_artifact_revision!==m.artifact_revision||!/^sha256:[a-f0-9]{64}$/.test(t.target_artifact_revision||''))throw Error('Player mapping source or target revision mismatch');
+  if(!Number.isFinite(t.offset_seconds)||!Number.isFinite(t.target_duration_seconds)||t.target_duration_seconds<=0)throw Error('Invalid player mapping offset or target duration');
+  if(![t.reviewer,t.reviewed_at,t.notes].every(x=>typeof x==='string'&&x.trim()))throw Error('Player mapping review required');
+  interval({start_seconds:t.source_start_seconds,end_seconds:t.source_end_seconds},m.duration_seconds);
+  interval({start_seconds:mapPlayerSeconds(t.source_start_seconds,t.offset_seconds),end_seconds:mapPlayerSeconds(t.source_end_seconds,t.offset_seconds)},t.target_duration_seconds);
+  if(t.chapters!==undefined){
+    if(!Array.isArray(t.chapters)||!t.chapters.length||t.chapters.some((c,i)=>!c||typeof c.title!=='string'||!c.title.trim()||!Number.isFinite(c.start_seconds)||c.start_seconds<0||c.start_seconds>=t.target_duration_seconds||(i>0&&c.start_seconds<=t.chapters[i-1].start_seconds)))throw Error('Invalid player mapping chapters');
+  }
+  if(!v||v.seek_works!==true||v.canonical_url!==m.canonical_url||v.artifact_revision!==m.artifact_revision||v.timeline_mapping_digest!==playerMappingDigest(m))throw Error('Player mapping verification is missing or stale');
+  interval({start_seconds:v.tested_start_seconds,end_seconds:v.tested_end_seconds},m.duration_seconds);
+  if(v.tested_start_seconds<t.source_start_seconds||v.tested_end_seconds>t.source_end_seconds)throw Error('Player mapping QA interval is outside mapped source range');
+  return t;
 }
 export function youtubeId(url) {
   if(!url) return null; const u=new URL(url);

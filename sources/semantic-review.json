@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "input_digest": "82788ab3f714f4243368d5951f2f6d9e5dd8a80f730ef59b1cce08a37c516252",
-  "reviewer": "Codex（分工逐節重審後由整合者彙整；未宣稱人類或原音核准）",
-  "reviewed_at": "2026-09-10T02:54:52.116Z",
+  "input_digest": "9e840111d21a11426bc075eff2a347c70862474721538ff9bf7ba0ae256a4da7",
+  "reviewer": "Codex（分工原文核對與獨立正文複核後由整合者彙整；不宣稱人類或全片原音核准）",
+  "reviewed_at": "2026-09-11T18:38:42.397Z",
   "decision": "pending",
   "scope": [
     "claims",
@@ -10,5 +10,5 @@
     "coverage",
     "gaps"
   ],
-  "notes": "2026-09-10 本次重新逐節比較event 45節、dev 43節、ai-user 41節、general 32節與三份選材，對照唯一KB的主體、數字、配置、日期市場、必要條件、claim_ids、來源版本與locator及主張強度。167條KB仍164 verified／3 candidate，164條verified均有正文引用，candidate未進正文；27表133列仍由KB欄位生成。回看1211.0098秒固定原畫格，只修正KB-181 evidence.context的A19 Pro／A18 Pro晶片名稱誤展開與負載字形，原主張、數值、模態及精確定位不變；四稿與選材不需改文。再次確認Calendar中途3個最後9個候選未證實加入、捷徑只有既有卡與輸入欄未證實生成授權執行、Handoff只有單機既有提示、手持花枝及三張不同照片、合照變暗不能證明自動拍攝。台灣價格與影片卡市場分開，未知年份／時區、起價錶帶與個別稅額保留；Developer只作context-only與SDK可用性對照，無產品runtime實測。F11另直接目視15個不連續單幀共0.5005秒，視覺聯集約43.1058秒；原音0秒、字幕30秒。原始素材與各次審查紀錄保留私有；未重試已失敗音訊附件或資料URL，也未以ASR、字幕、代理一致意見或取樣補足原音。完整required_scope仍0–4860.06秒audio＋visual，GAP-001至003仍blocking、GAP-004非blocking，整場語意核准仍pending。工程或GitHub公開不改變此決定。"
+  "notes": "2026-09-12 重新比較205條KB、四稿186節點（event45、dev57、ai-user48、general36）與三份選材，核對主體、數字、條件、來源版本、locator、claim_ids及主張強度。新增S30–S51共22份Developer原文與38條context-only主張，HTML/DocC/官方Markdown身分與固定版本相符；全部202條verified被正文引用，3條candidate未進正文。USD由使用者明確確認，5條影片價格只改顯示單位及來源說明，原價卡evidence、數字與定位不變，台灣價格另列。獨立複核修正照片載入表示、心率資料精簡措辭，以及系統解析必要參數後App執行的責任；其餘既有主張/節點保留。Developer SDK metadata不推定新品runtime，沒有編譯或實機測試。原始證據時序與required_scope保留固定S01版本；直接核對目前YouTube已裁切，新增經版本／範圍綁定的外連映射與官方五個章節，閱讀時間與原始證據時間分開標示；超界回退純官方入口，未增加影片語意覆蓋。新私有原音模型的能力測試不自動計為audio_checked；目前正式coverage仍原音0秒、視覺43.1058秒、字幕30秒。完整required_scope保持0–4860.06秒audio＋visual，GAP-001至003 blocking、GAP-004非blocking，整場語意核准pending。"
 }

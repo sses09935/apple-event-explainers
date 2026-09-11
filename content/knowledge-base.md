@@ -136,19 +136,20 @@
   "source": "[S01]",
   "subject": "iPhone 18 Pro",
   "topic": "iPhone 18 Pro 與 iPhone 18 Pro Max",
-  "statement_zh": "影片價格卡將 iPhone 18 Pro 256GB 標示為 $1,199 起。",
+  "statement_zh": "影片價格卡將 iPhone 18 Pro 256GB 標示為 $1,199 起。 本文幣別按使用者確認標示為美元（USD）。",
   "claim_type": "availability",
   "verification": "verified",
   "availability_status": "announced",
   "qualifiers": [
-    "保留畫面原始「$」符號；此卡未明示幣別代碼、市場或含稅條件，不解讀為台灣售價。"
+    "影片價格的幣別依使用者於 2026-09-12 明確確認為美元（USD）；原畫面保留「$」，這項確認不代表已完成原音核對。",
+    "影片價格仍不直接視為台灣售價；適用市場範圍、稅額與其他條件分別核對。"
   ],
   "structured_values": [
     {
       "name": "起價",
       "state": "known",
       "value": 1199,
-      "unit": "$（畫面符號）"
+      "unit": "USD"
     },
     {
       "name": "起價容量",
@@ -170,7 +171,7 @@
   "review_record": {
     "reviewer": "Codex",
     "reviewed_at": "2026-09-09T18:43:49.002Z",
-    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。",
+    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。 2026-09-12 使用者明確確認影片所列價格均為美元；僅追加幣別標示及其出處，原畫面證據與音訊未核對狀態保留。",
     "coverage_ids": [
       "FRAME-1897"
     ]
@@ -186,19 +187,20 @@
   "source": "[S01]",
   "subject": "iPhone 18 Pro Max",
   "topic": "iPhone 18 Pro 與 iPhone 18 Pro Max",
-  "statement_zh": "影片價格卡將 iPhone 18 Pro Max 256GB 標示為 $1,299 起。",
+  "statement_zh": "影片價格卡將 iPhone 18 Pro Max 256GB 標示為 $1,299 起。 本文幣別按使用者確認標示為美元（USD）。",
   "claim_type": "availability",
   "verification": "verified",
   "availability_status": "announced",
   "qualifiers": [
-    "保留畫面原始「$」符號；此卡未明示幣別代碼、市場或含稅條件，不解讀為台灣售價。"
+    "影片價格的幣別依使用者於 2026-09-12 明確確認為美元（USD）；原畫面保留「$」，這項確認不代表已完成原音核對。",
+    "影片價格仍不直接視為台灣售價；適用市場範圍、稅額與其他條件分別核對。"
   ],
   "structured_values": [
     {
       "name": "起價",
       "state": "known",
       "value": 1299,
-      "unit": "$（畫面符號）"
+      "unit": "USD"
     },
     {
       "name": "起價容量",
@@ -220,7 +222,7 @@
   "review_record": {
     "reviewer": "Codex",
     "reviewed_at": "2026-09-09T18:43:49.002Z",
-    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。",
+    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。 2026-09-12 使用者明確確認影片所列價格均為美元；僅追加幣別標示及其出處，原畫面證據與音訊未核對狀態保留。",
     "coverage_ids": [
       "FRAME-1900"
     ]
@@ -236,19 +238,20 @@
   "source": "[S01]",
   "subject": "AirPods 5",
   "topic": "AirPods 5",
-  "statement_zh": "影片價格卡將 AirPods 5 標示為 $129。",
+  "statement_zh": "影片價格卡將 AirPods 5 標示為 $129。 本文幣別按使用者確認標示為美元（USD）。",
   "claim_type": "availability",
   "verification": "verified",
   "availability_status": "announced",
   "qualifiers": [
-    "保留畫面原始「$」符號；此卡未明示幣別代碼、市場或含稅條件，不解讀為台灣售價。"
+    "影片價格的幣別依使用者於 2026-09-12 明確確認為美元（USD）；原畫面保留「$」，這項確認不代表已完成原音核對。",
+    "影片價格仍不直接視為台灣售價；適用市場範圍、稅額與其他條件分別核對。"
   ],
   "structured_values": [
     {
       "name": "價格",
       "state": "known",
       "value": 129,
-      "unit": "$（畫面符號）"
+      "unit": "USD"
     }
   ],
   "evidence": [
@@ -264,7 +267,7 @@
   "review_record": {
     "reviewer": "Codex",
     "reviewed_at": "2026-09-09T18:43:49.002Z",
-    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。",
+    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。 2026-09-12 使用者明確確認影片所列價格均為美元；僅追加幣別標示及其出處，原畫面證據與音訊未核對狀態保留。",
     "coverage_ids": [
       "FRAME-2190"
     ]
@@ -280,19 +283,20 @@
   "source": "[S01]",
   "subject": "Apple Watch Series 12",
   "topic": "Apple Watch Series 12",
-  "statement_zh": "影片價格卡將 Apple Watch Series 12 標示為 $399 起。",
+  "statement_zh": "影片價格卡將 Apple Watch Series 12 標示為 $399 起。 本文幣別按使用者確認標示為美元（USD）。",
   "claim_type": "availability",
   "verification": "verified",
   "availability_status": "announced",
   "qualifiers": [
-    "保留畫面原始「$」符號；此卡未明示幣別代碼、市場或含稅條件，不解讀為台灣售價。"
+    "影片價格的幣別依使用者於 2026-09-12 明確確認為美元（USD）；原畫面保留「$」，這項確認不代表已完成原音核對。",
+    "影片價格仍不直接視為台灣售價；適用市場範圍、稅額與其他條件分別核對。"
   ],
   "structured_values": [
     {
       "name": "起價",
       "state": "known",
       "value": 399,
-      "unit": "$（畫面符號）"
+      "unit": "USD"
     }
   ],
   "evidence": [
@@ -308,7 +312,7 @@
   "review_record": {
     "reviewer": "Codex",
     "reviewed_at": "2026-09-09T18:43:49.002Z",
-    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。",
+    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。 2026-09-12 使用者明確確認影片所列價格均為美元；僅追加幣別標示及其出處，原畫面證據與音訊未核對狀態保留。",
     "coverage_ids": [
       "FRAME-3161"
     ]
@@ -412,19 +416,20 @@
   "source": "[S01]",
   "subject": "iPhone Duo",
   "topic": "iPhone Duo",
-  "statement_zh": "影片價格卡將 iPhone Duo 256GB 標示為 $1,999 起。",
+  "statement_zh": "影片價格卡將 iPhone Duo 256GB 標示為 $1,999 起。 本文幣別按使用者確認標示為美元（USD）。",
   "claim_type": "availability",
   "verification": "verified",
   "availability_status": "announced",
   "qualifiers": [
-    "保留畫面原始「$」符號；此卡未明示幣別代碼、市場或含稅條件，不解讀為台灣售價。"
+    "影片價格的幣別依使用者於 2026-09-12 明確確認為美元（USD）；原畫面保留「$」，這項確認不代表已完成原音核對。",
+    "影片價格仍不直接視為台灣售價；適用市場範圍、稅額與其他條件分別核對。"
   ],
   "structured_values": [
     {
       "name": "起價",
       "state": "known",
       "value": 1999,
-      "unit": "$（畫面符號）"
+      "unit": "USD"
     },
     {
       "name": "起價容量",
@@ -446,7 +451,7 @@
   "review_record": {
     "reviewer": "Codex",
     "reviewed_at": "2026-09-09T18:43:49.002Z",
-    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。",
+    "notes": "回到本機影片 PTS 對應畫格核對文字、主體與限定詞。僅畫面已核對；音訊未核對。 2026-09-12 使用者明確確認影片所列價格均為美元；僅追加幣別標示及其出處，原畫面證據與音訊未核對狀態保留。",
     "coverage_ids": [
       "FRAME-4636"
     ]
@@ -8191,7 +8196,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "各容量的約略稅額直接來自同頁 priceFeeDisclaimer，已含在總價中；原註腳說明為近似值、可能隨時間變動，沒有自行計算稅率。",
     "容量是官方標稱容量，不能當作全部可用儲存空間。"
   ],
@@ -8372,7 +8377,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "各容量的約略稅額直接來自同頁 priceFeeDisclaimer，已含在總價中；原註腳說明為近似值、可能隨時間變動，沒有自行計算稅率。",
     "容量是官方標稱容量，不能當作全部可用儲存空間。"
   ],
@@ -8553,7 +8558,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "各容量的約略稅額直接來自同頁 priceFeeDisclaimer，已含在總價中；原註腳說明為近似值、可能隨時間變動，沒有自行計算稅率。",
     "容量是官方標稱容量，不能當作全部可用儲存空間。"
   ],
@@ -8734,7 +8739,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "價格索引可核對購買頁尺寸／材質／連線選項的起價；這些尺寸選項與技術規格的實際機身高度分開。未將特定錶帶連到該起價，不能當作所有錶帶或任意組合都同價。",
     "本次核對的價格欄位未取得個別稅額；不由總價倒推。"
   ],
@@ -8928,7 +8933,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "價格索引可核對購買頁尺寸／材質／連線選項的起價；這些尺寸選項與技術規格的實際機身高度分開。未將特定錶帶連到該起價，不能當作所有錶帶或任意組合都同價。",
     "本次核對的價格欄位未取得個別稅額；不由總價倒推。"
   ],
@@ -9031,7 +9036,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "此為所列耳機與充電盒配置；購買頁說明 USB-C 充電連接線與電源轉接器不隨附。",
     "本次核對的價格欄位未取得個別稅額；不由總價倒推。"
   ],
@@ -9122,7 +9127,7 @@
   "availability_status": "announced",
   "qualifiers": [
     "本次取得的台灣官網價格已包含稅與運送費用；價格屬當次快照，不是個別訂單或配送承諾。",
-    "總價與最低月付、換購折抵分開；影片原始「$」價格卡的幣別與市場仍須另行核對。",
+    "總價與最低月付、換購折抵分開；影片價格幣別另依使用者確認標示為美元；市場適用範圍與稅額仍分開核對。",
     "此為所列耳機與充電盒配置；購買頁說明 USB-C 充電連接線與電源轉接器不隨附。",
     "本次核對的價格欄位未取得個別稅額；不由總價倒推。"
   ],
@@ -9413,6 +9418,2590 @@
     "coverage_ids": [
       "PAGE-S29-TAIWAN-COMMERCE"
     ]
+  }
+}
+```
+
+### KB-260
+
+```json
+{
+  "id": "KB-260",
+  "source": "[S30]",
+  "statement_zh": "Guided generation 以 Swift 型別與 constrained sampling 約束輸出格式；@Generable 宣告可生成的型別，@Guide 可描述或限制儲存屬性，屬性依宣告順序生成。",
+  "subject": "Foundation Models：用型別約束生成格式",
+  "topic": "Foundation Models：用型別約束生成格式",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這裡的格式約束不構成內容事實正確、來源充分或新品相容的證據。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S30",
+      "artifact_revision": "sha256:07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "Guided generation 以 Swift 型別與 constrained sampling 約束輸出格式；@Generable 宣告可生成的型別，@Guide 可描述或限制儲存屬性，屬性依宣告順序生成。"
+    },
+    {
+      "source_id": "S30",
+      "artifact_revision": "sha256:07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "modality": "webpage",
+      "locator": "Conform your data type to Generable",
+      "context": "Guided generation 以 Swift 型別與 constrained sampling 約束輸出格式；@Generable 宣告可生成的型別，@Guide 可描述或限制儲存屬性，屬性依宣告順序生成。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-260"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-261
+
+```json
+{
+  "id": "KB-261",
+  "source": "[S30]",
+  "statement_zh": "輸出選項若到執行時才知道，可使用 DynamicGenerationSchema 建立結構，再轉為 GenerationSchema 交給 session；重複型別、衝突的屬性名稱或未定義參照可能使 schema 建立失敗。",
+  "subject": "Foundation Models：在執行時建立輸出規格",
+  "topic": "Foundation Models：在執行時建立輸出規格",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S30",
+      "artifact_revision": "sha256:07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "modality": "webpage",
+      "locator": "Define a dynamic schema at runtime",
+      "context": "輸出選項若到執行時才知道，可使用 DynamicGenerationSchema 建立結構，再轉為 GenerationSchema 交給 session；重複型別、衝突的屬性名稱或未定義參照可能使 schema 建立失敗。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-261"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-262
+
+```json
+{
+  "id": "KB-262",
+  "source": "[S31]",
+  "statement_zh": "工具呼叫可由 App 程式提供資料或執行動作；與 Contacts、HealthKit 等框架整合仍使用既有隱私與安全機制。工具可以拋出錯誤中止呼叫，session 的 ToolCallError 會保留出錯工具與 underlyingError。",
+  "subject": "Foundation Models：工具仍使用既有權限與錯誤機制",
+  "topic": "Foundation Models：工具仍使用既有權限與錯誤機制",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "工具可產生外部副作用；本段沒有提供任何特定產品權限或 API 存取核准。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S31",
+      "artifact_revision": "sha256:0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "工具呼叫可由 App 程式提供資料或執行動作；與 Contacts、HealthKit 等框架整合仍使用既有隱私與安全機制。工具可以拋出錯誤中止呼叫，session 的 ToolCallError 會保留出錯工具與 underlyingError。"
+    },
+    {
+      "source_id": "S31",
+      "artifact_revision": "sha256:0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "modality": "webpage",
+      "locator": "Handle errors thrown by a tool",
+      "context": "工具呼叫可由 App 程式提供資料或執行動作；與 Contacts、HealthKit 等框架整合仍使用既有隱私與安全機制。工具可以拋出錯誤中止呼叫，session 的 ToolCallError 會保留出錯工具與 underlyingError。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-262"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-263
+
+```json
+{
+  "id": "KB-263",
+  "source": "[S31]",
+  "statement_zh": "工具呼叫預設由模型依提示決定；tool calling mode 可改成 required 或 disallowed。官方提醒 required 必須設計退出條件，例如從工具拋出錯誤或以 DynamicProfile 動態改變模式，否則模型會持續呼叫工具。",
+  "subject": "Foundation Models：強制工具呼叫需要退出條件",
+  "topic": "Foundation Models：強制工具呼叫需要退出條件",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這份指南沒有 symbol 平台 metadata，不能據文章推定各模式的最低 SDK 或新品支援版本。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S31",
+      "artifact_revision": "sha256:0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "modality": "webpage",
+      "locator": "Configure the tool calling mode",
+      "context": "工具呼叫預設由模型依提示決定；tool calling mode 可改成 required 或 disallowed。官方提醒 required 必須設計退出條件，例如從工具拋出錯誤或以 DynamicProfile 動態改變模式，否則模型會持續呼叫工具。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-263"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-264
+
+```json
+{
+  "id": "KB-264",
+  "source": "[S32]",
+  "statement_zh": "官方安全指南指出 session 優先遵循 instructions；不應把使用者輸入或未核實的外部資料放入 instructions，否則會增加 prompt injection 風險。應由可信內容定義角色與行為，再將外部內容作為 prompt 資料。",
+  "subject": "Foundation Models：可信 instructions 與外部輸入分開",
+  "topic": "Foundation Models：可信 instructions 與外部輸入分開",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這是 App 設計的風險降低措施，不是阻擋所有提示注入的保證。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S32",
+      "artifact_revision": "sha256:3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "modality": "webpage",
+      "locator": "Instruct the model for added safety",
+      "context": "官方安全指南指出 session 優先遵循 instructions；不應把使用者輸入或未核實的外部資料放入 instructions，否則會增加 prompt injection 風險。應由可信內容定義角色與行為，再將外部內容作為 prompt 資料。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-264"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-265
+
+```json
+{
+  "id": "KB-265",
+  "source": "[S32]",
+  "statement_zh": "模型輸入或輸出未通過 guardrail 可拋出 guardrailViolation；一般字串回覆也可能直接出現拒絕訊息。使用 guided generation 時，拒絕則透過 refusal 錯誤表示，取得拒絕說明是非同步操作，而且本身仍可能失敗。",
+  "subject": "Foundation Models：區分 guardrail 與模型拒絕",
+  "topic": "Foundation Models：區分 guardrail 與模型拒絕",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "拒絕或安全錯誤不等於網路故障，也不表示 App 已完成所要求的操作。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S32",
+      "artifact_revision": "sha256:3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "modality": "webpage",
+      "locator": "Handle guardrail errors",
+      "context": "模型輸入或輸出未通過 guardrail 可拋出 guardrailViolation；一般字串回覆也可能直接出現拒絕訊息。使用 guided generation 時，拒絕則透過 refusal 錯誤表示，取得拒絕說明是非同步操作，而且本身仍可能失敗。"
+    },
+    {
+      "source_id": "S32",
+      "artifact_revision": "sha256:3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "modality": "webpage",
+      "locator": "Handle model refusals",
+      "context": "模型輸入或輸出未通過 guardrail 可拋出 guardrailViolation；一般字串回覆也可能直接出現拒絕訊息。使用 guided generation 時，拒絕則透過 refusal 錯誤表示，取得拒絕說明是非同步操作，而且本身仍可能失敗。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-265"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-266
+
+```json
+{
+  "id": "KB-266",
+  "source": "[S33]",
+  "statement_zh": "呼叫裝置端模型前，可用 supportsLocale(_:) 核對 locale；預設考慮目前語言與 App 個別語言設定。supportedLanguages 可取得模型語言清單；OS 與模型版本不同，語言支援也可能不同。",
+  "subject": "Foundation Models：查詢當前 locale 支援",
+  "topic": "Foundation Models：查詢當前 locale 支援",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這是 Foundation Models 裝置端模型的查詢方式，不能替 Siri AI、即時翻譯或本次產品的功能語言清單背書。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S33",
+      "artifact_revision": "sha256:99a7bf06e90b8aac0fe8a2b36c54de1e39ee91ff547a0c2ce1587d037c95fcc6",
+      "modality": "webpage",
+      "locator": "Check a person’s language settings for your app",
+      "context": "呼叫裝置端模型前，可用 supportsLocale(_:) 核對 locale；預設考慮目前語言與 App 個別語言設定。supportedLanguages 可取得模型語言清單；OS 與模型版本不同，語言支援也可能不同。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-266"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-267
+
+```json
+{
+  "id": "KB-267",
+  "source": "[S33]",
+  "statement_zh": "模型偵測到不支援語言時可拋出 unsupportedLanguageOrLocale；官方建議說明限制、停用該生成功能或提供替代體驗。混在受支援語言內的短段不支援語言可能未被偵測，其安全檢查也可能漏判。",
+  "subject": "Foundation Models：不支援語言仍須有替代體驗",
+  "topic": "Foundation Models：不支援語言仍須有替代體驗",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "不能把沒有拋出語言錯誤解讀成該語言的生成品質或安全性已驗證。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S33",
+      "artifact_revision": "sha256:99a7bf06e90b8aac0fe8a2b36c54de1e39ee91ff547a0c2ce1587d037c95fcc6",
+      "modality": "webpage",
+      "locator": "Handle an unsupported language or locale errors",
+      "context": "模型偵測到不支援語言時可拋出 unsupportedLanguageOrLocale；官方建議說明限制、停用該生成功能或提供替代體驗。混在受支援語言內的短段不支援語言可能未被偵測，其安全檢查也可能漏判。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-267"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-268
+
+```json
+{
+  "id": "KB-268",
+  "source": "[S34]",
+  "statement_zh": "GenerationOptions 的 maximumResponseTokens 用於防止非預期冗長回覆；官方提醒，嚴格限制回覆 token 數可能使結果格式不完整或文法不正確。",
+  "subject": "Foundation Models：回應長度上限的代價",
+  "topic": "Foundation Models：回應長度上限的代價",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這不是可用的 context window 總量，也沒有在本文指定一個所有模型通用的安全數值。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S34",
+      "artifact_revision": "sha256:4c1bcb88a0ba02a93625cf733df350cf52770294e7167eadb8c07bcca51f6b65",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "GenerationOptions 的 maximumResponseTokens 用於防止非預期冗長回覆；官方提醒，嚴格限制回覆 token 數可能使結果格式不完整或文法不正確。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-268"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "27.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-269
+
+```json
+{
+  "id": "KB-269",
+  "source": "[S34]",
+  "statement_zh": "LanguageModelSession 的 context window 不只包含使用者 prompt；Instructions、Tool、Generable 型別與模型回覆都會占用 token，超過可用 context size 會拋出 contextSizeExceeded。",
+  "subject": "Foundation Models：整個 session 都消耗 context",
+  "topic": "Foundation Models：整個 session 都消耗 context",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "本頁沒有列出可套用所有 OS、模型與裝置的固定 context 容量。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S34",
+      "artifact_revision": "sha256:4c1bcb88a0ba02a93625cf733df350cf52770294e7167eadb8c07bcca51f6b65",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "LanguageModelSession 的 context window 不只包含使用者 prompt；Instructions、Tool、Generable 型別與模型回覆都會占用 token，超過可用 context size 會拋出 contextSizeExceeded。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-269"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-126"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "26.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "27.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-270
+
+```json
+{
+  "id": "KB-270",
+  "source": "[S35]",
+  "statement_zh": "系統在呼叫 App Intent 的 perform() 前先解析全部必要參數；無法可靠取得參數時可向使用者補問，全部必要參數無法解析則回報錯誤。perform() 執行 App 自己的程式，執行位置可受 intent 類型、設定與 app extension 影響。",
+  "subject": "App Intents：先解析參數再執行 App 程式",
+  "topic": "App Intents：先解析參數再執行 App 程式",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "系統解析出參數不等於業務操作已成功，仍需檢查實際執行結果。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S35",
+      "artifact_revision": "sha256:f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "modality": "webpage",
+      "locator": "Add parameters for any data you require",
+      "context": "系統在呼叫 App Intent 的 perform() 前先解析全部必要參數；無法可靠取得參數時可向使用者補問，全部必要參數無法解析則回報錯誤。perform() 執行 App 自己的程式，執行位置可受 intent 類型、設定與 app extension 影響。"
+    },
+    {
+      "source_id": "S35",
+      "artifact_revision": "sha256:f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "modality": "webpage",
+      "locator": "Write code for the action",
+      "context": "系統在呼叫 App Intent 的 perform() 前先解析全部必要參數；無法可靠取得參數時可向使用者補問，全部必要參數無法解析則回報錯誤。perform() 執行 App 自己的程式，執行位置可受 intent 類型、設定與 app extension 影響。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-270"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-271
+
+```json
+{
+  "id": "KB-271",
+  "source": "[S35]",
+  "statement_zh": "App Intent 可透過結果回傳值、對話文字或自訂 snippet view；回傳值可供另一個動作使用。文件提醒，由 Siri AI 呼叫 App Intent 時，系統可能不顯示 IntentDialog 或 ShowsSnippetView。",
+  "subject": "App Intents：結果型別與顯示方式分開",
+  "topic": "App Intents：結果型別與顯示方式分開",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "不能依宣告 snippet 或 dialog 就保證每個系統入口都會顯示同一介面。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S35",
+      "artifact_revision": "sha256:f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "modality": "webpage",
+      "locator": "Return a result back to the caller",
+      "context": "App Intent 可透過結果回傳值、對話文字或自訂 snippet view；回傳值可供另一個動作使用。文件提醒，由 Siri AI 呼叫 App Intent 時，系統可能不顯示 IntentDialog 或 ShowsSnippetView。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-271"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-272
+
+```json
+{
+  "id": "KB-272",
+  "source": "[S36]",
+  "statement_zh": "AppShortcutsProvider 提供 App 預先配置的捷徑；appShortcuts 列出捷徑，AppShortcutsBuilder 可宣告式描述其內容，shortcutTileColor 設定捷徑方塊背景色。",
+  "subject": "App Shortcuts：集中提供預先配置的捷徑",
+  "topic": "App Shortcuts：集中提供預先配置的捷徑",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這些是 provider 層的宣告；未據此推定任何新品的自然語言任務都能自動完成。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S36",
+      "artifact_revision": "sha256:72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "modality": "webpage",
+      "locator": "Providing App Shortcuts",
+      "context": "AppShortcutsProvider 提供 App 預先配置的捷徑；appShortcuts 列出捷徑，AppShortcutsBuilder 可宣告式描述其內容，shortcutTileColor 設定捷徑方塊背景色。"
+    },
+    {
+      "source_id": "S36",
+      "artifact_revision": "sha256:72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "modality": "webpage",
+      "locator": "Configuring shortcut tiles",
+      "context": "AppShortcutsProvider 提供 App 預先配置的捷徑；appShortcuts 列出捷徑，AppShortcutsBuilder 可宣告式描述其內容，shortcutTileColor 設定捷徑方塊背景色。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-272"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "9.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-273
+
+```json
+{
+  "id": "KB-273",
+  "source": "[S36]",
+  "statement_zh": "AppShortcutsProvider 文件指出，Apple 可能擷取匿名化的 App Shortcuts 資料，例如本地化短語、顯示表示值，以及相關 intent 的標題與說明，用於機器學習模型訓練以改善捷徑體驗。",
+  "subject": "App Shortcuts：官方揭露的匿名化資料用途",
+  "topic": "App Shortcuts：官方揭露的匿名化資料用途",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "原文列的是這些捷徑資料，不能擴大成整份私人資料庫或全部使用者 prompt 都會被擷取。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S36",
+      "artifact_revision": "sha256:72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "AppShortcutsProvider 文件指出，Apple 可能擷取匿名化的 App Shortcuts 資料，例如本地化短語、顯示表示值，以及相關 intent 的標題與說明，用於機器學習模型訓練以改善捷徑體驗。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-273"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "9.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-274
+
+```json
+{
+  "id": "KB-274",
+  "source": "[S37]",
+  "statement_zh": "EntityQuery 定義系統如何取得特定 AppEntity 實例。entities(for:) 接受 entity ID 陣列並回傳對應實例；可先查記憶體，再非同步讀取磁碟或後端。指定 ID 的項目已不存在時，應從回傳陣列省略。",
+  "subject": "App Entities：ID 查詢與已不存在的項目",
+  "topic": "App Entities：ID 查詢與已不存在的項目",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這只是 App 提供的查詢實作，不授予讀取其他 App 私人內容的能力。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S37",
+      "artifact_revision": "sha256:53a373290cc7ae7e10162bbfd793163bec3d92ca50ff56876ec452eb519cfac7",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "EntityQuery 定義系統如何取得特定 AppEntity 實例。entities(for:) 接受 entity ID 陣列並回傳對應實例；可先查記憶體，再非同步讀取磁碟或後端。指定 ID 的項目已不存在時，應從回傳陣列省略。"
+    },
+    {
+      "source_id": "S37",
+      "artifact_revision": "sha256:53a373290cc7ae7e10162bbfd793163bec3d92ca50ff56876ec452eb519cfac7",
+      "modality": "webpage",
+      "locator": "Resolve entities by identifier",
+      "context": "EntityQuery 定義系統如何取得特定 AppEntity 實例。entities(for:) 接受 entity ID 陣列並回傳對應實例；可先查記憶體，再非同步讀取磁碟或後端。指定 ID 的項目已不存在時，應從回傳陣列省略。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-274"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "9.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-276
+
+```json
+{
+  "id": "KB-276",
+  "source": "[S38]",
+  "statement_zh": "AppIntent.authenticationPolicy 可要求執行前先認證；預設 alwaysAllowed 允許不經認證執行 intent，包含裝置鎖定時。",
+  "subject": "App Intent：明確設定執行前認證政策",
+  "topic": "App Intent：明確設定執行前認證政策",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這個屬性的預設值不代表底層資料、帳號、系統權限或業務條件都已滿足。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S38",
+      "artifact_revision": "sha256:ad9a8f69470770168971e466d2c1627a69d14553f2ab3f24753a9d6d7c9d776c",
+      "modality": "webpage",
+      "locator": "Discussion",
+      "context": "AppIntent.authenticationPolicy 可要求執行前先認證；預設 alwaysAllowed 允許不經認證執行 intent，包含裝置鎖定時。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-276"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "9.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-278
+
+```json
+{
+  "id": "KB-278",
+  "source": "[S39]",
+  "statement_zh": "官方驗證指南將檢查分為 App Intents Testing 的程式整合測試、捷徑的參數與結果、Spotlight 的 entity 可發現性，以及 Siri 的端到端自然語言體驗；每一層能發現的問題不同，前一層通過不能取代後一層。",
+  "subject": "App Intents：驗證要涵蓋程式、捷徑、搜尋與語音",
+  "topic": "App Intents：驗證要涵蓋程式、捷徑、搜尋與語音",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "本次只整理驗證要求，沒有宣稱已執行其中任何 SDK 或新品實機測試。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S39",
+      "artifact_revision": "sha256:8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "modality": "webpage",
+      "locator": "Overview",
+      "context": "官方驗證指南將檢查分為 App Intents Testing 的程式整合測試、捷徑的參數與結果、Spotlight 的 entity 可發現性，以及 Siri 的端到端自然語言體驗；每一層能發現的問題不同，前一層通過不能取代後一層。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-278"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-279
+
+```json
+{
+  "id": "KB-279",
+  "source": "[S39]",
+  "statement_zh": "Spotlight 的索引行為不一定與 Simulator 相同，官方要求在實體裝置驗證整合與 entity 可發現性。Siri 端到端測試應涵蓋不同說法、跨 App 流程、支援語言，以及 官方列舉的耳機純語音情境，確認口頭回覆清楚且保留重點。",
+  "subject": "App Intents：真機與無畫面的驗證情境",
+  "topic": "App Intents：真機與無畫面的驗證情境",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "官方公開文件的 context-only 技術對照；沒有 SDK 編譯或新品真機驗證，不據此推導特定產品第三方 API 支援。",
+    "這是測試設計脈絡，沒有證明 AirPods 5 或本次 Siri AI 的完整第三方相容性。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S39",
+      "artifact_revision": "sha256:8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "modality": "webpage",
+      "locator": "Confirm that entities and App Shortcuts appear in Spotlight",
+      "context": "Spotlight 的索引行為不一定與 Simulator 相同，官方要求在實體裝置驗證整合與 entity 可發現性。Siri 端到端測試應涵蓋不同說法、跨 App 流程、支援語言，以及 官方列舉的耳機純語音情境，確認口頭回覆清楚且保留重點。"
+    },
+    {
+      "source_id": "S39",
+      "artifact_revision": "sha256:8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "modality": "webpage",
+      "locator": "Validate the end-to-end experience with Siri",
+      "context": "Spotlight 的索引行為不一定與 Simulator 相同，官方要求在實體裝置驗證整合與 entity 可發現性。Siri 端到端測試應涵蓋不同說法、跨 App 流程、支援語言，以及 官方列舉的耳機純語音情境，確認口頭回覆清楚且保留重點。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex",
+    "reviewed_at": "2026-09-11T18:14:19.158Z",
+    "notes": "對照固定快照中列出的章節與必要限制；格式與查詢機制不等於產品功能、資料權限或完成結果。",
+    "coverage_ids": [
+      "PAGE-DEVELOPER-AI-279"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-222",
+      "KB-224"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [],
+    "runtime_tested": false,
+    "notes": "SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 只以已 verified 的影片／產品功能建立研究入口，不把 Foundation Models 等同 Siri AI 全部能力，也不從文件倒灌影片事實。"
+  }
+}
+```
+
+### KB-280
+
+```json
+{
+  "id": "KB-280",
+  "source": "[S40]",
+  "statement_zh": "AVCaptureDevice.DiscoverySession 依指定條件尋找拍攝裝置；建立後可讀取 devices 清單，並以 key-value observation 監看可用裝置清單的改變。",
+  "subject": "AVCaptureDevice.DiscoverySession 裝置探索",
+  "topic": "相機與影音開發",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "不以裝置探索文件推定 iPhone 18 Pro、iPhone Duo 的實際相機枚舉結果或可同時運作組合。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S40",
+      "artifact_revision": "sha256:7bcc7b8fc68abd105db12af6f1ff0689c84a9dd3345acb2a8ee4740c795ffcc1",
+      "modality": "webpage",
+      "locator": "AVCaptureDevice.DiscoverySession / Overview",
+      "context": "AVCaptureDevice.DiscoverySession 依指定條件尋找拍攝裝置；建立後可讀取 devices 清單，並以 key-value observation 監看可用裝置清單的改變。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "已讀 Overview 的 devices 與 key-value observation 敘述；不將清單視為固定產品規格。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S40-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-023",
+      "KB-163"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.15",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "17.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "2.1",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-281
+
+```json
+{
+  "id": "KB-281",
+  "source": "[S40]",
+  "statement_zh": "DiscoverySession 的 supportedMultiCamDeviceSets 列出可以在多相機 session 中同時使用的拍攝裝置集合。",
+  "subject": "多相機可同時運作組合",
+  "topic": "相機與影音開發",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "不以裝置探索文件推定 iPhone 18 Pro、iPhone Duo 的實際相機枚舉結果或可同時運作組合。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S40",
+      "artifact_revision": "sha256:7bcc7b8fc68abd105db12af6f1ff0689c84a9dd3345acb2a8ee4740c795ffcc1",
+      "modality": "webpage",
+      "locator": "AVCaptureDevice.DiscoverySession / Finding devices / supportedMultiCamDeviceSets",
+      "context": "DiscoverySession 的 supportedMultiCamDeviceSets 列出可以在多相機 session 中同時使用的拍攝裝置集合。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "已讀同份 DocC topic 的 reference abstract；未展開子 symbol 的獨立版本頁，不將 class introducedAt 當作此屬性的最低版本。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S40-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-023",
+      "KB-163"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.15",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "17.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "2.1",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-282
+
+```json
+{
+  "id": "KB-282",
+  "source": "[S41]",
+  "statement_zh": "照片拍攝先以 AVCapturePhotoOutput 查詢並啟用支援的功能，再建立單次 AVCapturePhotoSettings，最後交給 capturePhoto(with:delegate:)；delegate 接收拍攝流程的重要事件。",
+  "subject": "AVCapturePhotoOutput 拍攝流程",
+  "topic": "相機與影音開發",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "格式、深度、ProRAW 與 Live Photos 等能力依實際 capture output 與配置核對；未驗證新品的每一項支援。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S41",
+      "artifact_revision": "sha256:6cbb1bd58d0bed45108e449f8e27495d4368d131adc7d68cd4db68189ba4c3e5",
+      "modality": "webpage",
+      "locator": "AVCapturePhotoOutput / Overview",
+      "context": "照片拍攝先以 AVCapturePhotoOutput 查詢並啟用支援的功能，再建立單次 AVCapturePhotoSettings，最後交給 capturePhoto(with:delegate:)；delegate 接收拍攝流程的重要事件。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "逐項核對原文三步流程，與既有 session/input/output 架構形成不同層次的補充。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S41-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-023",
+      "KB-163"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.15",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "17.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-283
+
+```json
+{
+  "id": "KB-283",
+  "source": "[S41]",
+  "statement_zh": "照片自動閃光等選項是否啟用，要到拍攝時才決定；AVCaptureResolvedPhotoSettings 回報這次實際採用的設定，並以 uniqueID 對應原來的 AVCapturePhotoSettings。",
+  "subject": "照片自動選項的實際結果",
+  "topic": "相機與影音開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "格式、深度、ProRAW 與 Live Photos 等能力依實際 capture output 與配置核對；未驗證新品的每一項支援。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S41",
+      "artifact_revision": "sha256:6cbb1bd58d0bed45108e449f8e27495d4368d131adc7d68cd4db68189ba4c3e5",
+      "modality": "webpage",
+      "locator": "AVCapturePhotoOutput / Overview / AVCaptureResolvedPhotoSettings",
+      "context": "照片自動閃光等選項是否啟用，要到拍攝時才決定；AVCaptureResolvedPhotoSettings 回報這次實際採用的設定，並以 uniqueID 對應原來的 AVCapturePhotoSettings。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對自動設定與 resolved settings 的不同，不能把請求當成成功結果。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S41-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-023",
+      "KB-163"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "10.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.15",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "17.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-284
+
+```json
+{
+  "id": "KB-284",
+  "source": "[S42]",
+  "statement_zh": "setExposureModeCustom(duration:iso:completionHandler:) 鎖定明確的曝光時間與 ISO；設定不支援的值會拋出例外，修改前須取得 lockForConfiguration()，完成後用 unlockForConfiguration() 釋放。",
+  "subject": "手動曝光的設定條件",
+  "topic": "相機與影音開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "曝光時間與 ISO 控制不等於鏡頭光圈控制；這份文件沒有確認新品可變光圈或原廠影像控制介面的第三方存取。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S42",
+      "artifact_revision": "sha256:00647f5a0f1a39b265f04355b728a71c417cfb37e79c3821d303e3607907fa65",
+      "modality": "webpage",
+      "locator": "setExposureModeCustom(duration:iso:completionHandler:) / Discussion",
+      "context": "setExposureModeCustom(duration:iso:completionHandler:) 鎖定明確的曝光時間與 ISO；設定不支援的值會拋出例外，修改前須取得 lockForConfiguration()，完成後用 unlockForConfiguration() 釋放。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "逐段核對不支援數值的例外及 configuration lock；不延伸成光圈控制。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S42-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-227",
+      "KB-240"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "17.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-285
+
+```json
+{
+  "id": "KB-285",
+  "source": "[S42]",
+  "statement_zh": "AVCapturePhotoSettings 的照片品質優先預設為 balanced；在暗處需要多張融合改善品質時，拍照可能暫時覆寫曝光時間與 ISO。文件要求把優先順序設為 speed，才能在 custom 或 locked 曝光模式下維持指定值。",
+  "subject": "照片品質與手動曝光的交互條件",
+  "topic": "相機與影音開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "曝光時間與 ISO 控制不等於鏡頭光圈控制；這份文件沒有確認新品可變光圈或原廠影像控制介面的第三方存取。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S42",
+      "artifact_revision": "sha256:00647f5a0f1a39b265f04355b728a71c417cfb37e79c3821d303e3607907fa65",
+      "modality": "webpage",
+      "locator": "setExposureModeCustom(duration:iso:completionHandler:) / Discussion / photoQualityPrioritization",
+      "context": "AVCapturePhotoSettings 的照片品質優先預設為 balanced；在暗處需要多張融合改善品質時，拍照可能暫時覆寫曝光時間與 ISO。文件要求把優先順序設為 speed，才能在 custom 或 locked 曝光模式下維持指定值。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對 balanced、暗處、多張融合、暫時覆寫及 custom/locked+speed 五項條件，保留品質取捨，不建議無條件固定 speed。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S42-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-227",
+      "KB-240"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "17.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-286
+
+```json
+{
+  "id": "KB-286",
+  "source": "[S43]",
+  "statement_zh": "PhotosPicker 可單選或多選照片／影片並套用篩選；選取結果是 placeholder，還須透過 PhotosPickerItem 的 Transferable 載入所需表示。從 iCloud Photos 載入時若沒有網路，資料取得可能失敗。",
+  "subject": "PhotosPicker 選擇與載入",
+  "topic": "照片與媒體開發",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "這是選圖與資料載入介面，不是照片物件移除、擴圖、視角變換等影片效果的公開實作證明。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S43",
+      "artifact_revision": "sha256:1b7646e5b21c56ab00ddb952d07c6fb0e446800a38a7c8360f0ab9e770ed8dd8",
+      "modality": "webpage",
+      "locator": "PhotosPicker / Overview",
+      "context": "PhotosPicker 可單選或多選照片／影片並套用篩選；選取結果是 placeholder，還須透過 PhotosPickerItem 的 Transferable 載入所需表示。從 iCloud Photos 載入時若沒有網路，資料取得可能失敗。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對選擇、placeholder、Transferable 與離線下載失敗；沒有把選取完成等同資料已可用。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S43-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-226"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "9.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-287
+
+```json
+{
+  "id": "KB-287",
+  "source": "[S44]",
+  "statement_zh": "PHAccessLevel 將照片圖庫存取分為 addOnly 與 readWrite：前者只允許新增，後者表示讀取及寫入的存取層級。",
+  "subject": "PHAccessLevel 圖庫存取層級",
+  "topic": "照片與媒體開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "權限層級是圖庫存取的資料契約，不證明影片照片編輯功能向第三方開放。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S44",
+      "artifact_revision": "sha256:9bb389459d93aacdf27bb6f4a0ff2b0a1564b6b51b8e3893703e6102e64a45cc",
+      "modality": "webpage",
+      "locator": "PHAccessLevel / Access Levels / addOnly; readWrite",
+      "context": "PHAccessLevel 將照片圖庫存取分為 addOnly 與 readWrite：前者只允許新增，後者表示讀取及寫入的存取層級。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對 enum 兩個 case 的原文；未將 access level 值本身視為使用者已授權。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S44-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-226"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "11.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "14.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-288
+
+```json
+{
+  "id": "KB-288",
+  "source": "[S45]",
+  "statement_zh": "isHealthDataAvailable() 回報這台裝置是否可使用 HealthKit。文件指出 iPadOS 16 或更早、以及 macOS 13 或更新雖有 framework，App 仍不能讀寫 HealthKit 資料，這項檢查回傳 false；企業環境亦可能限制健康資料存取。",
+  "subject": "HealthKit 裝置資料可用性",
+  "topic": "健康與運動開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "HealthKit 可用不等於已取得每種健康資料的讀寫授權；更不代表 Apple 自家準備指數等所有指標都向第三方提供。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S45",
+      "artifact_revision": "sha256:f36509bb0383863fac1095eb77a858bc7c319e14039d23f7b872c44d7dd5ebe6",
+      "modality": "webpage",
+      "locator": "isHealthDataAvailable() / Discussion",
+      "context": "isHealthDataAvailable() 回報這台裝置是否可使用 HealthKit。文件指出 iPadOS 16 或更早、以及 macOS 13 或更新雖有 framework，App 仍不能讀寫 HealthKit 資料，這項檢查回傳 false；企業環境亦可能限制健康資料存取。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對 SDK 存在與資料存取能力不同；保留原文平台及企業限制，不據此推論特定新品 runtime。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S45-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-130",
+      "KB-140"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-289
+
+```json
+{
+  "id": "KB-289",
+  "source": "[S46]",
+  "statement_zh": "HealthKit 的 heartRate 是心率 quantity sample 型別，採 count/time 單位與離散值；HealthKit 可能精簡或合併樣本資料。",
+  "subject": "HealthKit 心率樣本",
+  "topic": "健康與運動開發",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "心率型別文件不證明新品感測器的量測準確性、更新頻率或準備指數算法；不能以缺值作健康診斷。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S46",
+      "artifact_revision": "sha256:23f7f2940a1bbb853cda7e74fe21ac2c6eaba57db1e1ac80c247fb250376ecc6",
+      "modality": "webpage",
+      "locator": "heartRate / Discussion / count-time and discrete samples",
+      "context": "HealthKit 的 heartRate 是心率 quantity sample 型別，採 count/time 單位與離散值；HealthKit 可能精簡或合併樣本資料。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對心率型別、單位、離散性及資料可能 condensed/coalesced，沒有宣稱固定採樣頻率。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S46-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-130",
+      "KB-140"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-290
+
+```json
+{
+  "id": "KB-290",
+  "source": "[S46]",
+  "statement_zh": "心率樣本可附帶 HKMetadataKeyHeartRateMotionContext，但不是每筆都有。文件要求缺少這項 metadata 的樣本依 notSet 處理，不能把缺少情境資料直接解讀為靜止。",
+  "subject": "心率動態情境中繼資料缺值",
+  "topic": "健康與運動開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "心率型別文件不證明新品感測器的量測準確性、更新頻率或準備指數算法；不能以缺值作健康診斷。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S46",
+      "artifact_revision": "sha256:23f7f2940a1bbb853cda7e74fe21ac2c6eaba57db1e1ac80c247fb250376ecc6",
+      "modality": "webpage",
+      "locator": "heartRate / Discussion / HKMetadataKeyHeartRateMotionContext",
+      "context": "心率樣本可附帶 HKMetadataKeyHeartRateMotionContext，但不是每筆都有。文件要求缺少這項 metadata 的樣本依 notSet 處理，不能把缺少情境資料直接解讀為靜止。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "原文亦說其他 App 可存有或沒有動態情境的心率樣本；未知保持未知。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S46-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-130",
+      "KB-140"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-291
+
+```json
+{
+  "id": "KB-291",
+  "source": "[S47]",
+  "statement_zh": "WorkoutScheduler 提供 isSupported 查詢目前裝置是否支援訓練排程，並以 requestAuthorization() 請求排程權限、authorizationState 表示授權狀態；schedule(_:at:) 用指定日期安排 WorkoutPlan。",
+  "subject": "WorkoutScheduler 支援與排程權限",
+  "topic": "健康與運動開發",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "WorkoutScheduler 處理排程；不把排程授權當作 HealthKit 資料讀取權限，也不推定新品配對與同步已實測成功。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S47",
+      "artifact_revision": "sha256:cba215343a0ea68b230a8b58fa4039ac0c443fab58da8827438563637998fd89",
+      "modality": "webpage",
+      "locator": "WorkoutScheduler / Accessing the scheduler; Scheduling workouts",
+      "context": "WorkoutScheduler 提供 isSupported 查詢目前裝置是否支援訓練排程，並以 requestAuthorization() 請求排程權限、authorizationState 表示授權狀態；schedule(_:at:) 用指定日期安排 WorkoutPlan。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "逐一核對同份 DocC 章節與 referenced member abstract；資料讀取仍由其他 API 契約處理。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S47-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-131",
+      "KB-141"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "17.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "17.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "18.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "15.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "10.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-292
+
+```json
+{
+  "id": "KB-292",
+  "source": "[S47]",
+  "statement_zh": "WorkoutScheduler.scheduledWorkouts 是此 App 排定的訓練清單；maxAllowedScheduledWorkoutCount 表示 App 排程上限，另有標記完成、移除單項與移除全部排程的方法。",
+  "subject": "App 自己的體能訓練排程",
+  "topic": "健康與運動開發",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "WorkoutScheduler 處理排程；不把排程授權當作 HealthKit 資料讀取權限，也不推定新品配對與同步已實測成功。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S47",
+      "artifact_revision": "sha256:cba215343a0ea68b230a8b58fa4039ac0c443fab58da8827438563637998fd89",
+      "modality": "webpage",
+      "locator": "WorkoutScheduler / Managing scheduled workouts",
+      "context": "WorkoutScheduler.scheduledWorkouts 是此 App 排定的訓練清單；maxAllowedScheduledWorkoutCount 表示 App 排程上限，另有標記完成、移除單項與移除全部排程的方法。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "保留 by your app 的範圍；來源本頁沒有上限數字，故不填入常數猜測。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S47-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-131",
+      "KB-141"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "17.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "17.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "18.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "15.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "10.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-293
+
+```json
+{
+  "id": "KB-293",
+  "source": "[S48]",
+  "statement_zh": "CMMotionManager 管理加速度計、陀螺儀、磁力計與處理後的 device-motion 資料；經 sensor fusion 的 device-motion 包含姿態、旋轉速率、重力方向及使用者造成的加速度等。",
+  "subject": "Core Motion 裝置動作資料",
+  "topic": "裝置動作與版面適應",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "一般裝置動作與姿態資料不等於 iPhone Duo 鉸鏈角度、開合事件、內外螢幕切換或耳機專屬姿態介面。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S48",
+      "artifact_revision": "sha256:715576ae68a871435afd6b44800c82837f7283a67d354a44972f1c79be00dbbd",
+      "modality": "webpage",
+      "locator": "CMMotionManager / Overview",
+      "context": "CMMotionManager 管理加速度計、陀螺儀、磁力計與處理後的 device-motion 資料；經 sensor fusion 的 device-motion 包含姿態、旋轉速率、重力方向及使用者造成的加速度等。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對四類服務與處理後資料；不把裝置座標的姿態推定為折疊鉸鏈角度。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S48-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-150",
+      "KB-172"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "4.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "4.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.1",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-294
+
+```json
+{
+  "id": "KB-294",
+  "source": "[S48]",
+  "statement_zh": "官方要求每個 App 只建立一個 CMMotionManager，因多個實例可能影響加速度計與陀螺儀資料接收速率；不再需要資料時，應呼叫對應的 stop 方法停止更新。",
+  "subject": "Core Motion 服務生命週期",
+  "topic": "裝置動作與版面適應",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "一般裝置動作與姿態資料不等於 iPhone Duo 鉸鏈角度、開合事件、內外螢幕切換或耳機專屬姿態介面。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S48",
+      "artifact_revision": "sha256:715576ae68a871435afd6b44800c82837f7283a67d354a44972f1c79be00dbbd",
+      "modality": "webpage",
+      "locator": "CMMotionManager / Overview / Important and stop methods",
+      "context": "官方要求每個 App 只建立一個 CMMotionManager，因多個實例可能影響加速度計與陀螺儀資料接收速率；不再需要資料時，應呼叫對應的 stop 方法停止更新。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對單一 manager 與停止更新要求，不以此聲稱特定節電百分比。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S48-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-150",
+      "KB-172"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "4.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "4.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.1",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-295
+
+```json
+{
+  "id": "KB-295",
+  "source": "[S48]",
+  "statement_zh": "CMMotionManager 分別提供服務可用性與活動狀態檢查，例如 isGyroAvailable 與 isGyroActive；若硬體功能不可用，呼叫對應 start 方法不會生效。",
+  "subject": "Core Motion 能力與活動狀態",
+  "topic": "裝置動作與版面適應",
+  "claim_type": "limitation",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "一般裝置動作與姿態資料不等於 iPhone Duo 鉸鏈角度、開合事件、內外螢幕切換或耳機專屬姿態介面。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S48",
+      "artifact_revision": "sha256:715576ae68a871435afd6b44800c82837f7283a67d354a44972f1c79be00dbbd",
+      "modality": "webpage",
+      "locator": "CMMotionManager / Determine hardware availability and state",
+      "context": "CMMotionManager 分別提供服務可用性與活動狀態檢查，例如 isGyroAvailable 與 isGyroActive；若硬體功能不可用，呼叫對應 start 方法不會生效。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "已讀硬體可用與正在更新是兩個不同條件；列舉的型號感測器仍須 runtime 核對。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S48-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-150",
+      "KB-172"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "4.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "4.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.1",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-296
+
+```json
+{
+  "id": "KB-296",
+  "source": "[S49]",
+  "statement_zh": "AnyLayout 允許動態切換符合 Layout 的容器類型，而不破壞子視圖狀態；官方示例依 Dynamic Type 設定在 HStackLayout 與 VStackLayout 之間切換。",
+  "subject": "AnyLayout 保留子視圖狀態",
+  "topic": "裝置動作與版面適應",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "子視圖狀態保留限於此版面容器契約，不等於跨 App、跨裝置或折疊時全部狀態自動延續。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S49",
+      "artifact_revision": "sha256:59710ff38a78473b9e2a8c8c402316bc109963d1544a48011bef776e08922891",
+      "modality": "webpage",
+      "locator": "AnyLayout / Overview",
+      "context": "AnyLayout 允許動態切換符合 Layout 的容器類型，而不破壞子視圖狀態；官方示例依 Dynamic Type 設定在 HStackLayout 與 VStackLayout 之間切換。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對 state preservation 的作用範圍及原文 Dynamic Type 示例；未說是 iPhone Duo 開合介面。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S49-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-234"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "16.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "9.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-297
+
+```json
+{
+  "id": "KB-297",
+  "source": "[S50]",
+  "statement_zh": "horizontalSizeClass 表示讀取該環境值的視圖可用橫向空間類別；它受到裝置、方向及 iPad 的 Slide Over／Split View 等因素影響，App 應處理執行期間尺寸類別的改變。",
+  "subject": "水平尺寸類別的變動",
+  "topic": "裝置動作與版面適應",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "水平尺寸類別描述可用空間，不能拿來當作 iPhone Duo 開合、鉸鏈角度或多視窗生命週期事件。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S50",
+      "artifact_revision": "sha256:f054c5dad1d8e6b5a35502e0e25647d67fc21c01561522c4018a0197fa148e94",
+      "modality": "webpage",
+      "locator": "horizontalSizeClass / Discussion",
+      "context": "horizontalSizeClass 表示讀取該環境值的視圖可用橫向空間類別；它受到裝置、方向及 iPad 的 Slide Over／Split View 等因素影響，App 應處理執行期間尺寸類別的改變。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對空間而非實體機型判斷；不推論 iPhone Duo 具體尺寸類別或折疊事件。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S50-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-234"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.15",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "13.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "6.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-298
+
+```json
+{
+  "id": "KB-298",
+  "source": "[S51]",
+  "statement_zh": "NSUserActivity 保存 App 在某個時間點的活動狀態，供 Handoff 等系統功能使用；一般 Handoff 可把 activity 傳到使用者其他裝置，讓 App 在那裡重建該活動。",
+  "subject": "NSUserActivity 的一般 App 接續",
+  "topic": "App 活動接續",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "此處只研究一般 App activity 延續；不能用它解釋影片 Switched to this iPhone 提示的觸發、門號／SIM 移轉或通話接續。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S51",
+      "artifact_revision": "sha256:88f9475594be69386ae8112350afb74e7c8c63a96ab43ca5b215be1215b1bbde",
+      "modality": "webpage",
+      "locator": "NSUserActivity / Overview / activity state and Handoff",
+      "context": "NSUserActivity 保存 App 在某個時間點的活動狀態，供 Handoff 等系統功能使用；一般 Handoff 可把 activity 傳到使用者其他裝置，讓 App 在那裡重建該活動。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "僅核對一般 App 活動狀態的公開文件，不把同名當成影片 iPhone Handoff 的機制證據。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S51-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-249"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.1",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.10",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "9.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
+  }
+}
+```
+
+### KB-299
+
+```json
+{
+  "id": "KB-299",
+  "source": "[S51]",
+  "statement_zh": "App 以 activityType 建立 NSUserActivity，保存重建活動所需的 URL、內容識別或 userInfo；以 becomeCurrent() 標示目前活動，結束時 resignCurrent() 或 invalidate()。支援的 activity type 須以 NSUserActivityTypes 在 Info.plist 宣告。",
+  "subject": "NSUserActivity 資料與生命週期",
+  "topic": "App 活動接續",
+  "claim_type": "specification",
+  "verification": "verified",
+  "availability_status": "not-applicable",
+  "qualifiers": [
+    "既有公開 API 文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或實機測試。",
+    "此處只研究一般 App activity 延續；不能用它解釋影片 Switched to this iPhone 提示的觸發、門號／SIM 移轉或通話接續。"
+  ],
+  "structured_values": [],
+  "evidence": [
+    {
+      "source_id": "S51",
+      "artifact_revision": "sha256:88f9475594be69386ae8112350afb74e7c8c63a96ab43ca5b215be1215b1bbde",
+      "modality": "webpage",
+      "locator": "NSUserActivity / Overview / activityType; becomeCurrent; NSUserActivityTypes",
+      "context": "App 以 activityType 建立 NSUserActivity，保存重建活動所需的 URL、內容識別或 userInfo；以 becomeCurrent() 標示目前活動，結束時 resignCurrent() 或 invalidate()。支援的 activity type 須以 NSUserActivityTypes 在 Info.plist 宣告。"
+    }
+  ],
+  "review_record": {
+    "reviewer": "Codex Developer device reviewer",
+    "reviewed_at": "2026-09-11T18:14:31Z",
+    "notes": "核對資料欄位、目前活動與宣告要求；沒有新增平台間移轉成功保證。 直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。",
+    "coverage_ids": [
+      "PAGE-S51-DEVICE-20260912"
+    ]
+  },
+  "technical_context": {
+    "related_claim_ids": [
+      "KB-249"
+    ],
+    "relationship": "context-only",
+    "sdk_availability": [
+      {
+        "platform": "iOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "iPadOS",
+        "introduced": "8.0",
+        "beta": false
+      },
+      {
+        "platform": "Mac Catalyst",
+        "introduced": "13.1",
+        "beta": false
+      },
+      {
+        "platform": "macOS",
+        "introduced": "10.10",
+        "beta": false
+      },
+      {
+        "platform": "tvOS",
+        "introduced": "9.0",
+        "beta": false
+      },
+      {
+        "platform": "visionOS",
+        "introduced": "1.0",
+        "beta": false
+      },
+      {
+        "platform": "watchOS",
+        "introduced": "2.0",
+        "beta": false
+      }
+    ],
+    "runtime_tested": false,
+    "notes": "平台版本只取本次主文件 metadata.platforms 中有 introducedAt 的項目；空缺不猜。class/enum 主文件的版本不當作所有列出子成員的個別最低版本，也不等於新品可用性。"
   }
 }
 ```

@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {writeFileSync,readFileSync,rmSync,mkdirSync,symlinkSync,mkdtempSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
-import {loadData,ROOT,TW_STOREFRONT_SOURCES,allBlocks,blockClaimIds,interpolate,validateData,releaseErrors,parseKB,parseDraft,covered,interval} from '../build/data.mjs';
+import {loadData,ROOT,TW_STOREFRONT_SOURCES,allBlocks,blockClaimIds,interpolate,validateData,releaseErrors,parseKB,parseDraft,covered,interval,playerMappingDigest,mapPlayerSeconds} from '../build/data.mjs';
 import {build,safeClean} from '../build/build.mjs';
 import {debug,checkPublic,checkLinks,checkTracked} from '../build/inspect.mjs';
 import {deploymentErrors} from '../build/deploy.mjs';
@@ -235,7 +235,7 @@ test('compact web source label preserves every reviewed locator and all video ti
  validateData(d);
  const reader=renderPage(d.config.pages.find(p=>p.file==='event.html'),d,{version:'test',built_at:'test'});
  assert.match(reader,/\[S02\] 網頁<\/a>/);assert.doesNotMatch(reader,/網頁、網頁/);
- assert.match(reader,/\[S01\] 0:10、0:25<\/a>/);
+ assert.match(reader,/\[S01\] 證據 0:10、證據 0:25<\/a>/);
  const evidence=renderPage(d.config.pages.find(p=>p.file==='sources.html'),d,{version:'test',built_at:'test'});
  const card=evidence.split('id="claim-KB-020"')[1].split('</article>')[0];
  assert.equal((card.match(/class="evidence-segment"/g)||[]).length,2);
@@ -276,11 +276,13 @@ test('opening editorial has no dummy topic and does not fail factual-topic relea
 test('technical common notices and identical symbol SDK deduplicate without hiding specific limits or differing versions',()=>sourceFixture(d=>{
  const c=d.claims.find(c=>c.id==='KB-100');c.qualifiers=['既有公開文件的技術對照，不代表本次新增 API；本次沒有 SDK 編譯或真機測試。','特定配件條件必須保留'];c.technical_context.sdk_availability=[{platform:'iOS',introduced:'8.0',beta:false}];
  const newer=structuredClone(c);newer.id='KB-101';newer.technical_context.sdk_availability=[{platform:'iOS',introduced:'11.0',beta:false}];d.claims.push(newer);
- d.drafts['dev.html']=parseDraft('# 測試\n## 主題 {#topic}\n:::summary first KB-100\n第一段。\n:::\n:::note repeated KB-100\n另一段。\n:::\n:::note different KB-101\n另有版本。\n:::');
+ const additionalLocator=structuredClone(c);additionalLocator.id='KB-102';additionalLocator.evidence.push({...additionalLocator.evidence[0],locator:'Another section in the same source revision'});d.claims.push(additionalLocator);
+ d.drafts['dev.html']=parseDraft('# 測試\n## 主題 {#topic}\n:::summary first KB-100\n第一段。\n:::\n:::note repeated KB-100\n另一段。\n:::\n:::note more-evidence KB-102\n同版本的另一章節。\n:::\n:::note different KB-101\n另有版本。\n:::');
  const html=renderPage(d.config.pages.find(p=>p.file==='dev.html'),d,{version:'test',built_at:'test'});
  assert.equal((html.match(/class="callout callout-boundary technical-common-notice"/g)||[]).length,1);
  assert.equal((html.match(/data-sdk-source="\[S07\]"/g)||[]).length,2);
  assert.match(html,/特定配件條件必須保留/);assert.match(html,/iOS 8.0 起/);assert.match(html,/iOS 11.0 起/);
+ assert.match(html,/id="node-more-evidence"/);assert.match(html,/sources.html#claim-KB-102/);
 }));
 
 
@@ -300,4 +302,94 @@ test('migration defaults to explicit missing authoring files and refuses unknown
  const invalid=structuredClone(old);invalid.pages.pop();assert.throws(()=>migratePageConfig(invalid),/known three-page/);
  f.json('project.config.json',old);rmSync(join(f.root,'content/drafts/general.md'));const result=migrateAudienceProject(f.root);assert.ok(result.missing.includes('content/drafts/general.md'));assert.equal(result.created.length,0);assert.throws(()=>readFileSync(join(f.root,'content/drafts/general.md')));
  f.json('project.config.json',old);symlinkSync(join(f.root,'content/drafts/dev.md'),join(f.root,'content/drafts/general.md'));assert.throws(()=>migrateAudienceProject(f.root,{createStubs:true}),/symlink/);
+}));
+
+const mappedFixture=fn=>fixture((f,d)=>{
+ const m=d.manifest;
+ m.player_adapter={kind:'youtube-link',timeline_mapping:{source_artifact_revision:m.artifact_revision,target_artifact_revision:'sha256:'+'a'.repeat(64),source_start_seconds:10,source_end_seconds:100,offset_seconds:-10,target_duration_seconds:90,reviewer:'fixture',reviewed_at:'2026-01-01T00:00:00Z',notes:'Synthetic alignment and external-link QA only; no original-audio review.'},verification:{canonical_url:m.canonical_url,artifact_revision:m.artifact_revision,verified_at:'2026-01-01T00:00:00Z',reviewer:'fixture',notes:'Synthetic mapped external link seek; embedded player not checked.',tested_start_seconds:10,tested_end_seconds:15,seek_works:true}};
+ m.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(m);
+ return fn(f,d,m.player_adapter.timeline_mapping);
+});
+test('mapped external links preserve source evidence and expose target time without embeds',()=>mappedFixture((f,d)=>{
+ const original=structuredClone({e:d.claims[0].evidence[0],coverage:d.coverage,revision:d.manifest.artifact_revision}),p=playerLink(d.manifest,d.claims[0].evidence[0]);validateData(d);
+ assert.equal(p.time,'0:10–0:15');assert.equal(p.mapped_time,'0:00–0:05');assert.equal(p.mapped_start_seconds,0);assert.equal(p.mapped_end_seconds,5);assert.match(p.official,/t=0s$/);assert.equal(p.embed,null);assert.equal(p.mapping_applied,true);assert.equal(p.seek_verified,true);assert.equal(p.mapping_status,'mapped');
+ assert.deepEqual({e:d.claims[0].evidence[0],coverage:d.coverage,revision:d.manifest.artifact_revision},original);
+}));
+test('decimal player mapping keeps exact-second floor and subsecond source precision',()=>mappedFixture((f,d,t)=>{
+ assert.equal(mapPlayerSeconds(1.4,-0.4),1);assert.equal(mapPlayerSeconds(0.3,-0.2),0.1);assert.equal(mapPlayerSeconds(1e-7,2e-7),3e-7);
+ Object.assign(t,{source_start_seconds:0.4,source_end_seconds:100.4,offset_seconds:-0.4,target_duration_seconds:100});d.manifest.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(d.manifest);validateData(d);
+ const e={...d.claims[0].evidence[0],start_seconds:1.4,end_seconds:2.4},p=playerLink(d.manifest,e);assert.match(p.official,/t=1s$/);assert.equal(p.time,'0:01.4–0:02.4');assert.equal(p.mapped_time,'0:01–0:02');
+ const q=playerLink(d.manifest,{...e,start_seconds:1.525,end_seconds:2.875});assert.match(q.official,/t=1s$/);assert.equal(q.mapped_time,'0:01.125–0:02.475');
+}));
+test('mapped external links support a verified positive offset',()=>mappedFixture((f,d,t)=>{
+ Object.assign(t,{source_start_seconds:0,source_end_seconds:100,offset_seconds:5,target_duration_seconds:105});d.manifest.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(d.manifest);validateData(d);assert.match(playerLink(d.manifest,d.claims[0].evidence[0]).official,/t=15s$/);
+}));
+for(const [start,end] of [[0,5],[9.5,10.5],[99.5,100.5],[100,110]])test(`mapped evidence ${start}-${end} outside verified range falls back without clamping`,()=>mappedFixture((f,d)=>{
+ const p=playerLink(d.manifest,{...d.claims[0].evidence[0],start_seconds:start,end_seconds:end});assert.equal(p.official,d.manifest.canonical_url);assert.equal(p.embed,null);assert.equal(p.mapped_time,null);assert.equal(p.seek_verified,false);assert.equal(p.mapping_status,'outside-verified-range');
+}));
+test('mapped evidence ending exactly at verified target boundary is accepted',()=>mappedFixture((f,d)=>{
+ const p=playerLink(d.manifest,{...d.claims[0].evidence[0],start_seconds:99,end_seconds:100});assert.match(p.official,/t=89s$/);assert.equal(p.mapped_time,'1:29–1:30');
+}));
+for(const [name,mutate] of [
+ ['missing seek QA',m=>m.player_adapter.verification=null],
+ ['missing digest',m=>delete m.player_adapter.verification.timeline_mapping_digest],
+ ['stale source revision',m=>m.player_adapter.timeline_mapping.source_artifact_revision='old-revision'],
+ ['changed target snapshot',m=>m.player_adapter.timeline_mapping.target_artifact_revision='sha256:'+'b'.repeat(64)],
+ ['changed range',m=>m.player_adapter.timeline_mapping.source_end_seconds=99],
+ ['changed chapters',m=>m.player_adapter.timeline_mapping.chapters=[{title:'Opening',start_seconds:0}]],
+ ['changed canonical URL',m=>{m.canonical_url='https://www.youtube.com/watch?v=MOCK0000002';m.publisher_verification.canonical_url=m.canonical_url;}]
+])test(`player mapping rejects ${name} and runtime falls back`,()=>mappedFixture((f,d)=>{
+ mutate(d.manifest);assert.throws(()=>validateData(d),/Player|mapping/);const p=playerLink(d.manifest,d.claims[0].evidence[0]);assert.equal(p.official,d.manifest.canonical_url);assert.equal(p.embed,null);assert.equal(p.seek_verified,false);assert.equal(p.mapping_status,'invalid-mapping');
+}));
+for(const [name,mutate] of [
+ ['negative source start',t=>t.source_start_seconds=-1],
+ ['reversed source range',t=>t.source_end_seconds=5],
+ ['source past fixed duration',t=>t.source_end_seconds=121],
+ ['negative mapped start',t=>t.offset_seconds=-11],
+ ['mapped end past target duration',t=>t.target_duration_seconds=89],
+ ['nonfinite offset',t=>t.offset_seconds=Infinity],
+ ['empty review',t=>t.notes=''],
+ ['missing target snapshot',t=>delete t.target_artifact_revision],
+ ['empty chapter list',t=>t.chapters=[]],
+ ['blank chapter title',t=>t.chapters=[{title:' ',start_seconds:0}]],
+ ['unordered chapters',t=>t.chapters=[{title:'Later',start_seconds:10},{title:'Earlier',start_seconds:0}]],
+ ['duplicate chapter times',t=>t.chapters=[{title:'First',start_seconds:0},{title:'Second',start_seconds:0}]],
+ ['chapter at target end',t=>t.chapters=[{title:'Past end',start_seconds:90}]],
+ ['chapter with invented field',t=>t.chapters=[{title:'Opening',start_seconds:0,claim_id:'KB-001'}]]
+])test(`player mapping rejects ${name} even with a recomputed digest`,()=>mappedFixture((f,d,t)=>{
+ mutate(t);d.manifest.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(d.manifest);assert.throws(()=>validateData(d),/event-manifest|mapping|time interval/);
+}));
+test('mapped external QA never enables embedded playback',()=>mappedFixture((f,d)=>{
+ d.manifest.player_adapter.kind='youtube';d.manifest.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(d.manifest);assert.throws(()=>validateData(d),/external links only/);const p=playerLink(d.manifest,d.claims[0].evidence[0]);assert.equal(p.embed,null);assert.equal(p.official,d.manifest.canonical_url);
+}));
+test('player mapping QA must lie inside the admitted source range',()=>mappedFixture((f,d)=>{
+ d.manifest.player_adapter.verification.tested_start_seconds=5;assert.throws(()=>validateData(d),/QA interval/);
+}));
+test('player mapping cannot reuse evidence from another source version',()=>mappedFixture((f,d)=>{
+ const p=playerLink(d.manifest,{...d.claims[0].evidence[0],artifact_revision:'stale'});assert.equal(p.official,d.manifest.canonical_url);assert.equal(p.mapping_status,'invalid-evidence');assert.equal(p.seek_verified,false);
+}));
+test('player mapping chapters are version-bound source metadata and never change coverage',()=>mappedFixture((f,d,t)=>{
+ const original=structuredClone(d.coverage);t.chapters=[{title:'Opening',start_seconds:0},{title:'Next topic',start_seconds:25}];d.manifest.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(d.manifest);validateData(d);assert.deepEqual(d.coverage,original);
+}));
+test('player mapping digest cannot survive removal of its mapping',()=>mappedFixture((f,d)=>{
+ delete d.manifest.player_adapter.timeline_mapping;assert.throws(()=>validateData(d),/digest without mapping/);assert.equal(playerLink(d.manifest,d.claims[0].evidence[0]).official,d.manifest.canonical_url);
+}));
+
+test('mapped renderer preserves source copy times, escapes chapters and labels fallback honestly',()=>mappedFixture((f,d,t)=>{
+ const m=d.manifest,meta={version:'test',built_at:'test'};
+ m.access_record={checked_at:'2026-01-01T00:00:00Z',reviewer:'fixture',status:'accessible',notes:'Synthetic source acquisition only.',attempts:[{method:'fixture',result:'No live source used.'}]};
+ t.chapters=[{title:'Opening <script>alert(1)</script>',start_seconds:0},{title:'Next & later',start_seconds:25}];
+ m.player_adapter.verification.timeline_mapping_digest=playerMappingDigest(m);
+ Object.assign(d.claims[1].evidence[0],{start_seconds:110,end_seconds:115});validateData(d);
+ const render=file=>renderPage(d.config.pages.find(p=>p.file===file),d,meta),card=(html,id)=>html.split(`id="claim-${id}"`)[1].split('</article>')[0];
+ let sources=render('sources.html'),event=render('event.html');
+ const mapped=card(sources,'KB-001'),unmapped=card(sources,'KB-002');
+ assert.match(mapped,/原始證據時間/);assert.match(mapped,/data-time="0:10–0:15"/);assert.match(mapped,/目前 YouTube：約 0:00–0:05/);assert.match(mapped,/t=0s/);assert.doesNotMatch(mapped,/load-player/);
+ assert.match(unmapped,/data-time="1:50–1:55"/);assert.match(unmapped,/不在已核對的播放器對應範圍/);assert.doesNotMatch(unmapped,/t=\d+s|class="mapped-time"|load-player/);
+ const chapters=event.split('aria-labelledby="official-chapters"')[1].split('</section>')[0];assert.match(chapters,/t=25s/);assert.match(chapters,/<time>0:25<\/time>/);assert.match(chapters,/&lt;script&gt;alert\(1\)&lt;\/script&gt;/);assert.doesNotMatch(chapters,/<script>/);
+ const timeline=event.split('aria-labelledby="timeline"')[1].split('</section>')[0],rows=timeline.match(/<li>.*?<\/li>/gs);
+ assert.match(rows[0],/<time>0:00<\/time>/);assert.match(rows[1],/原始|未映射|未驗證/,'Out-of-range source seconds must not be silently labeled as YouTube time');
+ m.player_adapter.verification.timeline_mapping_digest='0'.repeat(64);sources=render('sources.html');event=render('event.html');
+ assert.doesNotMatch(event,/aria-labelledby="official-chapters"/);assert.doesNotMatch(sources,/class="mapped-time"|load-player|t=\d+s/);assert.match(card(sources,'KB-001'),/data-time="0:10–0:15"/);assert.match(card(sources,'KB-001'),/片段定位尚未驗證/);
+ assert.doesNotMatch(sources,/已在指定官方影片頁實測代表整秒定位/,'Adapter kind alone must not claim successful seek QA');
 }));

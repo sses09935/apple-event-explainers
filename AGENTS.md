@@ -1,5 +1,13 @@
 # apple-event-explainers
 
+## 2026-09-12 美元確認、Developer 擴充與私有影片
+
+使用者明確確認影片所列價格均為美元（USD），授權據此更新幣別標示；原畫面「$」、數字、來源版本及定位保留，幣別確認註明來自使用者，不冒稱原音已核對，也不連帶確認市場、稅額或台灣適用性。
+
+使用者授權廣泛研究 Apple Developer 並由代理逐頁核對、選擇與納入直接相關原文。仍逐一登錄實際取得的文件、內容接口、版本、精確定位與已核實產品前提；不因大量研究而推定新品第三方 API 或 runtime 相容。未實作的 session 准入仍不放行。
+
+使用者已將完整影片放在本專案，明示該檔私有、不得開源，允許本機分析。原片、衍生影音、原音審查模型／runtime 及私人執行紀錄一律排除 Git、Hosting 與 CI artifacts。使用者亦要求代理自行取得可用原音審查能力，授權研究及隔離安裝新的本機直接音訊理解路徑；能力測試、ASR、波形比對與原音語意審查分別記錄，不能僅因安裝成功而增加 audio_checked。正式發布仍須通過完整 release／production 門檻。
+
 ## 2026-09-10 本次開源與正式發布授權
 
 使用者本次明確授權通過公開檢查的必要本機提交、push至既有 `sses09935/apple-event-explainers`、改為Public及遠端CI驗收；內容release與production驗證全部通過後，授權既有Firebase project／site `apple-event-explainers` 的live部署與正式網址驗收，必要時可建立本次新的production候選preview。此範圍優先於下方歷史「本輪不授權push／部署」，不是證據或語意核准。

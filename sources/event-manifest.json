@@ -17,7 +17,7 @@
   "timeline_basis": {
     "kind": "canonical-video-start",
     "offset_seconds": 0,
-    "notes": "以下載的 YouTube 640×360 H.264 視訊檔為準，媒體 start=0，ffmpeg 容器長度 01:21:00.06；包含開場等待段。所有正式秒數依該檔 PTS/timebase=1/30000。與先前 Apple TV 版本未對齊，不混用其秒數。"
+    "notes": "固定證據以下載的 YouTube 640×360 H.264 視訊檔為準，媒體 start=0，長度01:21:00.06；所有原始evidence與coverage秒數依該檔PTS/timebase=1/30000保留。2026-09-12直接查驗同一官方網址目前播放器長度4636.981秒，與先前版本不同。閱讀時間軸與外連使用player_adapter內已核對映射，官方章節採目前YouTube描述時間；原始證據時間不重寫。"
   },
   "acquired_at": "2026-09-09T18:40:30.126Z",
   "subtitle_type": "provider-unspecified",
@@ -31,12 +31,46 @@
     "verification": {
       "canonical_url": "https://www.youtube.com/watch?v=39BalPDuTo0",
       "artifact_revision": "sha256:b4975ab0f6ce60b323382d7a305202cc420eb042b255da0088f0e38495628ddc",
-      "verified_at": "2026-09-09T18:57:51.886Z",
+      "verified_at": "2026-09-11T18:36:26.150Z",
       "reviewer": "Codex",
-      "notes": "於 Codex 內建瀏覽器的窄視窗檢查官方 t= 整秒網址：1014、2190、4636 秒實際顯示與已保存畫格相同的 CPU、AirPods 5 價格及 iPhone Duo 價格卡。0 與 4859 秒邊界的播放器控制顯示對應時間。沒有測試 iframe、精確子秒 seek 或區段末尾停止。播放器標示 1:21:00；頁面標題已變更，保留取得快照標題，不以新標題替換固定媒體版本。",
-      "tested_start_seconds": 0,
-      "tested_end_seconds": 4859,
-      "seek_works": true
+      "notes": "直接以目前官方YouTube外連核對t=867s（14:27 CPU卡）、t=1903s（31:44暫停為Active Noise Cancellation火車）、t=4489s（1:14:52暫停為iPhone Duo起價卡）；另t=0s顯示起點並播放開場、t=4625s顯示1:17:05並在1:17:09暫停為結尾Apple卡。已讀官方描述五個章節。t=4636s最初顯示尾秒，但隨後播放回起點，故不把此端點當成穩定seek驗證，映射保守止於4625秒。沒有測試iframe、精確子秒seek、片段尾端自動停止或宣稱整片語意核對。",
+      "tested_start_seconds": 146.1,
+      "tested_end_seconds": 4771.1,
+      "seek_works": true,
+      "timeline_mapping_digest": "8bc4f53d28ff0cc9b73a93cd2bf56ce69dc119a58df163106be6de8d90e40c9c"
+    },
+    "timeline_mapping": {
+      "source_artifact_revision": "sha256:b4975ab0f6ce60b323382d7a305202cc420eb042b255da0088f0e38495628ddc",
+      "target_artifact_revision": "sha256:4f8a574d1dd6ccec1fc347799bd1f03145960e49c61297ede71b7024bf87d5b6",
+      "source_start_seconds": 146.1,
+      "source_end_seconds": 4771.1,
+      "offset_seconds": -146.1,
+      "target_duration_seconds": 4636.981,
+      "reviewer": "Codex",
+      "reviewed_at": "2026-09-11T18:36:26.150Z",
+      "notes": "使用者確認私有下載來自此Apple YouTube影片；target revision標識該下載分析副本，不表示瀏覽器串流位元組雜湊。私有新舊音軌以連續10秒區塊及尾段比對，464區塊最低正規化相關0.9807，偏移146.1秒；三組原畫格另支持相同內容，視音訊PTS差約0.021秒，因此僅提供整秒外連、不宣稱子秒播放器精度。直接目視目前YouTube的CPU卡、降噪火車、iPhone Duo價格卡及開頭／結尾，DOM長度4636.981秒。對應範圍保守限舊版146.1–4771.1秒（目前0–4625秒），超界回退純影片入口。官方章節只抄目前影片描述的五個標題與時間，屬導覽，不計入影音覆蓋。",
+      "chapters": [
+        {
+          "title": "Introduction",
+          "start_seconds": 0
+        },
+        {
+          "title": "iPhone 18 Pro",
+          "start_seconds": 396
+        },
+        {
+          "title": "AirPods 5",
+          "start_seconds": 1814
+        },
+        {
+          "title": "Apple Watch",
+          "start_seconds": 2145
+        },
+        {
+          "title": "iPhone Duo",
+          "start_seconds": 3159
+        }
+      ]
     }
   },
   "access_record": {
@@ -645,6 +679,502 @@
         "reviewer": "Codex（直接原文與資料欄位核對後整合）",
         "reviewed_at": "2026-09-10T00:16:11.067Z",
         "notes": "核對台灣首頁實際連結、購買頁 canonical／標題與 zh-TW、原始 HTTP 200 HTML 及 SHA-256；配置資料直接解析同一 HTML 的 JSON 值，未執行來源 script。"
+      }
+    },
+    {
+      "source_id": "S30",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/generating-swift-data-structures-with-guided-generation",
+      "title": "Generating Swift data structures with guided generation",
+      "artifact_revision": "sha256:07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "sha256": "07b203415316c9181ae7ea3a76dcc2eea5e11ee0fcb97e4e6f9a175eed1c9d75",
+      "acquired_at": "2026-09-11T18:09:48.442Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Foundation Models 的格式、工具、語言與生成限制；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/generating-swift-data-structures-with-guided-generation.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/generating-swift-data-structures-with-guided-generation。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S31",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/expanding-generation-with-tool-calling",
+      "title": "Expanding generation with tool calling",
+      "artifact_revision": "sha256:0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "sha256": "0da28f34d39c1fed77cd7391ccf7e0a153ff071aad2ec2a7415175e93ab65667",
+      "acquired_at": "2026-09-11T18:09:48.378Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Foundation Models 的格式、工具、語言與生成限制；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/expanding-generation-with-tool-calling.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/expanding-generation-with-tool-calling。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S32",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/improving-the-safety-of-generative-model-output",
+      "title": "Improving the safety of generative model output",
+      "artifact_revision": "sha256:3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "sha256": "3a17d51b2f6efc5d66083be5c10b22d7b62ab3e7de9a9ca8eff7c04ae3208803",
+      "acquired_at": "2026-09-11T18:09:48.294Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Foundation Models 的格式、工具、語言與生成限制；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/improving-the-safety-of-generative-model-output.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/improving-the-safety-of-generative-model-output。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S33",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/supporting-languages-and-locales-with-foundation-models",
+      "title": "Supporting languages and locales with Foundation Models",
+      "artifact_revision": "sha256:99a7bf06e90b8aac0fe8a2b36c54de1e39ee91ff547a0c2ce1587d037c95fcc6",
+      "sha256": "99a7bf06e90b8aac0fe8a2b36c54de1e39ee91ff547a0c2ce1587d037c95fcc6",
+      "acquired_at": "2026-09-11T18:09:48.286Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Foundation Models 的格式、工具、語言與生成限制；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/supporting-languages-and-locales-with-foundation-models.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/supporting-languages-and-locales-with-foundation-models。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S34",
+      "canonical_url": "https://developer.apple.com/documentation/foundationmodels/generationoptions",
+      "title": "GenerationOptions",
+      "artifact_revision": "sha256:4c1bcb88a0ba02a93625cf733df350cf52770294e7167eadb8c07bcca51f6b65",
+      "sha256": "4c1bcb88a0ba02a93625cf733df350cf52770294e7167eadb8c07bcca51f6b65",
+      "acquired_at": "2026-09-11T18:09:49.413Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "Foundation Models 的格式、工具、語言與生成限制；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/generationoptions.json",
+      "related_claim_ids": [
+        "KB-126"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.foundationmodels/documentation/FoundationModels/GenerationOptions。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S35",
+      "canonical_url": "https://developer.apple.com/documentation/appintents/creating-your-first-app-intent",
+      "title": "Creating your first app intent",
+      "artifact_revision": "sha256:f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "sha256": "f85c5f7ad988728d51e928acf038b0134a94c8b4c97215201ea7277ac5053e48",
+      "acquired_at": "2026-09-11T18:09:49.436Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "App Intents／Shortcuts 的動作、資料、認證與驗證；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/appintents/creating-your-first-app-intent.json",
+      "related_claim_ids": [
+        "KB-222",
+        "KB-224"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.AppIntents/documentation/AppIntents/Creating-your-first-app-intent。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S36",
+      "canonical_url": "https://developer.apple.com/documentation/appintents/appshortcutsprovider",
+      "title": "AppShortcutsProvider",
+      "artifact_revision": "sha256:72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "sha256": "72f0b3b73db51677a69f2b12a43a027a0ee099dbf3210cc3c6aea46fc0e28db8",
+      "acquired_at": "2026-09-11T18:09:49.516Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "App Intents／Shortcuts 的動作、資料、認證與驗證；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/appintents/appshortcutsprovider.json",
+      "related_claim_ids": [
+        "KB-222",
+        "KB-224"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.AppIntents/documentation/AppIntents/AppShortcutsProvider。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S37",
+      "canonical_url": "https://developer.apple.com/documentation/appintents/entityquery",
+      "title": "EntityQuery",
+      "artifact_revision": "sha256:53a373290cc7ae7e10162bbfd793163bec3d92ca50ff56876ec452eb519cfac7",
+      "sha256": "53a373290cc7ae7e10162bbfd793163bec3d92ca50ff56876ec452eb519cfac7",
+      "acquired_at": "2026-09-11T18:09:49.583Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "App Intents／Shortcuts 的動作、資料、認證與驗證；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/appintents/entityquery.json",
+      "related_claim_ids": [
+        "KB-222",
+        "KB-224"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.AppIntents/documentation/AppIntents/EntityQuery。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S38",
+      "canonical_url": "https://developer.apple.com/documentation/appintents/appintent/authenticationpolicy",
+      "title": "authenticationPolicy",
+      "artifact_revision": "sha256:ad9a8f69470770168971e466d2c1627a69d14553f2ab3f24753a9d6d7c9d776c",
+      "sha256": "ad9a8f69470770168971e466d2c1627a69d14553f2ab3f24753a9d6d7c9d776c",
+      "acquired_at": "2026-09-11T18:09:50.534Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "App Intents／Shortcuts 的動作、資料、認證與驗證；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。 visionOS 在 JSON 有平台項目但未列 introducedAt，故不填入需有版本的 SDK 陣列；不推定不支援。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/appintents/appintent/authenticationpolicy.json",
+      "related_claim_ids": [
+        "KB-222",
+        "KB-224"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.AppIntents/documentation/AppIntents/AppIntent/authenticationPolicy。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S39",
+      "canonical_url": "https://developer.apple.com/documentation/appintents/verifying-your-app-intents-implementation",
+      "title": "Verifying your App Intents implementation",
+      "artifact_revision": "sha256:8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "sha256": "8477e41dd93c4d3a3ef79c2427c04d1d776c8f51a74002cb7732e188d27b4a4e",
+      "acquired_at": "2026-09-11T18:09:50.557Z",
+      "publisher": "Apple",
+      "source_type": "developer_documentation",
+      "language": "en",
+      "scope": "App Intents／Shortcuts 的動作、資料、認證與驗證；只作已核對產品功能的技術脈絡，不宣稱本次新增 API 或特定新品相容。",
+      "notes": "已取得官方 HTML、官方可讀 Markdown 與同源 DocC JSON；公開摘要的版本依保存 JSON SHA-256。取得日不是發布日；未執行 SDK 編譯或真機測試。SDK availability 逐項來自這份 DocC JSON 的 metadata.platforms；文章未提供平台 metadata 時保持空陣列，不借用其他 symbol 的版本。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/appintents/verifying-your-app-intents-implementation.json",
+      "related_claim_ids": [
+        "KB-222",
+        "KB-224"
+      ],
+      "identity_review": {
+        "reviewer": "Codex",
+        "reviewed_at": "2026-09-11T18:14:19.158Z",
+        "notes": "已核對 HTTP 200 且無重新導向的 HTML title、canonical 與 og:url；官方 Markdown metadata.title／identifier 與 DocC metadata.title／identifier 一致。DocC identifier=doc://com.apple.AppIntents/documentation/AppIntents/verifying-your-app-intents-implementation。已閱讀下列 page_reviews 的原文章節與相應官方 Markdown；不同格式的 Overview／Discussion 標題差異按 DocC 定位保存。"
+      }
+    },
+    {
+      "source_id": "S40",
+      "canonical_url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/discoverysession",
+      "title": "AVCaptureDevice.DiscoverySession",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:09:59.569371Z",
+      "artifact_revision": "sha256:7bcc7b8fc68abd105db12af6f1ff0689c84a9dd3345acb2a8ee4740c795ffcc1",
+      "sha256": "7bcc7b8fc68abd105db12af6f1ff0689c84a9dd3345acb2a8ee4740c795ffcc1",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "多相機產品的裝置探索與可用裝置清單；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；不以裝置探索文件推定 iPhone 18 Pro、iPhone Duo 的實際相機枚舉結果或可同時運作組合。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/avcapturedevice/discoverysession.json",
+      "related_claim_ids": [
+        "KB-023",
+        "KB-163"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S41",
+      "canonical_url": "https://developer.apple.com/documentation/avfoundation/avcapturephotooutput",
+      "title": "AVCapturePhotoOutput",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:09:59.576168Z",
+      "artifact_revision": "sha256:6cbb1bd58d0bed45108e449f8e27495d4368d131adc7d68cd4db68189ba4c3e5",
+      "sha256": "6cbb1bd58d0bed45108e449f8e27495d4368d131adc7d68cd4db68189ba4c3e5",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "照片拍攝流程與實際拍攝設定回報；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；格式、深度、ProRAW 與 Live Photos 等能力依實際 capture output 與配置核對；未驗證新品的每一項支援。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/avcapturephotooutput.json",
+      "related_claim_ids": [
+        "KB-023",
+        "KB-163"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S42",
+      "canonical_url": "https://developer.apple.com/documentation/avfoundation/avcapturedevice/setexposuremodecustom(duration:iso:completionhandler:)",
+      "title": "setExposureModeCustom(duration:iso:completionHandler:)",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:09:59.576003Z",
+      "artifact_revision": "sha256:00647f5a0f1a39b265f04355b728a71c417cfb37e79c3821d303e3607907fa65",
+      "sha256": "00647f5a0f1a39b265f04355b728a71c417cfb37e79c3821d303e3607907fa65",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "手動曝光的數值、設定鎖與品質優先條件；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；曝光時間與 ISO 控制不等於鏡頭光圈控制；這份文件沒有確認新品可變光圈或原廠影像控制介面的第三方存取。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/avcapturedevice/setexposuremodecustom(duration:iso:completionhandler:).json",
+      "related_claim_ids": [
+        "KB-227",
+        "KB-240"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S43",
+      "canonical_url": "https://developer.apple.com/documentation/photosui/photospicker",
+      "title": "PhotosPicker",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:09:59.579632Z",
+      "artifact_revision": "sha256:1b7646e5b21c56ab00ddb952d07c6fb0e446800a38a7c8360f0ab9e770ed8dd8",
+      "sha256": "1b7646e5b21c56ab00ddb952d07c6fb0e446800a38a7c8360f0ab9e770ed8dd8",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "選圖與載入媒體的完成、空值及失敗處理；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；這是選圖與資料載入介面，不是照片物件移除、擴圖、視角變換等影片效果的公開實作證明。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/photosui/photospicker.json",
+      "related_claim_ids": [
+        "KB-226"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S44",
+      "canonical_url": "https://developer.apple.com/documentation/photos/phaccesslevel",
+      "title": "PHAccessLevel",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:45.726547Z",
+      "artifact_revision": "sha256:9bb389459d93aacdf27bb6f4a0ff2b0a1564b6b51b8e3893703e6102e64a45cc",
+      "sha256": "9bb389459d93aacdf27bb6f4a0ff2b0a1564b6b51b8e3893703e6102e64a45cc",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "照片圖庫只新增與讀寫的權限層級；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；權限層級是圖庫存取的資料契約，不證明影片照片編輯功能向第三方開放。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/photos/phaccesslevel.json",
+      "related_claim_ids": [
+        "KB-226"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S45",
+      "canonical_url": "https://developer.apple.com/documentation/healthkit/hkhealthstore/ishealthdataavailable()",
+      "title": "isHealthDataAvailable()",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:09:59.566656Z",
+      "artifact_revision": "sha256:f36509bb0383863fac1095eb77a858bc7c319e14039d23f7b872c44d7dd5ebe6",
+      "sha256": "f36509bb0383863fac1095eb77a858bc7c319e14039d23f7b872c44d7dd5ebe6",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "HealthKit SDK 與裝置資料服務可用性的差別；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；HealthKit 可用不等於已取得每種健康資料的讀寫授權；更不代表 Apple 自家準備指數等所有指標都向第三方提供。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/healthkit/hkhealthstore/ishealthdataavailable().json",
+      "related_claim_ids": [
+        "KB-130",
+        "KB-140"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S46",
+      "canonical_url": "https://developer.apple.com/documentation/healthkit/hkquantitytypeidentifier/heartrate",
+      "title": "heartRate",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:00.889030Z",
+      "artifact_revision": "sha256:23f7f2940a1bbb853cda7e74fe21ac2c6eaba57db1e1ac80c247fb250376ecc6",
+      "sha256": "23f7f2940a1bbb853cda7e74fe21ac2c6eaba57db1e1ac80c247fb250376ecc6",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "心率樣本的單位、聚合與可缺少的動態中繼資料；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；心率型別文件不證明新品感測器的量測準確性、更新頻率或準備指數算法；不能以缺值作健康診斷。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/healthkit/hkquantitytypeidentifier/heartrate.json",
+      "related_claim_ids": [
+        "KB-130",
+        "KB-140"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S47",
+      "canonical_url": "https://developer.apple.com/documentation/workoutkit/workoutscheduler",
+      "title": "WorkoutScheduler",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:01.060065Z",
+      "artifact_revision": "sha256:cba215343a0ea68b230a8b58fa4039ac0c443fab58da8827438563637998fd89",
+      "sha256": "cba215343a0ea68b230a8b58fa4039ac0c443fab58da8827438563637998fd89",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "自訂體能訓練的排程授權與 App 排程管理；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；WorkoutScheduler 處理排程；不把排程授權當作 HealthKit 資料讀取權限，也不推定新品配對與同步已實測成功。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/workoutkit/workoutscheduler.json",
+      "related_claim_ids": [
+        "KB-131",
+        "KB-141"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S48",
+      "canonical_url": "https://developer.apple.com/documentation/coremotion/cmmotionmanager",
+      "title": "CMMotionManager",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:01.202728Z",
+      "artifact_revision": "sha256:715576ae68a871435afd6b44800c82837f7283a67d354a44972f1c79be00dbbd",
+      "sha256": "715576ae68a871435afd6b44800c82837f7283a67d354a44972f1c79be00dbbd",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "既有加速度與陀螺儀的動作資料服務與能力檢查；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；一般裝置動作與姿態資料不等於 iPhone Duo 鉸鏈角度、開合事件、內外螢幕切換或耳機專屬姿態介面。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/coremotion/cmmotionmanager.json",
+      "related_claim_ids": [
+        "KB-150",
+        "KB-172"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S49",
+      "canonical_url": "https://developer.apple.com/documentation/swiftui/anylayout",
+      "title": "AnyLayout",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:00.841767Z",
+      "artifact_revision": "sha256:59710ff38a78473b9e2a8c8c402316bc109963d1544a48011bef776e08922891",
+      "sha256": "59710ff38a78473b9e2a8c8c402316bc109963d1544a48011bef776e08922891",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "改變版面容器時保留子視圖狀態；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；子視圖狀態保留限於此版面容器契約，不等於跨 App、跨裝置或折疊時全部狀態自動延續。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/swiftui/anylayout.json",
+      "related_claim_ids": [
+        "KB-234"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S50",
+      "canonical_url": "https://developer.apple.com/documentation/swiftui/environmentvalues/horizontalsizeclass",
+      "title": "horizontalSizeClass",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:00.931408Z",
+      "artifact_revision": "sha256:f054c5dad1d8e6b5a35502e0e25647d67fc21c01561522c4018a0197fa148e94",
+      "sha256": "f054c5dad1d8e6b5a35502e0e25647d67fc21c01561522c4018a0197fa148e94",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "依當下可用橫向空間處理版面變動；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；水平尺寸類別描述可用空間，不能拿來當作 iPhone Duo 開合、鉸鏈角度或多視窗生命週期事件。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/swiftui/environmentvalues/horizontalsizeclass.json",
+      "related_claim_ids": [
+        "KB-234"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
+      }
+    },
+    {
+      "source_id": "S51",
+      "canonical_url": "https://developer.apple.com/documentation/foundation/nsuseractivity",
+      "title": "NSUserActivity",
+      "source_type": "developer_documentation",
+      "acquired_at": "2026-09-11T18:10:01.413160Z",
+      "artifact_revision": "sha256:88f9475594be69386ae8112350afb74e7c8c63a96ab43ca5b215be1215b1bbde",
+      "sha256": "88f9475594be69386ae8112350afb74e7c8c63a96ab43ca5b215be1215b1bbde",
+      "publisher": "Apple",
+      "language": "en",
+      "scope": "一般 App activity Handoff 的資料與生命週期對照；context-only，不推定特定新品相容",
+      "notes": "使用者本輪授權擴充直接相關 Developer 研究；已取得官方 HTML、同內容 DocC JSON 與頁面所連官方 Markdown。revision 綁定 JSON 原始位元組；此處只研究一般 App activity 延續；不能用它解釋影片 Switched to this iPhone 提示的觸發、門號／SIM 移轉或通話接續。",
+      "content_resource_url": "https://developer.apple.com/tutorials/data/documentation/foundation/nsuseractivity.json",
+      "related_claim_ids": [
+        "KB-249"
+      ],
+      "identity_review": {
+        "reviewer": "Codex Developer device reviewer",
+        "reviewed_at": "2026-09-11T18:14:31Z",
+        "notes": "直接閱讀本次保存的官方 DocC 主體章節及以下 locator 相關 reference 描述；HTML 標題、canonical、description 與 DocC title／identifier／abstract 相符，HTML 連出的 Markdown 原文 title／identifier 再次相符。僅核對本頁選定內容，不宣稱遍讀所有連出文件；無 SDK 編譯、無實機測試。"
       }
     }
   ],
