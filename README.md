@@ -34,12 +34,14 @@ npm run verify:scaffold
 npm run test:release-fixture
 npm run check:public-tree
 npm run verify:public-tree
+npm run check:status
 npm run verify:release
 ```
 
 - `verify:scaffold`：來源結構、名稱／用語、單元反例、build、連結、公開輸出與 Chromium 互動。
 - `test:release-fixture`：在 OS 暫存副本用合成資料測試正向 release 流程；不核准正式資料。
 - `verify:public-tree`：只複製公開清單，重新安裝並執行工程驗證和合成 release 流程；不帶原 node_modules、研究素材或登入檔。
+- `check:status`：產生本機 `dist/status.json`，重算各模態覆蓋，核對目前來源／產物與驗證紀錄，列出正式內容阻擋。成功只表示報告已產生；不連線、不部署，也不將歷史預覽視為目前驗收。
 - `verify:release`：另要求完整承諾覆蓋、無阻擋缺口與新的語意核准。目前預期非零退出。
 
 實際命令結果與未測範圍見 [QA](docs/QA.md)，發布狀態見 [RELEASE_CHECKLIST](docs/RELEASE_CHECKLIST.md)。

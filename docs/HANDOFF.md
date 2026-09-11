@@ -1,5 +1,15 @@
 # 工程與內容交接
 
+## 2026-09-12 維護續接：狀態報告與 CI 收尾
+
+本次新增 `npm run check:status`，以現有資料產生 `dist/status.json`。它重算覆蓋聯集，核對目前來源／產物是否仍符合完整驗證與乾淨重建紀錄，並列出正式發布阻擋；不查詢遠端、不刪除既有驗證，也不把歷史 preview 視為目前版本。命令成功只表示報告產生，發布仍使用原 gate。
+
+續接時發現舊 `dist/delivery.json` 仍屬草稿部署階段，與後續交接文字不一致。舊檔已逐位元組保存於私有維護紀錄；本次交付改以目前 `dist/status.json` 與新的 `dist/delivery.json` 判讀，歷史 preview 的來源快照、receipt 及授權消耗狀態繼續保留。交付檔僅是有時間戳的快照，後續修改應重跑狀態檢查。
+
+2026-09-12（Asia/Taipei）唯讀查驗確認專用 GitHub 為 Public、Firebase project／site 與設定相符。續接時遠端仍是首次提交，初次 Actions run 34431800822 已完成且為 cancelled；本機另有未推送的交接提交。後續提交與 CI 必須依同一 SHA 的實際結果判讀，最新精確結果保存在本機交付檔；不沿用舊 in_progress 或本機測試宣稱遠端成功。
+
+內容輸入摘要保持不變：167 條 KB、164 verified／3 candidate、161 節點；原音 0 秒、畫面聯集約 43.1058 秒、字幕 30 秒。完整 required_scope、GAP-001 至 GAP-003 及 semantic pending 保留。這次工程完善不補作產品主張或影音審查；下一個內容續接仍是 F11 的 2050–2170 秒原音與其餘全片模態核對。
+
 ## 2026-09-10 最新續接狀態
 
 本次已取得GitHub開源push／Public與通過完整內容門檻後的Firebase live授權，沿用既有專用環境。只讀線上核對已通過，正式origin與設定一致。先前草稿預覽已部署並完成指定驗收，舊授權已消耗；本次不重用舊計畫。GitHub公開與正式內容發布分別驗證，實際結果記於下方本次收尾紀錄及本機dist/delivery.json。

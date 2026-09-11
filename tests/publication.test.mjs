@@ -24,6 +24,43 @@ import {makePlan,executePlan,confirmationFor,firebaseArgs} from '../build/deploy
 import {serve} from '../build/preview.mjs';
 import {makeFixture} from './fixtures/make.mjs';
 import {inspectEnvironment} from '../build/environment.mjs';
+import {inspectStatus,reviewedSeconds} from '../build/status.mjs';
+
+test('status counts reviewed interval unions separately from acquired audio and subtitles',()=>{
+ const segments=[{start_seconds:1,end_seconds:5,visual_viewed:true,acquired:['audio']},{start_seconds:2,end_seconds:4,visual_viewed:true},{start_seconds:4,end_seconds:7,visual_viewed:true},{start_seconds:10,end_seconds:12,subtitles_read:true}];
+ assert.equal(reviewedSeconds(segments,'visual_viewed'),6);
+ assert.equal(reviewedSeconds(segments,'audio_checked'),0);
+ assert.equal(reviewedSeconds(segments,'subtitles_read'),2);
+});
+
+test('status keeps blocked draft, historical delivery and absent remote observations separate',()=>{
+ const f=draftPrepared();try{
+  const before=readFileSync(join(f.root,'dist/verification.json'));
+  writeFileSync(join(f.root,'dist/delivery.json'),JSON.stringify({live_verified:true,preview_verified:true}));
+  const r=inspectStatus(f.root);
+  assert.equal(r.verification.status,'current');assert.equal(r.release.verified,false);assert.equal(r.production.verified,false);
+  assert.equal(r.release.content_preflight,'blocked');assert.equal(r.semantic.decision,'pending');assert.equal(r.content.scope_complete,false);
+  assert.equal(r.remote.live_verified,null);assert.equal(r.remote.preview_verified,null);
+  assert.deepEqual(readFileSync(join(f.root,'dist/verification.json')),before);
+ }finally{f.cleanup();}
+});
+
+test('status rejects stale source, changed output, missing and malformed verification',()=>fixture(f=>{
+ assert.equal(inspectStatus(f.root).verification.status,'current');
+ const original=readFileSync(join(f.root,'README.md'));writeFileSync(join(f.root,'README.md'),original+'\n');
+ assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');writeFileSync(join(f.root,'README.md'),original);
+ writeFileSync(join(f.root,'dist/web/index.html'),'changed output');assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');
+ writeFileSync(join(f.root,'dist/verification.json'),'{');assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');
+ rmSync(join(f.root,'dist/verification.json'));assert.equal(inspectStatus(f.root).verification.status,'missing');
+}));
+
+test('status clean rebuild must match current source and the complete command sequence',()=>fixture(f=>{
+ const report={status:'passed',source:{digest:inspectSourceTree(f.root).digest},steps:['npm ci --ignore-scripts --no-audit --no-fund','npm run verify:scaffold','npm run test:release-fixture'].map(command=>({command,exit_code:0})),finished_at:'2026-01-01T00:00:00Z'};
+ mkdirSync(join(f.root,'docs/qa'),{recursive:true});f.json('docs/qa/public-rebuild.json',report);
+ assert.equal(inspectStatus(f.root).clean_rebuild.status,'current');
+ report.steps.pop();f.json('docs/qa/public-rebuild.json',report);assert.equal(inspectStatus(f.root).clean_rebuild.status,'stale-or-invalid');
+ report.source.digest='old';f.json('docs/qa/public-rebuild.json',report);assert.equal(inspectStatus(f.root).clean_rebuild.status,'stale-or-invalid');
+}));
 
 test('source chipset labels remain intact while mistaken model expansion and mixed script fail',()=>{
  for(const text of ['iPhone 17 Pro (A19 Pro)','iPhone 16 Pro (A18 Pro)','完整測試工作負載'])assert.deepEqual(textQuality(text),[]);

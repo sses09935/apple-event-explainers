@@ -25,7 +25,8 @@
     "deploy:plan": "node build/deploy.mjs --plan",
     "build:production": "node build/build.mjs --profile production",
     "verify:production": "node build/verify.mjs production",
-    "check:environment": "node build/environment.mjs"
+    "check:environment": "node build/environment.mjs",
+    "check:status": "node build/status.mjs"
   },
   "dependencies": {
     "ajv": "8.18.0",

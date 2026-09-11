@@ -1,5 +1,13 @@
 # 本機驗證與語意邊界
 
+## 2026-09-12 狀態檢查與交接修復
+
+新增狀態檢查的反例涵蓋：重疊區間不重複計秒、已取得音訊及字幕不充作原音核對、歷史 delivery 不推定目前遠端成果、文件／產物變動使驗證失效、缺少或損壞紀錄不通過、乾淨重建須匹配來源摘要及完整指令序列。狀態檢查只讀現有驗證，輸出 `dist/status.json`；不取代 release／production gate。
+
+本次完整 scaffold、公開副本乾淨重建及精確提交的 CI 結果分別記於本機 `dist/delivery.json`；目前是否仍匹配由 `npm run check:status` 重算。測試合成資料只留 OS 暫存副本。既有來源、KB、四稿、三份選材及 semantic 的內容摘要保持不變，沒有新增版面或原音目視／聆聽驗收。
+
+續接時查得初次 CI run 34431800822 為 cancelled，不能宣稱通過。後續 CI 使用實際推送的 commit SHA 判讀；工作區與公開 checkout 分開，不把無 Git 的工作區產物宣稱建自提交。歷史草稿部署資料保全，這次沒有 Hosting 部署。
+
 ## 2026-09-10 本次驗證範圍
 
 本次重新綁定目前工作區，補做deployment wrapper修改後的乾淨公開副本重建。先前部署與QA資料均已保全，舊scaffold不視為當前驗證。實際命令、退出碼、公開清單與產物摘要集中本機dist/delivery.json與docs/qa；四種交付狀態另見 [發布清單](RELEASE_CHECKLIST.md)。

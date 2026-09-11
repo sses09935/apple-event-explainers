@@ -1,5 +1,12 @@
 # 發布檢查清單
 
+## 2026-09-12 目前狀態的判讀方式
+
+- 執行 `npm run check:status` 取得 `dist/status.json`：內容、公開來源清單、目前驗證及乾淨重建的摘要匹配分開列出。`current` 僅適用當次檔案；缺少、失效與未查詢遠端不視為通過。
+- `dist/delivery.json` 保存本次交付及精確 GitHub commit／CI 觀察；先前草稿 delivery 已另存私有歷史。新的本機報告不沿用舊 preview 驗收。
+- 內容發布仍受完整影音、GAP-001 至 GAP-003、semantic pending 及 draft 阻擋。GitHub QA 可以通過，Firebase live 仍須獨立通過原有門檻。
+- 初次 Actions run 34431800822 在本次唯讀查驗時為 cancelled；後續提交一律對照其自身 Actions 結果，不以初次或本機結果代替。
+
 ## 2026-09-10 本次發布收尾
 
 GitHub公開原始碼與Firebase live分別驗證。本次已具明確操作授權，仍保留全部證據、隱私與production門檻；授權不是內容核准。先前草稿預覽已部署且完成指定驗收，舊授權已消耗，不能再解讀為待執行。
