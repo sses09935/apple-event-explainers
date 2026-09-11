@@ -8,7 +8,7 @@
 
 2026-09-12（Asia/Taipei）唯讀查驗確認專用 GitHub 為 Public、Firebase project／site 與設定相符。續接時遠端仍是首次提交，初次 Actions run 34431800822 已完成且為 cancelled；本機另有未推送的交接提交。後續提交與 CI 必須依同一 SHA 的實際結果判讀，最新精確結果保存在本機交付檔；不沿用舊 in_progress 或本機測試宣稱遠端成功。
 
-內容輸入摘要保持不變：167 條 KB、164 verified／3 candidate、161 節點；原音 0 秒、畫面聯集約 43.1058 秒、字幕 30 秒。完整 required_scope、GAP-001 至 GAP-003 及 semantic pending 保留。這次工程完善不補作產品主張或影音審查；下一個內容續接仍是 F11 的 2050–2170 秒原音與其餘全片模態核對。
+內容輸入摘要保持不變：167 條 KB、164 verified／3 candidate、161 節點；原音 0 秒、畫面聯集約 43.1058 秒、字幕 30 秒。完整 required_scope、GAP-001 至 GAP-003 及 semantic pending 保留。依本次清理要求，已移除無效能力探測與被成功結果取代的失敗紀錄；原音重試不列入目前待辦。現環境不具原音核對能力，僅在有新的可用輸入能力或同版本可信審查紀錄時重新啟動，屆時才處理 F11 及全片缺口。
 
 ## 2026-09-10 最新續接狀態
 
@@ -52,11 +52,11 @@
 
 專用私人空GitHub repository與Firebase project／site在前輪已建立並核實。本輪沒有重做環境、變更登入、push、公開、建立Release、preview／live部署或線上成品驗證；allow_remote_write／allow_deploy保持false。後續獲明確發布授權時才依 [DEPLOYMENT](DEPLOYMENT.md)只讀重查既有目標，不重填或重建已提供環境。
 
-## 下一個明確續接點
+## 目前限制與重新啟動條件
 
-先在真正能接收原音的核對環境處理F11的2050–2170秒同版本對話，對照畫面記錄可辨識原音，再補其餘全片模態缺口。既有本機附件、音訊資料URL與新代理重試都已證實不支援；本輪已讀紀錄，沒有重試、重跑ASR或用字幕替代。完成證據後重新審查四稿與選材、重建digest並跑release／production gate。
+原音核對目前停用，不排程重試。只有取得新的可用原音輸入能力或可信且綁定固定來源版本的審查紀錄時，才重新啟動 F11 的2050–2170秒及全片缺口核對；完成證據後須重新審查四稿與選材並通過正式門檻。
 
-私人研究續接：research/.private/resume-20260910；價格原文／JSON映射在其pricing子目錄，前輪未支援音訊的嘗試在research/.private/feature-review。新商店的其他功能FAQ僅留待審，不自動准入。當前檢查結果與命令記錄集中docs/qa；本機交付是dist/delivery.json，精確公開副本位置也記在該檔。
+私人研究續接：research/.private/resume-20260910；價格原文／JSON映射在其pricing子目錄。新商店的其他功能FAQ僅留待審，不自動准入。當前檢查結果與命令記錄集中docs/qa；本機交付是dist/delivery.json，精確公開副本位置也記在該檔。
 
 
 <!-- verified-draft-preview-review-20260910-post-deployment -->
@@ -79,4 +79,4 @@ CLI 部署結果與線上驗收分開記錄：`docs/qa/draft-preview-deployment.
 
 本次只在部署後追加 HANDOFF、QA、RELEASE_CHECKLIST、DEPLOYMENT 四份文件，因此目前 workspace source-tree digest 會與上述部署快照不同。舊 scaffold／交付驗證只適用凍結快照，沒有重新簽署成目前來源的驗證，也沒有因文件追加重建產物或重部署。四份原文件的私有備份、追加前後摘要及檢查結果記於 `research/.private/deployment-preview-20260910/post-deployment-doc-update.json`；既有 `dist/verification.json`、部署快照與線上 artifact 均保留不改。後續若修改產品內容或工程，須另行驗證，不能沿用已消耗授權。
 
-下一個內容續接點仍是 F11 的 2050–2170 秒原音及其餘全片影音缺口；只在能實際接收原音的環境核對，不重複已證實不支援的方法或用 ASR／字幕替代。這次 preview 可供閱讀回饋，不能關閉來源缺口。
+原音及全片影音缺口仍存在；目前不安排重試，重新啟動條件依上方最新維護紀錄。這次 preview 可供閱讀回饋，不能關閉來源缺口。
