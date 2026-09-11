@@ -139,7 +139,24 @@ test('event summary and timeline exclude all supplemental claims, Reading shows 
  for(const category of ['發表會影片','技術規格補充','Developer 技術補充'])assert.ok(html.includes('data-source-category>'+category));
  for(const b of d.blocks){const c=d.claims.find(c=>c.id===b.kb);assert.ok(html.includes(markdown(b.text||c.statement_zh)));}
  assert.doesNotMatch(html,/全站唯一來源|規格頁證據一致/);
- for(const page of d.config.pages){const rendered=renderPage(page,d,{version:'test',built_at:'test'});assert.match(rendered,/<div class="draft-strip">草稿 · 已核對子集 · 全片影音與整體語意審查尚未完成<\/div>/);assert.match(rendered,/<meta name="robots" content="noindex,nofollow">/);}
+ for(const page of d.config.pages){const rendered=renderPage(page,d,{version:'test',built_at:'test'});assert.match(rendered,/<div class="draft-strip">草稿 · 已核對子集 ·/);assert.match(rendered,/<meta name="robots" content="noindex,nofollow">/);}
+}));
+
+for(const decision of ['pending','approved','rejected'])for(const complete of [false,true])test(`draft notice separates ${decision} semantic review from ${complete?'complete':'incomplete'} audiovisual coverage`,()=>fixture((f,d)=>{
+ d.semantic.decision=decision;d.coverage.segments[0].end_seconds=complete?120:30;
+ const expected=!complete&&decision==='pending'?'全片影音與整體語意審查尚未完成':`${complete?'全片影音查核已完成':'全片影音查核尚未完成'} · ${decision==='approved'?'整體語意審查已通過':decision==='rejected'?'整體語意審查未通過':'整體語意審查尚未完成'}`;
+ for(const page of d.config.pages){
+  const html=renderPage(page,d,{version:'test',built_at:'test',profile:'preview'}),notice=html.match(/<div class="draft-strip">([^<]+)<\/div>/)[1];
+  assert.equal(notice,'草稿 · 已核對子集 · '+expected);assert.match(html,/<meta name="robots" content="noindex,nofollow">/);
+  if(page.role==='reader')assert.ok(html.includes(complete?'全片音訊與連續畫面已依紀錄完成檢視':'全片音訊與連續畫面尚未完成檢視'));
+ }
+}));
+test('draft notice cannot reuse stale semantic decisions or call a smaller promised range the full video',()=>fixture((f,d)=>{
+ const render=()=>renderPage(d.config.pages[0],d,{version:'test',built_at:'test',profile:'preview'}).match(/<div class="draft-strip">([^<]+)<\/div>/)[1];
+ for(const decision of ['approved','rejected']){d.semantic.decision=decision;d.semantic.input_digest='stale';assert.equal(render(),'草稿 · 已核對子集 · 全片影音查核已完成 · 整體語意審查尚未完成');}
+ d.semantic.decision='approved';d.semantic.input_digest=d.digest;d.semantic.reviewer=null;assert.doesNotMatch(render(),/語意審查已通過/);
+ d.semantic.decision='pending';d.coverage.required_scope[0].end_seconds=30;d.coverage.segments[0].end_seconds=30;
+ assert.equal(render(),'草稿 · 已核對子集 · 全片影音與整體語意審查尚未完成');
 }));
 
 test('verified official time links do not imply verified embeds or subsecond seek',()=>fixture((f,d)=>{const e={...d.claims[0].evidence[0],start_seconds:10.125};d.manifest.player_adapter={kind:'youtube-link',verification:{seek_works:true,canonical_url:d.manifest.canonical_url,artifact_revision:d.manifest.artifact_revision}};let p=playerLink(d.manifest,e);assert.equal(p.embed,null);assert.match(p.official,/t=10s$/);assert.equal(p.time,'0:10.125–0:15');d.manifest.player_adapter.verification.artifact_revision='stale';p=playerLink(d.manifest,e);assert.equal(p.official,d.manifest.canonical_url);assert.equal(p.embed,null);}));

@@ -47,7 +47,7 @@ try{
    const response=await page.goto(`${production.url}/${p.file}`);assert.equal(response.status(),200);
    assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('body').getAttribute('data-page-role'),p.role);
    if(!data.manifest.canonical_url)assert.match(await page.locator('body').innerText(),/尚未填入發表會資料/);
-   if(built.meta.profile!=='production'&&data.config.publication_status==='draft'&&data.manifest.access_record?.status!=='blocked'&&data.claims.some(c=>c.verification==='verified'))assert.equal(await page.locator('.draft-strip').innerText(),'草稿 · 已核對子集 · 全片影音與整體語意審查尚未完成');
+   if(built.meta.profile!=='production'&&data.config.publication_status==='draft'&&data.manifest.access_record?.status!=='blocked'&&data.claims.some(c=>c.verification==='verified'))assert.match(await page.locator('.draft-strip').innerText(),/^草稿 · 已核對子集 · (?:全片影音與整體語意審查尚未完成|全片影音查核(?:已完成|尚未完成) · 整體語意審查(?:已通過|未通過|尚未完成))$/);
    if(data.manifest.access_record?.status==='blocked'){
     assert.match(await page.locator('body').innerText(),/證據存取受阻/);
     if(p.role==='evidence'){

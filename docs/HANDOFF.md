@@ -1,10 +1,12 @@
 # 工程與內容交接
 
-## 2026-09-12 部署續接：正式網址展示草稿
+## 2026-09-12 現行部署規則：工程與內容認證分開
 
-使用者在原音人工審查暫時略過後要求解決部署問題，本輪採單次 live 草稿展示：既有 Firebase project／site `apple-event-explainers`，preview／draft／pending、完整 coverage 與 gaps 皆保留。新 draft-live 授權與舊 preview 授權分開，必須重新驗證與綁定提交／產物，只做 Hosting。live 不設 7 天期限，保留 noindex 與草稿說明。
+使用者明確批准草稿在正式網址公開展示，接著要求修正原本的驗證規則。一般 draft／preview 產物通過完整 scaffold、來源／產物安全及明確目標檢查，即可進入 Hosting 計畫；不再為每次草稿上線另立內容例外。完整影音與語意未完成仍如實顯示，release／production 內容認證不冒稱通過。
 
-這解決正式網址上線的流程限制，不核准全片影音內容。下文「本輪未 live」指先前階段；當前部署結果、CI 提交與逐檔遠端驗收以本機 `dist/delivery.json` 和本次私有 receipt 為準，不沿用舊 preview 結果。完整操作範圍見 [部署文件](DEPLOYMENT.md)。
+`check:status` 新增 Hosting 本機前檢，與完整內容認證分開顯示；前檢不代表遠端登入、執行授權或線上成功。正常部署仍須明確 project／site／channel、單次旗標、新計畫／nonce／receipt、同提交 CI 與產物驗收。永久旗標維持 false，私人影片留在本機。新的操作文件已移除歷史矛盾規則；先前流程保留於 Git。另修正內容前檢失敗誤刪有效工程驗證、較嚴格紀錄不能沿用，以及把審查進度寫死為 pending 的不必要耦合。
+
+當前部署結果、精確提交與遠端逐檔驗收以本機 `dist/delivery.json` 為準。下方歷史「內容未完成所以不能 live」只描述舊流程；目前正常草稿 Hosting 依 [部署文件](DEPLOYMENT.md) 操作。
 
 ## 2026-09-12 Developer 擴充與美元更正
 

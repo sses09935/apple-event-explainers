@@ -23,3 +23,9 @@ export function checkDraftPreviewVerification(root,profile){
  if(profile!=='preview')throw Error('Draft exception requires preview output');
  return checkRecord(root,profile,'scaffold');
 }
+export function checkDraftHostingVerification(root,profile){
+ if(profile!=='preview')throw Error('Draft Hosting requires preview output');
+ const {gate}=JSON.parse(readFileSync(join(root,'dist/verification.json')));
+ if(!['scaffold','release'].includes(gate))throw Error('Complete scaffold or release verification for preview output is required');
+ return checkRecord(root,profile,gate);
+}

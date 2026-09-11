@@ -1,10 +1,12 @@
 # 本機驗證與語意邊界
 
-## 2026-09-12 正式網址草稿展示驗證
+## 2026-09-12 部署規則修正的驗證範圍
 
-新增獨立 draft-live 授權例外的驗證範圍包括：限定目標與 channel、preview／draft／pending、完整內容阻擋保留、來源／產物／版本綁定、期限與單次 receipt、舊 preview 授權不得提升 live，以及原 release／production gate 維持拒絕未完成內容。共用草稿說明明示全片影音與整體語意審查未完成。
+一般 draft／preview Hosting 使用完整 scaffold 工程紀錄，無需私有內容例外授權。測試需證明：未完成內容認證時可建立安全草稿計畫；錯目標、過期／變更計畫、錯誤 verification gate、來源／產物不符、改掉草稿提示或索引策略、缺少單次操作旗標、重用 receipt 仍被拒絕。舊授權參數保留嚴格相容性，原 release／production 內容認證不被捏造成通過。有效的 approved／rejected 草稿照實顯示，匹配的較嚴格 preview／release 工程紀錄可沿用；內容前檢立即拒絕時，原工程驗證、產物及 Hosting 設定必須逐位元組保留。
 
-實際測試數量、精確提交 CI、隔離副本重建、部署 CLI 和線上驗收分開保存於本次本機交付紀錄，不用歷史結果預先宣稱本輪成功。線上驗收須比對同一已測產物的檔案及 build-info，再驗證六頁操作、來源回連、404、header 與 noindex。私人影片、研究原文與授權檔均不進 Hosting。
+狀態報告須同時可呈現「Hosting 本機前檢通過」及「完整內容認證未完成」，不得以歷史 delivery 推定遠端成功，也不能因一般 verification 尚有效而漏查 Hosting 模板變動。狀態命令不寫計畫、不消耗 receipt。
+
+實際測試數量、精確提交 CI、隔離重建、部署 CLI 與線上驗收分別保存於本次交付紀錄。線上驗收比對同一已測產物的全檔與 build-info，再檢查六頁、來源回連、404、header 及 noindex。私人影片、研究與授權紀錄均不進 Hosting。
 
 ## 2026-09-12 Developer／USD 複核範圍
 

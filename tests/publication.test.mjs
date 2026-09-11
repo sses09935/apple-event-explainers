@@ -1,10 +1,11 @@
-import {writeVerification,requiredChecks,checkVerification} from '../build/verification.mjs';
+import {writeVerification,requiredChecks,checkVerification,outputDigest} from '../build/verification.mjs';
 // Synthetic local tests. No Firebase CLI or remote write is executed.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {join} from 'node:path';
 import {mkdtempSync,cpSync,readFileSync,writeFileSync,existsSync,rmSync,mkdirSync,symlinkSync} from 'node:fs';
 import {tmpdir} from 'node:os';
+import {spawnSync} from 'node:child_process';
 import {ROOT,loadData,hash,releaseErrors} from '../build/data.mjs';
 import {build} from '../build/build.mjs';
 import {debug,checkPublic} from '../build/inspect.mjs';
@@ -20,7 +21,7 @@ test('official nonbreaking spaces preserve complete-name checks without excusing
 });
 
 import {publicFiles,inspectSourceTree,exportPublic,sensitiveText} from '../build/public-tree.mjs';
-import {makePlan,executePlan,confirmationFor,firebaseArgs} from '../build/deploy.mjs';
+import {makePlan,executePlan,confirmationFor,firebaseArgs,hostingPreflight} from '../build/deploy.mjs';
 import {serve} from '../build/preview.mjs';
 import {makeFixture} from './fixtures/make.mjs';
 import {inspectEnvironment} from '../build/environment.mjs';
@@ -40,19 +41,32 @@ test('status keeps blocked draft, historical delivery and absent remote observat
   const r=inspectStatus(f.root);
   assert.equal(r.verification.status,'current');assert.equal(r.release.verified,false);assert.equal(r.production.verified,false);
   assert.equal(r.release.content_preflight,'blocked');assert.equal(r.semantic.decision,'pending');assert.equal(r.content.scope_complete,false);
+  assert.equal(r.hosting.local_preflight,'passed');assert.equal(r.hosting.engineering_verified,true);assert.deepEqual(r.hosting.blockers,[]);
+  assert.equal(r.hosting.required_verification_gate,'scaffold');assert.equal(r.hosting.content_certification_required,false);
+  assert.equal(r.hosting.channel,'live');assert.equal(r.hosting.remote_environment,'not-queried');assert.equal(r.hosting.authorization,'required-at-execution');assert.equal(r.hosting.requires_one_time_confirmation,true);
   assert.equal(r.remote.live_verified,null);assert.equal(r.remote.preview_verified,null);
   assert.deepEqual(readFileSync(join(f.root,'dist/verification.json')),before);
+  assert.equal(existsSync(join(f.root,'dist/deploy-plan.json')),false);assert.equal(existsSync(join(f.root,'dist/deploy-receipts')),false);
  }finally{f.cleanup();}
 });
 
 test('status rejects stale source, changed output, missing and malformed verification',()=>fixture(f=>{
  assert.equal(inspectStatus(f.root).verification.status,'current');
  const original=readFileSync(join(f.root,'README.md'));writeFileSync(join(f.root,'README.md'),original+'\n');
- assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');writeFileSync(join(f.root,'README.md'),original);
+ assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');assert.equal(inspectStatus(f.root).hosting.engineering_verified,false);writeFileSync(join(f.root,'README.md'),original);
  writeFileSync(join(f.root,'dist/web/index.html'),'changed output');assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');
  writeFileSync(join(f.root,'dist/verification.json'),'{');assert.equal(inspectStatus(f.root).verification.status,'stale-or-invalid');
  rmSync(join(f.root,'dist/verification.json'));assert.equal(inspectStatus(f.root).verification.status,'missing');
+ assert.equal(inspectStatus(f.root).hosting.local_preflight,'blocked');assert.equal(inspectStatus(f.root).hosting.engineering_verified,false);
 }));
+
+test('status checks the real Hosting template and handles absent build output without certifying content',()=>{
+ const f=draftPrepared();try{
+  const generated=JSON.parse(readFileSync(join(f.root,'dist/hosting.json')));generated.hosting.public='unexpected';f.json('dist/hosting.json',generated);
+  const r=inspectStatus(f.root);assert.equal(r.verification.status,'current');assert.equal(r.hosting.engineering_verified,true);assert.equal(r.hosting.local_preflight,'blocked');assert.match(r.hosting.blockers.join(' '),/Hosting configuration/);assert.equal(r.release.verified,false);
+  rmSync(join(f.root,'dist/web'),{recursive:true});const missing=inspectStatus(f.root);assert.equal(missing.hosting.local_preflight,'blocked');assert.equal(missing.hosting.engineering_verified,false);assert.match(missing.hosting.blockers.join(' '),/missing/);
+ }finally{f.cleanup();}
+});
 
 test('status clean rebuild must match current source and the complete command sequence',()=>fixture(f=>{
  const report={status:'passed',source:{digest:inspectSourceTree(f.root).digest},steps:['npm ci --ignore-scripts --no-audit --no-fund','npm run verify:scaffold','npm run test:release-fixture'].map(command=>({command,exit_code:0})),finished_at:'2026-01-01T00:00:00Z'};
@@ -60,6 +74,33 @@ test('status clean rebuild must match current source and the complete command se
  assert.equal(inspectStatus(f.root).clean_rebuild.status,'current');
  report.steps.pop();f.json('docs/qa/public-rebuild.json',report);assert.equal(inspectStatus(f.root).clean_rebuild.status,'stale-or-invalid');
  report.source.digest='old';f.json('docs/qa/public-rebuild.json',report);assert.equal(inspectStatus(f.root).clean_rebuild.status,'stale-or-invalid');
+}));
+
+function assertContentPreflightPreservesEngineering(f,gate,reason){
+ // Only the child CLI's read-only content preflight runs. Dependencies are
+ // shared through an excluded temporary link; no install or network is used.
+ symlinkSync(join(ROOT,'node_modules'),join(f.root,'node_modules'),'dir');
+ const record=readFileSync(join(f.root,'dist/verification.json')),web=outputDigest(f.root),hosting=readFileSync(join(f.root,'dist/hosting.json'));
+ const result=spawnSync(process.execPath,[join(f.root,'build/verify.mjs'),gate],{cwd:f.root,encoding:'utf8',timeout:20000});
+ assert.equal(result.status,1,result.error?.message||result.stderr);assert.match(result.stderr,reason);
+ assert.equal(result.stdout,'');
+ assert.deepEqual(readFileSync(join(f.root,'dist/verification.json')),record);
+ assert.equal(outputDigest(f.root),web);assert.deepEqual(readFileSync(join(f.root,'dist/hosting.json')),hosting);
+ assert.equal(inspectStatus(f.root).verification.status,'current');
+}
+
+for(const gate of ['release','production'])test(`rejected ${gate} content preflight preserves current scaffold and web bytes`,()=>draftFixture(f=>{
+ assertContentPreflightPreservesEngineering(f,gate,/coverage|semantic/i);
+ assert.equal(makePlan(f.root,{channel:'live'}).ready,true);
+}));
+
+for(const [name,change,reason]of [
+ ['publication status',c=>c.publication_status='draft',/publication_status must be release-ready/i],
+ ['public origin',c=>c.output.public_base_url=null,/PUBLIC_BASE_URL is unset/]
+])test(`rejected production ${name} preflight preserves current scaffold and web bytes`,()=>fixture(f=>{
+ const config=loadData(f.root).config;change(config);f.json('project.config.json',config);refresh(f);build(f.root);stamp(f,'scaffold');
+ assert.deepEqual(releaseErrors(loadData(f.root)),[]);
+ assertContentPreflightPreservesEngineering(f,'production',reason);
 }));
 
 test('source chipset labels remain intact while mistaken model expansion and mixed script fail',()=>{
@@ -255,9 +296,9 @@ test('one-operation draft preview keeps content blockers and stages only the tes
  assert.ok(releaseErrors(after).length);assert.throws(()=>checkVerification(f.root,'preview'),/release verification/);
 }));
 
-test('draft preview authorization cannot silently become ordinary preview, live or production approval',()=>draftFixture(f=>{
+test('optional legacy preview authority still forbids live and cannot certify production',()=>draftFixture(f=>{
  const a=draftAuthorization(f);
- assertBlockedPlan(()=>makePlan(f.root,{channel:'draft-review'}),/coverage|semantic|release/i);
+ assert.equal(makePlan(f.root,{channel:'draft-review'}).ready,true);
  assertBlockedPlan(()=>makePlan(f.root,{channel:'live',draftPreviewAuthorization:{...a,channel:'live'}}),/draft|preview|live/i);
  assert.throws(()=>build(f.root,{profile:'production'}),/coverage|semantic|release/i);
  const infoPath=join(f.root,'dist/web/build-info.json'),info=JSON.parse(readFileSync(infoPath));
@@ -369,9 +410,9 @@ test('one-operation draft live stages the verified noindex bytes without approvi
  assert.throws(()=>build(f.root,{profile:'production'}),/coverage|semantic|release/i);
 }));
 
-test('draft live accepts only its dedicated target and does not widen ordinary or preview authority',()=>draftLiveFixture(f=>{
+test('optional legacy live authority retains its dedicated target and cannot replace preview authority',()=>draftLiveFixture(f=>{
  const a=draftLiveAuthorization(f),preview=draftAuthorization(f);
- assertBlockedPlan(()=>makePlan(f.root,{channel:'live'}),/live|coverage|release/i);
+ assert.equal(makePlan(f.root,{channel:'live'}).ready,true);
  assertBlockedPlan(()=>makePlan(f.root,{channel:'live',draftPreviewAuthorization:{...preview,channel:'live'}}),/live|preview/i);
  assertBlockedPlan(()=>makePlan(f.root,{channel:'draft-review',draftLiveAuthorization:{...a,channel:'draft-review'}}),/live|channel/i);
  assertBlockedPlan(()=>makePlan(f.root,{channel:'live',draftPreviewAuthorization:preview,draftLiveAuthorization:a}),/mutually exclusive/i);
@@ -386,7 +427,8 @@ test('draft live accepts only its dedicated target and does not widen ordinary o
 
 test('draft live rejects malformed authority, unexpected fields, time windows and digest substitutions',()=>draftLiveFixture(f=>{
  const a=draftLiveAuthorization(f),later=n=>new Date(Date.now()+n).toISOString();
- for(const value of [null,false,true,0,'',[],[a]])assertBlockedPlan(()=>draftLivePlan(f,value),/authorization|coverage|live/i);
+ assert.equal(draftLivePlan(f,null).ready,true);
+ for(const value of [false,true,0,'',[],[a]])assertBlockedPlan(()=>draftLivePlan(f,value),/authorization|coverage|live/i);
  for(const [name,patch]of [
   ['schema',{schema_version:2}],['kind',{kind:'draft-preview'}],['missing identity',{id:null}],['array identity',{id:[a.id]}],['path identity',{id:'../unsafe'}],['non-string reason',{reason:42}],['empty reason',{reason:' '}],
   ['invalid issue',{authorized_at:'invalid'}],['future issue',{authorized_at:later(60000)}],['offset issue',{authorized_at:a.authorized_at.replace('Z','+00:00')}],['expired',{expires_at:'2020-01-01T00:00:00Z'}],['over 24 hours',{expires_at:later(25*60*60*1000)}],['reverse times',{expires_at:a.authorized_at}],
@@ -415,7 +457,6 @@ for(const [name,change,re]of [
  ['changed authority',(p,o)=>o.draftLiveAuthorization.reason+=' changed',/authorization/i],
  ['second authority in options',(p,o,f)=>o.draftPreviewAuthorization=draftAuthorization(f),/mutually exclusive/i],
  ['second authority in plan',(p,o,f)=>{p.draft_preview_authorization=draftAuthorization(f);resign(p);o.confirm=confirmationFor(p);o.draftPreviewAuthorization=p.draft_preview_authorization;},/mutually exclusive/i],
- ['authority removed from resigned plan',(p,o)=>{p.draft_live_authorization=null;resign(p);o.confirm=confirmationFor(p);delete o.draftLiveAuthorization;},/live|coverage|release/i],
  ['preview authority substituted',(p,o,f)=>{p.draft_live_authorization=null;p.draft_preview_authorization={...draftAuthorization(f),channel:'live'};resign(p);o.confirm=confirmationFor(p);delete o.draftLiveAuthorization;o.draftPreviewAuthorization=p.draft_preview_authorization;},/live|preview/i],
  ['missing remote flag',(p,o)=>o.authorizeRemote=false,/not authorized/i],
  ['missing deploy flag',(p,o)=>o.authorizeDeploy=false,/not authorized/i],
@@ -458,4 +499,120 @@ test('consumed draft authorization IDs cannot cross between preview and live rec
  assertBlockedPlan(()=>draftLivePlan(f,a),/consumed/i);rmSync(historical);
  writeFileSync(join(f.root,'dist/deploy-receipts',`draft-live-${a.id}.json`),JSON.stringify({status:'attempted'}));
  assertBlockedPlan(()=>draftPlan(f,preview),/consumed/i);
+}));
+
+for(const channel of ['review-normal','live'])test(`normal draft Hosting on ${channel} needs scaffold and operation confirmation, not a content exception`,()=>draftFixture(f=>{
+ const before=loadData(f.root),p=makePlan(f.root,{channel});
+ assert.equal(p.ready,true,p.errors.join('\n'));assert.equal(p.profile,'preview');assert.equal(p.verification_gate,'scaffold');
+ assert.equal(p.draft_preview_authorization,null);assert.equal(p.draft_live_authorization,null);
+ assert.deepEqual(p.content_blockers,[...releaseErrors(before),'Content is not release-ready']);
+ let called=0;const result=executePlan(p,options(p),f.root,(command,args,opts)=>{
+  called++;assert.equal(command,'firebase');
+  const specific=channel==='live'?['deploy','--only','hosting']:['hosting:channel:deploy',channel,'--expires','7d','--no-authorized-domains'];
+  assert.deepEqual(args,[...specific,'--project','synthetic-project','--config','firebase.json','--non-interactive']);
+  assert.equal(opts.shell,false);assert.equal(p.hosting.hosting.site,'synthetic-site');
+  assert.equal(p.hosting.hosting.headers[0].headers.find(h=>h.key==='X-Robots-Tag').value,'noindex, nofollow');
+  for(const e of p.artifact.entries)assert.equal(hash(readFileSync(join(opts.cwd,'web',e.path))),e.sha256);
+  for(const page of before.config.pages)assert.match(readFileSync(join(opts.cwd,'web',page.file),'utf8'),/noindex/);
+  assert.match(readFileSync(join(opts.cwd,'web/index.html'),'utf8'),/草稿/);
+  assert.match(readFileSync(join(opts.cwd,'web/robots.txt'),'utf8'),/Disallow: \//);
+  assert.equal(existsSync(join(opts.cwd,'web/sitemap.xml')),false);assert.equal(existsSync(join(opts.cwd,'research')),false);
+  return {status:0};
+ });
+ assert.equal(called,1);assert.deepEqual(result,{status:'cli-succeeded',live_verified:false});
+ const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.deepEqual(after.semantic,before.semantic);assert.deepEqual(after.coverage,before.coverage);assert.deepEqual(after.gaps,before.gaps);
+ assert.equal(after.config.deployment.allow_remote_write,false);assert.equal(after.config.deployment.allow_deploy,false);
+ assert.ok(releaseErrors(after).length);assert.equal(inspectStatus(f.root).release.verified,false);assert.equal(inspectStatus(f.root).production.verified,false);
+ assert.throws(()=>build(f.root,{profile:'production'}),/coverage|semantic|release/i);
+}));
+
+test('normal draft Hosting preserves valid review decisions and never enables permanent write flags',()=>draftFixture(f=>{
+ const original=loadData(f.root),preflight=hostingPreflight(original,'preview');
+ assert.equal(preflight.draft,true);assert.equal(preflight.verification_gate,'scaffold');assert.deepEqual(preflight.errors,[]);assert.ok(preflight.content_blockers.length);
+ for(const key of ['allow_remote_write','allow_deploy']){const d=structuredClone(original);d.config.deployment[key]=true;assert.match(hostingPreflight(d,'preview').errors.join('\n'),/flags.*false/i);}
+ f.json('sources/semantic-review.json',{...original.semantic,decision:'approved'});build(f.root);stamp(f,'scaffold');
+ const reviewed=loadData(f.root),approvedPlan=makePlan(f.root,{channel:'live'});
+ assert.equal(approvedPlan.ready,true,approvedPlan.errors.join('\n'));assert.equal(approvedPlan.verification_gate,'scaffold');
+ assert.equal(reviewed.semantic.decision,'approved');assert.equal(reviewed.semantic.input_digest,reviewed.digest);
+ let called=0;executePlan(approvedPlan,options(approvedPlan),f.root,()=>{called++;return {status:0};});assert.equal(called,1);
+ assert.equal(loadData(f.root).semantic.decision,'approved');assert.ok(releaseErrors(reviewed).length);
+ f.json('sources/semantic-review.json',{...original.semantic,input_digest:'4'.repeat(64)});build(f.root);stamp(f,'scaffold');
+ assertBlockedPlan(()=>makePlan(f.root,{channel:'live'}),/digest/i);
+ assert.ok(hostingPreflight(original,'production').errors.length);
+ assert.ok(hostingPreflight(original,'unknown').errors.length);
+}));
+
+test('normal draft Hosting refuses incomplete or absent engineering evidence',()=>draftFixture(f=>{
+ const path=join(f.root,'dist/verification.json'),valid=JSON.parse(readFileSync(path));
+ for(const patch of [{commands:valid.commands.slice(0,-1)},{commands:valid.commands.map((c,i)=>i?c:{...c,exit_code:1})},{gate:'production'},{profile:'production'},{input_digest:'1'.repeat(64)},{source_tree_digest:'2'.repeat(64)},{output_digest:'3'.repeat(64)}]){
+  f.json('dist/verification.json',{...valid,...patch});assertBlockedPlan(()=>makePlan(f.root,{channel:'live'}),/verification|command|record/i);
+ }
+ rmSync(path);assertBlockedPlan(()=>makePlan(f.root,{channel:'live'}),/verification|record/i);
+}));
+
+for(const [name,change,re]of [
+ ['missing remote permission',(p,o)=>delete o.authorizeRemote,/not authorized/i],
+ ['missing deployment permission',(p,o)=>delete o.authorizeDeploy,/not authorized/i],
+ ['wrong project',(p,o)=>o.project='another-project',/mismatch/i],
+ ['wrong site',(p,o)=>o.site='another-site',/mismatch/i],
+ ['wrong confirmation',(p,o)=>o.confirm='invalid',/confirmation/i],
+ ['wrong channel',(p,o)=>o.channel='different-channel',/channel/i],
+ ['expired plan',(p,o)=>{p.expires_at='2020-01-01T00:00:00Z';resign(p);o.confirm=confirmationFor(p);},/expired/i],
+ ['resigned extended plan',(p,o)=>{p.expires_at=new Date(Date.parse(p.created_at)+31*60*1000).toISOString();resign(p);o.confirm=confirmationFor(p);},/time window/i],
+ ['resigned future plan',(p,o)=>{p.created_at=new Date(Date.now()+60000).toISOString();resign(p);o.confirm=confirmationFor(p);},/time window/i],
+ ['invalid nonce',(p,o)=>{p.nonce='../invalid';resign(p);o.confirm=confirmationFor(p);},/nonce/i],
+ ['forged verification gate',(p,o)=>{p.verification_gate='release';resign(p);o.confirm=confirmationFor(p);},/verification gate/i],
+ ['omitted content blockers',(p,o)=>{p.content_blockers=[];resign(p);o.confirm=confirmationFor(p);},/blockers/i],
+ ['removed gap',(p,o,f)=>f.json('sources/gaps.json',{schema_version:1,items:[]}),/changed|stale|digest|blocker/i],
+ ['reduced coverage promise',(p,o,f)=>{const c=loadData(f.root).coverage;c.required_scope[0].end_seconds=30;f.json('sources/coverage.json',c);},/changed|stale|digest|blocker/i],
+ ['forged version',(p,o)=>{p.version='99.0.0';resign(p);o.confirm=confirmationFor(p);},/version/i],
+ ['forged source revision',(p,o)=>{p.source_revision={commit:'a'.repeat(40),dirty:false};resign(p);o.confirm=confirmationFor(p);},/source revision/i],
+ ['changed artifact',(p,o,f)=>writeFileSync(join(f.root,'dist/web/assets/base.css'),'changed'),/artifact|verification/i],
+ ['changed public source',(p,o,f)=>writeFileSync(join(f.root,'README.md'),'Changed source'),/source|verification/i],
+ ['removed noindex header',(p,o)=>{p.hosting.hosting.headers[0].headers=p.hosting.hosting.headers[0].headers.filter(h=>h.key!=='X-Robots-Tag');resign(p);o.confirm=confirmationFor(p);},/Hosting|artifact/i],
+ ['stale optional legacy authority',(p,o,f)=>o.draftLiveAuthorization=draftLiveAuthorization(f),/authorization/i]
+])test(`normal draft Hosting refuses ${name} before invoking a CLI`,()=>draftFixture(f=>{
+ const p=makePlan(f.root,{channel:'live'});assert.equal(p.ready,true,p.errors.join('\n'));const o=options(p);let called=0;change(p,o,f);
+ assert.throws(()=>executePlan(p,o,f.root,()=>{called++;return {status:0};}),re);assert.equal(called,0);
+}));
+
+for(const outcome of ['success','failure','uncertain','throw'])test(`normal draft Hosting consumes its nonce before a ${outcome} result without a content-exception receipt`,()=>draftFixture(f=>{
+ const p=makePlan(f.root,{channel:'live'}),receipt=join(f.root,'dist/deploy-receipts',p.nonce+'.json');let called=0;
+ const run=()=>{called++;assert.equal(JSON.parse(readFileSync(receipt)).status,'attempted');if(outcome==='throw')throw Error('Synthetic transport interruption');return {status:outcome==='success'?0:outcome==='failure'?1:null};};
+ if(outcome==='success')executePlan(p,options(p),f.root,run);
+ else assert.throws(()=>executePlan(p,options(p),f.root,run),/uncertain|Synthetic transport interruption/);
+ assert.equal(called,1);assert.throws(()=>executePlan(p,options(p),f.root,()=>{called++;return {status:0};}),/already consumed/i);assert.equal(called,1);
+}));
+
+import {checkDraftHostingVerification,checkDraftPreviewVerification} from '../build/verification.mjs';
+function reviewedDraftFixture(fn){return fixture(f=>{
+ const c=loadData(f.root).config;c.publication_status='draft';f.json('project.config.json',c);refresh(f);build(f.root);stamp(f,'release');
+ return fn(f);
+});}
+
+test('reviewed draft Hosting reuses matching preview release verification without a scaffold rerun',()=>reviewedDraftFixture(f=>{
+ const d=loadData(f.root),receiptPath=join(f.root,'dist/verification.json'),before=readFileSync(receiptPath);
+ assert.deepEqual(releaseErrors(d),[]);assert.equal(d.config.publication_status,'draft');assert.equal(d.semantic.decision,'approved');
+ assert.equal(checkDraftHostingVerification(f.root,'preview').gate,'release');
+ assert.throws(()=>checkDraftPreviewVerification(f.root,'preview'),/scaffold verification/i);
+ const p=makePlan(f.root,{channel:'live'});assert.equal(p.ready,true,p.errors.join('\n'));assert.equal(p.verification_gate,'release');assert.equal(p.profile,'preview');
+ const status=inspectStatus(f.root);assert.equal(status.hosting.local_preflight,'passed');assert.equal(status.hosting.engineering_verified,true);assert.equal(status.hosting.required_verification_gate,'release');assert.equal(status.hosting.content_certification_required,false);
+ let called=0;executePlan(p,options(p),f.root,(command,args)=>{called++;assert.equal(command,'firebase');assert.deepEqual(args,['deploy','--only','hosting','--project','synthetic-project','--config','firebase.json','--non-interactive']);return {status:0};});
+ assert.equal(called,1);assert.deepEqual(readFileSync(receiptPath),before);assert.equal(loadData(f.root).semantic.decision,'approved');
+}));
+
+test('reviewed draft Hosting rejects wrong-profile, incomplete and stale stronger verification',()=>reviewedDraftFixture(f=>{
+ const path=join(f.root,'dist/verification.json'),valid=JSON.parse(readFileSync(path));
+ for(const patch of [{profile:'production'},{gate:'production'},{commands:valid.commands.slice(0,-1)},{commands:valid.commands.map((c,i)=>i?c:{...c,exit_code:1})},{input_digest:'1'.repeat(64)},{source_tree_digest:'2'.repeat(64)},{output_digest:'3'.repeat(64)}]){
+  f.json('dist/verification.json',{...valid,...patch});
+  assertBlockedPlan(()=>makePlan(f.root,{channel:'live'}),/verification|command|record/i);
+  assert.throws(()=>checkDraftHostingVerification(f.root,'preview'),/verification|command|record/i);
+ }
+ f.json('dist/verification.json',valid);assert.throws(()=>checkDraftHostingVerification(f.root,'production'),/preview output/i);
+}));
+
+test('reviewed draft Hosting binds the actual verification gate at plan and execution',()=>reviewedDraftFixture(f=>{
+ const p=makePlan(f.root,{channel:'live'});assert.equal(p.verification_gate,'release');stamp(f,'scaffold');
+ let called=0;assert.throws(()=>executePlan(p,options(p),f.root,()=>{called++;return {status:0};}),/verification gate changed/i);assert.equal(called,0);
+ const next=makePlan(f.root,{channel:'live'});assert.equal(next.ready,true);assert.equal(next.verification_gate,'scaffold');
 }));

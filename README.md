@@ -2,9 +2,9 @@
 
 以繁體中文整理指定 Apple 發表會、五份台灣產品規格快照，以及直接相關的 Apple Developer 文件。這是獨立、非官方的教育專案；所有文章共用一份可追溯的事實庫。
 
-[網站正式網址（內容草稿）](https://apple-event-explainers.web.app/)使用本次單次 draft-live 部署流程，保留 noindex 與未完成審查提示；上線結果依部署後驗收記錄確認。全片影音與整體語意審查尚未完成，正式內容 release／production 核准仍被阻擋，詳見[發布清單](docs/RELEASE_CHECKLIST.md)。noindex 不是存取限制；請勿把網站可閱覽或工程測試通過理解為完整影片核對或產品實測。[GitHub 原始碼](https://github.com/sses09935/apple-event-explainers)已公開並確認匿名可讀。
+[網站正式網址（內容草稿）](https://apple-event-explainers.web.app/)使用正常草稿 Hosting 流程，保留 noindex 與未完成審查提示；上線結果依部署後驗收記錄確認。全片影音與整體語意審查尚未完成，正式內容 release／production 核准仍被阻擋，詳見[發布清單](docs/RELEASE_CHECKLIST.md)。noindex 不是存取限制；請勿把網站可閱覽或工程測試通過理解為完整影片核對或產品實測。[GitHub 原始碼](https://github.com/sses09935/apple-event-explainers)已公開並確認匿名可讀。
 
-先前的[7 天草稿預覽](https://apple-event-explainers--review-20260910-fa40aajd.web.app/)到期紀錄為 2026-09-17 09:30:56（Asia/Taipei），是舊版內容；正式網址使用新一次性授權，不沿用舊預覽的授權或驗收。
+先前的[7 天草稿預覽](https://apple-event-explainers--review-20260910-fa40aajd.web.app/)到期紀錄為 2026-09-17 09:30:56（Asia/Taipei），是舊版內容；正式網址使用新的單次部署計畫，不沿用舊預覽的授權或驗收。
 
 | 閱讀入口 | 重點 |
 | --- | --- |

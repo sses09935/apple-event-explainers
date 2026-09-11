@@ -1,10 +1,13 @@
 # 發布檢查清單
 
-## 2026-09-12 正式網址草稿展示例外
+## 2026-09-12 現行門檻
 
-依使用者暫時略過原音人工審查、解決部署問題的指示，新增獨立一次性 draft-live 路徑。正式網址可部署已通過完整工程驗證的草稿；內容仍為 draft／pending、全片覆蓋未完成，release／production 內容核准維持阻擋。這兩種狀態須分別記錄。
+- 草稿 Hosting：完整 scaffold、公開來源／產物安全、正確草稿與 noindex 顯示、明確目標、新單次計畫／確認／receipt；不以全片影音或整體語意未完成另加阻擋。
+- 完整內容認證：release／production 仍要求真實的完整覆蓋、缺口處理與語意核准，不能拿 Hosting 上線代替。
+- 遠端結果：同一提交 CI、CLI 部署成功、正式網址逐檔及瀏覽驗收分開記錄。
+- 私有資料：原始影片、研究與操作紀錄不得公開；永久 allow 旗標維持 false，只操作已授權的 Hosting。
 
-單次路徑限定既有 `apple-event-explainers` project／site 的 live，保留 noindex 與草稿提示；要求公開樹、完整 scaffold、精確提交 CI、新授權／計畫／receipt 及線上逐檔驗收。下列歷史未部署結論不推定目前遠端狀態，實際結果以本機 `dist/delivery.json` 為準。詳見 [本次部署範圍](DEPLOYMENT.md)。
+使用者已批准正式網址公開草稿，並要求這套固定規則取代先前每次內容例外。下方的歷史阻擋只代表舊流程；目前精確狀態見本機 `dist/delivery.json`，操作方式見 [部署流程](DEPLOYMENT.md)。
 
 ## 2026-09-12 新內容候選
 
