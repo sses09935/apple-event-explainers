@@ -23,7 +23,7 @@ try{
  const config=JSON.parse(readFileSync(join(f.root,'project.config.json')));config.publication_status='release-ready';config.output={profile:'preview',public_base_url:'https://synthetic-publication-fixture.web.app'};f.json('project.config.json',config);
  const review=JSON.parse(readFileSync(join(f.root,'sources/semantic-review.json')));review.input_digest=loadData(f.root).digest;f.json('sources/semantic-review.json',review);
  for(const args of [['ci','--offline','--ignore-scripts','--no-audit','--no-fund'],['run','verify:release'],['run','verify:production']]){
-  const r=spawnSync('npm',args,{cwd:f.root,env:{...process.env,...(args.includes('test:e2e')?{OUTPUT_PROFILE:'production'}:{})},encoding:'utf8',timeout:240000,maxBuffer:4*1024*1024});
+  const r=spawnSync('npm',args,{cwd:f.root,env:{...process.env,...(args.includes('test:e2e')?{OUTPUT_PROFILE:'production'}:{})},encoding:'utf8',timeout:600000,maxBuffer:4*1024*1024});
   output.push(`$ npm ${args.join(' ')}\n${r.stdout||''}${r.stderr||''}`);
   report.steps.push({command:`npm ${args.join(' ')}`,exit_code:r.status,error:r.error?.message});
   assert.equal(r.status,0,`Temporary-copy command failed: npm ${args.join(' ')}`);

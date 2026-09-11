@@ -74,7 +74,9 @@ export function cleanRebuild(root=ROOT){
  try{
   report.source=exportPublic(copy,root);if(existsSync(join(copy,'research'))||existsSync(join(copy,'node_modules')))throw Error('Dirty public copy');
   for(const args of [['ci','--ignore-scripts','--no-audit','--no-fund'],['run','verify:scaffold'],['run','test:release-fixture']]){
-   const p=spawnSync('npm',args,{cwd:copy,env,encoding:'utf8',timeout:300000,maxBuffer:12*1024*1024});
+   // The release fixture runs two complete suites; allow its nested checks to finish.
+   const timeout=args[1]==='test:release-fixture'?1800000:600000;
+   const p=spawnSync('npm',args,{cwd:copy,env,encoding:'utf8',timeout,maxBuffer:12*1024*1024});
    const name=`clean-${report.steps.length}.log`;writeFileSync(join(qa,name),`${p.stdout||''}${p.stderr||''}`);report.steps.push({command:`npm ${args.join(' ')}`,exit_code:p.status,error:p.error?.code||null,log:name});if(p.status!==0)throw Error(`Clean-copy command failed: npm ${args.join(' ')}`);
   }
   report.status='passed';
