@@ -1,19 +1,19 @@
 # apple-event-explainers
 
-## 目前適用的授權與部署規則（2026-09-12）
+## 目前適用的授權與發布規則（2026-09-12）
 
-使用者已明確批准：將待完整審查的草稿推送至既有 GitHub，CI 通過後部署至既有 Firebase 正式網址，保留 noindex、公開可閱覽且不自動到期；其後又要求修正先前不合理的驗證規則。部署工程與內容認證因此分開管理，不再要求每次草稿上線建立內容例外。
+使用者已批准既有 GitHub 與 Firebase Hosting 正式網址的更新發布，並明確要求網站升為正式版、接上自動建置資訊與 GitHub commit。`publication_status: published` 表示網站正式發布狀態，與完整內容審查各自管理。
 
-- 只操作既有 repository `sses09935/apple-event-explainers` 與 Firebase project／site `apple-event-explainers`。本次授權正常本機提交、push、CI、Hosting live 及線上驗收；先執行 `npm run check:environment -- --online`。
-- 一般 `draft`＋`preview` 產物通過完整 `verify:scaffold`（或相同 preview 產物較嚴格的 release 紀錄）、公開來源／產物安全檢查，即可進入 preview 或 live 的 Hosting 計畫。影音覆蓋、blocking gaps 與 semantic pending 是公開內容限制，不再單獨阻擋草稿 Hosting。來源及審查資料仍須結構有效、版本／摘要一致，不得填造核准；已審草稿不必改回 pending，顯示應反映實際狀態。
-- `verify:release` 與 `verify:production` 繼續代表完整內容認證；只有要宣稱該認證、建立 release-ready／production 內容時才須完成相應證據。不能把這兩個結果用作所有草稿上線的共同阻擋。
-- 明確 project／site／channel、完整工程驗證、input／source-tree／artifact 與 version／source_revision 綁定、30 分鐘計畫及一次性確認／receipt 必須保留。永久 `allow_remote_write`、`allow_deploy` 維持 false，執行另帶已獲授權的單次旗標；已有明確對話授權時不重複詢問相同操作。
-- 草稿保留可見的未完成影音／語意審查說明及 noindex。noindex 不是存取限制；live 持續至另行替換或移除，preview 仍為 7 天。所有 preview CLI 必須帶 `--no-authorized-domains`。
-- 僅部署 Hosting；不操作 Auth、資料庫、Functions、計費或其他服務。不 force push、不重寫歷史、不建立 tag／GitHub Release，也不使用帳號預設 project 或 site。
-- 使用者原始私人影片、research/.private、授權與執行紀錄不得進 Git、公開站台或 CI artifacts。舊 `review-20260910` 授權已消耗，不可重用。舊 draft-preview／draft-live 授權介面只保留嚴格相容性，新的正常草稿流程不需要它們。
-- 內容前檢未通過時保留仍有效的工程紀錄；部署前完成必要檢查；相同程式與產物已通過的測試不因無關疑慮反覆重跑。CI、CLI 成功、正式網址驗收及完整內容認證分別據實報告。
+- 僅操作 repository `sses09935/apple-event-explainers` 及 Firebase project/site `apple-event-explainers`；先執行 `npm run check:environment -- --online`。授權正常提交、push、同提交 CI、Hosting live 與驗收；不 force push、重寫 Git 歷史、建立 tag 或 GitHub Release。
+- draft 或 published 的 preview profile 使用完整 scaffold 工程驗證及公開來源／產物檢查；profile 控制 noindex，並不表示網站仍是草稿。published 的畫面不得再顯示草稿。
+- version 來自實際 checkout 的 package.json；建置時間、commit SHA、提交時間及 GitHub permalink 共用 build-info。不得借用遠端最新 HEAD 或環境變數替代部署版本。內容查核時間不隨 build 改寫。
+- 完整影音 coverage、來源身分及 semantic decision 據實保留；`verify:release`／`verify:production` 仍是完整內容認證，不充作一般網站發布的阻擋。
+- 使用者已要求移除獨立的未完成事項登錄功能，勿恢復其資料檔、schema、網頁區塊、待辦或本機副本。保留其他來源與產品限制。
+- 每次部署保留明確 target/channel、版本、source/input/artifact digest、30 分鐘計畫、一次性 confirmation/receipt。永久 allow_remote_write/allow_deploy 維持 false；沿用已取得對話授權，不重複詢問。
+- 僅 Hosting，不改 Auth、資料庫、Functions、計費及其他服務。preview CLI 一律帶 --no-authorized-domains。舊 nonce/授權不可重用，成功的防重用 receipt 必須保留。
+- 私人影片、研究、授權及執行紀錄不得進 Git、站台或 CI artifacts；上線後比對全部公開檔案與實際 build-info。
 
-先讀 [交接](docs/HANDOFF.md)、[資料契約](docs/DATA_CONTRACT.md) 與 [部署流程](docs/DEPLOYMENT.md)。先前把所有 Hosting 都綁定全片審查、或要求每次另立草稿內容例外的規則已由以上現行規則取代；歷史保留於 Git 及私有驗收紀錄，不能作為目前阻擋。
+先讀 [交接](docs/HANDOFF.md)、[資料契約](docs/DATA_CONTRACT.md) 與 [部署流程](docs/DEPLOYMENT.md)。
 
 ## 內容與來源
 
@@ -32,4 +32,4 @@
 - 三版文章可忠實跨 KB 敘事，使用穩定 topic／node ID 及 claim_ids；editorial 只作導覽，不含產品事實。數值與整合表格由 KB 生成，不另手填三份規格。
 - 全部 draft 與 audiences 選材納入 semantic digest。內容修改後重新綁定審查；比較三版主體、數字、條件與主張強度。不得把測試通過記成語意核准。
 - Reading／Audit 與三受眾是不同維度，六頁不得缺頁。對實際變更執行必要的搜尋、目錄、字級、配色、鍵盤、跨版主題與證據回連檢查。
-- 完整影音 required_scope、尚未完成的 coverage、gaps 與 semantic 狀態據實保留，不能為部署而刪除或造假。`check:status` 的 Hosting 工程狀態與內容認證狀態分開閱讀。
+- 完整影音 required_scope、尚未完成的 coverage 與 semantic 狀態據實保留，不能為部署而刪除或造假。`check:status` 的 Hosting 工程狀態與內容認證狀態分開閱讀。

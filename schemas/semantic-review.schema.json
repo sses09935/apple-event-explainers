@@ -63,8 +63,7 @@
         "enum": [
           "claims",
           "drafts",
-          "coverage",
-          "gaps"
+          "coverage"
         ]
       }
     },

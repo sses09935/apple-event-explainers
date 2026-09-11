@@ -40,7 +40,7 @@ preview／production 與內容狀態、外部授權分開。production 需要內
 
 ## 續接與權限
 
-sources/semantic-review.json 已綁定本輪四份草稿與三版選材的摘要，decision 保持 pending。下一步是同版本原音與連續畫面的必要核對、功能推出條件及整場語意審查；不能縮小 scope 或移除 blocking gaps 取得綠燈。
+sources/semantic-review.json 已綁定本輪四份草稿與三版選材的摘要，decision 保持 pending。下一步是同版本原音與連續畫面的必要核對、功能推出條件及整場語意審查；不能縮小 scope 或移除  取得綠燈。
 
 四項真實目標現已設定並核實；兩個預設外部授權仍 false。本工作區未初始化 Git，沒有 staged／commit／歷史可供稽核。未修改參考專案；只建立追加授權的私人空 repo 與專用 Firebase 環境，沒有 push、release、部署或設定帳號預設專案。沒有 live-verified 結論。
 

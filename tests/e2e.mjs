@@ -46,6 +46,11 @@ try{
   for(const p of data.config.pages){
    const response=await page.goto(`${production.url}/${p.file}`);assert.equal(response.status(),200);
    assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('body').getAttribute('data-page-role'),p.role);
+   assert.equal(await page.locator('[data-site-version]').innerText(),`v${built.meta.version}`);
+   assert.equal(await page.locator('[data-built-at]').getAttribute('datetime'),built.meta.built_at);
+   assert.match(await page.locator('[data-built-at]').innerText(),/UTC\+08:00/);
+   if(built.meta.commit_url){assert.equal(await page.locator('[data-source-commit]').getAttribute('href'),built.meta.commit_url);assert.equal(await page.locator('[data-source-committed-at]').getAttribute('datetime'),built.meta.source_committed_at);}
+   if(data.config.publication_status==='published'){assert.match(await page.locator('.draft-strip').innerText(),new RegExp(`^正式版 v${built.meta.version.replaceAll('.','\\.')}`));assert.doesNotMatch(await page.title(),/草稿/);assert.doesNotMatch(await page.locator('body').innerText(),/資訊缺口/);}
    if(!data.manifest.canonical_url)assert.match(await page.locator('body').innerText(),/尚未填入發表會資料/);
    if(built.meta.profile!=='production'&&data.config.publication_status==='draft'&&data.manifest.access_record?.status!=='blocked'&&data.claims.some(c=>c.verification==='verified'))assert.match(await page.locator('.draft-strip').innerText(),/^草稿 · 已核對子集 · (?:全片影音與整體語意審查尚未完成|全片影音查核(?:已完成|尚未完成) · 整體語意審查(?:已通過|未通過|尚未完成))$/);
    if(data.manifest.access_record?.status==='blocked'){

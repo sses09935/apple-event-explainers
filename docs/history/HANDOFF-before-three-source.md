@@ -4,7 +4,7 @@
 
 **唯一工作專案：`<project-root>`。** 使用者明確指定此目錄；初始工程曾暫存於 Codex outputs，已移入本目錄，後續不要回到舊目錄開發。
 
-本階段沒有 EVENT_VIDEO_URL。正式 KB、draft claim 區塊與 coverage/gaps 清單均為空；manifest 未知欄位均 null。沒有填產品、活動日期、假規格或舊 AFM3 事實。目標是可接續研究的 scaffold，不是內容發布。實際驗證結果見 `docs/QA.md` 與 `docs/qa/browser-results.json`；不能以文件預期取代測試結果。
+本階段沒有 EVENT_VIDEO_URL。正式 KB、draft claim 區塊與 coverage 清單均為空；manifest 未知欄位均 null。沒有填產品、活動日期、假規格或舊 AFM3 事實。目標是可接續研究的 scaffold，不是內容發布。實際驗證結果見 `docs/QA.md` 與 `docs/qa/browser-results.json`；不能以文件預期取代測試結果。
 
 固定三頁：index.html（首頁）、event.html（閱讀頁）、sources.html（證據頁）。Node.js ESM + Markdown → 靜態 HTML → dist/web，不使用 React、Next.js、CMS、資料庫或 PDF。
 
@@ -45,7 +45,6 @@
 
 1. `project.config.json` + `sources/event-manifest.json`：網站與唯一影片身份。
 2. `content/knowledge-base.md`：結構化 Markdown 事實權威。
-3. `sources/coverage.json`／`sources/gaps.json`：模態區段核對與缺口；不混成單一完成布林。
 4. `content/drafts/event.md`：KB 區塊選材／排序／轉述。
 5. `sources/semantic-review.json`：審查範圍、結論及來源摘要綁定。
 6. `build/data.mjs` 載入、解析、schema 驗證、跨資料關係與 release gate。
@@ -93,9 +92,9 @@ E2E 使用 OS temp 下的隔離 fixture copy 與臨時 loopback server；結束�
 4. 定義 coverage.required_scope，逐段記錄取得與實際處理過的模態及 review_record。不用一個「看完」旗標。
 5. 先加 KB candidate，填 statement/subject/topic/type/availability/qualifiers/structured_values。對照影片後加 evidence、coverage_ids 與查核紀錄，才改 verified。保留 disputed/unknown。
 6. 在 draft 使用 `:::claim KB-NNN` 區塊選材；空區塊採 KB 原句，轉述需檢查語意未強化。時間、引用、條件、規格表與來源頁自動生成。
-7. 用四種 gap kind 記錄資訊缺口。reviewed-not-found 連 coverage，explicit-not-disclosed 連片段，不可互換。
+7. 用四種 gap kind 記錄查核範圍。reviewed-not-found 連 coverage，explicit-not-disclosed 連片段，不可互換。
 8. 真實播放／定位未驗證時維持 official-link。只有實際測過支援的 YouTube adapter，才填 player verification；本階段 mock 不算影片定位驗證。
-9. 完成語意審查後執行 review:digest，更新 semantic-review；檢查 sources、claims、drafts、coverage、gaps，修改任一來源後重新審查。
+9. 完成語意審查後執行 review:digest，更新 semantic-review；檢查 sources、claims、drafts、coverage，修改任一來源後重新審查。
 10. build、瀏覽器 QA、verify:release。任何阻擋未解決就停在草稿。發布需要另外的使用者授權與新目標設定；不要繞過本階段固定拒絕的 deploy script。
 
 ## 2026-09-10 首次工程驗收結果（歷史）

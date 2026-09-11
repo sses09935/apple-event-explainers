@@ -8,7 +8,7 @@ import {fileURLToPath} from 'node:url';
 import {ROOT,loadData,hash,releaseErrors} from './data.mjs';
 import {checkPublic,debug,files} from './inspect.mjs';
 import {inspectSourceTree} from './public-tree.mjs';
-import {hostingConfig,productionErrors} from './publication.mjs';
+import {hostingConfig,productionErrors,checkBuildIdentity} from './publication.mjs';
 export function deploymentErrors(config,options={}){
  const errors=[],project=config.deployment?.target_firebase_project,site=config.deployment?.target_firebase_site;
  for(const [key,value]of [['project',project],['site',site]]){
@@ -24,16 +24,17 @@ export function hostingPreflight(d,profile){
  const content_blockers=releaseErrors(d),errors=[];
  if(d.config.publication_status!=='release-ready')content_blockers.push('Content is not release-ready');
  const draft=profile==='preview'&&d.config.publication_status==='draft';
- const verification_gate=draft?'scaffold':profile==='production'?'production':'release';
+ const engineeringOnly=profile==='preview'&&['draft','published'].includes(d.config.publication_status);
+ const verification_gate=engineeringOnly?'scaffold':profile==='production'?'production':'release';
  if(!['preview','production'].includes(profile))errors.push('Unknown Hosting output profile');
  if(d.config.deployment.allow_remote_write!==false||d.config.deployment.allow_deploy!==false)errors.push('Permanent deployment flags must remain false');
- if(draft){
-  if(d.semantic.input_digest!==d.digest)errors.push('Draft Hosting requires a semantic review record matching the current input digest');
+ if(engineeringOnly){
+  if(d.semantic.input_digest!==d.digest)errors.push('Hosting requires a semantic review record matching the current input digest');
  }else{
   errors.push(...content_blockers);
   if(profile==='production')errors.push(...productionErrors(d));
  }
- return {draft,verification_gate,content_blockers,errors:[...new Set(errors)]};
+ return {draft,engineeringOnly,verification_gate,content_blockers,errors:[...new Set(errors)]};
 }
 export function bundle(root,hosting){
  const out=join(root,'dist/web'),entries=files(out).sort().map(path=>{const bytes=readFileSync(join(out,path));return {path,bytes:bytes.length,sha256:hash(bytes)};});
@@ -85,15 +86,17 @@ export function makePlan(root=ROOT,{channel,project,site,draftPreviewAuthorizati
  if(hasPreview&&hasLive)errors.push('Draft preview and draft live authorizations are mutually exclusive');
  if(!channel||!(/^[a-z][a-z0-9-]{0,38}$/.test(channel)))errors.push('Explicit valid preview channel or live required');
  const info=JSON.parse(readFileSync(join(root,'dist/web/build-info.json'))),profile=info.profile;
+ try{checkBuildIdentity(root,d.config,info);}catch(e){errors.push(e.message);}
+ if(channel==='live'&&(info.source_revision?.commit?info.source_revision.dirty!==false:d.config.publication_status==='published'))errors.push('Live publication requires a clean committed checkout');
  const preflight=hostingPreflight(d,profile),contentBlockers=preflight.content_blockers;
  errors.push(...preflight.errors);
- if(channel==='live'&&profile!=='production'&&!preflight.draft)errors.push('Live requires verified production output or a verified noindex draft');
+ if(channel==='live'&&profile!=='production'&&!preflight.engineeringOnly)errors.push('Live requires verified production output or an engineering-verified publication');
  // Hosting a disclosed draft requires complete engineering verification.
  // Its content blockers remain visible; optional historical authorizations
  // add their own restrictions and never replace these checks.
  let verificationGate=preflight.verification_gate;
  try{
-  const check=preflight.draft?(hasPreview||hasLive?checkDraftPreviewVerification:checkDraftHostingVerification):checkVerification;
+  const check=preflight.engineeringOnly?(hasPreview||hasLive?checkDraftPreviewVerification:checkDraftHostingVerification):checkVerification;
   verificationGate=check(root,profile).gate;
  }catch(e){errors.push(e.code==='ENOENT'?'Complete verification record is missing':e.message);}
  let source=null;try{source=inspectSourceTree(root);checkPublic(join(root,'dist/web'),d);debug(join(root,'dist/web'),d);}catch(e){errors.push(e.message);}
@@ -125,15 +128,17 @@ export function executePlan(plan,options={},root=ROOT,run=spawnSync){
  const preflight=hostingPreflight(d,plan.profile);
  errors.push(...preflight.errors);
  if(JSON.stringify(plan.content_blockers)!==JSON.stringify(preflight.content_blockers))errors.push('Content blockers changed or omitted');
- if(plan.channel==='live'&&plan.profile!=='production'&&!preflight.draft)errors.push('Live requires production output or a verified noindex draft');
+ if(plan.channel==='live'&&plan.profile!=='production'&&!preflight.engineeringOnly)errors.push('Live requires production output or an engineering-verified publication');
  if(plan.input_digest!==d.digest)errors.push('Content changed after preflight');
  const info=JSON.parse(readFileSync(join(root,'dist/web/build-info.json')));
+ try{checkBuildIdentity(root,d.config,info);}catch(e){errors.push(e.message);}
+ if(plan.channel==='live'&&(info.source_revision?.commit?info.source_revision.dirty!==false:d.config.publication_status==='published'))errors.push('Live publication requires a clean committed checkout');
  if(info.profile!==plan.profile||info.input_digest!==d.digest)errors.push('Output profile/content changed');
  if(plan.version!==info.version||JSON.stringify(plan.source_revision)!==JSON.stringify(info.source_revision))errors.push('Output version or source revision changed after preflight');
  if(JSON.stringify(bundle(root,plan.hosting))!==JSON.stringify(plan.artifact))errors.push('Artifact changed after preflight');
  if(inspectSourceTree(root).digest!==plan.source_tree_digest)errors.push('Source tree changed after preflight');
  checkPublic(join(root,'dist/web'),d);debug(join(root,'dist/web'),d);
- const check=preflight.draft?(hasPreview||hasLive?checkDraftPreviewVerification:checkDraftHostingVerification):checkVerification;
+ const check=preflight.engineeringOnly?(hasPreview||hasLive?checkDraftPreviewVerification:checkDraftHostingVerification):checkVerification;
  if(plan.verification_gate!==check(root,plan.profile).gate)errors.push('Hosting verification gate changed after preflight');
  const context={project:plan.project,site:plan.site,channel:plan.channel,profile:plan.profile,input_digest:d.digest,source_tree_digest:inspectSourceTree(root).digest,artifact_digest:bundle(root,plan.hosting).digest};
  if(hasPreview)errors.push(...draftPreviewErrors(root,d,context,preview));

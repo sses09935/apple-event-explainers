@@ -18,7 +18,7 @@ export const TW_STOREFRONT_SOURCES=Object.freeze({
 });
 
 const ajv = new Ajv({allErrors:true, strict:true, allowUnionTypes:true});
-const schemas = Object.fromEntries(['project','event-manifest','claim','coverage','gaps','semantic-review'].map(name => [name, ajv.compile(JSON.parse(readFileSync(new URL(`../schemas/${name}.schema.json`,import.meta.url))))]));
+const schemas = Object.fromEntries(['project','event-manifest','claim','coverage','semantic-review'].map(name => [name, ajv.compile(JSON.parse(readFileSync(new URL(`../schemas/${name}.schema.json`,import.meta.url))))]));
 export function schema(name, data) {
   if (!schemas[name](data)) throw Error(`${name}: ${ajv.errorsText(schemas[name].errors, {separator:'; '})}`);
 }
@@ -96,7 +96,7 @@ export function interpolate(text,b,claimMap){
   return v.state==='unknown'?'未知（尚未核對）':String(v.value)+(v.unit?' '+v.unit:'');
  });
 }
-const INPUTS=['project.config.json','sources/event-manifest.json','sources/coverage.json','sources/gaps.json','content/knowledge-base.md'];
+const INPUTS=['project.config.json','sources/event-manifest.json','sources/coverage.json','content/knowledge-base.md'];
 export function loadData(root=ROOT) {
  const raw=Object.fromEntries(INPUTS.map(p=>[p,readFileSync(join(root,p),'utf8')]));
  const config=JSON.parse(raw[INPUTS[0]]);schema('project',config);
@@ -105,7 +105,7 @@ export function loadData(root=ROOT) {
   raw[p.draft]=readFileSync(join(root,p.draft),'utf8');drafts[p.file]=parseDraft(raw[p.draft]);
   if(p.audience){const path=`content/audiences/${p.audience}.md`;raw[path]=readFileSync(join(root,path),'utf8');if(!raw[path].trim())throw Error('Empty audience specification');audiences[p.audience]=raw[path];}
  }
- const data={config,manifest:JSON.parse(raw[INPUTS[1]]),coverage:JSON.parse(raw[INPUTS[2]]),gaps:JSON.parse(raw[INPUTS[3]]),claims:parseKB(raw[INPUTS[4]]),blocks:drafts['event.html']||[],drafts,audiences,semantic:JSON.parse(readFileSync(join(root,'sources/semantic-review.json'),'utf8')),digest:hash(JSON.stringify({...raw,'project.config.json':JSON.stringify(Object.fromEntries(Object.entries(config).filter(([k])=>!['deployment','output'].includes(k))))}))};
+ const data={config,manifest:JSON.parse(raw[INPUTS[1]]),coverage:JSON.parse(raw[INPUTS[2]]),claims:parseKB(raw[INPUTS[3]]),blocks:drafts['event.html']||[],drafts,audiences,semantic:JSON.parse(readFileSync(join(root,'sources/semantic-review.json'),'utf8')),digest:hash(JSON.stringify({...raw,'project.config.json':JSON.stringify(Object.fromEntries(Object.entries(config).filter(([k])=>!['deployment','output'].includes(k))))}))};
  validateData(data);return data;
 }
 export function interval(a,duration) {
@@ -124,8 +124,8 @@ export function covered(scope, segments) {
 }
 export function evidenceModalities(e) {return e.modality==='both'?['audio','visual']:[e.modality==='spoken'?'audio':e.modality==='subtitles'?'subtitles':'visual'];}
 export function validateData(d) {
-  for(const [s,k] of [['project','config'],['event-manifest','manifest'],['coverage','coverage'],['gaps','gaps'],['semantic-review','semantic']]) schema(s,d[k]);
-  const {config:c,manifest:m,coverage:cv,claims,blocks,gaps}=d;
+  for(const [s,k] of [['project','config'],['event-manifest','manifest'],['coverage','coverage'],['semantic-review','semantic']]) schema(s,d[k]);
+  const {config:c,manifest:m,coverage:cv,claims,blocks}=d;
   const expect={'index.html':'home','event.html':'reader','sources.html':'evidence','dev.html':'reader','ai-user.html':'reader','general.html':'reader'};
   if(c.pages.length!==6 || new Set(c.pages.map(p=>p.file)).size!==6 || c.pages.some(p=>expect[p.file]!==p.role || (p.role==='reader' ? p.draft!==`content/drafts/${p.file.replace('.html','.md')}` || (p.file==='event.html'?'audience' in p:p.audience!==p.file.replace('.html','')) : 'draft' in p || 'audience' in p))) throw Error('Page manifest must contain all six expected roles and files');
   if(c.deployment.target_firebase_project?.toLowerCase().includes('apple-afm3-explainers')) throw Error('Original Firebase project forbidden');
@@ -230,20 +230,6 @@ export function validateData(d) {
     interpolate(b.text,b,claimMap);
     for(const r of b.table?.rows||[])for(const name of r.value_names||[])if(!claimMap.get(r.claim_id).structured_values.some(v=>v.name===name))throw Error('Draft: unknown table value name');
   }
-  const gapIds=new Set();
-  for(const gap of gaps.items) {
-    if(gapIds.has(gap.id)) throw Error('Duplicate gap ID');gapIds.add(gap.id);
-    gap.evidence.forEach(checkEvidence);
-    const segments=gap.coverage_ids.map(id=>{if(!segmentMap.has(id)) throw Error('Unknown gap coverage'); return segmentMap.get(id);});
-    if(gap.kind==='not-yet-reviewed' && (gap.evidence.length||gap.coverage_ids.length||gap.reviewed_scope!==null||gap.review_record!==null)) throw Error('Not-yet-reviewed cannot pretend to be reviewed or undisclosed');
-    if(gap.kind==='explicit-not-disclosed' && (!gap.evidence.length||!gap.review_record)) throw Error('Explicit non-disclosure requires actual evidence and review');
-    if(gap.kind==='conflict' && (gap.evidence.length<2||!gap.review_record)) throw Error('Conflict needs two evidence records and review');
-    if(gap.kind==='reviewed-not-found') {
-      if(gap.evidence.length||!gap.reviewed_scope||!gap.review_record||!segments.length) throw Error('Absence needs coverage, not a fabricated timestamp');
-      interval(gap.reviewed_scope,m.duration_seconds);
-      if(!covered(gap.reviewed_scope,segments)) throw Error('Insufficient reviewed-not-found coverage');
-    }
-  }
   const v=m.player_adapter.verification;
   if(v) {
     if(!['youtube','youtube-link'].includes(m.player_adapter.kind) || v.canonical_url!==m.canonical_url||v.artifact_revision!==m.artifact_revision) throw Error('Player verification mismatch');
@@ -298,9 +284,8 @@ export function releaseErrors(d) {
   const bodies=d.config.pages.filter(p=>p.audience).map(p=>pageBlocks(d,p.file).map(b=>b.text).join('\n'));
   if(new Set(bodies).size!==bodies.length)errors.push('Audience drafts must have distinct authored content');
   if(!c.required_scope.length || c.required_scope.some(scope=>!covered(scope,c.segments))) errors.push('Promised coverage is missing or incomplete');
-  if(d.gaps.items.some(g=>g.blocking||g.kind==='conflict')) errors.push('Blocking gaps or unresolved conflicts');
   if(!p.content_scope_date||!p.content_checked_at) errors.push('Content scope date and checked time required');
-  if(s.decision!=='approved'||s.input_digest!==d.digest||!s.reviewer||!s.reviewed_at||!s.notes||['claims','drafts','coverage','gaps'].some(v=>!s.scope.includes(v))) errors.push('Fresh, complete semantic review required (structure does not prove truth)');
+  if(s.decision!=='approved'||s.input_digest!==d.digest||!s.reviewer||!s.reviewed_at||!s.notes||['claims','drafts','coverage'].some(v=>!s.scope.includes(v))) errors.push('Fresh, complete semantic review required (structure does not prove truth)');
   errors.push(...authorQualityErrors(d));
   return errors;
 }

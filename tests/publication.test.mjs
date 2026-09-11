@@ -9,7 +9,7 @@ import {spawnSync} from 'node:child_process';
 import {ROOT,loadData,hash,releaseErrors} from '../build/data.mjs';
 import {build} from '../build/build.mjs';
 import {debug,checkPublic} from '../build/inspect.mjs';
-import {publicBase,hostingConfig,responseHeaders,CSP,gitStamp} from '../build/publication.mjs';
+import {publicBase,hostingConfig,responseHeaders,CSP,gitStamp,buildIdentity} from '../build/publication.mjs';
 import {textQuality,authorQualityErrors,exceptions} from '../build/quality.mjs';
 
 test('official nonbreaking spaces preserve complete-name checks without excusing missing names',()=>{
@@ -158,13 +158,12 @@ function fixture(fn){const f=prepared();try{return fn(f);}finally{f.cleanup();}}
 const options=p=>({project:p.project,site:p.site,authorizeRemote:true,authorizeDeploy:true,confirm:confirmationFor(p)});
 const resign=p=>{delete p.digest;p.digest=hash(JSON.stringify(p));return p;};
 
-// This fixture intentionally retains incomplete coverage and a blocking gap.
+// This fixture intentionally retains incomplete coverage and incomplete review.
 // Its one-operation authorization never changes the content's release state.
 function draftPrepared(){
  const f=prepared(),d=loadData(f.root);
  d.config.publication_status='draft';f.json('project.config.json',d.config);
  d.coverage.segments[0].end_seconds=30;f.json('sources/coverage.json',d.coverage);
- f.json('sources/gaps.json',{schema_version:1,items:[{id:'GAP-001',subject:'合成測試範圍',question_zh:'其餘來源尚待核對。',kind:'not-yet-reviewed',blocking:true,evidence:[],coverage_ids:[],reviewed_scope:null,review_record:null}]});
  f.json('sources/semantic-review.json',{...d.semantic,decision:'pending'});
  refresh(f);build(f.root);stamp(f,'scaffold');return f;
 }
@@ -280,7 +279,7 @@ test('one-operation draft preview keeps content blockers and stages only the tes
  const a=draftAuthorization(f),p=draftPlan(f,a),before=loadData(f.root);
  assert.equal(p.ready,true,p.errors.join('\n'));assert.equal(p.profile,'preview');assert.equal(p.channel,'draft-review');
  assert.deepEqual(p.draft_preview_authorization,a);
- for(const re of [/coverage/i,/Blocking gaps/i,/semantic/i])assert.match(p.content_blockers.join('\n'),re);
+ for(const re of [/coverage/i,/Promised coverage/i,/semantic/i])assert.match(p.content_blockers.join('\n'),re);
  assert.match(p.hosting.hosting.headers[0].headers.find(h=>h.key==='X-Robots-Tag').value,/noindex/);
  assert.equal(p.hosting.hosting.headers[0].headers.find(h=>h.key==='Content-Security-Policy').value,CSP);
  let called=0;
@@ -292,7 +291,7 @@ test('one-operation draft preview keeps content blockers and stages only the tes
   return {status:0};
  });
  assert.equal(called,1);assert.deepEqual(result,{status:'cli-succeeded',live_verified:false});
- const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.equal(after.config.publication_status,'draft');assert.equal(after.semantic.decision,'pending');assert.deepEqual(after.coverage.required_scope,before.coverage.required_scope);assert.deepEqual(after.gaps,before.gaps);
+ const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.equal(after.config.publication_status,'draft');assert.equal(after.semantic.decision,'pending');assert.deepEqual(after.coverage.required_scope,before.coverage.required_scope);
  assert.ok(releaseErrors(after).length);assert.throws(()=>checkVerification(f.root,'preview'),/release verification/);
 }));
 
@@ -403,7 +402,7 @@ test('one-operation draft live stages the verified noindex bytes without approvi
  });
  assert.equal(called,1);assert.deepEqual(result,{status:'cli-succeeded',live_verified:false});
  const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.equal(after.config.publication_status,'draft');
- assert.deepEqual(after.semantic,before.semantic);assert.deepEqual(after.coverage,before.coverage);assert.deepEqual(after.gaps,before.gaps);
+ assert.deepEqual(after.semantic,before.semantic);assert.deepEqual(after.coverage,before.coverage);
  assert.equal(after.config.deployment.allow_remote_write,false);assert.equal(after.config.deployment.allow_deploy,false);
  assert.ok(releaseErrors(after).length);assert.equal(inspectStatus(f.root).release.verified,false);assert.equal(inspectStatus(f.root).production.verified,false);
  assert.throws(()=>checkVerification(f.root,'preview'),/release verification/);
@@ -468,8 +467,8 @@ for(const [name,change,re]of [
  ['resigned extended lifetime',(p,o)=>{p.expires_at=new Date(Date.parse(p.created_at)+31*60*1000).toISOString();resign(p);o.confirm=confirmationFor(p);},/time window/i],
  ['resigned future issue',(p,o)=>{p.created_at=new Date(Date.now()+60000).toISOString();resign(p);o.confirm=confirmationFor(p);},/time window/i],
  ['expired authority',(p,o)=>{p.draft_live_authorization.expires_at='2020-01-01T00:00:00Z';resign(p);o.confirm=confirmationFor(p);o.draftLiveAuthorization=structuredClone(p.draft_live_authorization);},/expired|authorization/i],
- ['omitted blocking gaps',(p,o)=>{p.content_blockers=p.content_blockers.filter(x=>!/Blocking gaps/.test(x));resign(p);o.confirm=confirmationFor(p);},/blocker/i],
- ['removed source gap',(p,o,f)=>f.json('sources/gaps.json',{schema_version:1,items:[]}),/changed|stale|digest|blocker/i],
+ ['omitted coverage limitation',(p,o)=>{p.content_blockers=p.content_blockers.filter(x=>!/Promised coverage/.test(x));resign(p);o.confirm=confirmationFor(p);},/blocker/i],
+ ['removed source coverage',(p,o,f)=>{const d=loadData(f.root);d.coverage.required_scope=[];f.json('sources/coverage.json',d.coverage);},/changed|stale|digest|blocker/i],
  ['reduced required scope',(p,o,f)=>{const c=loadData(f.root).coverage;c.required_scope[0].end_seconds=30;f.json('sources/coverage.json',c);},/changed|stale|digest|blocker/i],
  ['forged version',(p,o)=>{p.version='99.0.0';resign(p);o.confirm=confirmationFor(p);},/version/i],
  ['forged source revision',(p,o)=>{p.source_revision={commit:'a'.repeat(40),dirty:false};resign(p);o.confirm=confirmationFor(p);},/source revision/i],
@@ -520,7 +519,7 @@ for(const channel of ['review-normal','live'])test(`normal draft Hosting on ${ch
   return {status:0};
  });
  assert.equal(called,1);assert.deepEqual(result,{status:'cli-succeeded',live_verified:false});
- const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.deepEqual(after.semantic,before.semantic);assert.deepEqual(after.coverage,before.coverage);assert.deepEqual(after.gaps,before.gaps);
+ const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.deepEqual(after.semantic,before.semantic);assert.deepEqual(after.coverage,before.coverage);
  assert.equal(after.config.deployment.allow_remote_write,false);assert.equal(after.config.deployment.allow_deploy,false);
  assert.ok(releaseErrors(after).length);assert.equal(inspectStatus(f.root).release.verified,false);assert.equal(inspectStatus(f.root).production.verified,false);
  assert.throws(()=>build(f.root,{profile:'production'}),/coverage|semantic|release/i);
@@ -563,7 +562,7 @@ for(const [name,change,re]of [
  ['invalid nonce',(p,o)=>{p.nonce='../invalid';resign(p);o.confirm=confirmationFor(p);},/nonce/i],
  ['forged verification gate',(p,o)=>{p.verification_gate='release';resign(p);o.confirm=confirmationFor(p);},/verification gate/i],
  ['omitted content blockers',(p,o)=>{p.content_blockers=[];resign(p);o.confirm=confirmationFor(p);},/blockers/i],
- ['removed gap',(p,o,f)=>f.json('sources/gaps.json',{schema_version:1,items:[]}),/changed|stale|digest|blocker/i],
+ ['removed coverage',(p,o,f)=>{const d=loadData(f.root);d.coverage.required_scope=[];f.json('sources/coverage.json',d.coverage);},/changed|stale|digest|blocker/i],
  ['reduced coverage promise',(p,o,f)=>{const c=loadData(f.root).coverage;c.required_scope[0].end_seconds=30;f.json('sources/coverage.json',c);},/changed|stale|digest|blocker/i],
  ['forged version',(p,o)=>{p.version='99.0.0';resign(p);o.confirm=confirmationFor(p);},/version/i],
  ['forged source revision',(p,o)=>{p.source_revision={commit:'a'.repeat(40),dirty:false};resign(p);o.confirm=confirmationFor(p);},/source revision/i],
@@ -615,4 +614,53 @@ test('reviewed draft Hosting binds the actual verification gate at plan and exec
  const p=makePlan(f.root,{channel:'live'});assert.equal(p.verification_gate,'release');stamp(f,'scaffold');
  let called=0;assert.throws(()=>executePlan(p,options(p),f.root,()=>{called++;return {status:0};}),/verification gate changed/i);assert.equal(called,0);
  const next=makePlan(f.root,{channel:'live'});assert.equal(next.ready,true);assert.equal(next.verification_gate,'scaffold');
+}));
+
+// Publication identity is independent from the state of content review.
+test('published pages use checkout version and one build time while retaining actual review status',()=>draftFixture(f=>{
+ const d=loadData(f.root);d.config.publication_status='published';f.json('project.config.json',d.config);refresh(f);
+ const pkg=JSON.parse(readFileSync(join(f.root,'package.json')));pkg.version='9.8.7';f.json('package.json',pkg);
+ const first=build(f.root);stamp(f,'scaffold');
+ const info=JSON.parse(readFileSync(join(f.root,'dist/web/build-info.json')));
+ assert.equal(info.version,'9.8.7');assert.equal(info.publication_status,'published');assert.equal(info.source_revision.commit,null);assert.equal(info.commit_url,null);
+ for(const p of d.config.pages){const html=readFileSync(join(f.root,'dist/web',p.file),'utf8');assert.doesNotMatch(html,/草稿|資訊缺口|sources.html#gaps/);assert.match(html,/正式版 v9.8.7/);assert.ok(html.includes(`datetime="${info.built_at}"`));assert.match(html,/UTC\+08:00/);assert.match(html,/整體語意審查尚未完成/);}
+ assert.equal(existsSync(join(f.root,'sources/gaps.json')),false);
+ assert.equal(makePlan(f.root,{channel:'live'}).ready,false);
+ localGit(f.root,['init','-q']);commitTestTree(f.root);build(f.root);stamp(f,'scaffold');
+ const plan=makePlan(f.root,{channel:'live'});assert.equal(plan.ready,true,plan.errors.join('\n'));assert.equal(plan.verification_gate,'scaffold');
+ assert.equal(inspectStatus(f.root).release.verified,false);assert.equal(inspectStatus(f.root).production.verified,false);
+ assert.throws(()=>build(f.root,{profile:'production'}),/coverage|semantic|release/);
+ const second=build(f.root);assert.notEqual(second.meta.built_at,first.meta.built_at);assert.equal(second.meta.version,first.meta.version);
+ assert.equal(second.data.config.content_checked_at,d.config.content_checked_at);
+ writeFileSync(join(f.root,'README.md'),readFileSync(join(f.root,'README.md'),'utf8')+'\nLocal change\n');build(f.root);stamp(f,'scaffold');assert.equal(makePlan(f.root,{channel:'live'}).ready,false);
+ const before=readFileSync(join(f.root,'dist/web/build-info.json'));pkg.version='invalid';f.json('package.json',pkg);assert.throws(()=>build(f.root),/Invalid package version/);assert.deepEqual(readFileSync(join(f.root,'dist/web/build-info.json')),before);
+}));
+
+test('published pages retain approved and rejected semantic decisions without draft labels',()=>draftFixture(f=>{
+ const d=loadData(f.root);d.config.publication_status='published';f.json('project.config.json',d.config);
+ for(const [decision,label]of [['approved','整體語意審查已通過'],['rejected','整體語意審查未通過']]){
+  f.json('sources/semantic-review.json',{...d.semantic,decision});refresh(f);build(f.root);
+  const html=readFileSync(join(f.root,'dist/web/index.html'),'utf8');assert.ok(html.includes(label));assert.doesNotMatch(html,/草稿/);
+ }
+}));
+
+function localGit(root,args){const r=spawnSync('git',args,{cwd:root,encoding:'utf8'});assert.equal(r.status,0,r.stderr);return r.stdout.trim();}
+function commitTestTree(root){localGit(root,['add','.']);localGit(root,['-c','user.name=Fixture Test','-c','user.email=fixture@example.invalid','-c','commit.gpgsign=false','commit','--allow-empty','-m','Isolated fixture']);}
+test('Git identity ignores stale CI env and parent repos, links only valid repository URLs',()=>{
+ const root=mkdtempSync(join(tmpdir(),'apple-event-git-identity-'));const prior=process.env.GITHUB_SHA;
+ try{
+  writeFileSync(join(root,'package.json'),JSON.stringify({version:'1.0.0'}));localGit(root,['init','-q']);commitTestTree(root);process.env.GITHUB_SHA='f'.repeat(40);
+  const config={deployment:{github_repository:'https://github.com/test-owner/test-repo'}};
+  const info=buildIdentity(root,config),sha=localGit(root,['rev-parse','HEAD']);assert.equal(info.source_revision.commit,sha);assert.equal(info.source_revision.dirty,false);assert.equal(info.commit_url,config.deployment.github_repository+'/commit/'+sha);assert.ok(Number.isFinite(Date.parse(info.source_committed_at)));
+  for(const url of ['javascript:alert(1)','https://github.com.evil.invalid/u/r','https://user:pass@github.com/u/r','https://github.com/u/r?x=1'])assert.equal(buildIdentity(root,{deployment:{github_repository:url}}).commit_url,null);
+  const child=join(root,'child');mkdirSync(child);writeFileSync(join(child,'package.json'),JSON.stringify({version:'2.0.0'}));assert.deepEqual(gitStamp(child),{commit:null,dirty:null});assert.equal(buildIdentity(child,config).commit_url,null);
+ }finally{if(prior===undefined)delete process.env.GITHUB_SHA;else process.env.GITHUB_SHA=prior;rmSync(root,{recursive:true,force:true});}
+});
+
+test('a new HEAD with identical source files invalidates the old deployment identity',()=>fixture(f=>{
+ localGit(f.root,['init','-q']);commitTestTree(f.root);build(f.root);stamp(f,'release');
+ const plan=makePlan(f.root,{channel:'identity-review'});assert.equal(plan.ready,true,plan.errors.join('\n'));
+ commitTestTree(f.root);assert.notEqual(gitStamp(f.root).commit,plan.source_revision.commit);
+ assert.equal(makePlan(f.root,{channel:'identity-review'}).ready,false);
+ assert.throws(()=>executePlan(plan,options(plan),f.root,()=>{throw Error('CLI must not run');}),/source_revision|stale/);
 }));

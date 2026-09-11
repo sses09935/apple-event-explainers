@@ -1,22 +1,22 @@
 # 發布操作
 
-## Hosting 與內容認證分開
+## 網站發布與內容認證分開
 
-使用者於 2026-09-12 明確批准草稿上正式網址，並要求修正原本把所有部署綁定完整影音審查的規則。現在一般草稿部署以工程、公開檔案安全與明確目標為門檻；未完成的影音與語意審查保留在內容中，不再需要每次建立內容例外。
+使用者於 2026-09-12 明確批准草稿上正式網址，並要求修正原本把所有部署綁定完整影音審查的規則。現在網站部署以工程、公開檔案安全與明確目標為門檻；未完成的影音與語意審查保留在內容中，不再需要每次建立內容例外。
 
 | 操作 | 必要驗證 | 內容與索引 |
 | --- | --- | --- |
-| draft／preview 產物至 preview 或 live | 完整 `verify:scaffold`，或同 preview 產物已通過的較嚴格 release 紀錄；來源與產物隱私檢查 | 保留 draft、實際審查狀態、缺口提示及 noindex |
+| draft 或 published／preview 產物至 preview 或 live | 完整 `verify:scaffold`，或同 preview 產物已通過的較嚴格 release 紀錄；來源與產物隱私檢查 | 依 publication_status 顯示草稿或正式版、保留實際審查狀態及 noindex |
 | release-ready／preview 內容 | `verify:release` | 完整內容認證，preview 索引策略 |
 | production 產物至 preview 或 live | `verify:production` | 完整內容認證與正式 metadata |
 
-preview 在此是草稿產物的建置 profile，與 Firebase 的臨時 preview channel 是兩個概念；preview profile 可正常部署至 live。已核准語意的草稿不必改回 pending，顯示文字依實際影音覆蓋及審查結果生成。
+preview 在此是保留 noindex 的建置 profile，與 Firebase 的臨時 preview channel 是兩個概念；preview profile 可正常部署至 live。已核准語意的草稿不必改回 pending，顯示文字依實際影音覆蓋及審查結果生成。
 
 內容前檢失敗不會刪除既有且仍匹配的工程驗證；只有真正開始新一輪工程驗證時才使舊紀錄失效。相同 preview 產物的較嚴格 release 驗證可滿足草稿 Hosting，計畫綁定實際使用的 gate，不要求再重跑較低門檻。
 
-`verify:release`／`verify:production` 仍可因全片覆蓋、blocking gaps 或未核准語意而拒絕；這不等於草稿 Hosting 無法部署。`npm run check:status` 同時列出 Hosting 的本機前檢與內容認證，且不推定遠端登入、部署授權或線上成功。
+`verify:release`／`verify:production` 仍可因全片覆蓋或未核准語意而拒絕；這不等於草稿 Hosting 無法部署。`npm run check:status` 同時列出 Hosting 的本機前檢與內容認證，且不推定遠端登入、部署授權或線上成功。
 
-目前正式網址目標為 <https://apple-event-explainers.web.app/>。草稿可公開閱覽，noindex 不是登入保護。live 持續至替換或移除，沒有 7 天期限；preview channel 為 7 天。是否已上線及精確驗收結果以當次本機 `dist/delivery.json` 和 receipt 判讀。
+目前正式網址目標為 <https://apple-event-explainers.web.app/>。網站可公開閱覽，noindex 不是登入保護。live 持續至替換或移除，沒有 7 天期限；preview channel 為 7 天。是否已上線及精確驗收結果以當次本機 `dist/delivery.json` 和 receipt 判讀。
 
 ## 專用目標與授權
 
@@ -27,7 +27,7 @@ preview 在此是草稿產物的建置 profile，與 Firebase 的臨時 preview 
 
 ## 驗證與計畫
 
-從通過公開檢查的已提交 checkout 建置，保留 version／source_revision。私有影片、原始研究、授權檔及執行紀錄均排除於 Git、Hosting 與 CI artifacts。
+從通過公開檢查的已提交 checkout 建置，保留 version／source_revision、source_committed_at、commit_url 及 built_at。頁尾與 build-info 自動共用同次數據；計畫與執行會比對目前 checkout HEAD，不能用分支最新值替代已建置版本。私有影片、原始研究、授權檔及執行紀錄均排除於 Git、Hosting 與 CI artifacts。
 
 ```sh
 npm run check:environment -- --online

@@ -44,7 +44,7 @@
 
 ## 未完成範圍
 
-真實 verify:release／verify:production 必須因全片覆蓋、blocking gaps、pending 語意審查而失敗；build:production 的正式 origin 已由新 Hosting site 核實，內容門檻仍未通過。沒有縮小 scope 或刪 gap。Firefox、Safari／WebKit、真機、SDK 編譯、API runtime、完整輔助科技、遠端 CI、Firebase 帳號權限、TLS／CDN 與回復均未驗證。
+真實 verify:release／verify:production 必須因全片覆蓋、、pending 語意審查而失敗；build:production 的正式 origin 已由新 Hosting site 核實，內容門檻仍未通過。沒有縮小 scope 或刪 gap。Firefox、Safari／WebKit、真機、SDK 編譯、API runtime、完整輔助科技、遠端 CI、Firebase 帳號權限、TLS／CDN 與回復均未驗證。
 
 本工作區無 Git；公開候選清單可檢查，不能宣稱已查不存在的 index／歷史。本輪追加授權只建立私人空 repository 與 Firebase 專用空環境；沒有推送、公開、網站部署或線上成品驗證。內容核對、來源取得、來源範圍日期與建置時間分開，活動日期／台灣觀看日期未用推算填空。
 

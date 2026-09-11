@@ -26,6 +26,14 @@ jobs:
           if node --input-type=module -e "import fs from 'node:fs';process.exit(JSON.parse(fs.readFileSync('project.config.json')).publication_status==='release-ready'?0:1)"; then
             npm run verify:release
           fi
+      - name: Record website version and exact build commit
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const info=JSON.parse(fs.readFileSync('dist/web/build-info.json','utf8'));
+          if(info.source_revision.commit!==process.env.GITHUB_SHA||info.source_revision.dirty!==false)throw Error('Website build must identify this clean CI checkout');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,`Website v${info.version}\n\nCommit: [${info.source_revision.commit}](${info.commit_url})\n\nBuilt at (UTC): ${info.built_at}\n`);
+          NODE
       - name: Report current evidence and verification status
         run: npm run check:status
       # Only generated public files; no research, credentials, or QA media.

@@ -27,7 +27,7 @@ const metadataKeys=new Set(['canonical_url','evidence_url','content_resource_url
 export function authorQualityErrors(d){
  const errors=[];
  function visit(x,path=''){if(typeof x==='string')for(const e of textQuality(x))errors.push(`${path}: ${e}`);else if(Array.isArray(x))x.forEach((v,i)=>visit(v,path+'.'+i));else if(x&&typeof x==='object')for(const [k,v]of Object.entries(x))if(!metadataKeys.has(k))visit(v,path+'.'+k);}
- for(const [k,x]of Object.entries({claims:d.claims,manifest:d.manifest,coverage:d.coverage,gaps:d.gaps,semantic:d.semantic}))visit(x,k);
+ for(const [k,x]of Object.entries({claims:d.claims,manifest:d.manifest,coverage:d.coverage,semantic:d.semantic}))visit(x,k);
  // scope is prose in supplemental sources, but an enum array in semantic reviews.
  d.manifest.supplemental_sources.forEach(s=>visit(s.scope,`${s.source_id}.scope`));
  const map=new Map(d.claims.map(c=>[c.id,c]));

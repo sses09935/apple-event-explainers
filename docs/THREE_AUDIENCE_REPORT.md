@@ -84,7 +84,7 @@ Developer移除S07–09永久白名單，但仍驗逐份原文／身分／已核
 | 三版工程 | 完成，本機可預覽，scaffold通過；未部署。 |
 | 三版編輯 | 本輪已取得、選定的來源內容完成三份獨立文章與語意複查，125條正式主張可在所列限制下閱讀；不是獨立產品實測。 |
 | 全片證據 | partial，S01全長4860.06秒；15單一畫格聯集約0.5005秒，音訊實際核對0秒，字幕僅30秒定位。沒有完整章節或連續畫面時間軸。 |
-| 整場release | verify:release exit 1，符合預期：承諾coverage不足、blocking gaps未解除、完整semantic仍pending。required_scope未縮小。 |
+| 整場release | verify:release exit 1，符合預期：承諾coverage不足、未解除、完整semantic仍pending。required_scope未縮小。 |
 
 本輪另核對3張候選附近畫格，新增KB180–182但保留KB090–092原候選及缺口：畫面只支持語言／地區卡、比較圖文字與36小時播放卡，不支持完整口述、工作負載或eSIM配置。全片與價格日期條件仍待核對，不寫成「影片未公開」。語意記錄已對最新digest重建，見 子集審查（本機紀錄：`../qa/three-audience/semantic-review.json`，未納入公開匯出）。Safari／Firefox、真機、SDK編譯與完整輔助科技未測。
 

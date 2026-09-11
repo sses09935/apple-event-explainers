@@ -1,5 +1,5 @@
 import {textQuality} from './quality.mjs';
-import {publicBase} from './publication.mjs';
+import {publicBase,checkBuildIdentity} from './publication.mjs';
 import {realpathSync,readFileSync,readdirSync,lstatSync,existsSync} from 'node:fs';
 import {join,resolve,sep,dirname} from 'node:path';
 import {execFileSync} from 'node:child_process';
@@ -15,6 +15,7 @@ export function checkPublic(out,data){
  const info=JSON.parse(readFileSync(join(out,'build-info.json')));if(info.profile==='production')allowed.add('sitemap.xml');
  const actual=files(out);
  if(JSON.parse(readFileSync(join(out,'build-info.json'))).input_digest!==data.digest)throw Error('Stale output: run build:web after source edits');
+ checkBuildIdentity(dirname(dirname(out)),data.config,info);
  for(const f of actual)if(!allowed.has(f))throw Error(`Unexpected public output / fixture / old artifact leak: ${f}`);
  for(const f of allowed)if(!actual.includes(f))throw Error(`Missing expected public file: ${f}`);
  for(const f of actual.filter(f=>/\.(html|json|js|css)$/.test(f))) {
@@ -65,8 +66,11 @@ export function debug(out,data,{fixture=false}={}) {
   const nodes=[];walk(trees.get(p.file),n=>nodes.push(n));
   const required=[['main landmark',nodes.some(n=>n.tagName==='main')],['one h1',nodes.filter(n=>n.tagName==='h1').length===1],['page role',nodes.some(n=>attr(n,'data-page-role')===p.role)],['index profile',production?!nodes.some(n=>attr(n,'name')==='robots'&&attr(n,'content').includes('noindex')):nodes.some(n=>attr(n,'name')==='robots'&&attr(n,'content').includes('noindex'))],['footer metadata',nodes.some(n=>attr(n,'data-footer-meta')!==undefined)],['scheme',nodes.some(n=>hasClass(n,'scheme-toggle'))]];
   if(production){required.push(['self canonical',nodes.some(n=>attr(n,'rel')==='canonical'&&attr(n,'href')===publicBase(data.config.output?.public_base_url)+p.file)]);if(readFileSync(join(out,p.file),'utf8').includes('草稿'))throw Error('Draft text in production page');}
+  required.push(['build time matches artifact',nodes.some(n=>n.tagName==='time'&&attr(n,'data-built-at')!==undefined&&attr(n,'datetime')===info.built_at)],['package version',nodes.some(n=>attr(n,'data-site-version')!==undefined&&n.childNodes?.some(c=>c.value===`v${info.version}`))]);
+  if(info.commit_url)required.push(['source commit permalink',nodes.some(n=>attr(n,'data-source-commit')===info.source_revision.commit&&attr(n,'href')===info.commit_url)],['commit time matches artifact',nodes.some(n=>attr(n,'data-source-committed-at')!==undefined&&attr(n,'datetime')===info.source_committed_at)]);
+  if(data.config.publication_status==='published'){required.push(['published status',nodes.some(n=>attr(n,'data-publication-status')==='published')]);if(readFileSync(join(out,p.file),'utf8').includes('草稿'))throw Error('Draft text in published page');}
   if(p.role==='reader') required.push(['reader tools',nodes.some(n=>hasClass(n,'reader-tools'))],['search',nodes.some(n=>attr(n,'id')==='page-search')],['TOC',nodes.some(n=>hasClass(n,'side-toc'))],['mode',nodes.some(n=>attr(n,'data-reader-mode-set')==='audit')],['font step',nodes.some(n=>hasClass(n,'font-step'))]);
-  if(p.role==='evidence') required.push(['evidence section',nodes.some(n=>attr(n,'id')==='claims')],['source metadata',nodes.some(n=>attr(n,'id')==='source-S01')],['gaps',nodes.some(n=>attr(n,'id')==='gaps')]);
+  if(p.role==='evidence') required.push(['evidence section',nodes.some(n=>attr(n,'id')==='claims')],['source metadata',nodes.some(n=>attr(n,'id')==='source-S01')]);
   for(const [name,ok]of required)if(!ok)throw Error(`${p.file}: missing ${name}`);pages++;
  }
  const refs=JSON.parse(readFileSync(join(out,'source-map.json'),'utf8'));

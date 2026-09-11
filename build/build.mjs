@@ -1,6 +1,6 @@
 import {checkPublic,debug} from './inspect.mjs';
 import {inspectSourceTree} from './public-tree.mjs';
-import {profileOf,productionErrors,publicBase,hostingConfig,gitStamp} from './publication.mjs';
+import {profileOf,productionErrors,publicBase,hostingConfig,buildIdentity} from './publication.mjs';
 import {authorQualityErrors} from './quality.mjs';
 import {readFileSync,writeFileSync,mkdirSync,rmSync,existsSync,realpathSync,lstatSync,cpSync,readdirSync} from 'node:fs';
 import {join,resolve,dirname,sep} from 'node:path';
@@ -20,14 +20,14 @@ export function build(root=ROOT,options={}) {
  const profile=options.profile||profileOf(d);if(!['preview','production'].includes(profile))throw Error('Unknown output profile');
  const quality=authorQualityErrors(d);if(quality.length)throw Error(quality.join('\n'));
  if(profile==='production'){inspectSourceTree(root);const errors=productionErrors(d);if(errors.length)throw Error('production-blocked:\n'+errors.join('\n'));}
+ const meta={...buildIdentity(root,d.config),built_at:new Date().toISOString(),input_digest:d.digest,profile,public_base_url:profile==='production'?publicBase(d.config.output?.public_base_url):null};
  const out=join(root,'dist/web');safeClean(root,out);
- const meta={version:JSON.parse(readFileSync(join(ROOT,'package.json'))).version,built_at:new Date().toISOString(),input_digest:d.digest,profile,public_base_url:profile==='production'?publicBase(d.config.output?.public_base_url):null,source_revision:gitStamp(root)};
  mkdirSync(join(out,'assets'));
- for(const f of ['base.css','early.js','reader.js'])cpSync(join(ROOT,'design',f),join(out,'assets',f));
+ for(const f of ['base.css','early.js','reader.js'])cpSync(join(root,'design',f),join(out,'assets',f));
  // Explicit font extension allowlist; never recursively copy arbitrary research or assets.
- const fontSource=join(ROOT,'assets/fonts/noto-sans-tc'),fontOut=join(out,'fonts/noto-sans-tc');mkdirSync(fontOut,{recursive:true});
+ const fontSource=join(root,'assets/fonts/noto-sans-tc'),fontOut=join(out,'fonts/noto-sans-tc');mkdirSync(fontOut,{recursive:true});
  for(const f of readdirSync(fontSource))if(/^noto-sans-tc(?:-\d+\.woff2|\.css)$/.test(f)||f==='OFL.txt')cpSync(join(fontSource,f),join(fontOut,f));
- for(const f of ['NOTICE','LICENSE'])cpSync(join(ROOT,f),join(out,`${f}.txt`));
+ for(const f of ['NOTICE','LICENSE'])cpSync(join(root,f),join(out,`${f}.txt`));
  for(const p of d.config.pages)writeFileSync(join(out,p.file),renderPage(p,d,meta));
  const refs=allBlocks(d).flatMap(b=>blockClaimIds(b).map(id=>({kb:id,page:b.page,node_id:b.node_id||null,topic_id:b.topic_id||null,kind:b.kind,reference:`${b.page}#${referenceId(b,id)}`,evidence:`sources.html#claim-${id}`,rows:(b.table?.rows||[]).flatMap((r,i)=>r.claim_id===id?[`${b.page}#row-${b.node_id}-${i+1}`]:[])})));
  for(const c of d.claims.filter(c=>c.verification==='verified'&&!refs.some(r=>r.kb===c.id)))refs.push({kb:c.id,page:null,node_id:null,topic_id:null,kind:null,reference:null,evidence:`sources.html#claim-${c.id}`,rows:[]});

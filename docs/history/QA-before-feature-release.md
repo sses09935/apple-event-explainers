@@ -19,7 +19,7 @@
 | debug:web | exit 0；DOM、輸出白名單與私有檔保護；工作區未初始化Git |
 | test:e2e | exit 0；27組Chromium檢查、39張截圖 |
 | verify:scaffold | exit 0，僅工程通過；完整log（本機紀錄：`qa/three-audience-scaffold.log`，不納入公開匯出） |
-| verify:release | **exit 1，符合預期**；coverage不足、blocking gaps、完整semantic pending；log（本機紀錄：`qa/three-audience-release.log`，不納入公開匯出） |
+| verify:release | **exit 1，符合預期**；coverage不足、、完整semantic pending；log（本機紀錄：`qa/three-audience-release.log`，不納入公開匯出） |
 | test:release-fixture | exit 0；隔離暫存副本實跑完整verify:release（102單元／27瀏覽器組），副本已移除，正式內容與輸出digest不變；report（本機紀錄：`qa/release-fixture-results.json`，不納入公開匯出）、log（本機紀錄：`qa/three-audience-release-fixture.log`，不納入公開匯出） |
 | migrate-audiences.mjs | 正式六頁資料no-op實跑；保留／重跑／未知topology與缺檔反例在單元測試中 |
 

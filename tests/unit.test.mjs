@@ -37,11 +37,9 @@ reject('unverified publisher cannot masquerade as verified',d=>d.manifest.publis
 reject('hand-entered timestamp in prose',d=>d.blocks[0].text='資料 12:30',/must be generated/);
 reject('old Firebase target in configuration',d=>d.config.deployment.target_firebase_project='apple-afm3-explainers',/Original Firebase/);
 reject('unknown field rejected',d=>d.manifest.unknown='x',/additional properties/);
-test('unreviewed gap is not non-disclosure',()=>fixture((f,d)=>{const g={id:'GAP-001',subject:'unknown',question_zh:'未核對項目',kind:'not-yet-reviewed',blocking:true,evidence:[],coverage_ids:[],reviewed_scope:null,review_record:null};d.gaps.items=[g];validateData(d);const html=renderPage(d.config.pages.find(p=>p.role==='evidence'),d,{version:'test',built_at:'test'});assert.match(html,/尚未核對/);assert.doesNotMatch(html,/影片明確表示尚未公開/);g.kind='explicit-not-disclosed';assert.throws(()=>validateData(d),/actual evidence/);}));
-test('absence requires coverage, never point evidence',()=>fixture((f,d)=>{const g={id:'GAP-001',subject:'test',question_zh:'test',kind:'reviewed-not-found',blocking:false,evidence:[],coverage_ids:['C01'],reviewed_scope:{start_seconds:0,end_seconds:120,modalities:['audio','visual']},review_record:{reviewer:'test',reviewed_at:'2026-01-01T00:00:00Z',notes:'test'}};d.gaps.items=[g];validateData(d);g.evidence=[d.claims[0].evidence[0]];assert.throws(()=>validateData(d),/Absence needs coverage/);g.evidence=[];d.coverage.segments[0].end_seconds=100;assert.throws(()=>validateData(d),/Insufficient/);}));
 test('coverage union detects holes and modality gaps',()=>{assert.equal(covered({start_seconds:0,end_seconds:30,modalities:['audio']},[{start_seconds:0,end_seconds:10,audio_checked:true},{start_seconds:11,end_seconds:30,audio_checked:true}]),false);});
 for(const draft of ['event','dev','ai-user','general'])test(`fresh semantic review includes ${draft} draft`,()=>fixture((f,d)=>{const path=join(f.root,`content/drafts/${draft}.md`);writeFileSync(path,readFileSync(path,'utf8')+'\n');assert.ok(releaseErrors(loadData(f.root)).some(e=>e.includes('semantic')));}));
-test('release blocks missing coverage, conflicts and blocking gaps',()=>fixture((f,d)=>{d.coverage.required_scope=[];assert.ok(releaseErrors(d).some(e=>e.includes('coverage')));d.gaps.items=[{kind:'conflict',blocking:false}];assert.ok(releaseErrors(d).some(e=>e.includes('conflicts')));}));
+test('release still requires coverage and semantic approval',()=>fixture((f,d)=>{d.coverage.required_scope=[];assert.ok(releaseErrors(d).some(e=>e.includes('coverage')));d.semantic.decision='pending';assert.ok(releaseErrors(d).some(e=>e.includes('semantic')));}));
 test('deployment refuses unset, original and arbitrary target',()=>fixture((f,d)=>{const c=d.config;c.deployment.target_firebase_project=null;assert.match(deploymentErrors(c).join(' '),/unset/);for(const id of ['apple-afm3-explainers','new-project']){c.deployment.target_firebase_project=id;assert.match(deploymentErrors(c).join(' '),/not authorized/);}}));
 test('strict Markdown parsing rejects rogue/unstructured facts',()=>{assert.throws(()=>parseKB('# 事件事實庫\n新增事實'),/unstructured/);assert.throws(()=>parseDraft('# 發表會整理\n未引用事實'),/outside KB/);assert.throws(()=>parseDraft('# 發表會整理\n:::claim KB-001'),/unclosed/);} );
 test('unsafe metadata and Markdown escaped',()=>fixture((f,d)=>{d.manifest.title='<img src=x onerror=alert(1)>';const html=renderPage(d.config.pages.find(p=>p.role==='evidence'),d,{version:'test',built_at:'test'});assert.match(html,/&lt;img/);assert.doesNotMatch(html,/<img/);assert.doesNotMatch(markdown('<script>alert(1)</script>'),/<script>/);}));
@@ -84,10 +82,6 @@ test('video-only intake distinguishes pending review from missing video',()=>{
   }
  }finally{f.cleanup();}
 });
-test('reviewed content with no gap entries does not claim review has not started',()=>fixture((f,d)=>{
- const html=renderPage(d.config.pages.find(p=>p.role==='evidence'),d,{version:'test',built_at:'test'});
- assert.doesNotMatch(html,/目前尚未開始內容查核/);assert.match(html,/目前未列出特定資訊缺口/);
-}));
 test('source audit exposes publisher verification provenance and timeline basis',()=>fixture((f,d)=>{
  const html=renderPage(d.config.pages.find(p=>p.role==='evidence'),d,{version:'test',built_at:'test'});
  assert.match(html,/發布者身分核對紀錄/);assert.match(html,/https:\/\/www.apple.com\/test-only\//);
@@ -139,20 +133,20 @@ test('event summary and timeline exclude all supplemental claims, Reading shows 
  for(const category of ['發表會影片','技術規格補充','Developer 技術補充'])assert.ok(html.includes('data-source-category>'+category));
  for(const b of d.blocks){const c=d.claims.find(c=>c.id===b.kb);assert.ok(html.includes(markdown(b.text||c.statement_zh)));}
  assert.doesNotMatch(html,/全站唯一來源|規格頁證據一致/);
- for(const page of d.config.pages){const rendered=renderPage(page,d,{version:'test',built_at:'test'});assert.match(rendered,/<div class="draft-strip">草稿 · 已核對子集 ·/);assert.match(rendered,/<meta name="robots" content="noindex,nofollow">/);}
+ for(const page of d.config.pages){const rendered=renderPage(page,d,{version:'test',built_at:'test'});assert.match(rendered,/<div class="draft-strip"[^>]*>草稿 · 已核對子集 ·/);assert.match(rendered,/<meta name="robots" content="noindex,nofollow">/);}
 }));
 
 for(const decision of ['pending','approved','rejected'])for(const complete of [false,true])test(`draft notice separates ${decision} semantic review from ${complete?'complete':'incomplete'} audiovisual coverage`,()=>fixture((f,d)=>{
  d.semantic.decision=decision;d.coverage.segments[0].end_seconds=complete?120:30;
  const expected=!complete&&decision==='pending'?'全片影音與整體語意審查尚未完成':`${complete?'全片影音查核已完成':'全片影音查核尚未完成'} · ${decision==='approved'?'整體語意審查已通過':decision==='rejected'?'整體語意審查未通過':'整體語意審查尚未完成'}`;
  for(const page of d.config.pages){
-  const html=renderPage(page,d,{version:'test',built_at:'test',profile:'preview'}),notice=html.match(/<div class="draft-strip">([^<]+)<\/div>/)[1];
+  const html=renderPage(page,d,{version:'test',built_at:'test',profile:'preview'}),notice=html.match(/<div class="draft-strip"[^>]*>([^<]+)<\/div>/)[1];
   assert.equal(notice,'草稿 · 已核對子集 · '+expected);assert.match(html,/<meta name="robots" content="noindex,nofollow">/);
   if(page.role==='reader')assert.ok(html.includes(complete?'全片音訊與連續畫面已依紀錄完成檢視':'全片音訊與連續畫面尚未完成檢視'));
  }
 }));
 test('draft notice cannot reuse stale semantic decisions or call a smaller promised range the full video',()=>fixture((f,d)=>{
- const render=()=>renderPage(d.config.pages[0],d,{version:'test',built_at:'test',profile:'preview'}).match(/<div class="draft-strip">([^<]+)<\/div>/)[1];
+ const render=()=>renderPage(d.config.pages[0],d,{version:'test',built_at:'test',profile:'preview'}).match(/<div class="draft-strip"[^>]*>([^<]+)<\/div>/)[1];
  for(const decision of ['approved','rejected']){d.semantic.decision=decision;d.semantic.input_digest='stale';assert.equal(render(),'草稿 · 已核對子集 · 全片影音查核已完成 · 整體語意審查尚未完成');}
  d.semantic.decision='approved';d.semantic.input_digest=d.digest;d.semantic.reviewer=null;assert.doesNotMatch(render(),/語意審查已通過/);
  d.semantic.decision='pending';d.coverage.required_scope[0].end_seconds=30;d.coverage.segments[0].end_seconds=30;

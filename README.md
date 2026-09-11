@@ -2,9 +2,9 @@
 
 以繁體中文整理指定 Apple 發表會、五份台灣產品規格快照，以及直接相關的 Apple Developer 文件。這是獨立、非官方的教育專案；所有文章共用一份可追溯的事實庫。
 
-[網站正式網址（內容草稿）](https://apple-event-explainers.web.app/)使用正常草稿 Hosting 流程，保留 noindex 與未完成審查提示；上線結果依部署後驗收記錄確認。全片影音與整體語意審查尚未完成，正式內容 release／production 核准仍被阻擋，詳見[發布清單](docs/RELEASE_CHECKLIST.md)。noindex 不是存取限制；請勿把網站可閱覽或工程測試通過理解為完整影片核對或產品實測。[GitHub 原始碼](https://github.com/sses09935/apple-event-explainers)已公開並確認匿名可讀。
+[正式網站](https://apple-event-explainers.web.app/) · **v1.0.0** · [GitHub 原始碼](https://github.com/sses09935/apple-event-explainers)
 
-先前的[7 天草稿預覽](https://apple-event-explainers--review-20260910-fa40aajd.web.app/)到期紀錄為 2026-09-17 09:30:56（Asia/Taipei），是舊版內容；正式網址使用新的單次部署計畫，不沿用舊預覽的授權或驗收。
+網站頁尾自動顯示該次建置的版本、GitHub commit 永久連結、提交時間與建置時間（台灣 UTC+08:00）；不是遠端分支的即時最新版本。內容查核進度另列於來源頁，建置不會改寫來源或查核日期。網站保留 noindex 索引策略，並非存取限制。
 
 | 閱讀入口 | 重點 |
 | --- | --- |
@@ -12,9 +12,9 @@
 | `ai-user.html` AI 使用者版 | 個人線索、畫面提問、清單與照片等任務，再看設定條件 |
 | `general.html` 普羅大眾版 | 功能用途、產品差異、日常意義與簡明解說 |
 | `event.html` 發表會總覽 | 僅由 S01 產生的摘要、時間軸與舊引用 |
-| `sources.html` 來源與證據 | 來源版本、定位、各版回連、覆蓋與缺口 |
+| `sources.html` 來源與證據 | 來源版本、定位、各版回連、覆蓋與查核紀錄 |
 
-目前原始碼已增補 22 份 Developer 文件，並依使用者確認將影片價格標示為 USD；上方草稿預覽仍屬先前部署版本，尚未包含這批更新。
+目前原始碼已增補 22 份 Developer 文件，並依使用者確認將影片價格標示為 USD；目前三受眾正文共用上述來源與價格資料。
 
 首頁 `index.html` 提供三條路線。每版均有頁內搜尋、目錄、字級、配色、Reading／Audit、同主題切換及證據回連；停用 JavaScript 仍可閱讀正文與原生連結。
 
@@ -46,7 +46,7 @@ npm run verify:release
 - `test:release-fixture`：在 OS 暫存副本用合成資料測試正向 release 流程；不核准正式資料。
 - `verify:public-tree`：只複製公開清單，重新安裝並執行工程驗證和合成 release 流程；不帶原 node_modules、研究素材或登入檔。
 - `check:status`：產生本機 `dist/status.json`，重算各模態覆蓋，核對目前來源／產物與驗證紀錄，列出正式內容阻擋。成功只表示報告已產生；不連線、不部署，也不將歷史預覽視為目前驗收。
-- `verify:release`：另要求完整承諾覆蓋、無阻擋缺口與新的語意核准。目前預期非零退出。
+- `verify:release`：另要求完整承諾覆蓋、新的語意核准。目前預期非零退出。
 
 實際命令結果與未測範圍見 [QA](docs/QA.md)，發布狀態見 [RELEASE_CHECKLIST](docs/RELEASE_CHECKLIST.md)。
 
@@ -54,7 +54,7 @@ npm run verify:release
 
 事實只修改 `content/knowledge-base.md`；來源與名稱核定只在 `sources/event-manifest.json`。S01 為指定發表會，S02–S06 為五份台灣規格，S07–S23 為已登錄的 Developer 原文；依追加範圍，S24–S29 獨立收錄台灣購買頁與首頁的價格／上市資訊。未取得資訊保持未知；影片摘要只使用 S01。其他來源不等於舞台公告或特定新品相容，新來源須逐一核對准入。
 
-草稿位於 `content/drafts/`，三版選材位於 `content/audiences/`。內容、來源版本、名稱、覆蓋與各版選材都會改變語意摘要；修改後重新審查。ASR 是定位材料，不能當原音核對。詳見 [資料契約](docs/DATA_CONTRACT.md)、[功能覆蓋](docs/FEATURE_COVERAGE.md) 和 [貢獻方式](CONTRIBUTING.md)。
+文章原稿位於 `content/drafts/`，三版選材位於 `content/audiences/`。內容、來源版本、名稱、覆蓋與各版選材都會改變語意摘要；修改後重新審查。ASR 是定位材料，不能當原音核對。詳見 [資料契約](docs/DATA_CONTRACT.md)、[功能覆蓋](docs/FEATURE_COVERAGE.md) 和 [貢獻方式](CONTRIBUTING.md)。
 
 ## 公開與部署邊界
 

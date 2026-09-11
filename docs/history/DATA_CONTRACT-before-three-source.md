@@ -11,7 +11,6 @@
 | `content/knowledge-base.md` | 唯一可編輯事件事實庫 | `parseKB()`、`schemas/claim.schema.json` |
 | `content/drafts/event.md` | 選材、排序、可選的轉述 | `parseDraft()` |
 | `sources/coverage.json` | 取得／字幕／音訊／畫面各自的檢視紀錄 | `schemas/coverage.schema.json` |
-| `sources/gaps.json` | 四種資訊缺口 | `schemas/gaps.schema.json` |
 | `sources/semantic-review.json` | 內容語意審查與摘要綁定 | `schemas/semantic-review.schema.json` |
 | `dist/web/*` | 一次 build 生成，禁止手改 | `build/build.mjs`、`build/inspect.mjs` |
 
@@ -158,18 +157,6 @@ review_record 的 coverage_ids 必須指向既存 coverage segment，並且其�
 
 尚未檢視表示處理欄位 false，不由「取得」推論完成。release 使用各模態區間聯集檢查，段落重疊不重算為額外覆蓋。
 
-## E. Gaps
-
-頂層 `{schema_version:1,items:[]}`。每項固定欄位：`id`（GAP-NNN）、`subject`、`question_zh`、`kind`、`blocking`、`evidence`、`coverage_ids`、`reviewed_scope`、`review_record`。
-
-| kind | 證據／審查條件 | 顯示意義 |
-| --- | --- | --- |
-| explicit-not-disclosed | 非空 evidence + review_record | 影片明確表示尚未公開 |
-| reviewed-not-found | evidence 必須空；非空 coverage_ids + reviewed_scope + review_record；指定模態區間須完整覆蓋 | 在該檢視範圍內未找到 |
-| not-yet-reviewed | evidence、coverage_ids 都空；reviewed_scope、review_record 都 null | 尚未核對，無法推論有無公開 |
-| conflict | 至少兩筆 evidence + review_record | 證據衝突，尚未解決 |
-
-reviewed_scope 與 required_scope 的區間／模態語法相同。review_record 與 coverage 的三欄相同。blocking 是是否阻碍本次發布，true 一律阻擋。未解決 conflict 即使 blocking=false 仍阻擋。足夠範圍的選擇、缺口語意及解除阻擋理由必須由實際人工／研究審查判斷；工具不自動推斷。
 
 ## F. Draft Markdown
 
@@ -193,7 +180,7 @@ Markdown 支援基本段落、強調、清單、表格與引用；raw HTML 一�
 
 完成影片研究、證據核對及草稿後，先填好所有可編輯內容（包含 publication_status 若需設 release-ready）。執行 `npm run review:digest`，將輸出的 SHA-256 填入 `sources/semantic-review.json.input_digest`。
 
-摘要綁定 project config、event manifest、coverage、gaps、KB 與 draft 的精確原始內容（包含空白）。不包括 semantic-review 本身，避免循環。`reviewer`、`reviewed_at`、`notes` 必填，`decision` 由 pending 改 approved 只能在真正完成審查後；`scope` 必須含 claims、drafts、coverage、gaps。任何來源修改都要求重新審查與更新摘要。
+摘要綁定 project config、event manifest、coverage、KB 與 draft 的精確原始內容（包含空白）。不包括 semantic-review 本身，避免循環。`reviewer`、`reviewed_at`、`notes` 必填，`decision` 由 pending 改 approved 只能在真正完成審查後；`scope` 必須含 claims、drafts、coverage。任何來源修改都要求重新審查與更新摘要。
 
 `npm run verify:scaffold` 執行 schema、單元反例、乾淨 build、連結、靜態 DOM／輸出隱私檢查、實際 Chromium E2E。允許零內容；成功僅 scaffold-ready。
 

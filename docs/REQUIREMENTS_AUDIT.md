@@ -13,7 +13,7 @@
 | 提示詞要求 | 狀態 | 實作／驗證證據 |
 | --- | --- | --- |
 | 指定專案、新名稱僅工程名稱、zh-TW、單一影片 | 完成 | project.config.json；固定三頁角色；來源 S01；README 與首頁非官方／草稿說明 |
-| 無影片保持 null／零主張，不帶入產品、日期、假規格或傳聞 | 完成 | 正式 event-manifest／KB／draft／coverage／gaps；輸出檢查（本機紀錄：`qa/output-boundary-results.json`，不納入公開匯出）、呈現審查（本機紀錄：`qa/scaffold-semantic-review.json`，不納入公開匯出） |
+| 無影片保持 null／零主張，不帶入產品、日期、假規格或傳聞 | 完成 | 正式 event-manifest／KB／draft／coverage；輸出檢查（本機紀錄：`qa/output-boundary-results.json`，不納入公開匯出）、呈現審查（本機紀錄：`qa/scaffold-semantic-review.json`，不納入公開匯出） |
 | 原 repo 只讀；隔離原歷史、remote、dist、設定與憑證 | 完成 | 新專案沒有 .git／remote，亦非父 repo 子目錄；沒有複製原 Firebase 設定；215 個原追蹤檔 SHA-256 比對，見 隔離結果（本機紀錄：`qa/isolation-results.json`，不納入公開匯出） |
 | 開始前記錄來源／新路徑、解析 main SHA | 完成 | docs/REFERENCE.json 保留初始 SHA 與搬移紀錄；再次唯讀解析（本機紀錄：`qa/reference-review.json`，不納入公開匯出） 仍為 da932859edf5ffc9c00f3c1431db355432d1c3b9 |
 | 檢查全部指定參考入口與必要直接依賴 | 完成 | HANDOFF 的逐檔工程參考表；20 個指定入口均存在，路徑／雜湊清單（本機紀錄：`qa/reference-inputs.json`，不納入公開匯出）；build／renderer 直接依賴亦已讀取 |
@@ -37,7 +37,6 @@
 | B：S01 影片 metadata、身份、revision、時間基準與實際模態 | 完成 | schemas/event-manifest.schema.json、DATA_CONTRACT B；正式未知欄位 null；已填 URL 待核對狀態亦有反例 |
 | C：KB 全欄位、三個獨立狀態維度、evidence 與 review | 完成 | schemas/claim.schema.json、parseKB／validateData；verified 需要證據及音訊／畫面覆蓋，效能主張另示非獨立實測 |
 | D：取得／讀字幕／核對音訊／畫面分開記錄 | 完成 | coverage schema、區間聯集驗證；sources 頁顯示承諾範圍、各模態處理與查核紀錄 |
-| E：四種 gap、缺席連 coverage、不造單點證據 | 完成 | gaps schema、validateData；explicit-not-disclosed 要實際片段；reviewed-not-found 要完整範圍；尚未核對不改寫成未公開 |
 | F：單一 KB 權威、draft 機器 reference、一次 build 更新 | 完成 | 嚴格 :::claim KB-NNN；禁止游離事實區塊、未知／未驗證引用、手寫時間／來源；衍生 source-map 與時間軸 |
 | 精確語法、欄位、enum、範例與機器驗證一致 | 完成 | DATA_CONTRACT A–G、schemas/*、parser／跨資料驗證；本次修正區塊內 HTML 註解形式原文不被誤刪 |
 | 每個正式 claim 專屬證據卡／時間／回連／來源入口 | 完成 | md2html.mjs、player.mjs；selected claims 一卡多回連；小數秒起訖保留；候選主張不公開 |

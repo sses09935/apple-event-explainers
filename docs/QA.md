@@ -1,131 +1,19 @@
-# 本機驗證與語意邊界
+# 驗證與驗收
 
-## 2026-09-12 部署規則修正的驗證範圍
+## 版本及建置資料
 
-一般 draft／preview Hosting 使用完整 scaffold 工程紀錄，無需私有內容例外授權。測試需證明：未完成內容認證時可建立安全草稿計畫；錯目標、過期／變更計畫、錯誤 verification gate、來源／產物不符、改掉草稿提示或索引策略、缺少單次操作旗標、重用 receipt 仍被拒絕。舊授權參數保留嚴格相容性，原 release／production 內容認證不被捏造成通過。有效的 approved／rejected 草稿照實顯示，匹配的較嚴格 preview／release 工程紀錄可沿用；內容前檢立即拒絕時，原工程驗證、產物及 Hosting 設定必須逐位元組保留。
+每次 build 讀取實際 checkout 的 package 版本與 Git 身分。六頁共用建置時間、提交時間及完整 SHA permalink；沒有 Git 的匯出副本保留 null，不能借用 CI 環境值。測試涵蓋不同 checkout 版本、父 repository 誤認、同檔案不同 HEAD、危險 repository URL 與所有頁面的時間一致性。
 
-狀態報告須同時可呈現「Hosting 本機前檢通過」及「完整內容認證未完成」，不得以歷史 delivery 推定遠端成功，也不能因一般 verification 尚有效而漏查 Hosting 模板變動。狀態命令不寫計畫、不消耗 receipt。
+## 發布狀態
 
-實際測試數量、精確提交 CI、隔離重建、部署 CLI 與線上驗收分別保存於本次交付紀錄。線上驗收比對同一已測產物的全檔與 build-info，再檢查六頁、來源回連、404、header 及 noindex。私人影片、研究與授權紀錄均不進 Hosting。
+published 表示網站正式版，與 semantic decision 分開。測試保留 pending／approved／rejected 的顯示差異；published 的工程計畫可通過，但 coverage 或語意尚未完成時，完整內容認證仍拒絕。已移除的網站登錄區塊及資料不能再輸出。
 
-## 2026-09-12 Developer／USD 複核範圍
+## 工程與公開副本
 
-本輪內容共 205 條 KB、186 節點；S30–S51 的 22 份來源均實際取得 HTML、同內容 DocC JSON 與官方 Markdown，逐一核對身分、SHA-256、章節與必要條件。新增 38 條主張只有 context-only 技術對照，沒有 SDK 編譯或新品 runtime 驗證；全部 verified 主張均有正文引用，candidate 引用為零。
+npm run verify:scaffold 依序執行來源檢查、單元測試、build、連結、DOM／公開檔案與 Chromium E2E。npm run verify:public-tree 從公開白名單建立乾淨副本，重新安裝及執行相同工程驗證與隔離的合成認證測試。測試數量與實際成功紀錄保存於本機當次交付，避免文件手填過期數字。
 
-獨立複核比較 USD 修改前後的 12 條 KB、三稿與 gaps：原 evidence、數字、配置、台灣稅額與未知值不變，只有五條影片價格依使用者明確確認改顯示為 USD。新增三版段落另逐項回對 KB 與固定原文，修正照片載入表示、心率資料精簡措辭及系統／App 參數解析責任。
+## 線上驗收
 
-目前 YouTube 播放器已實際觀察為4636.981秒，代表晶片、耳機降噪、價格與開場／結尾畫面支持時間對應；只核對整秒跳轉，不宣稱子秒或全片語意。官方描述五個章節獨立作導覽；測試補映射失效、超界、版本、章節、浮點整秒邊界及雙時間顯示。
+部署只使用已測產物，完成後比對所有遠端檔案的解壓位元組、build-info 及來源 SHA。六頁以 390／1280px 檢查版本、時間、字型、搜尋、目錄、Reading／Audit、同主題切換與證據往返。另查 HTTPS、CSP、noindex、robots 及真實 404，再實際目視所列截圖。
 
-當次新增內容的 Reading 檢查與完整 scaffold 分別記錄；公開文件不收原始研究或私人測試素材。所有驗證只對應記錄中的內容／來源／產物摘要，精確退出碼與範圍由本機交付紀錄保存，不以舊報告宣稱本輪通過。
-
-本輪另依授權測試本機直接音訊理解。取得模型、完成合成語音對照與實際原片語意核對是不同步驟，均不自動核准全片。正式 required_scope、blocking gaps 及 pending 保留，未完成本輪 live 部署。
-
-## 2026-09-12 狀態檢查與交接修復
-
-Playwright 固定為 1.60.0，保留 Node 24.16.0。舊版在瀏覽器下載完成後解壓停滯，與[官方相容性問題](https://github.com/microsoft/playwright/issues/41000)一致；CI 使用本機安裝的 CLI，安裝限時 5 分鐘、工作限時 30 分鐘。更新後的瀏覽器安裝、本機完整驗證與遠端 CI 分別以實際結果記錄。
-
-新增狀態檢查的反例涵蓋：重疊區間不重複計秒、已取得音訊及字幕不充作原音核對、歷史 delivery 不推定目前遠端成果、文件／產物變動使驗證失效、缺少或損壞紀錄不通過、乾淨重建須匹配來源摘要及完整指令序列。狀態檢查只讀現有驗證，輸出 `dist/status.json`；不取代 release／production gate。
-
-本次完整 scaffold、公開副本乾淨重建及精確提交的 CI 結果分別記於本機 `dist/delivery.json`；目前是否仍匹配由 `npm run check:status` 重算。測試合成資料只留 OS 暫存副本。既有來源、KB、四稿、三份選材及 semantic 的內容摘要保持不變，沒有新增版面或原音目視／聆聽驗收。
-
-續接時查得初次 CI run 34431800822 為 cancelled，不能宣稱通過。後續 CI 使用實際推送的 commit SHA 判讀；工作區與公開 checkout 分開，不把無 Git 的工作區產物宣稱建自提交。歷史草稿部署資料保全，這次沒有 Hosting 部署。
-
-## 2026-09-10 本次驗證範圍
-
-本次重新綁定目前工作區，補做deployment wrapper修改後的乾淨公開副本重建。先前部署與QA資料均已保全，舊scaffold不視為當前驗證。實際命令、退出碼、公開清單與產物摘要集中本機dist/delivery.json與docs/qa；四種交付狀態另見 [發布清單](RELEASE_CHECKLIST.md)。
-
-新增F11的15個單幀僅增加0.5005秒畫面覆蓋；原音仍受工具限制，沒有重跑ASR或失敗的音訊傳入。KB-181證據說明已直接回看原圖修正A19 Pro／A18 Pro誤植及負載字形。部署wrapper的所有preview禁止Auth網域同步，計畫明列並比對實際version與source_revision，保留篡改反例與全部原gate。
-
-以下數字與「未部署／未CI」為明列歷史階段，不作為本次驗收結果。
-
-### 本次已核實的公開與門檻結果
-
-[GitHub原始碼](https://github.com/sses09935/apple-event-explainers)已正常push並設為Public；首次開源提交為[e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5](https://github.com/sses09935/apple-event-explainers/commit/e8cd7a2f111cfbf31ae8ed8751dfa7a203beabf5)。匿名HTTPS核對192個Git檔案物件與本機提交一致，並直接比對README、LICENSE、semantic-review及CI設定。主工作區仍非Git；專用work/github保留正常main歷史，未force push或建立tag／Release。
-
-目前內容版本通過193項單元、27組完整Chromium E2E及3459個內部連結檢查；93張截圖中選12張六頁代表圖實際目視，包含390／1280px及三受眾120% Reading與深色Audit。僅含192檔公開清單的新副本，以空npm設定、獨立快取、公開registry及lockfile安裝，完整scaffold與合成release／production全部通過。公開文件收尾後仍須對最後source-tree重跑完整驗證，精確對應由本機dist/delivery.json記錄，不重新簽署舊報告。
-
-GitHub Actions已實際觸發，逐次結果以相同commit的[Actions紀錄](https://github.com/sses09935/apple-event-explainers/actions)為準；初次run為[34431800822](https://github.com/sses09935/apple-event-explainers/actions/runs/34431800822)。CI只做QA且artifact限dist/web，不部署、不含研究資料。固定Action SHA已核對官方版本；lockfile的npm audit當次17個相依套件、已知弱點總數0，沒有變更套件或lockfile。這不代表未知弱點不存在。
-
-本次真實verify:release、build:production、verify:production及明確project／site／live的wrapper計畫均exit 1：原音與完整畫面覆蓋不足、GAP-001至003仍blocking、semantic pending、內容尚非release-ready。正式origin已由Hosting回傳核對為`https://apple-event-explainers.web.app`，但未生成可發布production包、未執行live、沒有本次正式部署版本或線上正式驗收。deployment-prepared只表示部署工程、目標與本機mock已備妥，live計畫仍blocked。
-
-先前草稿預覽的123檔位元組、凍結來源digest、產物digest、計畫與已消耗receipt已重新比對保存資料，全數相符；舊source與private部署資料不改。其40項遠端檢查和12張截圖是先前草稿版本的歷史驗收，不能拿來驗證本次修正版。
-
-未測Safari／Firefox、真機、完整輔助科技、SDK runtime與正式站TLS／CDN／回復。台灣日期年份／時區、具體起價錶帶與部分個別稅額保持未知。下一個必要內容續接仍為F11／S01的2050–2170秒原音與完整對話流程，需真正可用的原音理解接口或可信且綁定固定來源版本的審查紀錄；之後完成其餘0–4860.06秒audio＋visual範圍，再重審與跑正式gate。
-
-## 先前內容整合與部署驗證歷史
-
-2026-09-10（Asia/Taipei）。本輪接續非音訊研究，並依使用者追加的台灣官網入口核對價格。原始材料與整合前狀態保留；歷史數字見 [整合前 QA](history/QA-before-non-audio-integration.md)，目前狀態見 [發布清單](RELEASE_CHECKLIST.md)。本輪沒有環境重設、登入變更、push、公開 repository、Release 或 Hosting 部署。
-
-## 內容與來源
-
-正式資料共167條 KB、164 verified／3 candidate：影片36、規格91、Developer27、台灣商店10。四稿共161節點（event45、dev43、AI使用者41、大眾32），27表133列；三份選材重新審查。原154條ID與verification、全部舊精確evidence定位保留，23條既有主張有修正，新增13條。S01–S23的身份／版本不變，S24–S29為新取得的六個台灣價格／日期來源。原event順序與claim引用前綴保留，價格追加前後event全文不變。
-
-五份規格的140個註腳直接重讀並核對原hash。五段新連續視覺區間共40.303秒，與原79單幀取聯集約42.6053秒；音訊0秒、字幕30秒。Calendar中途3個與最後9個候選、捷徑既有卡、單機Handoff、不同照片與手持花枝、合照預覽變暗再恢復均只描述已見內容。區間見 [功能索引](FEATURE_COVERAGE.md)。
-
-核對指定台灣首頁及其實際連出的五份購買頁HTML；對照40個手機顏色／容量配置、12組容量總價及原文約稅額、9組手錶起價索引與2種耳機價格。含稅／運送註記與手機約略稅額直接讀原文，未套稅率或拿月付／換購當總價。日期保留來源月日；未明列的年份／時區、手錶起價的具體錶帶及手錶／耳機個別稅額維持未知。購買頁尺寸選項與規格的實際高度分開。商店其他功能FAQ留私人待審。
-
-全四稿與選材逐節比較主體、數字、條件、強度及claim_ids；164個verified皆有正文引用，candidate引用0。Reading DOM排除Audit後仍能讀到所選數值及重要條件。新semantic digest綁定本輪全部內容，decision仍pending，沒有沿用舊審查。完整原音與全片語意核准不因文章一致性或工程通過而完成。
-
-## 已執行檢查
-
-| 檢查 | 本輪結果與界線 |
-| --- | --- |
-| check | 167條KB、161節點、六頁，來源／版本／定位與名稱用語檢查通過 |
-| npm test | 168項通過，0失敗、0跳過；含台灣商店准入正反例及不換行空白的完整名稱反例 |
-| build:web、check:links、debug:web | 六頁、3459個內部引用；DOM、錨點與公開產物白名單通過 |
-| verify:scaffold | 通過；包含上述檢查及實際完整E2E，不等於內容發布核准 |
-| 完整Chromium E2E | 27組通過，390／768／1280px、120%字級，93張本機截圖 |
-| 非音訊Reading增補 | 83項通過，6張實際目視，字級／充電條件／Handoff／來源回連與正常捲動檢查通過 |
-| 台灣價格Reading增補 | 20項通過，逐列核對三版7價行與3日期行、重要條件、四類首頁計數、同主題／證據往返；所產生截圖已逐張目視 |
-| 公開清單／乾淨重建 | 192檔；新暫存副本、獨立npm cache、空白設定、公開registry與lockfile安裝成功，scaffold及合成release／production皆通過 |
-| 真實release／production／計畫 | verify:release、verify:production、build:production與deploy:plan皆exit 1，確認覆蓋／blocking gaps／pending review阻擋，原網站輸出未改 |
-
-三版各自測搜尋Enter／Escape、目錄與焦點、字級保存、深淺色、Reading／Audit、鍵盤橫捲、同主題切版、證據與返回、重新整理、無JS與localStorage失敗降級。角色不同的首頁與來源頁也按六頁清單測試，未因缺頁而跳過。一般讀者未選Developer正文，分類按實際選材檢查；首頁及來源中心仍區分四類。
-
-隔離合成資料驗證production metadata、self-canonical、robots／sitemap、404、Hosting headers及mock部署參數；沒有真實Firebase寫入。新商店來源只接受六個精確ID／URL配對與已取得的版本／身分／locator，拒絕其他網域／市場／URL變體、假S01時間、混來源單claim與Developer產品前提。完整規則見 [資料契約](DATA_CONTRACT.md)。
-
-## 實際發現與修正
-
-- 整合前交接文件移入history後的相對連結曾使測試失敗；修正導向後重跑通過，失敗紀錄保留。
-- 一般沙盒曾拒絕loopback listen（EPERM）；改在已授權的本機測試執行環境運行，沒有變更系統或登入設定。
-- 官方原文的不換行空白造成完整產品名誤判；名稱檢查只正規化比較字串，原文不改。真正缺字與重複名稱仍由反例拒絕。
-- 曾在生成字型目錄發現22個帶「 2」的同hash複本，公開產物檢查拒絕。原因未知，完整異常輸出已保存私有紀錄；以原作者來源正常清理重建後通過，未放寬白名單或手改dist。
-- 公開副本兩次在超長Audit全頁截圖超過45秒，先後發生於並行與循序執行，不能歸因為並行。失敗log保留；現對超過16000 CSS像素的文件改擷取正常捲動的頂部／中間／底部視窗，記錄實際位置。這些圖僅代表所列視窗，不宣稱全頁目視；完整DOM與互動檢查維持，沒有提高timeout。
-- 價格增補測試曾誤把Audit表算入主表、要求每版都出現Developer；修正測試定位與選材預期後重跑，未改文章來迎合測試。
-
-## 本機量測與公開示例
-
-本輪重新量測六頁的390／1280px，共12個樣本：Chromium 145、loopback HTTP、等待字型、無CPU或網路降速。HTML約4.5–586KB；首屏外部請求0、整頁水平溢出0。強制Noto備援測試實際載入20個本機子集，0失敗。毫秒及gzip數字僅屬本機觀察／估計，不是遠端效能或Lighthouse分數。
-
-整合者實際看過並更新公開 [首頁示例](images/preview-home.png) 與 [AI任務示例](images/preview-ai-user-feature.png)。完整E2E、價格與條件截圖只留本機docs/qa，公開樹不含圖集、原始HTML或影音。新範圍中的每個重點表／條件與原文核對另存私有工作紀錄。
-
-## 阻擋與紀錄
-
-required_scope仍0–4860.06秒audio＋visual；GAP-001至003仍blocking。GAP-003只更新台灣頁面的進度，不把台灣價格回填為影片市場。既有音訊附件與資料URL多次無法送入模型，已讀嘗試紀錄，沒有重試同一失敗方法或把ASR當原音。
-
-Safari／WebKit、Firefox、真機、完整輔助科技、SDK編譯與runtime、遠端CI、Hosting寫入權限、TLS／CDN與回復尚未驗證。前輪環境建立與只讀驗證結果保存；本輪沒有再次設定或線上重查環境。主工作區沒有Git，不能宣稱已檢查不存在的index或提交歷史。
-
-本機完整紀錄：docs/qa/resume-content.json、browser-results.json、resume-reading-results.json、storefront-browser-results.json、performance.json、public-rebuild.json與resume-gates.json；最終dist/delivery.json核對語意輸入、源樹、產物與驗證紀錄的摘要。文件與公開示例更新後，另以最後公開樹重跑scaffold／乾淨重建並綁定最後產物；不得沿用不相符摘要。
-
-
-<!-- verified-draft-preview-review-20260910-post-deployment -->
-
-## 2026-09-10 草稿預覽已部署並完成指定線上驗收
-
-本節追加最新結果；前文「尚未部署／尚未線上驗證」及原測試數量保留為當時紀錄，以本節判讀這次 preview 狀態。Firebase project／site 均為 `apple-event-explainers`，唯一 channel 為 `review-20260910`；[本次草稿預覽](https://apple-event-explainers--review-20260910-fa40aajd.web.app/) 已由 CLI 回報部署成功，CLI 顯示到期時間 `2026-09-17 09:30:56`（Asia/Taipei；已核對此 Mac 的 Intl 時區，保留 CLI 原值）。這是使用者核准的單次 7 天 preview，持有連結者可閱覽。
-
-CLI 部署結果與線上驗收分開記錄：`docs/qa/draft-preview-deployment.json` 為 `cli-succeeded`；`docs/qa/draft-preview-remote.json` 在 `2026-09-10T01:36:35.141Z` 記錄 `status: passed`、`preview_verified: true`。本次以 Chromium 對六頁的 390／1280px 執行 40 項檢查，12 張所列視窗截圖完成目視；123 個遠端檔案解壓後的位元組摘要與部署 artifact 相符。此結果涵蓋指定 HTTPS 預覽與所列操作／視窗，不是全頁目視、所有瀏覽器或跨地區 CDN 的驗收。
-
-本次 HTTP `X-Robots-Tag` 實際觀察為 `noindex`；經遠端位元組核對的六頁 HTML robots meta 為 `noindex,nofollow`。兩者分別記錄，不宣稱 header 與 HTML meta 或計畫值完全相同。noindex 是索引指示，不是登入或存取控制。HTTPS 憑證及本次回應、來源回連、字型、robots 與真實 404 均依線上報告核對；未測試環境仍見該報告的 limits。
-
-部署前 scaffold 實際完成 189 項單元測試、27 組完整本機 E2E。單次授權 receipt 已消耗，後續本機重用檢查實際拒絕；正式 release／production 與一般 preview 門檻仍因完整影音、blocking gaps 及 pending 語意審查而阻擋。內容、來源、coverage、gaps、semantic 與設定的 13 份基準檔案 SHA-256 保持不變；`draft`、`pending`、0–4860.06 秒 audio＋visual 承諾及 GAP-001 至 GAP-003 均保留。
-
-只有本次 Hosting preview 已部署；live 未部署、`live_verified` 仍為 false。沒有 GitHub push、repository 公開、Release 或 Firebase Auth 網域同步；本次 CLI 使用 `--no-authorized-domains`。本紀錄不授權續期、重部署、其他 channel 或提升至 live，也不表示影片缺口已關閉。
-
-### 部署快照與部署後文件追加
-
-實際部署所用的公開來源快照保存於 `dist/deployment-source-review-20260910`；原 scaffold／artifact 綁定紀錄保存於本機私有 `research/.private/deployment-preview-20260910/verified-artifact.json`，部署計畫與遠端位元組核對記錄另保存精確 artifact 清單。這輪 deployment wrapper 實作完成後未重跑乾淨 public rebuild；先前的 clean-rebuild 紀錄只屬內容整合階段，不能用來宣稱本次部署來源快照已通過乾淨重建。凍結 source-tree digest 為 `f12f7c20d5df47a765d4849dcd719440923e3ed3b358b264a53368f79876e6e0`，部署 artifact digest 為 `de9a3aa651df2579df21de9b1f921beade870ff1f152c63a1ae6ad3d42280a0a`，output digest 為 `455f22ef0b5c6da9851948b7dde170df4a1618746d89ddfb022a87e284a93bb7`。
-
-本次只在部署後追加 HANDOFF、QA、RELEASE_CHECKLIST、DEPLOYMENT 四份文件，因此目前 workspace source-tree digest 會與上述部署快照不同。舊 scaffold／交付驗證只適用凍結快照，沒有重新簽署成目前來源的驗證，也沒有因文件追加重建產物或重部署。四份原文件的私有備份、追加前後摘要及檢查結果記於 `research/.private/deployment-preview-20260910/post-deployment-doc-update.json`；既有 `dist/verification.json`、部署快照與線上 artifact 均保留不改。後續若修改產品內容或工程，須另行驗證，不能沿用已消耗授權。
-
-首次遠端 header 檢查曾錯誤要求與計畫字串完全相等，失敗紀錄保留於 `docs/qa/draft-preview-remote-attempt-1-header-failed.json`；最後依實際 noindex header 與獨立 HTML meta 檢查記錄結果，沒有為迎合檢查重部署或改 Hosting 設定。其他保留的嘗試與工具限制依最終線上報告判讀。
+結果僅涵蓋記錄的 Chromium 視窗、操作與 HTTPS origin，不宣稱所有裝置、瀏覽器、地區或完整影音審查。當次精確結果見本機 dist/delivery.json。

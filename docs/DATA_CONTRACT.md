@@ -8,7 +8,6 @@
 
 ## 2026-09-12 影片幣別確認
 
-使用者明確確認影片所列價格均為美元（USD）。KB 的影片價格數值單位依此標示 USD，qualifiers 與 review notes 記錄這項使用者確認；原 on-screen evidence 的「$」、數字、來源 revision、時間定位與模態保持原樣。這是本次明確提供的幣別更正，不表示影片原音已核對，也不推定市場範圍、含稅條件或台灣適用性。三受眾正文及影片總覽從同一 KB 使用此標示；GAP-003 繼續追蹤其餘未核對條件。
 
 ## 2026-09-10 台灣官網價格增補
 
@@ -16,7 +15,7 @@
 
 六個來源採程式中明列的 source ID／exact URL 配對，要求 zh-TW、實際取得的 SHA-256／revision／時間、identity_review、同 revision 的 page_reviews 與精確 locator；HTML 的 content_resource_url 必須 null。未登錄、相似網址、其他市場或僅同為 Apple 網域皆不放行。來源元資料仍僅存 manifest，不另設價格 registry。商店來源不能作為 Developer 技術研究的產品支援前提；本次未審的 FAQ 與其他功能文案不因准入而成為正式主張。
 
-Reading、Audit 與首頁計數將「台灣官網價格與上市」獨立標示。價格／日期另存 KB，不覆寫影片原卡；數值表格仍由 KB 生成。台灣正文保留起價／總價、配置及未確認的稅額、年份或時區，不從月付、換購或其他市場計算售價。event 摘要與時間軸繼續只使用 S01。已核對台灣頁面不會自動補完 S01 市場語境或全片缺口，原 blocking gaps 保留並據實更新進度文字。
+Reading、Audit 與首頁計數將「台灣官網價格與上市」獨立標示。價格／日期另存 KB，不覆寫影片原卡；數值表格仍由 KB 生成。台灣正文保留起價／總價、配置及未確認的稅額、年份或時區，不從月付、換購或其他市場計算售價。event 摘要與時間軸繼續只使用 S01。已核對台灣頁面不會自動補完 S01 市場語境或全片缺口，原  保留並據實更新進度文字。
 
 本版依使用者 2026-09-10 追加授權取代「只有 S01 才合法」的舊規則。2026-09-10 三受眾增補同時取代舊三頁及單篇逐 claim 卡片限制。既有 KB ID、S01 的秒數與 revision、event.html 錨點均保留。v1 與前次交接保存在 `docs/history/`，不是現行要求。
 
@@ -65,7 +64,6 @@ Gaps 的 reviewed-not-found 目前只支援有完整模態範圍的 S01 區間�
 | `content/drafts/dev.md`／`ai-user.md`／`general.md` | 三受眾的獨立文章、選材、排序與轉述 | `parseDraft()` |
 | `content/audiences/dev.md`／`ai-user.md`／`general.md` | 各受眾目的、必要主題、選材及避免事項；不是另一份事實庫 | 必讀非空 Markdown；納入 digest |
 | `sources/coverage.json` | 取得／字幕／音訊／畫面各自的檢視紀錄 | `schemas/coverage.schema.json` |
-| `sources/gaps.json` | 四種資訊缺口 | `schemas/gaps.schema.json` |
 | `sources/semantic-review.json` | 內容語意審查與摘要綁定 | `schemas/semantic-review.schema.json` |
 | `dist/web/*` | 一次 build 生成，禁止手改 | `build/build.mjs`、`build/inspect.mjs` |
 
@@ -75,7 +73,7 @@ Gaps 的 reviewed-not-found 目前只支援有完整模態範圍的 S01 區間�
 
 固定 `schema_version: 1`、`slug: "apple-event-explainers"`、`language: "zh-TW"`、`storage_prefix: "apple-event-explainers:"`。`name` 為非空顯示名稱，不代表活動正式名稱。
 
-`publication_status` 是 `draft` 或 `release-ready`。後者在 check/build 時亦須通過內容門檻；不代表已授權部署。所有目前生成頁面仍標示草稿與 noindex。
+`publication_status` 為 `draft`、`published` 或 `release-ready`。published 表示網站正式版，獨立於完整內容認證；release-ready 仍須通過內容門檻。preview／production profile 控制輸出與索引策略，不直接決定是否標示草稿。
 
 `pages` 必須包含且只能包含六個唯一項目，各有非空 `title`：
 
@@ -93,7 +91,7 @@ Build、連結、靜態 DOM 與瀏覽器測試共用此清單；缺頁或零頁�
 
 - `content_scope_date`：`YYYY-MM-DD` 或 null，本輪採來源快照 UTC 日期，不能當成發表會日期。
 - `content_checked_at`：UTC ISO 時間或 null，內容最後查核時間。
-- `site_built_at`：設定檔固定 null，避免手動維護建置時間；實際值由 build 寫入 `dist/web/build-info.json` 的 `built_at` 與所有頁尾。
+- `site_built_at`：設定檔固定 null；build-info 的 built_at 每次由建置產生，六頁共用。version 讀取該 checkout 的 package.json，source_revision、source_committed_at 取自其 Git HEAD；commit_url 為設定 GitHub repository 的完整 SHA 永久連結。沒有 Git 的副本保持 null，頁面以台灣時間及機器可讀 UTC datetime 呈現。
 - `deployment.target_firebase_project`：null 或非空新目標；任何含 `apple-afm3-explainers` 的值均拒絕。
 - `deployment.allow_remote_write`、`allow_deploy`：本階段固定 false。
 
@@ -216,18 +214,6 @@ review_record 的 coverage_ids 必須指向既存 coverage segment，並且其�
 
 尚未檢視表示處理欄位 false，不由「取得」推論完成。release 使用各模態區間聯集檢查，段落重疊不重算為額外覆蓋。
 
-## E. Gaps
-
-頂層 `{schema_version:1,items:[]}`。每項固定欄位：`id`（GAP-NNN）、`subject`、`question_zh`、`kind`、`blocking`、`evidence`、`coverage_ids`、`reviewed_scope`、`review_record`。
-
-| kind | 證據／審查條件 | 顯示意義 |
-| --- | --- | --- |
-| explicit-not-disclosed | 非空 evidence + review_record | 影片明確表示尚未公開 |
-| reviewed-not-found | evidence 必須空；非空 coverage_ids + reviewed_scope + review_record；指定模態區間須完整覆蓋 | 在該檢視範圍內未找到 |
-| not-yet-reviewed | evidence、coverage_ids 都空；reviewed_scope、review_record 都 null | 尚未核對，無法推論有無公開 |
-| conflict | 至少兩筆 evidence + review_record | 證據衝突，尚未解決 |
-
-reviewed_scope 與 required_scope 的區間／模態語法相同。review_record 與 coverage 的三欄相同。blocking 是是否阻礙本次發布，true 一律阻擋。未解決 conflict 即使 blocking=false 仍阻擋。足夠範圍的選擇、缺口語意及解除阻擋理由必須由實際人工／研究審查判斷；工具不自動推斷。
 
 ## F. 三受眾 Draft Markdown
 
@@ -288,7 +274,7 @@ reviewed_scope 與 required_scope 的區間／模態語法相同。review_record
 
 完成影片研究、證據核對及草稿後，先填好所有可編輯內容（包含 publication_status 若需設 release-ready）。執行 `npm run review:digest`，將輸出的 SHA-256 填入 `sources/semantic-review.json.input_digest`。
 
-摘要綁定 project config 的內容設定（排除純 deployment 與 output 設定）、event manifest、coverage、gaps、KB、manifest 中全部四份 draft 及三份 audience 選材設定的精確原始內容（包含空白）；config 內容投影依 JSON 序列化。純目標與 profile 另由部署計畫綁定，不構成語意批准。不包括 semantic-review 本身，避免循環。`reviewer`、`reviewed_at`、`notes` 必填，`decision` 由 pending 改 approved 只能在真正完成審查後；`scope` 必須含 claims、drafts、coverage、gaps。任何來源修改都要求重新審查與更新摘要。
+摘要綁定 project config 的內容設定（排除純 deployment 與 output 設定）、event manifest、coverage、KB、manifest 中全部四份 draft 及三份 audience 選材設定的精確原始內容（包含空白）；config 內容投影依 JSON 序列化。純目標與 profile 另由部署計畫綁定，不構成語意批准。不包括 semantic-review 本身，避免循環。`reviewer`、`reviewed_at`、`notes` 必填，`decision` 由 pending 改 approved 只能在真正完成審查後；`scope` 必須含 claims、drafts、coverage。任何來源修改都要求重新審查與更新摘要。
 
 `npm run verify:scaffold` 執行 schema、單元反例、乾淨 build、連結、靜態 DOM／輸出隱私檢查、實際 Chromium E2E。允許零內容；成功僅 scaffold-ready。
 
@@ -306,7 +292,7 @@ reviewed_scope 與 required_scope 的區間／模態語法相同。review_record
 
 `docs/qa/browser-results.json` 綁定當次 input_digest 並列實際截圖；舊報告不代表改稿後已驗證。合成 fixture 只在 OS 暫存副本驗證，不當作正式來源或內容覆蓋。Chromium 測試不代表 Safari、真機、輔助科技或程式碼編譯已驗收。
 
-三版工程完成、三版編輯完成度、全片證據覆蓋必須分開報告。`verify:scaffold` 允許空內容，僅表示工程骨架可運作；`verify:release` 保留全片 required_scope／模態、blocking gaps、source access、fresh semantic review 等門檻。不得縮小承諾範圍或刪除缺口使其轉綠；兩種 gate 均不是遠端寫入／部署授權。
+三版工程完成、三版編輯完成度、全片證據覆蓋必須分開報告。`verify:scaffold` 允許空內容，僅表示工程骨架可運作；`verify:release` 保留全片 required_scope／模態、、source access、fresh semantic review 等門檻。不得縮小承諾範圍或刪除缺口使其轉綠；兩種 gate 均不是遠端寫入／部署授權。
 
 ### 三頁設定的可重跑遷移
 
@@ -318,7 +304,7 @@ reviewed_scope 與 required_scope 的區間／模態語法相同。review_record
 
 manifest 的 `entities` 只管理 entity ID、canonical_name、必要配置、aliases，以及核定來源的 source_id／artifact_revision／locator，不存規格。全名與繁中檢查涵蓋作者資料、三版、來源說明、公開文件及生成的 title／description／alt／aria／搜尋標籤。精確官方原名豁免及原因列於 build/quality.mjs；API、URL、ID 不作整包轉字。重複產品名稱同樣拒絕。
 
-`output.profile` 為 preview／production；`output.public_base_url` 未取得時為 null。production 需要內容 release-ready、新鮮且 approved 的語意審查、原承諾 coverage、無 blocking gaps、有效正式 HTTPS origin、公開來源清單及生成 DOM／產物檢查。實際內容仍 pending 時不產出正式包；合成正向測試只在暫存副本執行。六頁各自 canonical，404 非索引；profile 不改變資料的 verification 或部署授權。
+`output.profile` 為 preview／production；`output.public_base_url` 未取得時為 null。production 需要內容 release-ready、新鮮且 approved 的語意審查、原承諾 coverage、有效正式 HTTPS origin、公開來源清單及生成 DOM／產物檢查。實際內容仍 pending 時不產出正式包；合成正向測試只在暫存副本執行。六頁各自 canonical，404 非索引；profile 不改變資料的 verification 或部署授權。
 
 `deployment.target_firebase_site`、`github_repository` 與既有 project 欄位未設定時為 null。無真實 Git commit 時 build-info 的 commit／dirty 為 null；有 commit 時分開記錄 dirty，不把未提交內容說成 HEAD。套件仍 private，避免意外 npm 發布；與日後 GitHub 公開狀態無關。
 
@@ -328,7 +314,7 @@ manifest 的 `entities` 只管理 entity ID、canonical_name、必要配置、al
 
 本次使用者明確核准將目前草稿以 7 天預覽提供連結閱覽，限定 Firebase project／Hosting site `apple-event-explainers`、channel `review-20260910`。這項追加授權只取代前述一般部署規則中對本次草稿預覽的禁止；不是來源核准、語意 approved、content-release-ready 或 production 資格。此段保留執行前契約；該草稿預覽現已部署並完成指定線上驗收，舊授權已消耗。最新發布授權與結果見 [發布操作](DEPLOYMENT.md)，不得重用本次歷史授權。
 
-preview profile 與 `publication_status: draft`、semantic `pending`、原完整 `required_scope` 及全部 blocking gaps 均保留，頁面與回應保留 noindex。持有預覽連結者可公開閱覽；noindex 只控制索引意圖，不提供存取控制。此例外不允許刪除缺口、縮短承諾範圍、將語意改 approved 或把 scaffold 通過寫成全片影音核對完成。`verify:release` 與 production 的全部內容／工程門檻照舊適用，且須如實記錄其阻擋。
+preview profile 與 `publication_status: draft`、semantic `pending`、原完整 `required_scope` 均保留，頁面與回應保留 noindex。持有預覽連結者可公開閱覽；noindex 只控制索引意圖，不提供存取控制。此例外不允許刪除缺口、縮短承諾範圍、將語意改 approved 或把 scaffold 通過寫成全片影音核對完成。`verify:release` 與 production 的全部內容／工程門檻照舊適用，且須如實記錄其阻擋。
 
 草稿預覽另以完整 scaffold 驗證、公開來源樹與生成 DOM／產物檢查、私有資料排除作為必要工程前提；所有結果須對應實際將上傳的同一份內容與產物，失效紀錄不能沿用。永久 `allow_remote_write`／`allow_deploy` 仍維持 false；僅本次 wrapper 執行得到有範圍的授權。
 

@@ -6,7 +6,9 @@ import {ROOT,loadData} from '../../build/data.mjs';
 const when='2026-01-01T00:00:00Z';
 export function makeFixture({empty=false}={}){
  const root=realpathSync(mkdtempSync(join(tmpdir(),'apple-event-fixture-')));
- for(const f of ['project.config.json','content/knowledge-base.md','content/drafts/event.md','sources/event-manifest.json','sources/coverage.json','sources/gaps.json','sources/semantic-review.json']){mkdirSync(join(root,f,'..'),{recursive:true});cpSync(join(ROOT,f),join(root,f));}
+ cpSync(join(ROOT,'package.json'),join(root,'package.json'));
+ for(const file of ['design','assets/fonts/noto-sans-tc','NOTICE','LICENSE']){mkdirSync(join(root,file,'..'),{recursive:true});cpSync(join(ROOT,file),join(root,file),{recursive:true});}
+ for(const f of ['project.config.json','content/knowledge-base.md','content/drafts/event.md','sources/event-manifest.json','sources/coverage.json','sources/semantic-review.json']){mkdirSync(join(root,f,'..'),{recursive:true});cpSync(join(ROOT,f),join(root,f));}
  const json=(file,value)=>writeFileSync(join(root,file),JSON.stringify(value,null,2)+'\n');
  const c=JSON.parse(readFileSync(join(root,'project.config.json')));c.publication_status='draft';c.pages=[{file:'index.html',role:'home',title:'測試首頁'},{file:'event.html',role:'reader',title:'測試發表會',draft:'content/drafts/event.md'},{file:'sources.html',role:'evidence',title:'測試證據'},...['dev','ai-user','general'].map(audience=>({file:audience+'.html',role:'reader',audience,title:{dev:'開發者版','ai-user':'AI 使用者版',general:'普羅大眾版'}[audience],draft:'content/drafts/'+audience+'.md'}))];c.deployment={target_firebase_project:null,allow_remote_write:false,allow_deploy:false};c.content_scope_date='2026-01-01';c.content_checked_at=when;json('project.config.json',c);
  const m={schema_version:3,source_type:'event_video',language:null,source_id:'S01',access_record:null,supplemental_sources:[],canonical_url:'https://www.youtube.com/watch?v=MOCK0000001',title:'FIXTURE_ONLY 測試影片',publisher_verification:{status:'verified',publisher:'Apple',canonical_url:'https://www.youtube.com/watch?v=MOCK0000001',verified_at:when,reviewer:'fixture test',method:'Synthetic test assertion only; not a real publisher verification',evidence_url:'https://www.apple.com/test-only/'},artifact_revision:'fixture-r1',duration_seconds:120,timeline_basis:{kind:'canonical-video-start',offset_seconds:0,notes:'Synthetic start'},acquired_at:when,subtitle_type:'manual',available_modalities:{subtitles:true,audio:true,visual:true},player_adapter:{kind:'official-link',verification:null}};
@@ -21,8 +23,6 @@ export function makeFixture({empty=false}={}){
   const prose={dev:'從證據欄位到引用定位，確認限制與查核介面如何配合。', 'ai-user':'先用日常操作問題理解段落，再按來源連結查看條件。',general:'先閱讀兩個測試案例的整體重點，再回到需要的細節。'}[audience];
   writeFileSync(join(root,`content/drafts/${audience}.md`),`# ${audience} 測試文章\n\n## 共同測試主題 {#fixture-topic}\n\n:::summary ${audience}-summary KB-001,KB-002\n${prose}\n:::\n\n:::narrative ${audience}-explanation KB-001,KB-002\n${(prose+'\n\n').repeat(6)}:::\n\n:::table ${audience}-table KB-001,KB-002\n${JSON.stringify({caption:'合成資料整合表',rows:[{label:'第一案例',claim_id:'KB-001',value_names:['測試欄位']},{label:'第二案例',claim_id:'KB-002',value_names:['測試欄位']}]})}\n:::\n`);
  }
- // Baseline empty gaps; add variants in individual tests.
- json('sources/gaps.json',{schema_version:1,items:[]});
  json('sources/semantic-review.json',{schema_version:1,input_digest:null,reviewer:null,reviewed_at:null,decision:'pending',scope:[],notes:null});
  if(empty){
   c.content_scope_date=null;c.content_checked_at=null;json('project.config.json',c);
@@ -34,6 +34,6 @@ export function makeFixture({empty=false}={}){
   return {root,json,claims:[],manifest:m,cleanup:()=>rmSync(root,{recursive:true,force:true})};
  }
  const data=loadData(root);
- json('sources/semantic-review.json',{schema_version:1,input_digest:data.digest,reviewer:'fixture reviewer',reviewed_at:when,decision:'approved',scope:['claims','drafts','coverage','gaps'],notes:'Synthetic gate coverage only; no real semantic verification.'});
+ json('sources/semantic-review.json',{schema_version:1,input_digest:data.digest,reviewer:'fixture reviewer',reviewed_at:when,decision:'approved',scope:['claims','drafts','coverage'],notes:'Synthetic gate coverage only; no real semantic verification.'});
  return {root,json,claims,manifest:m,cleanup:()=>rmSync(root,{recursive:true,force:true})};
 }
