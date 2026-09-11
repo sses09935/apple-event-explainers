@@ -1,5 +1,21 @@
 # 發布操作
 
+## 2026-09-12 單次正式網址草稿展示
+
+使用者已先指示原音人工審查暫時略過，再要求解決部署問題。本次將「Hosting 正式網址可閱覽」與「內容完整 release 核准」分開：只在既有 project／site `apple-event-explainers` 的 `live` 展示通過完整 scaffold 的 preview 產物。保留 draft、pending、原始影音範圍與全部 blocking gaps；一般 `verify:release`／`verify:production` 仍據實拒絕。這項一次性追加範圍取代下方一般流程對本次 live 的限制，不重用舊 preview 授權。
+
+正式網址為 <https://apple-event-explainers.web.app/>。此版保留 noindex／nofollow、草稿提示與未完成審查說明；noindex 不是登入保護。live 沒有 preview 的 7 天期限，會持續至另行替換或移除；本次沒有授權自動重部署、改索引策略、或其他服務操作。
+
+新增獨立 `--draft-live-authorization`。私有授權需 `kind: draft-live`、`hosting_lifetime: until-replaced-or-removed`，綁定 project／site／live、preview profile、目前 input／source-tree／artifact 摘要、原因、隨機 ID 及最長 24 小時期限。完整 scaffold 紀錄、公開樹與產物檢查、精確提交與 CI、build version／source revision、30 分鐘計畫、新 nonce 與 receipt 均保留；舊 preview 授權仍拒絕 live，兩種授權互斥，永久 allow 旗標維持 false。
+
+```sh
+npm run check:environment -- --online
+npm run deploy:plan -- --project apple-event-explainers --site apple-event-explainers --channel live --draft-live-authorization PRIVATE_JSON_PATH
+npm run deploy -- --execute --project apple-event-explainers --site apple-event-explainers --channel live --draft-live-authorization PRIVATE_JSON_PATH --allow-remote-write --allow-deploy --confirm 'EXACT_CONFIRMATION_FROM_READY_PLAN'
+```
+
+授權檔、計畫、receipt 與執行紀錄僅保存在私有本機。CLI 只執行隔離產物的 Hosting 部署；不建立或修改 Auth、資料庫、Functions、計費與登入。失敗或不確定結果消耗當次授權，不盲目重試。成功後須核對真實正式網址的六頁、深連結、閱讀操作、證據回連、404、CSP、字型、robots、build-info 與逐檔摘要；CLI 成功、live 可閱覽、完整內容核准分開記錄。精確結果見當次本機 `dist/delivery.json`，下方舊 preview 為歷史版本。
+
 ## 2026-09-10 本次操作範圍與現況
 
 本次使用者已明確授權既有repository的正常push與Public、遠端CI，以及通過完整release／production門檻後的專用site live部署；必要的新production候選preview亦在範圍內。不需要重複索取相同授權，wrapper的新計畫確認仍作機械綁定。禁止force push、重寫歷史、tag／Release及Auth等無關服務變更，永久旗標保持false。

@@ -30,7 +30,10 @@ export function firebaseArgs(plan,config='firebase.json'){
 }
 const deploymentHosting=(profile,site)=>{const h=hostingConfig(profile,{site});h.hosting.public='web';return h;};
 const authorizationKeys=['schema_version','id','reason','authorized_at','expires_at','project','site','channel','profile','preview_ttl','input_digest','source_tree_digest','artifact_digest'];
-const authorizationReceipt=(root,a)=>join(root,'dist/deploy-receipts',`draft-${a.id}.json`);
+const liveAuthorizationKeys=[...authorizationKeys.filter(k=>k!=='preview_ttl'),'kind','hosting_lifetime'];
+const authorizationReceipt=(root,a)=>join(root,'dist/deploy-receipts',`${a.kind==='draft-live'?'draft-live':'draft'}-${a.id}.json`);
+const authorizationClaim=(root,a)=>join(root,'dist/deploy-receipts',`draft-${a.id}.json`);
+const authorizationConsumed=(root,a)=>['draft','draft-live'].some(prefix=>existsSync(join(root,'dist/deploy-receipts',`${prefix}-${a.id}.json`)));
 function draftPreviewErrors(root,d,context,a){
  const errors=[];
  if(!a||typeof a!=='object'||Array.isArray(a)||JSON.stringify(Object.keys(a).sort())!==JSON.stringify([...authorizationKeys].sort()))return ['Invalid draft preview authorization fields'];
@@ -42,46 +45,68 @@ function draftPreviewErrors(root,d,context,a){
  if(d.config.publication_status!=='draft'||d.semantic.decision!=='pending'||d.semantic.input_digest!==d.digest)errors.push('Draft preview requires preserved draft/pending content and matching semantic digest');
  for(const key of ['project','site','channel','input_digest','source_tree_digest','artifact_digest'])if(a[key]!==context[key])errors.push(`Draft preview authorization ${key} mismatch`);
  for(const key of ['input_digest','source_tree_digest','artifact_digest'])if(!/^[a-f0-9]{64}$/.test(a[key]||''))errors.push(`Invalid draft preview authorization ${key}`);
- if(/^[a-f0-9]{32}$/.test(a.id||'')&&existsSync(authorizationReceipt(root,a)))errors.push('Draft preview authorization already consumed');
+ if(/^[a-f0-9]{32}$/.test(a.id||'')&&authorizationConsumed(root,a))errors.push('Draft preview authorization already consumed');
  return errors;
 }
-export function makePlan(root=ROOT,{channel,project,site,draftPreviewAuthorization=null}={}){
+function draftLiveErrors(root,d,context,a){
+ const errors=[];
+ if(!a||typeof a!=='object'||Array.isArray(a)||JSON.stringify(Object.keys(a).sort())!==JSON.stringify([...liveAuthorizationKeys].sort()))return ['Invalid draft live authorization fields'];
+ if(a.schema_version!==1||a.kind!=='draft-live'||typeof a.id!=='string'||!(/^[a-f0-9]{32}$/.test(a.id))||typeof a.reason!=='string'||!a.reason.trim())errors.push('Invalid draft live authorization identity/reason');
+ const utc=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value);
+ const issued=Date.parse(a.authorized_at),until=Date.parse(a.expires_at),now=Date.now();
+ if(!utc(a.authorized_at)||!utc(a.expires_at)||!Number.isFinite(issued)||!Number.isFinite(until)||issued>now||until<=now||until<=issued||until-issued>24*60*60*1000)errors.push('Draft live authorization expired or invalid time window');
+ if(context.project!=='apple-event-explainers'||context.site!=='apple-event-explainers'||context.channel!=='live'||context.profile!=='preview'||a.profile!=='preview')errors.push('Draft live exception requires the dedicated apple-event-explainers project/site, live channel and preview profile');
+ if(a.hosting_lifetime!=='until-replaced-or-removed')errors.push('Draft live authorization must acknowledge persistent Hosting without preview expiration');
+ if(d.config.publication_status!=='draft'||d.semantic.decision!=='pending'||d.semantic.input_digest!==d.digest)errors.push('Draft live requires preserved draft/pending content and matching semantic digest');
+ if(d.config.deployment.allow_remote_write!==false||d.config.deployment.allow_deploy!==false)errors.push('Draft live requires permanent deployment flags to remain false');
+ for(const key of ['project','site','channel','input_digest','source_tree_digest','artifact_digest'])if(a[key]!==context[key])errors.push(`Draft live authorization ${key} mismatch`);
+ for(const key of ['input_digest','source_tree_digest','artifact_digest'])if(!/^[a-f0-9]{64}$/.test(a[key]||''))errors.push(`Invalid draft live authorization ${key}`);
+ if(/^[a-f0-9]{32}$/.test(a.id||'')&&authorizationConsumed(root,a))errors.push('Draft live authorization already consumed');
+ return errors;
+}
+export function makePlan(root=ROOT,{channel,project,site,draftPreviewAuthorization=null,draftLiveAuthorization=null}={}){
  const d=loadData(root),errors=deploymentErrors(d.config,{project,site,authorizeRemote:true,authorizeDeploy:true});
+ const hasPreview=draftPreviewAuthorization!==null,hasLive=draftLiveAuthorization!==null,hasDraftAuthorization=hasPreview||hasLive;
+ if(hasPreview&&hasLive)errors.push('Draft preview and draft live authorizations are mutually exclusive');
  if(!channel||!(/^[a-z][a-z0-9-]{0,38}$/.test(channel)))errors.push('Explicit valid preview channel or live required');
  const info=JSON.parse(readFileSync(join(root,'dist/web/build-info.json'))),profile=info.profile;
- if(channel==='live'&&profile!=='production')errors.push('Live requires verified production output');
+ if(channel==='live'&&profile!=='production'&&!hasLive)errors.push('Live requires verified production output');
  // The normal release path is unchanged. A separately authorized, bound draft
  // preview keeps its content blockers visible rather than declaring them passed.
  const contentBlockers=releaseErrors(d);if(d.config.publication_status!=='release-ready')contentBlockers.push('Content is not release-ready');
- if(!draftPreviewAuthorization)errors.push(...contentBlockers);
+ if(!hasDraftAuthorization)errors.push(...contentBlockers);
  if(profile==='production')errors.push(...productionErrors(d));
- try{(draftPreviewAuthorization?checkDraftPreviewVerification:checkVerification)(root,profile);}catch(e){errors.push(e.code==='ENOENT'?'Complete verification record is missing':e.message);}
+ try{(hasDraftAuthorization?checkDraftPreviewVerification:checkVerification)(root,profile);}catch(e){errors.push(e.code==='ENOENT'?'Complete verification record is missing':e.message);}
  let source=null;try{source=inspectSourceTree(root);checkPublic(join(root,'dist/web'),d);debug(join(root,'dist/web'),d);}catch(e){errors.push(e.message);}
  if(JSON.stringify(JSON.parse(readFileSync(join(root,'firebase.json'))))!==JSON.stringify(hostingConfig('preview')))errors.push('Root Firebase template differs from reviewed configuration');
  if(JSON.stringify(JSON.parse(readFileSync(join(root,'dist/hosting.json'))))!==JSON.stringify(hostingConfig(profile)))errors.push('Generated Hosting configuration is stale or changed');
  const hosting=deploymentHosting(profile,d.config.deployment.target_firebase_site),artifact=bundle(root,hosting);
- if(draftPreviewAuthorization)errors.push(...draftPreviewErrors(root,d,{project:d.config.deployment.target_firebase_project,site:d.config.deployment.target_firebase_site,channel,profile,input_digest:d.digest,source_tree_digest:source?.digest,artifact_digest:artifact.digest},draftPreviewAuthorization));
+ const context={project:d.config.deployment.target_firebase_project,site:d.config.deployment.target_firebase_site,channel,profile,input_digest:d.digest,source_tree_digest:source?.digest,artifact_digest:artifact.digest};
+ if(hasPreview)errors.push(...draftPreviewErrors(root,d,context,draftPreviewAuthorization));
+ if(hasLive)errors.push(...draftLiveErrors(root,d,context,draftLiveAuthorization));
  const created=Date.now();
- const plan={schema_version:1,created_at:new Date(created).toISOString(),expires_at:new Date(created+30*60*1000).toISOString(),nonce:randomBytes(16).toString('hex'),ready:!errors.length,errors:[...new Set(errors)],project:d.config.deployment.target_firebase_project,site:d.config.deployment.target_firebase_site,channel:channel||null,profile,version:info.version,source_revision:info.source_revision,output_directory:'dist/web',input_digest:d.digest,source_tree_digest:source?.digest||null,artifact,hosting,draft_preview_authorization:draftPreviewAuthorization,content_blockers:contentBlockers};
+ const plan={schema_version:1,created_at:new Date(created).toISOString(),expires_at:new Date(created+30*60*1000).toISOString(),nonce:randomBytes(16).toString('hex'),ready:!errors.length,errors:[...new Set(errors)],project:d.config.deployment.target_firebase_project,site:d.config.deployment.target_firebase_site,channel:channel||null,profile,version:info.version,source_revision:info.source_revision,output_directory:'dist/web',input_digest:d.digest,source_tree_digest:source?.digest||null,artifact,hosting,draft_preview_authorization:draftPreviewAuthorization,draft_live_authorization:draftLiveAuthorization,content_blockers:contentBlockers};
  plan.digest=hash(JSON.stringify(plan));return plan;
 }
 export const confirmationFor=p=>`${p.project}/${p.site}/${p.channel}:${p.nonce}:${p.digest}`;
 export function executePlan(plan,options={},root=ROOT,run=spawnSync){
  const d=loadData(root),errors=deploymentErrors(d.config,options),{digest,...unsigned}=plan;
- const a=plan.draft_preview_authorization;
- if(JSON.stringify(options.draftPreviewAuthorization||null)!==JSON.stringify(a||null))errors.push('Matching one-operation draft preview authorization required');
+ const preview=plan.draft_preview_authorization??null,live=plan.draft_live_authorization??null,hasPreview=preview!==null,hasLive=live!==null,hasDraftAuthorization=hasPreview||hasLive,a=hasLive?live:preview;
+ if(hasPreview&&hasLive||(options.draftPreviewAuthorization??null)!==null&&(options.draftLiveAuthorization??null)!==null)errors.push('Draft preview and draft live authorizations are mutually exclusive');
+ if(JSON.stringify(options.draftPreviewAuthorization??null)!==JSON.stringify(preview))errors.push('Matching one-operation draft preview authorization required');
+ if(JSON.stringify(options.draftLiveAuthorization??null)!==JSON.stringify(live))errors.push('Matching one-operation draft live authorization required');
  if(digest!==hash(JSON.stringify(unsigned)))errors.push('Deployment plan was altered');
  if(!plan.ready||plan.errors.length)errors.push('Preflight is blocked');
  if(!/^[a-z][a-z0-9-]{0,38}$/.test(plan.channel||''))errors.push('Invalid channel');
  if(Date.now()>Date.parse(plan.expires_at)||!Number.isFinite(Date.parse(plan.expires_at)))errors.push('Deployment plan expired');
- if(a&&(!Number.isFinite(Date.parse(plan.created_at))||Date.parse(plan.created_at)>Date.now()||Date.parse(plan.expires_at)<=Date.parse(plan.created_at)||Date.parse(plan.expires_at)-Date.parse(plan.created_at)>30*60*1000))errors.push('Invalid draft preview plan time window');
+ if(hasDraftAuthorization&&(!Number.isFinite(Date.parse(plan.created_at))||Date.parse(plan.created_at)>Date.now()||Date.parse(plan.expires_at)<=Date.parse(plan.created_at)||Date.parse(plan.expires_at)-Date.parse(plan.created_at)>30*60*1000))errors.push('Invalid draft authorization plan time window');
  if(options.confirm!==confirmationFor(plan))errors.push('Exact one-time target/channel/artifact confirmation required');
  if(options.channel!==undefined&&options.channel!==plan.channel)errors.push('Deployment channel mismatch');
  if(plan.project!==d.config.deployment.target_firebase_project||plan.site!==d.config.deployment.target_firebase_site)errors.push('Target changed after preflight');
  const currentBlockers=releaseErrors(d);if(d.config.publication_status!=='release-ready')currentBlockers.push('Content is not release-ready');
- if(!a)errors.push(...currentBlockers);
- else if(JSON.stringify(plan.content_blockers)!==JSON.stringify(currentBlockers))errors.push('Draft preview content blockers changed or omitted');
- if(plan.channel==='live'&&plan.profile!=='production')errors.push('Live requires production output');
+ if(!hasDraftAuthorization)errors.push(...currentBlockers);
+ else if(JSON.stringify(plan.content_blockers)!==JSON.stringify(currentBlockers))errors.push('Draft content blockers changed or omitted');
+ if(plan.channel==='live'&&plan.profile!=='production'&&!hasLive)errors.push('Live requires production output');
  if(plan.profile==='production')errors.push(...productionErrors(d));
  if(plan.input_digest!==d.digest)errors.push('Content changed after preflight');
  const info=JSON.parse(readFileSync(join(root,'dist/web/build-info.json')));
@@ -90,8 +115,10 @@ export function executePlan(plan,options={},root=ROOT,run=spawnSync){
  if(JSON.stringify(bundle(root,plan.hosting))!==JSON.stringify(plan.artifact))errors.push('Artifact changed after preflight');
  if(inspectSourceTree(root).digest!==plan.source_tree_digest)errors.push('Source tree changed after preflight');
  checkPublic(join(root,'dist/web'),d);debug(join(root,'dist/web'),d);
- (a?checkDraftPreviewVerification:checkVerification)(root,plan.profile);
- if(a)errors.push(...draftPreviewErrors(root,d,{project:plan.project,site:plan.site,channel:plan.channel,profile:plan.profile,input_digest:d.digest,source_tree_digest:inspectSourceTree(root).digest,artifact_digest:bundle(root,plan.hosting).digest},a));
+ (hasDraftAuthorization?checkDraftPreviewVerification:checkVerification)(root,plan.profile);
+ const context={project:plan.project,site:plan.site,channel:plan.channel,profile:plan.profile,input_digest:d.digest,source_tree_digest:inspectSourceTree(root).digest,artifact_digest:bundle(root,plan.hosting).digest};
+ if(hasPreview)errors.push(...draftPreviewErrors(root,d,context,preview));
+ if(hasLive)errors.push(...draftLiveErrors(root,d,context,live));
  if(JSON.stringify(plan.hosting)!==JSON.stringify(deploymentHosting(plan.profile,plan.site)))errors.push('Unexpected Hosting configuration');
  const receipts=join(root,'dist/deploy-receipts');mkdirSync(receipts,{recursive:true});
  if(!/^[a-f0-9]{32}$/.test(plan.nonce))errors.push('Invalid nonce');
@@ -103,7 +130,13 @@ export function executePlan(plan,options={},root=ROOT,run=spawnSync){
   writeFileSync(join(stage,'firebase.json'),JSON.stringify(plan.hosting,null,2)+'\n');
   // A failed or uncertain attempt also consumes approval. Never retry a write automatically.
   writeFileSync(receipt,JSON.stringify({digest:plan.digest,started_at:new Date().toISOString(),status:'attempted'}),{flag:'wx'});
-  if(a)writeFileSync(authorizationReceipt(root,a),JSON.stringify({authorization_id:a.id,plan_digest:plan.digest,project:plan.project,site:plan.site,channel:plan.channel,artifact_digest:plan.artifact.digest,started_at:new Date().toISOString(),status:'attempted'},null,2)+'\n',{flag:'wx'});
+  if(a){
+   const attempt=JSON.stringify({authorization_id:a.id,plan_digest:plan.digest,project:plan.project,site:plan.site,channel:plan.channel,artifact_digest:plan.artifact.digest,started_at:new Date().toISOString(),status:'attempted'},null,2)+'\n';
+   // Both draft kinds claim the same ID atomically before any remote command.
+   // Keep the distinct live receipt for reporting, without a cross-kind race.
+   writeFileSync(authorizationClaim(root,a),attempt,{flag:'wx'});
+   if(authorizationReceipt(root,a)!==authorizationClaim(root,a))writeFileSync(authorizationReceipt(root,a),attempt,{flag:'wx'});
+  }
   const result=run('firebase',firebaseArgs(plan),{cwd:stage,stdio:'inherit',shell:false});
   writeFileSync(receipt,JSON.stringify({digest:plan.digest,finished_at:new Date().toISOString(),exit_code:result.status,status:result.status===0?'cli-succeeded':'failed-or-uncertain'},null,2));
   if(a)writeFileSync(authorizationReceipt(root,a),JSON.stringify({authorization_id:a.id,plan_digest:plan.digest,project:plan.project,site:plan.site,channel:plan.channel,artifact_digest:plan.artifact.digest,finished_at:new Date().toISOString(),exit_code:result.status,status:result.status===0?'cli-succeeded':'failed-or-uncertain'},null,2)+'\n');
@@ -113,8 +146,10 @@ export function executePlan(plan,options={},root=ROOT,run=spawnSync){
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))try{
  const args=process.argv.slice(2),options={};let mode;
- for(let i=0;i<args.length;i++){const a=args[i];if(a==='--plan'||a==='--execute'){if(mode)throw Error('Choose exactly one mode');mode=a;}else if(a==='--allow-remote-write')options.authorizeRemote=true;else if(a==='--allow-deploy')options.authorizeDeploy=true;else if(['--channel','--project','--site','--confirm','--draft-preview-authorization'].includes(a)){if(!args[i+1]||args[i+1].startsWith('--'))throw Error('Missing argument');options[a.slice(2)]=args[++i];}else throw Error('Unknown deploy argument');}
+ for(let i=0;i<args.length;i++){const a=args[i];if(a==='--plan'||a==='--execute'){if(mode)throw Error('Choose exactly one mode');mode=a;}else if(a==='--allow-remote-write')options.authorizeRemote=true;else if(a==='--allow-deploy')options.authorizeDeploy=true;else if(['--channel','--project','--site','--confirm','--draft-preview-authorization','--draft-live-authorization'].includes(a)){if(!args[i+1]||args[i+1].startsWith('--'))throw Error('Missing argument');options[a.slice(2)]=args[++i];}else throw Error('Unknown deploy argument');}
+ if(options['draft-preview-authorization']&&options['draft-live-authorization'])throw Error('Draft preview and draft live authorizations are mutually exclusive');
  if(options['draft-preview-authorization'])options.draftPreviewAuthorization=JSON.parse(readFileSync(options['draft-preview-authorization'],'utf8'));
+ if(options['draft-live-authorization'])options.draftLiveAuthorization=JSON.parse(readFileSync(options['draft-live-authorization'],'utf8'));
  if(mode==='--plan'){const p=makePlan(ROOT,options);writeFileSync(join(ROOT,'dist/deploy-plan.json'),JSON.stringify(p,null,2)+'\n');console.log(JSON.stringify({...p,confirmation:p.ready?confirmationFor(p):null},null,2));if(!p.ready)process.exitCode=1;}
  else if(mode==='--execute'){const p=JSON.parse(readFileSync(join(ROOT,'dist/deploy-plan.json')));console.log(executePlan(p,options));}
  else throw Error(deploymentErrors(loadData().config).join('\n')+'\nUse --plan --channel CHANNEL for local preflight.');

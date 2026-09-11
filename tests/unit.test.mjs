@@ -139,6 +139,7 @@ test('event summary and timeline exclude all supplemental claims, Reading shows 
  for(const category of ['發表會影片','技術規格補充','Developer 技術補充'])assert.ok(html.includes('data-source-category>'+category));
  for(const b of d.blocks){const c=d.claims.find(c=>c.id===b.kb);assert.ok(html.includes(markdown(b.text||c.statement_zh)));}
  assert.doesNotMatch(html,/全站唯一來源|規格頁證據一致/);
+ for(const page of d.config.pages){const rendered=renderPage(page,d,{version:'test',built_at:'test'});assert.match(rendered,/<div class="draft-strip">草稿 · 已核對子集 · 全片影音與整體語意審查尚未完成<\/div>/);assert.match(rendered,/<meta name="robots" content="noindex,nofollow">/);}
 }));
 
 test('verified official time links do not imply verified embeds or subsecond seek',()=>fixture((f,d)=>{const e={...d.claims[0].evidence[0],start_seconds:10.125};d.manifest.player_adapter={kind:'youtube-link',verification:{seek_works:true,canonical_url:d.manifest.canonical_url,artifact_revision:d.manifest.artifact_revision}};let p=playerLink(d.manifest,e);assert.equal(p.embed,null);assert.match(p.official,/t=10s$/);assert.equal(p.time,'0:10.125–0:15');d.manifest.player_adapter.verification.artifact_revision='stale';p=playerLink(d.manifest,e);assert.equal(p.official,d.manifest.canonical_url);assert.equal(p.embed,null);}));

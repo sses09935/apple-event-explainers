@@ -1,5 +1,13 @@
 # apple-event-explainers
 
+## 2026-09-12 正式網址展示草稿的單次追加範圍
+
+使用者先前明確指示原音人工審查「暫時略過」，並在取得未完成審查的說明後要求「解決部署問題」。本次依此在既有 Firebase project／site `apple-event-explainers` 的 `live` channel 展示目前草稿。這是一次性 Hosting 上線例外；保留 preview profile、`publication_status: draft`、semantic `pending`、完整 required_scope、GAP-001 至 GAP-003 及 noindex，不宣稱內容 release／production 已通過。live 會持續存在至另行替換或移除，沒有 7 天到期。
+
+只能使用新增的 `--draft-live-authorization PRIVATE_JSON_PATH` 與新計畫／nonce／receipt；舊 draft-preview 授權繼續禁止 live，兩種授權不得混用。新授權限定上述唯一 project／site／channel、最長 24 小時執行窗口及 30 分鐘計畫；完整 scaffold、公開來源／產物隱私檢查、精確提交與 CI、版本與摘要綁定及單次確認仍須完成。永久 allow 旗標維持 false，只操作 Hosting；不得變更 Auth、資料庫、Functions、計費或其他服務。原始私人影片不得公開。執行前仍須 `npm run check:environment -- --online`，實際上線與線上驗收結果以本機 receipt／delivery 為準。
+
+下方「全部 release／production 通過後才能 live」由此單次窄例外補充；一般正式內容發布的門檻與歷史授權不變。不要為了上線把未完成證據改成已核准。
+
 ## 2026-09-12 美元確認、Developer 擴充與私有影片
 
 使用者明確確認影片所列價格均為美元（USD），授權據此更新幣別標示；原畫面「$」、數字、來源版本及定位保留，幣別確認註明來自使用者，不冒稱原音已核對，也不連帶確認市場、稅額或台灣適用性。

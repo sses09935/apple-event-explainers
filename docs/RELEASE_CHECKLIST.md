@@ -1,5 +1,11 @@
 # 發布檢查清單
 
+## 2026-09-12 正式網址草稿展示例外
+
+依使用者暫時略過原音人工審查、解決部署問題的指示，新增獨立一次性 draft-live 路徑。正式網址可部署已通過完整工程驗證的草稿；內容仍為 draft／pending、全片覆蓋未完成，release／production 內容核准維持阻擋。這兩種狀態須分別記錄。
+
+單次路徑限定既有 `apple-event-explainers` project／site 的 live，保留 noindex 與草稿提示；要求公開樹、完整 scaffold、精確提交 CI、新授權／計畫／receipt 及線上逐檔驗收。下列歷史未部署結論不推定目前遠端狀態，實際結果以本機 `dist/delivery.json` 為準。詳見 [本次部署範圍](DEPLOYMENT.md)。
+
 ## 2026-09-12 新內容候選
 
 - 51 份來源、205 條 KB（202 verified／3 candidate）、186 節點。22 份新 Developer 來源逐一核對，38 條新主張已整合三版；候選主張不進正文。

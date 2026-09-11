@@ -323,3 +323,139 @@ for(const outcome of ['success','failure','uncertain','throw'])test(`draft previ
  assert.throws(()=>executePlan(next,draftOptions(next),f.root,()=>{called++;return {status:0};}),/consumed|blocked|authorization/i);
  assert.equal(called,1);
 }));
+
+// The real target names below are only allowlist inputs in isolated synthetic
+// fixtures. Every execution supplies a mock; no Firebase process is spawned.
+function draftLivePrepared(){
+ const f=draftPrepared(),c=loadData(f.root).config;
+ Object.assign(c.deployment,{target_firebase_project:'apple-event-explainers',target_firebase_site:'apple-event-explainers'});
+ c.output.public_base_url='https://apple-event-explainers.web.app';f.json('project.config.json',c);
+ build(f.root);stamp(f,'scaffold');return f;
+}
+function draftLiveFixture(fn){const f=draftLivePrepared();try{return fn(f);}finally{f.cleanup();}}
+function draftLiveAuthorization(f,overrides={}){
+ const p=makePlan(f.root,{channel:'live'}),now=Date.now();
+ return {schema_version:1,kind:'draft-live',id:'e'.repeat(32),reason:'Synthetic one-operation draft Hosting authorization; content release remains blocked.',authorized_at:new Date(now-1000).toISOString(),expires_at:new Date(now+60*60*1000).toISOString(),project:p.project,site:p.site,channel:'live',profile:'preview',hosting_lifetime:'until-replaced-or-removed',input_digest:p.input_digest,source_tree_digest:p.source_tree_digest,artifact_digest:p.artifact.digest,...overrides};
+}
+const draftLivePlan=(f,a)=>makePlan(f.root,{channel:'live',draftLiveAuthorization:a});
+const draftLiveOptions=p=>({...options(p),draftLiveAuthorization:structuredClone(p.draft_live_authorization)});
+
+test('one-operation draft live stages the verified noindex bytes without approving content',()=>draftLiveFixture(f=>{
+ const a=draftLiveAuthorization(f),p=draftLivePlan(f,a),before=loadData(f.root);
+ assert.equal(p.ready,true,p.errors.join('\n'));assert.equal(p.channel,'live');assert.equal(p.profile,'preview');
+ assert.equal(p.draft_preview_authorization,null);assert.deepEqual(p.draft_live_authorization,a);
+ assert.equal(a.hosting_lifetime,'until-replaced-or-removed');
+ assert.deepEqual(p.content_blockers,[...releaseErrors(before),'Content is not release-ready']);
+ let called=0;const result=executePlan(p,draftLiveOptions(p),f.root,(command,args,opts)=>{
+  called++;assert.equal(command,'firebase');
+  assert.deepEqual(args,['deploy','--only','hosting','--project','apple-event-explainers','--config','firebase.json','--non-interactive']);
+  assert.equal(opts.shell,false);assert.deepEqual(JSON.parse(readFileSync(join(opts.cwd,'firebase.json'))),p.hosting);
+  assert.equal(p.hosting.hosting.site,'apple-event-explainers');
+  assert.equal(p.hosting.hosting.headers[0].headers.find(h=>h.key==='X-Robots-Tag').value,'noindex, nofollow');
+  for(const e of p.artifact.entries)assert.equal(hash(readFileSync(join(opts.cwd,'web',e.path))),e.sha256);
+  for(const page of before.config.pages)assert.match(readFileSync(join(opts.cwd,'web',page.file),'utf8'),/noindex/);
+  assert.match(readFileSync(join(opts.cwd,'web/index.html'),'utf8'),/草稿/);
+  assert.match(readFileSync(join(opts.cwd,'web/robots.txt'),'utf8'),/Disallow: \//);
+  assert.equal(existsSync(join(opts.cwd,'web/sitemap.xml')),false);
+  assert.equal(existsSync(join(opts.cwd,'research')),false);
+  return {status:0};
+ });
+ assert.equal(called,1);assert.deepEqual(result,{status:'cli-succeeded',live_verified:false});
+ const after=loadData(f.root);assert.equal(after.digest,before.digest);assert.equal(after.config.publication_status,'draft');
+ assert.deepEqual(after.semantic,before.semantic);assert.deepEqual(after.coverage,before.coverage);assert.deepEqual(after.gaps,before.gaps);
+ assert.equal(after.config.deployment.allow_remote_write,false);assert.equal(after.config.deployment.allow_deploy,false);
+ assert.ok(releaseErrors(after).length);assert.equal(inspectStatus(f.root).release.verified,false);assert.equal(inspectStatus(f.root).production.verified,false);
+ assert.throws(()=>checkVerification(f.root,'preview'),/release verification/);
+ assert.throws(()=>build(f.root,{profile:'production'}),/coverage|semantic|release/i);
+}));
+
+test('draft live accepts only its dedicated target and does not widen ordinary or preview authority',()=>draftLiveFixture(f=>{
+ const a=draftLiveAuthorization(f),preview=draftAuthorization(f);
+ assertBlockedPlan(()=>makePlan(f.root,{channel:'live'}),/live|coverage|release/i);
+ assertBlockedPlan(()=>makePlan(f.root,{channel:'live',draftPreviewAuthorization:{...preview,channel:'live'}}),/live|preview/i);
+ assertBlockedPlan(()=>makePlan(f.root,{channel:'draft-review',draftLiveAuthorization:{...a,channel:'draft-review'}}),/live|channel/i);
+ assertBlockedPlan(()=>makePlan(f.root,{channel:'live',draftPreviewAuthorization:preview,draftLiveAuthorization:a}),/mutually exclusive/i);
+ assertBlockedPlan(()=>draftLivePlan(f,preview),/authorization fields/i);
+ assertBlockedPlan(()=>makePlan(f.root,{channel:'draft-review',draftPreviewAuthorization:a}),/authorization fields/i);
+ const original=loadData(f.root).config;
+ for(const key of ['target_firebase_project','target_firebase_site']){
+  const c=structuredClone(original);c.deployment[key]='another-project';f.json('project.config.json',c);build(f.root);stamp(f,'scaffold');
+  assertBlockedPlan(()=>draftLivePlan(f,draftLiveAuthorization(f)),/dedicated|apple-event-explainers/i);
+ }
+}));
+
+test('draft live rejects malformed authority, unexpected fields, time windows and digest substitutions',()=>draftLiveFixture(f=>{
+ const a=draftLiveAuthorization(f),later=n=>new Date(Date.now()+n).toISOString();
+ for(const value of [null,false,true,0,'',[],[a]])assertBlockedPlan(()=>draftLivePlan(f,value),/authorization|coverage|live/i);
+ for(const [name,patch]of [
+  ['schema',{schema_version:2}],['kind',{kind:'draft-preview'}],['missing identity',{id:null}],['array identity',{id:[a.id]}],['path identity',{id:'../unsafe'}],['non-string reason',{reason:42}],['empty reason',{reason:' '}],
+  ['invalid issue',{authorized_at:'invalid'}],['future issue',{authorized_at:later(60000)}],['offset issue',{authorized_at:a.authorized_at.replace('Z','+00:00')}],['expired',{expires_at:'2020-01-01T00:00:00Z'}],['over 24 hours',{expires_at:later(25*60*60*1000)}],['reverse times',{expires_at:a.authorized_at}],
+  ['wrong project',{project:'another-project'}],['wrong site',{site:'another-site'}],['wrong channel',{channel:'review'}],['wrong profile',{profile:'production'}],['temporary hosting claim',{hosting_lifetime:'7d'}],
+  ['input digest',{input_digest:'1'.repeat(64)}],['source digest',{source_tree_digest:'2'.repeat(64)}],['artifact digest',{artifact_digest:'3'.repeat(64)}],['extra field',{allow_live:true}],['preview ttl',{preview_ttl:'7d'}]
+ ])assertBlockedPlan(()=>draftLivePlan(f,{...a,...patch}),/authorization|draft|digest|expired|time|persistent/i,name);
+ for(const key of Object.keys(a)){const missing={...a};delete missing[key];assertBlockedPlan(()=>draftLivePlan(f,missing),/authorization fields/i,key);}
+}));
+
+test('draft live cannot replace pending semantic review or incomplete scaffold verification',()=>draftLiveFixture(f=>{
+ const a=draftLiveAuthorization(f),semantic=loadData(f.root).semantic;
+ for(const patch of [{decision:'approved'},{input_digest:'4'.repeat(64)}]){
+  f.json('sources/semantic-review.json',{...semantic,...patch});build(f.root);stamp(f,'scaffold');
+  assertBlockedPlan(()=>draftLivePlan(f,draftLiveAuthorization(f)),/draft|pending|semantic/i);
+ }
+ f.json('sources/semantic-review.json',semantic);build(f.root);stamp(f,'scaffold');
+ const path=join(f.root,'dist/verification.json'),valid=JSON.parse(readFileSync(path)),current=draftLiveAuthorization(f);
+ for(const patch of [{commands:valid.commands.slice(0,-1)},{commands:valid.commands.map((c,i)=>i?c:{...c,exit_code:1})},{gate:'release'},{profile:'production'},{input_digest:'1'.repeat(64)},{source_tree_digest:'2'.repeat(64)},{output_digest:'3'.repeat(64)}]){
+  f.json('dist/verification.json',{...valid,...patch});assertBlockedPlan(()=>draftLivePlan(f,current),/verification|command|record/i);
+ }
+ rmSync(path);assertBlockedPlan(()=>draftLivePlan(f,a),/verification|record/i);
+}));
+
+for(const [name,change,re]of [
+ ['missing authority',(p,o)=>delete o.draftLiveAuthorization,/authorization/i],
+ ['changed authority',(p,o)=>o.draftLiveAuthorization.reason+=' changed',/authorization/i],
+ ['second authority in options',(p,o,f)=>o.draftPreviewAuthorization=draftAuthorization(f),/mutually exclusive/i],
+ ['second authority in plan',(p,o,f)=>{p.draft_preview_authorization=draftAuthorization(f);resign(p);o.confirm=confirmationFor(p);o.draftPreviewAuthorization=p.draft_preview_authorization;},/mutually exclusive/i],
+ ['authority removed from resigned plan',(p,o)=>{p.draft_live_authorization=null;resign(p);o.confirm=confirmationFor(p);delete o.draftLiveAuthorization;},/live|coverage|release/i],
+ ['preview authority substituted',(p,o,f)=>{p.draft_live_authorization=null;p.draft_preview_authorization={...draftAuthorization(f),channel:'live'};resign(p);o.confirm=confirmationFor(p);delete o.draftLiveAuthorization;o.draftPreviewAuthorization=p.draft_preview_authorization;},/live|preview/i],
+ ['missing remote flag',(p,o)=>o.authorizeRemote=false,/not authorized/i],
+ ['missing deploy flag',(p,o)=>o.authorizeDeploy=false,/not authorized/i],
+ ['wrong confirmation',(p,o)=>o.confirm='invalid',/confirmation/i],
+ ['wrong target option',(p,o)=>o.site='another-site',/mismatch/i],
+ ['wrong channel option',(p,o)=>o.channel='draft-review',/channel/i],
+ ['resigned channel change',(p,o)=>{p.channel='draft-review';p.draft_live_authorization.channel='draft-review';resign(p);o.confirm=confirmationFor(p);o.draftLiveAuthorization=structuredClone(p.draft_live_authorization);},/live|channel/i],
+ ['resigned profile change',(p,o)=>{p.profile='production';resign(p);o.confirm=confirmationFor(p);},/preview|profile|production|verification/i],
+ ['resigned extended lifetime',(p,o)=>{p.expires_at=new Date(Date.parse(p.created_at)+31*60*1000).toISOString();resign(p);o.confirm=confirmationFor(p);},/time window/i],
+ ['resigned future issue',(p,o)=>{p.created_at=new Date(Date.now()+60000).toISOString();resign(p);o.confirm=confirmationFor(p);},/time window/i],
+ ['expired authority',(p,o)=>{p.draft_live_authorization.expires_at='2020-01-01T00:00:00Z';resign(p);o.confirm=confirmationFor(p);o.draftLiveAuthorization=structuredClone(p.draft_live_authorization);},/expired|authorization/i],
+ ['omitted blocking gaps',(p,o)=>{p.content_blockers=p.content_blockers.filter(x=>!/Blocking gaps/.test(x));resign(p);o.confirm=confirmationFor(p);},/blocker/i],
+ ['removed source gap',(p,o,f)=>f.json('sources/gaps.json',{schema_version:1,items:[]}),/changed|stale|digest|blocker/i],
+ ['reduced required scope',(p,o,f)=>{const c=loadData(f.root).coverage;c.required_scope[0].end_seconds=30;f.json('sources/coverage.json',c);},/changed|stale|digest|blocker/i],
+ ['forged version',(p,o)=>{p.version='99.0.0';resign(p);o.confirm=confirmationFor(p);},/version/i],
+ ['forged source revision',(p,o)=>{p.source_revision={commit:'a'.repeat(40),dirty:false};resign(p);o.confirm=confirmationFor(p);},/source revision/i],
+ ['changed artifact',(p,o,f)=>writeFileSync(join(f.root,'dist/web/assets/base.css'),'changed'),/artifact|verification/i],
+ ['changed public source',(p,o,f)=>writeFileSync(join(f.root,'README.md'),'Changed source'),/source|verification/i],
+ ['removed noindex header',(p,o)=>{p.hosting.hosting.headers[0].headers=p.hosting.hosting.headers[0].headers.filter(h=>h.key!=='X-Robots-Tag');resign(p);o.confirm=confirmationFor(p);},/Hosting|artifact|authorization/i]
+])test(`draft live refuses ${name} before invoking a CLI`,()=>draftLiveFixture(f=>{
+ const p=draftLivePlan(f,draftLiveAuthorization(f));assert.equal(p.ready,true,p.errors.join('\n'));const o=draftLiveOptions(p);let called=0;change(p,o,f);
+ assert.throws(()=>executePlan(p,o,f.root,()=>{called++;return {status:0};}),re);assert.equal(called,0);
+}));
+
+for(const outcome of ['success','failure','uncertain','throw'])test(`draft live consumes authorization before a ${outcome} result and refuses a new nonce`,()=>draftLiveFixture(f=>{
+ const a=draftLiveAuthorization(f),p=draftLivePlan(f,a),receipt=join(f.root,'dist/deploy-receipts',`draft-live-${a.id}.json`);let called=0;
+ const run=()=>{called++;assert.equal(JSON.parse(readFileSync(receipt)).status,'attempted');assert.equal(JSON.parse(readFileSync(join(f.root,'dist/deploy-receipts',`draft-${a.id}.json`))).status,'attempted');assert.equal(JSON.parse(readFileSync(join(f.root,'dist/deploy-receipts',p.nonce+'.json'))).status,'attempted');if(outcome==='throw')throw Error('Synthetic transport interruption');return {status:outcome==='success'?0:outcome==='failure'?1:null};};
+ if(outcome==='success')executePlan(p,draftLiveOptions(p),f.root,run);
+ else assert.throws(()=>executePlan(p,draftLiveOptions(p),f.root,run),/uncertain|Synthetic transport interruption/);
+ assert.equal(called,1);const saved=JSON.parse(readFileSync(receipt));assert.equal(saved.authorization_id,a.id);assert.equal(saved.plan_digest,p.digest);assert.equal(saved.channel,'live');assert.equal(saved.artifact_digest,p.artifact.digest);
+ assert.equal(saved.status,outcome==='success'?'cli-succeeded':outcome==='throw'?'attempted':'failed-or-uncertain');
+ const next=draftLivePlan(f,a);assert.notEqual(next.nonce,p.nonce);assert.equal(next.ready,false);
+ assert.throws(()=>executePlan(next,draftLiveOptions(next),f.root,()=>{called++;return {status:0};}),/consumed|blocked/i);assert.equal(called,1);
+}));
+
+test('consumed draft authorization IDs cannot cross between preview and live receipt namespaces',()=>draftLiveFixture(f=>{
+ const a=draftLiveAuthorization(f),preview=draftAuthorization(f,{id:a.id});
+ mkdirSync(join(f.root,'dist/deploy-receipts'),{recursive:true});
+ const historical=join(f.root,'dist/deploy-receipts',`draft-${a.id}.json`);writeFileSync(historical,JSON.stringify({status:'attempted'}));
+ assertBlockedPlan(()=>draftLivePlan(f,a),/consumed/i);rmSync(historical);
+ writeFileSync(join(f.root,'dist/deploy-receipts',`draft-live-${a.id}.json`),JSON.stringify({status:'attempted'}));
+ assertBlockedPlan(()=>draftPlan(f,preview),/consumed/i);
+}));

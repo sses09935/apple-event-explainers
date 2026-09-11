@@ -1,5 +1,11 @@
 # 本機驗證與語意邊界
 
+## 2026-09-12 正式網址草稿展示驗證
+
+新增獨立 draft-live 授權例外的驗證範圍包括：限定目標與 channel、preview／draft／pending、完整內容阻擋保留、來源／產物／版本綁定、期限與單次 receipt、舊 preview 授權不得提升 live，以及原 release／production gate 維持拒絕未完成內容。共用草稿說明明示全片影音與整體語意審查未完成。
+
+實際測試數量、精確提交 CI、隔離副本重建、部署 CLI 和線上驗收分開保存於本次本機交付紀錄，不用歷史結果預先宣稱本輪成功。線上驗收須比對同一已測產物的檔案及 build-info，再驗證六頁操作、來源回連、404、header 與 noindex。私人影片、研究原文與授權檔均不進 Hosting。
+
 ## 2026-09-12 Developer／USD 複核範圍
 
 本輪內容共 205 條 KB、186 節點；S30–S51 的 22 份來源均實際取得 HTML、同內容 DocC JSON 與官方 Markdown，逐一核對身分、SHA-256、章節與必要條件。新增 38 條主張只有 context-only 技術對照，沒有 SDK 編譯或新品 runtime 驗證；全部 verified 主張均有正文引用，candidate 引用為零。

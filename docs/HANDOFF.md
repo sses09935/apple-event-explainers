@@ -1,5 +1,11 @@
 # 工程與內容交接
 
+## 2026-09-12 部署續接：正式網址展示草稿
+
+使用者在原音人工審查暫時略過後要求解決部署問題，本輪採單次 live 草稿展示：既有 Firebase project／site `apple-event-explainers`，preview／draft／pending、完整 coverage 與 gaps 皆保留。新 draft-live 授權與舊 preview 授權分開，必須重新驗證與綁定提交／產物，只做 Hosting。live 不設 7 天期限，保留 noindex 與草稿說明。
+
+這解決正式網址上線的流程限制，不核准全片影音內容。下文「本輪未 live」指先前階段；當前部署結果、CI 提交與逐檔遠端驗收以本機 `dist/delivery.json` 和本次私有 receipt 為準，不沿用舊 preview 結果。完整操作範圍見 [部署文件](DEPLOYMENT.md)。
+
 ## 2026-09-12 Developer 擴充與美元更正
 
 本輪新增 S30–S51 共 22 份 Apple Developer 文件及 38 條技術對照主張；目前 51 份來源、205 條 KB（202 verified／3 candidate）、四稿 186 節點（event 45、dev 57、AI 使用者 48、大眾 36）。新內容分配到原有主題，涵蓋生成限制與 App 動作驗收、相機與照片流程、健康資料與訓練排程、動作感測、版面和一般活動接續。來源快照、版本及逐項複核保留；未推定新品實機相容。
