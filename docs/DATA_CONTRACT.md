@@ -15,7 +15,7 @@
 
 六個來源採程式中明列的 source ID／exact URL 配對，要求 zh-TW、實際取得的 SHA-256／revision／時間、identity_review、同 revision 的 page_reviews 與精確 locator；HTML 的 content_resource_url 必須 null。未登錄、相似網址、其他市場或僅同為 Apple 網域皆不放行。來源元資料仍僅存 manifest，不另設價格 registry。商店來源不能作為 Developer 技術研究的產品支援前提；本次未審的 FAQ 與其他功能文案不因准入而成為正式主張。
 
-Reading、Audit 與首頁計數將「台灣官網價格與上市」獨立標示。價格／日期另存 KB，不覆寫影片原卡；數值表格仍由 KB 生成。台灣正文保留起價／總價、配置及未確認的稅額、年份或時區，不從月付、換購或其他市場計算售價。event 摘要與時間軸繼續只使用 S01。已核對台灣頁面不會自動補完 S01 市場語境或全片缺口，原  保留並據實更新進度文字。
+Reading、Audit 與首頁計數將「台灣官網價格與上市」獨立標示。價格／日期另存 KB，不覆寫影片原卡；數值表格仍由 KB 生成。台灣正文保留起價／總價、配置及未確認的稅額、年份或時區，不從月付、換購或其他市場計算售價。event 摘要與時間軸繼續只使用 S01。已核對台灣頁面不會自動補完 S01 市場語境或完成全片影音查核；原 required_scope 與實際 coverage 進度保留。
 
 本版依使用者 2026-09-10 追加授權取代「只有 S01 才合法」的舊規則。2026-09-10 三受眾增補同時取代舊三頁及單篇逐 claim 卡片限制。既有 KB ID、S01 的秒數與 revision、event.html 錨點均保留。v1 與前次交接保存在 `docs/history/`，不是現行要求。
 
@@ -35,7 +35,7 @@ Reading、Audit 與首頁計數將「台灣官網價格與上市」獨立標示�
 | related_claim_ids | 規格頁可空；Developer 須指向已 verified 的影片或產品功能 |
 | identity_review | Developer 必填 reviewer／reviewed_at／notes，記錄實際取得原文與可讀頁、資料接口的同內容身分核對；不可只拼接 URL |
 
-只有實際取得並核准的補充來源入登錄；未取得的 URL 留在接手紀錄／缺口，不能填假 hash 建立條目。S02–S06 固定為本次五個台灣頁；S07 起為逐一登錄的 Developer 文件，不再以三個 LocalAuthentication exact paths 限縮研究。
+只有實際取得並核准的補充來源入登錄；未取得的 URL 留在接手紀錄，不能填假 hash 建立條目。S02–S06 固定為本次五個台灣頁；S07 起為逐一登錄的 Developer 文件，不再以三個 LocalAuthentication exact paths 限縮研究。
 
 准入由多項條件共同決定：S07 起的唯一來源 ID 與 canonical URL、`https://developer.apple.com/documentation/…` 的具體文件路徑（不接受 query/hash/帳密）、與該可讀頁相符的 `/tutorials/data/documentation/….json`、實際快照 SHA-256/revision/取得時間、非空 `identity_review`、已 verified 的影片或產品前提，以及同 revision 的 `coverage.page_reviews`。頁面 review 必須有非空 locators；每條 verified claim 仍須匹配自己的 locator。一般 Apple hostname、登錄欄位或 hash 本身都不是語意已核對的證明。新增來源沿既有 registry 登錄，不新增另一份需同步的名冊。
 
@@ -49,7 +49,7 @@ Developer claim 另須 `technical_context`：`related_claim_ids` 非空、`relat
 
 Reading 必須顯示三類內容標籤與技術限制；Audit 加上版本、完整 locator、查核紀錄。首頁分列全部／影片／規格／Developer 計數；event-only 摘要與時間軸只收 S01。候選／爭議不進正式摘要或規格表。三份正式文章使用有穩定 ID 與 claim_ids 的敘事、編輯摘要、FAQ、技術註記及整合表格。KB 是唯一事實權威，並不要求文章逐句複製；轉述與跨主張解釋由語意審查確認，涉及新因果、相容性或效果仍需額外證據。
 
-Gaps 的 reviewed-not-found 目前只支援有完整模態範圍的 S01 區間；網頁尚未找到的研究範圍寫為 not-yet-reviewed 與進度 notes，不偽造網頁時間。不同來源的 conflict 可保留各自 evidence，仍阻擋 release；不默默覆蓋。
+網頁尚未核對的範圍以進度說明保留，不偽造網頁時間。不同來源若有矛盾，保留各自 evidence，不默默覆蓋，交由語意審查確認。
 
 本契約由 `schemas/*.schema.json`（JSON Schema draft-07、Ajv）及 `build/data.mjs` 的跨檔驗證共同執行。所有 JSON 物件禁止未知欄位；必要欄位不能省略。未取得或未知資訊使用 `null`，不能填造假的 URL、雜湊、日期或 0。驗證僅證明資料結構與關係合法，不能自動證明語意或來源真實。
 
@@ -278,7 +278,7 @@ review_record 的 coverage_ids 必須指向既存 coverage segment，並且其�
 
 `npm run verify:scaffold` 執行 schema、單元反例、乾淨 build、連結、靜態 DOM／輸出隱私檢查、實際 Chromium E2E。允許零內容；成功僅 scaffold-ready。
 
-`npm run verify:release` 先要求指定影片與 Apple 發布者身份已核對、完整影片 metadata、每個 reader 非空正式內容、三受眾各有編輯 summary 與穩定 topic、三篇不是相同全文、有效 verified 證據、承諾覆蓋、無阻擋／衝突、日期與新鮮語意審查，再執行同一工程測試。空骨架預期失敗。對話中的授權、影片真實性與研究能力不能由 JSON 旗標代替。
+`npm run verify:release` 先要求指定影片與 Apple 發布者身份已核對、完整影片 metadata、每個 reader 非空正式內容、三受眾各有編輯 summary 與穩定 topic、三篇不是相同全文、有效 verified 證據、承諾覆蓋、來源存取可用、日期與新鮮語意審查，再執行同一工程測試。空骨架預期失敗。對話中的授權、影片真實性與研究能力不能由 JSON 旗標代替。
 
 部署預設拒絕；本輪新增只做本機檢查的計畫模式，以及需一次性確認才可執行的 Firebase CLI wrapper。此句原屬遠端執行前階段；實際授權與執行結果依 [發布操作](DEPLOYMENT.md) 的最新紀錄判讀，不改變本契約gate。每次執行重新比對內容、公開清單、產物、project／site／channel；失敗或不確定結果不自動重試。完整介面見 [發布操作](DEPLOYMENT.md)。gate 成功不是部署授權。
 
@@ -292,7 +292,7 @@ review_record 的 coverage_ids 必須指向既存 coverage segment，並且其�
 
 `docs/qa/browser-results.json` 綁定當次 input_digest 並列實際截圖；舊報告不代表改稿後已驗證。合成 fixture 只在 OS 暫存副本驗證，不當作正式來源或內容覆蓋。Chromium 測試不代表 Safari、真機、輔助科技或程式碼編譯已驗收。
 
-三版工程完成、三版編輯完成度、全片證據覆蓋必須分開報告。`verify:scaffold` 允許空內容，僅表示工程骨架可運作；`verify:release` 保留全片 required_scope／模態、、source access、fresh semantic review 等門檻。不得縮小承諾範圍或刪除缺口使其轉綠；兩種 gate 均不是遠端寫入／部署授權。
+三版工程完成、三版編輯完成度、全片證據覆蓋必須分開報告。`verify:scaffold` 允許空內容，僅表示工程骨架可運作；`verify:release` 保留全片 required_scope／模態、source access、fresh semantic review 等門檻。不得縮小承諾範圍或把未核對模態填為完成以通過門檻；兩種 gate 均不是遠端寫入／部署授權。
 
 ### 三頁設定的可重跑遷移
 
@@ -314,7 +314,7 @@ manifest 的 `entities` 只管理 entity ID、canonical_name、必要配置、al
 
 本次使用者明確核准將目前草稿以 7 天預覽提供連結閱覽，限定 Firebase project／Hosting site `apple-event-explainers`、channel `review-20260910`。這項追加授權只取代前述一般部署規則中對本次草稿預覽的禁止；不是來源核准、語意 approved、content-release-ready 或 production 資格。此段保留執行前契約；該草稿預覽現已部署並完成指定線上驗收，舊授權已消耗。最新發布授權與結果見 [發布操作](DEPLOYMENT.md)，不得重用本次歷史授權。
 
-preview profile 與 `publication_status: draft`、semantic `pending`、原完整 `required_scope` 均保留，頁面與回應保留 noindex。持有預覽連結者可公開閱覽；noindex 只控制索引意圖，不提供存取控制。此例外不允許刪除缺口、縮短承諾範圍、將語意改 approved 或把 scaffold 通過寫成全片影音核對完成。`verify:release` 與 production 的全部內容／工程門檻照舊適用，且須如實記錄其阻擋。
+preview profile 與 `publication_status: draft`、semantic `pending`、原完整 `required_scope` 均保留，頁面與回應保留 noindex。持有預覽連結者可公開閱覽；noindex 只控制索引意圖，不提供存取控制。此例外不允許縮短承諾範圍、將語意改 approved 或把 scaffold 通過寫成全片影音核對完成。`verify:release` 與 production 的全部內容／工程門檻照舊適用，且須如實記錄其阻擋。
 
 草稿預覽另以完整 scaffold 驗證、公開來源樹與生成 DOM／產物檢查、私有資料排除作為必要工程前提；所有結果須對應實際將上傳的同一份內容與產物，失效紀錄不能沿用。永久 `allow_remote_write`／`allow_deploy` 仍維持 false；僅本次 wrapper 執行得到有範圍的授權。
 
